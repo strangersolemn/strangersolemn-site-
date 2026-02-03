@@ -149,5 +149,30 @@ const collections = [
         image: 'https://ordinals.com/content/cfb4e9a2fa03e0be25183e6565d455703aaa69cb0c671b8003c4086e610d043di0'
       }
     ]
+  },
+  {
+    id: 'block-clock-editions',
+    title: 'Block Clock Editions',
+    year: 2024,
+    chain: 'ordinals',
+    supply: 34,
+    representativeId: '7c29978bdc4524f00cfdd7b77e978bd8fb8bee9f58ecd724f9ba80673029b58bi0',
+    image: 'https://ordinals.com/content/7c29978bdc4524f00cfdd7b77e978bd8fb8bee9f58ecd724f9ba80673029b58bi0',
+    marketplaces: {
+      magicEden: 'https://magiceden.io/ordinals/marketplace/bpe',
+      gamma: 'https://gamma.io/ordinals/collections/bpe'
+    },
+    characters: [
+      {
+        name: 'Nucleus',
+        supply: 13,
+        image: 'https://ordinals.com/content/7c29978bdc4524f00cfdd7b77e978bd8fb8bee9f58ecd724f9ba80673029b58bi0'
+      },
+      {
+        name: 'Blockrunner',
+        supply: 21,
+        image: 'https://ordinals.com/content/259bd0e168925a975980edd919a54d11ca4bc914e63c070ddd7a2c1d89e75646i0'
+      }
+    ]
   }
 ];
