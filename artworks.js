@@ -92,5 +92,84 @@ const collections = [
       'c208ed1e0be1e5e6b0024b71aae35c16979fd93d07ec0e70ca2fe51cd03f5581i0',
       '6a5d4a90474963eba9e5b09ca4035acdf61dc5e686968dcdafb59dd1bff8cf49i0'
     ]
+  },
+  {
+    id: 'mr-303',
+    title: 'Mr 303',
+    year: 2024,
+    chain: 'ordinals',
+    supply: 17,
+    representativeId: '37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0',
+    image: 'https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0',
+    marketplaces: {
+      magicEden: 'https://magiceden.io/ordinals/marketplace/bpe',
+      gamma: 'https://gamma.io/ordinals/collections/bpe'
+    },
+    inscriptionIds: [
+      '37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0',
+      'cd8e072f7951c12999790852b22af63f74a896439b1cf87270b7a2558e5d32fbi0',
+      '9f3694308a63518b2cb37482193d3db5368a3abf2d359eac9f50f38b50bbfee3i0',
+      '03357008ae25430c448652265998c9643fbe161199f3f0596ab3e9b9a0c9cb6di0',
+      '2249d8f8cd05966f2cc3f820c3bbf850ba67f7291529f47f27cf15cafa758f52i0',
+      'e801b525a5bb941cc8854731c6b16d8874218cbb9ffc87218e7b80ea4c6d0286i0',
+      '79cfba7cca2022de7329599ad79b2a568a0ba8fbfc1db70aa550574afc492dd0i0',
+      'ad6002c1be72f7cb7e5e21f0b7b4ac38f9dd5d3043e98d1006abe83e2c678c8di0',
+      '606a010d260c01d47beb73380d3e25e5d6e1a51770e11fc796c7f48cf5cb7e98i0',
+      '6d3549ec45186decd383fedee8b61a4716a3856fb79d28550be1ab1f70a2be11i0',
+      '228c1dbdb0fa1730602068ef99c170edff31e3b032fe45c2bf10f055089dfe1ci0',
+      'ea7111f9478d6d41761cdf5010802ee79257d33c5eb2b51976a0fe8f710b04bfi0',
+      'f48dfa5a4d77ea0dcd09ff30dc50ab68efdebf409c229b7b23b09b5c1ba03b93i0',
+      '933af931ad532de6b5eaf977005d30208dc6893afb415e52923d4a8fed21c4b6i0',
+      '98ff1381f44b552209ad3c337ca34408126a9e4171dec837f2ba4570f114dd3ci0',
+      'a3381d60c638474b4c2ea89caba30753a8ded2a35492b8446e09feb0bc984ff5i0',
+      '229a977e553d489e47aec9585943cad75a4945965a2748601511dab927ef7438i0'
+    ]
+  },
+  {
+    id: 'mrs-303',
+    title: 'Mrs 303',
+    year: 2024,
+    chain: 'ordinals',
+    supply: 8,
+    representativeId: 'e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0',
+    image: 'https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0',
+    marketplaces: {
+      magicEden: 'https://magiceden.io/ordinals/marketplace/bpe',
+      gamma: 'https://gamma.io/ordinals/collections/bpe'
+    },
+    inscriptionIds: [
+      'e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0',
+      '9d7c8dd0405fa02d273826e1c2fdce2e468b68d9fb5683ea91bae103e5838ca2i0',
+      '2c4db30248be38a2162f93e2ce858910848717b83f83dce688ff8322fee513a2i0',
+      '656688b550d9465b76b5dbed328e51abf4d942d82eddfa6bec8c744a5d4dcd01i0',
+      '12062d0fb00272bc223daea8f67d067c000593d7f64c61d47c0884f6e6748e77i0',
+      '81a7c6d1b91b2863585681c51f295937df5c13156c40bb92e1f745e77b656861i0',
+      '9a6c9d7dff34d66c052b3ec399ad3c42c697ce9eaaffb266791424cba73fb1e7i0',
+      '74d8ec09944909136adad3d037b2e7617ffc6d23370cc1361227f83be937d24ai0'
+    ]
+  },
+  {
+    id: 'baby-303',
+    title: 'Baby 303',
+    year: 2024,
+    chain: 'ordinals',
+    supply: 9,
+    representativeId: '1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0',
+    image: 'https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0',
+    marketplaces: {
+      magicEden: 'https://magiceden.io/ordinals/marketplace/bpe',
+      gamma: 'https://gamma.io/ordinals/collections/bpe'
+    },
+    inscriptionIds: [
+      '1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0',
+      '25b1d363e07721042a17a81af26bf0c96ebcc06e1b2fe08774450e85ee2e69e1i0',
+      '347941b1df205ef59bad3fccfdada39dd60e990488ba1ab78e5be3cf944fbe5fi0',
+      '347941b1df205ef59bad3fccfdada39dd60e990488ba1ab78e5be3cf944fbe5fi1',
+      '347941b1df205ef59bad3fccfdada39dd60e990488ba1ab78e5be3cf944fbe5fi2',
+      '347941b1df205ef59bad3fccfdada39dd60e990488ba1ab78e5be3cf944fbe5fi3',
+      '347941b1df205ef59bad3fccfdada39dd60e990488ba1ab78e5be3cf944fbe5fi4',
+      '347941b1df205ef59bad3fccfdada39dd60e990488ba1ab78e5be3cf944fbe5fi5',
+      'c171521bea4492c775471f3fcafd22601e67fbab50997db4f8d6ed99f8a5d6cbi0'
+    ]
   }
 ];
