@@ -222,7 +222,6 @@ function showRandomArt() {
 
   setTimeout(() => {
     featuredArt.src = collection.image;
-    featuredArt.alt = collection.title;
 
     featuredArt.onload = () => {
       featuredArt.classList.add('loaded');
@@ -233,15 +232,15 @@ function showRandomArt() {
       artInfo.classList.add('visible');
     };
 
-    featuredArt.onerror = () => {
-      featuredArt.src = placeholderSvg();
+    // Fallback - show info after timeout in case onload doesn't fire
+    setTimeout(() => {
       featuredArt.classList.add('loaded');
       artTitle.textContent = collection.title;
       artCollection.textContent = `${collection.supply} editions`;
       artChain.textContent = chainNames[collection.chain];
       artChain.setAttribute('data-chain', collection.chain);
       artInfo.classList.add('visible');
-    };
+    }, 1500);
   }, 300);
 }
 
