@@ -12,7 +12,6 @@ const artInfo = document.querySelector('.art-info');
 const timeline = document.getElementById('timeline');
 const shuffleBtn = document.getElementById('shuffle-btn');
 
-const detailBackBtn = document.getElementById('detail-back-btn');
 const detailImage = document.getElementById('detail-image');
 const detailTitle = document.getElementById('detail-title');
 const detailChain = document.getElementById('detail-chain');
@@ -23,6 +22,7 @@ const linkGamma = document.getElementById('link-gamma');
 // State
 let currentView = 'home';
 let currentCollectionId = null;
+let currentPieceIndex = 0;
 
 // Chain display names
 const chainNames = {
@@ -54,10 +54,6 @@ function init() {
       showDetail(currentCollectionId);
     }
   });
-
-  detailBackBtn.addEventListener('click', () => {
-    showView('home');
-  });
 }
 
 // View management
@@ -76,24 +72,30 @@ function showView(viewName) {
 
 // Build timeline from collections data
 function buildTimeline() {
-  // Sort by year descending
-  const sorted = [...collections].sort((a, b) => b.year - a.year);
+  // Sort by year descending (extract year from first piece or use current)
+  const sorted = [...collections].sort((a, b) => {
+    const yearA = a.year || 2024;
+    const yearB = b.year || 2024;
+    return yearB - yearA;
+  });
 
   let currentYear = null;
   let html = '';
 
   sorted.forEach((collection) => {
+    const year = collection.year || 2024;
+
     // Add year header if new year
-    if (collection.year !== currentYear) {
-      currentYear = collection.year;
+    if (year !== currentYear) {
+      currentYear = year;
       html += `<div class="timeline-year">${currentYear}</div>`;
     }
 
     html += `
       <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
-        <span class="timeline-item-chain">${chainNames[collection.chain]}</span>
+        <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
         <span class="timeline-item-title">${collection.title}</span>
-        <span class="timeline-item-count">${collection.supply}</span>
+        <span class="timeline-item-count">${collection.pieces?.length || collection.supply || '?'}</span>
       </div>
     `;
   });
@@ -114,23 +116,60 @@ function showDetail(collectionId) {
   if (!collection) return;
 
   currentCollectionId = collectionId;
+  currentPieceIndex = 0;
 
   // Update detail view
-  detailImage.src = collection.image;
-  detailImage.alt = collection.title;
+  detailImage.src = collection.heroImage || (collection.pieces?.[0]?.image) || '';
   detailTitle.textContent = collection.title;
-  detailChain.textContent = chainNames[collection.chain];
+  detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
 
   // Build metadata
   let metaHtml = '';
 
-  metaHtml += metaRow('Supply', collection.supply);
-  metaHtml += metaRow('Year', collection.year);
-  metaHtml += metaRow('Chain', getChainFullName(collection.chain));
+  // Description
+  if (collection.description) {
+    metaHtml += `
+      <div class="collection-description">
+        <p>${collection.description}</p>
+      </div>
+    `;
+  }
 
-  if (collection.chain === 'ordinals' && collection.representativeId) {
-    metaHtml += metaRow('Inscription', truncateId(collection.representativeId), collection.representativeId);
+  // Artist note
+  if (collection.artistNote) {
+    metaHtml += `
+      <div class="artist-note">
+        <span class="note-label">Artist Note</span>
+        <p>${collection.artistNote}</p>
+      </div>
+    `;
+  }
+
+  // Stats
+  metaHtml += `
+    <div class="collection-stats">
+      ${metaRow('Pieces', collection.pieces?.length || collection.supply || '?')}
+      ${metaRow('Chain', getChainFullName(collection.chain))}
+      ${collection.contract ? metaRow('Contract', truncateId(collection.contract), collection.contract) : ''}
+    </div>
+  `;
+
+  // Pieces grid
+  if (collection.pieces && collection.pieces.length > 0) {
+    metaHtml += `
+      <div class="pieces-section">
+        <span class="pieces-label">Pieces</span>
+        <div class="pieces-grid">
+          ${collection.pieces.map((piece, idx) => `
+            <div class="piece-thumb" data-index="${idx}" title="${piece.title || '#' + piece.tokenId}">
+              <img src="${piece.thumbnail || piece.image}" alt="${piece.title || ''}" loading="lazy" />
+              <span class="piece-title">${piece.title || '#' + piece.tokenId}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
   }
 
   detailMetadata.innerHTML = metaHtml;
@@ -147,6 +186,14 @@ function showDetail(collectionId) {
     if (collection.marketplaces.gamma) {
       linkGamma.href = collection.marketplaces.gamma;
       linkGamma.classList.remove('hidden');
+    } else if (collection.marketplaces.opensea) {
+      linkGamma.href = collection.marketplaces.opensea;
+      linkGamma.textContent = 'OpenSea';
+      linkGamma.classList.remove('hidden');
+    } else if (collection.marketplaces.objkt) {
+      linkGamma.href = collection.marketplaces.objkt;
+      linkGamma.textContent = 'objkt';
+      linkGamma.classList.remove('hidden');
     } else {
       linkGamma.classList.add('hidden');
     }
@@ -155,7 +202,15 @@ function showDetail(collectionId) {
     linkGamma.classList.add('hidden');
   }
 
-  // Add copy functionality
+  // Add piece click handlers
+  detailMetadata.querySelectorAll('.piece-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const idx = parseInt(thumb.dataset.index);
+      showPiece(collection, idx);
+    });
+  });
+
+  // Add copy functionality for contract
   detailMetadata.querySelectorAll('.copyable').forEach(el => {
     el.addEventListener('click', () => {
       navigator.clipboard.writeText(el.dataset.full);
@@ -172,6 +227,34 @@ function showDetail(collectionId) {
   });
 
   showView('detail');
+}
+
+// Show individual piece
+function showPiece(collection, index) {
+  const piece = collection.pieces[index];
+  if (!piece) return;
+
+  currentPieceIndex = index;
+
+  // Update main image
+  detailImage.src = piece.image || piece.thumbnail;
+
+  // Update title to show piece name
+  detailTitle.innerHTML = `
+    ${collection.title}
+    <span class="piece-indicator">${piece.title || '#' + piece.tokenId}</span>
+  `;
+
+  // Highlight active thumbnail
+  detailMetadata.querySelectorAll('.piece-thumb').forEach((thumb, idx) => {
+    thumb.classList.toggle('active', idx === index);
+  });
+
+  // Scroll thumbnail into view
+  const activeThumb = detailMetadata.querySelector('.piece-thumb.active');
+  if (activeThumb) {
+    activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
 }
 
 // Get full chain name
@@ -216,42 +299,37 @@ function showRandomArt() {
   const collection = collections[Math.floor(Math.random() * collections.length)];
   currentCollectionId = collection.id;
 
+  // Pick random piece from collection
+  let imageUrl = collection.heroImage;
+  let pieceTitle = collection.title;
+
+  if (collection.pieces && collection.pieces.length > 0) {
+    const randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
+    imageUrl = randomPiece.image || randomPiece.thumbnail || collection.heroImage;
+    pieceTitle = randomPiece.title || collection.title;
+  }
+
   // Fade out
   featuredArt.classList.remove('loaded');
   artInfo.classList.remove('visible');
 
   setTimeout(() => {
-    featuredArt.src = collection.image;
+    featuredArt.src = imageUrl;
 
-    featuredArt.onload = () => {
+    const showInfo = () => {
       featuredArt.classList.add('loaded');
-      artTitle.textContent = collection.title;
-      artCollection.textContent = `${collection.supply} editions`;
-      artChain.textContent = chainNames[collection.chain];
+      artTitle.textContent = pieceTitle;
+      artCollection.textContent = collection.title + ' • ' + (collection.pieces?.length || collection.supply || '?') + ' pieces';
+      artChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
       artChain.setAttribute('data-chain', collection.chain);
       artInfo.classList.add('visible');
     };
 
-    // Fallback - show info after timeout in case onload doesn't fire
-    setTimeout(() => {
-      featuredArt.classList.add('loaded');
-      artTitle.textContent = collection.title;
-      artCollection.textContent = `${collection.supply} editions`;
-      artChain.textContent = chainNames[collection.chain];
-      artChain.setAttribute('data-chain', collection.chain);
-      artInfo.classList.add('visible');
-    }, 1500);
-  }, 300);
-}
+    featuredArt.onload = showInfo;
 
-// Placeholder SVG for failed images
-function placeholderSvg() {
-  return 'data:image/svg+xml,' + encodeURIComponent(`
-    <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
-      <rect fill="#1a1a1a" width="400" height="400"/>
-      <text fill="#444" font-family="monospace" font-size="14" x="50%" y="50%" text-anchor="middle">Image unavailable</text>
-    </svg>
-  `);
+    // Fallback
+    setTimeout(showInfo, 2000);
+  }, 300);
 }
 
 // Start
