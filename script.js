@@ -134,12 +134,11 @@ function showDetail(collectionId) {
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
 
-  // Update detail view - use optimized version for fast loading
+  // Update detail view
   const firstPiece = collection.pieces?.[0];
-  const fullImageUrl = collection.heroImage || firstPiece?.image || '';
-  const optimizedUrl = getOptimizedUrl(fullImageUrl);
-  detailImage.src = optimizedUrl;
-  detailImage.dataset.fullImage = fullImageUrl;
+  const imageUrl = collection.heroImage || firstPiece?.image || '';
+  detailImage.src = imageUrl;
+  detailImage.dataset.fullImage = imageUrl;
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
@@ -256,10 +255,10 @@ function showPiece(collection, index) {
 
   currentPieceIndex = index;
 
-  // Update main image - use optimized version for fast loading, store full for lightbox
-  const fullImageUrl = piece.image || piece.thumbnail;
-  detailImage.src = getOptimizedUrl(fullImageUrl);
-  detailImage.dataset.fullImage = fullImageUrl;
+  // Update main image
+  const imageUrl = piece.image || piece.thumbnail;
+  detailImage.src = imageUrl;
+  detailImage.dataset.fullImage = imageUrl;
 
   // Update title to show piece name
   detailTitle.innerHTML = `
@@ -314,24 +313,6 @@ function truncateId(id) {
   return id.slice(0, 8) + '...' + id.slice(-6);
 }
 
-// Helper: get optimized image URL (AVIF/WebP via Cloudinary)
-function getOptimizedUrl(url) {
-  if (!url) return url;
-
-  // If it's an Alchemy CDN URL, convert to Cloudinary optimized version
-  if (url.includes('nft-cdn.alchemy.com/eth-mainnet/')) {
-    const hash = url.split('eth-mainnet/')[1];
-    // f_auto serves AVIF/WebP based on browser, q_auto optimizes quality, w_1000 for size
-    return `https://res.cloudinary.com/alchemyapi/image/upload/f_auto,q_auto,w_1000/eth-mainnet/${hash}`;
-  }
-
-  // If already a cloudinary thumbnail URL, upgrade it to optimized full size
-  if (url.includes('res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/')) {
-    return url.replace('thumbnailv2/', 'f_auto,q_auto,w_1000/');
-  }
-
-  return url;
-}
 
 // Show random artwork
 function showRandomArt() {
@@ -346,8 +327,7 @@ function showRandomArt() {
 
   if (collection.pieces && collection.pieces.length > 0) {
     const randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
-    // Use optimized version for faster loading on home view
-    imageUrl = getOptimizedUrl(randomPiece.image || collection.heroImage);
+    imageUrl = randomPiece.image || collection.heroImage;
     pieceTitle = randomPiece.title || collection.title;
   }
 
