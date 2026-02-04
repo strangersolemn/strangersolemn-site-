@@ -55,16 +55,21 @@ function init() {
     }
   });
 
-  // Click detail image to open lightbox
-  detailImage.addEventListener('click', () => {
+  // Click detail image or fullscreen button to open lightbox with full quality image
+  const openFullscreen = () => {
     const collection = collections.find(c => c.id === currentCollectionId);
     let title = collection?.title || '';
     if (collection?.pieces?.[currentPieceIndex]) {
       const piece = collection.pieces[currentPieceIndex];
       title = piece.title || `#${piece.tokenId}`;
     }
-    openLightbox(detailImage.src, title);
-  });
+    // Use full quality image for lightbox
+    const fullImage = detailImage.dataset.fullImage || detailImage.src;
+    openLightbox(fullImage, title);
+  };
+
+  detailImage.addEventListener('click', openFullscreen);
+  document.querySelector('.fullscreen-btn').addEventListener('click', openFullscreen);
 }
 
 // View management
@@ -129,8 +134,12 @@ function showDetail(collectionId) {
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
 
-  // Update detail view
-  detailImage.src = collection.heroImage || (collection.pieces?.[0]?.image) || '';
+  // Update detail view - use thumbnail for fast loading
+  const firstPiece = collection.pieces?.[0];
+  const thumbnailUrl = firstPiece?.thumbnail || collection.heroImage || firstPiece?.image || '';
+  const fullImageUrl = collection.heroImage || firstPiece?.image || thumbnailUrl;
+  detailImage.src = thumbnailUrl;
+  detailImage.dataset.fullImage = fullImageUrl;
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
@@ -247,8 +256,9 @@ function showPiece(collection, index) {
 
   currentPieceIndex = index;
 
-  // Update main image
-  detailImage.src = piece.image || piece.thumbnail;
+  // Update main image - use thumbnail for fast loading, store full image for lightbox
+  detailImage.src = piece.thumbnail || piece.image;
+  detailImage.dataset.fullImage = piece.image || piece.thumbnail;
 
   // Update title to show piece name
   detailTitle.innerHTML = `
@@ -316,7 +326,8 @@ function showRandomArt() {
 
   if (collection.pieces && collection.pieces.length > 0) {
     const randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
-    imageUrl = randomPiece.image || randomPiece.thumbnail || collection.heroImage;
+    // Use thumbnail for faster loading on home view
+    imageUrl = randomPiece.thumbnail || randomPiece.image || collection.heroImage;
     pieceTitle = randomPiece.title || collection.title;
   }
 

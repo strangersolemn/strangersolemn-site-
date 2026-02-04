@@ -279,6 +279,29 @@ a {
   justify-content: center;
   min-height: 600px;
   max-height: 90vh;
+  position: relative;
+}
+
+.fullscreen-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  border-radius: 4px;
+}
+
+.detail-image-container:hover .fullscreen-btn {
+  opacity: 1;
+}
+
+.fullscreen-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
 #detail-image {
