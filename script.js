@@ -134,11 +134,11 @@ function showDetail(collectionId) {
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
 
-  // Update detail view - use thumbnail for fast loading
+  // Update detail view - use optimized version for fast loading
   const firstPiece = collection.pieces?.[0];
-  const thumbnailUrl = firstPiece?.thumbnail || collection.heroImage || firstPiece?.image || '';
-  const fullImageUrl = collection.heroImage || firstPiece?.image || thumbnailUrl;
-  detailImage.src = thumbnailUrl;
+  const fullImageUrl = collection.heroImage || firstPiece?.image || '';
+  const optimizedUrl = getOptimizedUrl(fullImageUrl);
+  detailImage.src = optimizedUrl;
   detailImage.dataset.fullImage = fullImageUrl;
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
@@ -256,9 +256,10 @@ function showPiece(collection, index) {
 
   currentPieceIndex = index;
 
-  // Update main image - use thumbnail for fast loading, store full image for lightbox
-  detailImage.src = piece.thumbnail || piece.image;
-  detailImage.dataset.fullImage = piece.image || piece.thumbnail;
+  // Update main image - use optimized version for fast loading, store full for lightbox
+  const fullImageUrl = piece.image || piece.thumbnail;
+  detailImage.src = getOptimizedUrl(fullImageUrl);
+  detailImage.dataset.fullImage = fullImageUrl;
 
   // Update title to show piece name
   detailTitle.innerHTML = `
@@ -313,6 +314,25 @@ function truncateId(id) {
   return id.slice(0, 8) + '...' + id.slice(-6);
 }
 
+// Helper: get optimized image URL (AVIF/WebP via Cloudinary)
+function getOptimizedUrl(url) {
+  if (!url) return url;
+
+  // If it's an Alchemy CDN URL, convert to Cloudinary optimized version
+  if (url.includes('nft-cdn.alchemy.com/eth-mainnet/')) {
+    const hash = url.split('eth-mainnet/')[1];
+    // f_auto serves AVIF/WebP based on browser, q_auto optimizes quality, w_1000 for size
+    return `https://res.cloudinary.com/alchemyapi/image/upload/f_auto,q_auto,w_1000/eth-mainnet/${hash}`;
+  }
+
+  // If already a cloudinary thumbnail URL, upgrade it to optimized full size
+  if (url.includes('res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/')) {
+    return url.replace('thumbnailv2/', 'f_auto,q_auto,w_1000/');
+  }
+
+  return url;
+}
+
 // Show random artwork
 function showRandomArt() {
   if (collections.length === 0) return;
@@ -326,8 +346,8 @@ function showRandomArt() {
 
   if (collection.pieces && collection.pieces.length > 0) {
     const randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
-    // Use thumbnail for faster loading on home view
-    imageUrl = randomPiece.thumbnail || randomPiece.image || collection.heroImage;
+    // Use optimized version for faster loading on home view
+    imageUrl = getOptimizedUrl(randomPiece.image || collection.heroImage);
     pieceTitle = randomPiece.title || collection.title;
   }
 
@@ -360,10 +380,17 @@ const lightboxImg = document.getElementById('lightbox-img');
 const lightboxTitle = document.getElementById('lightbox-title');
 
 function openLightbox(imageSrc, title) {
-  lightboxImg.src = imageSrc;
-  lightboxTitle.textContent = title || '';
+  // Show loading state
   lightbox.style.display = 'flex';
+  lightbox.classList.add('loading');
+  lightboxTitle.textContent = title || '';
   document.body.style.overflow = 'hidden';
+
+  // Load full image
+  lightboxImg.onload = () => {
+    lightbox.classList.remove('loading');
+  };
+  lightboxImg.src = imageSrc;
 }
 
 function closeLightbox() {

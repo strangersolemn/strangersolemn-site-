@@ -579,6 +579,26 @@ a {
   max-height: 90vh;
   object-fit: contain;
   border: none;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox.loading #lightbox-img {
+  opacity: 0;
+}
+
+.lightbox.loading::after {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .lightbox-info {
