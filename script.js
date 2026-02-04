@@ -70,6 +70,36 @@ function init() {
 
   detailImage.addEventListener('click', openFullscreen);
   document.querySelector('.fullscreen-btn').addEventListener('click', openFullscreen);
+
+  // Download button
+  document.querySelector('.download-btn').addEventListener('click', async () => {
+    const collection = collections.find(c => c.id === currentCollectionId);
+    let filename = collection?.title || 'artwork';
+    if (collection?.pieces?.[currentPieceIndex]) {
+      const piece = collection.pieces[currentPieceIndex];
+      filename = piece.title || `${collection.title}-${piece.tokenId}`;
+    }
+    // Clean filename
+    filename = filename.replace(/[^a-z0-9]/gi, '-').toLowerCase();
+
+    const imageUrl = detailImage.dataset.fullImage || detailImage.src;
+
+    try {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${filename}.png`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (e) {
+      // Fallback: open in new tab
+      window.open(imageUrl, '_blank');
+    }
+  });
 }
 
 // View management
