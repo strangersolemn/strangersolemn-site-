@@ -5,6 +5,7 @@ const views = {
 };
 
 const featuredArt = document.getElementById('featured-art');
+const featuredIframe = document.getElementById('featured-iframe');
 const artTitle = document.getElementById('art-title');
 const artCollection = document.getElementById('art-collection');
 const artChain = document.getElementById('art-chain');
@@ -13,6 +14,7 @@ const timeline = document.getElementById('timeline');
 const shuffleBtn = document.getElementById('shuffle-btn');
 
 const detailImage = document.getElementById('detail-image');
+const detailIframe = document.getElementById('detail-iframe');
 const detailTitle = document.getElementById('detail-title');
 const detailChain = document.getElementById('detail-chain');
 const detailMetadata = document.getElementById('detail-metadata');
@@ -23,6 +25,9 @@ const linkGamma = document.getElementById('link-gamma');
 let currentView = 'home';
 let currentCollectionId = null;
 let currentPieceIndex = 0;
+
+// On-chain collections that need iframes (HTML content)
+const onchainCollections = ['renascent', 'addicted'];
 
 // Chain display names
 const chainNames = {
@@ -164,11 +169,25 @@ function showDetail(collectionId) {
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
 
-  // Update detail view
+  // Update detail view - use iframe for on-chain, img for others
   const firstPiece = collection.pieces?.[0];
   const imageUrl = collection.heroImage || firstPiece?.image || '';
-  detailImage.src = imageUrl;
-  detailImage.dataset.fullImage = imageUrl;
+  const isOnchain = onchainCollections.includes(collection.id);
+
+  // Hide/show appropriate element and actions
+  const imageActions = document.querySelector('.image-actions');
+  if (isOnchain) {
+    detailImage.classList.add('hidden');
+    detailIframe.classList.remove('hidden');
+    detailIframe.src = imageUrl;
+    imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
+  } else {
+    detailIframe.classList.add('hidden');
+    detailImage.classList.remove('hidden');
+    detailImage.src = imageUrl;
+    detailImage.dataset.fullImage = imageUrl;
+    imageActions.classList.remove('hidden');
+  }
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
@@ -285,10 +304,16 @@ function showPiece(collection, index) {
 
   currentPieceIndex = index;
 
-  // Update main image
+  // Update main image - use iframe for on-chain, img for others
   const imageUrl = piece.image || piece.thumbnail;
-  detailImage.src = imageUrl;
-  detailImage.dataset.fullImage = imageUrl;
+  const isOnchain = onchainCollections.includes(collection.id);
+
+  if (isOnchain) {
+    detailIframe.src = imageUrl;
+  } else {
+    detailImage.src = imageUrl;
+    detailImage.dataset.fullImage = imageUrl;
+  }
 
   // Update title to show piece name
   detailTitle.innerHTML = `
@@ -361,15 +386,15 @@ function showRandomArt() {
     pieceTitle = randomPiece.title || collection.title;
   }
 
+  const isOnchain = onchainCollections.includes(collection.id);
+
   // Fade out
   featuredArt.classList.remove('loaded');
+  featuredIframe.classList.remove('loaded');
   artInfo.classList.remove('visible');
 
   setTimeout(() => {
-    featuredArt.src = imageUrl;
-
     const showInfo = () => {
-      featuredArt.classList.add('loaded');
       artTitle.textContent = pieceTitle;
       artCollection.textContent = collection.title + ' • ' + (collection.pieces?.length || collection.supply || '?') + ' pieces';
       artChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
@@ -377,7 +402,23 @@ function showRandomArt() {
       artInfo.classList.add('visible');
     };
 
-    featuredArt.onload = showInfo;
+    if (isOnchain) {
+      featuredArt.classList.add('hidden');
+      featuredIframe.classList.remove('hidden');
+      featuredIframe.src = imageUrl;
+      featuredIframe.onload = () => {
+        featuredIframe.classList.add('loaded');
+        showInfo();
+      };
+    } else {
+      featuredIframe.classList.add('hidden');
+      featuredArt.classList.remove('hidden');
+      featuredArt.src = imageUrl;
+      featuredArt.onload = () => {
+        featuredArt.classList.add('loaded');
+        showInfo();
+      };
+    }
 
     // Fallback
     setTimeout(showInfo, 2000);
