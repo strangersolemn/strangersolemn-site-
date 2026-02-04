@@ -77,12 +77,12 @@ a {
 #featured-art {
   width: 100%;
   max-width: 1000px;
-  aspect-ratio: 1;
   max-height: 80vh;
   border: none;
   background: var(--bg-tertiary);
   opacity: 0;
   transition: opacity 0.5s ease;
+  object-fit: contain;
 }
 
 #featured-art.loaded {
@@ -284,11 +284,12 @@ a {
 #detail-image {
   width: 100%;
   max-width: 1000px;
-  aspect-ratio: 1;
+  max-height: 85vh;
   border: none;
   background: var(--bg-tertiary);
   cursor: zoom-in;
   transition: transform 0.2s ease;
+  object-fit: contain;
 }
 
 #detail-image:hover {
