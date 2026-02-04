@@ -67,7 +67,7 @@ a {
 
 .art-container {
   width: 100%;
-  max-width: 650px;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,11 +75,10 @@ a {
 }
 
 #featured-art {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  min-height: 400px;
-  max-height: 70vh;
+  width: 1000px;
+  height: 1000px;
+  max-width: 100%;
+  max-height: 80vh;
   border: none;
   background: var(--bg-tertiary);
   opacity: 0;
@@ -277,20 +276,25 @@ a {
 .detail-image-container {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  min-height: 500px;
+  min-height: 800px;
 }
 
 #detail-image {
-  width: 100%;
-  max-width: 700px;
-  height: auto;
-  max-height: 80vh;
-  min-height: 400px;
+  width: 1000px;
+  height: 1000px;
+  max-width: 100%;
+  max-height: 85vh;
   border: none;
   background: var(--bg-tertiary);
   object-fit: contain;
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+#detail-image:hover {
+  transform: scale(1.02);
 }
 
 .detail-info {
@@ -505,6 +509,66 @@ a {
   color: var(--text-secondary);
   font-weight: 400;
   margin-top: 0.25rem;
+}
+
+/* Fullscreen Lightbox */
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: zoom-out;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 48px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  z-index: 10000;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+#lightbox-img {
+  max-width: 95vw;
+  max-height: 90vh;
+  object-fit: contain;
+  border: none;
+}
+
+.lightbox-info {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+#lightbox-title {
+  color: #fff;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
 }
 
 /* Side Panel */

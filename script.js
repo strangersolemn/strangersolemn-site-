@@ -54,6 +54,17 @@ function init() {
       showDetail(currentCollectionId);
     }
   });
+
+  // Click detail image to open lightbox
+  detailImage.addEventListener('click', () => {
+    const collection = collections.find(c => c.id === currentCollectionId);
+    let title = collection?.title || '';
+    if (collection?.pieces?.[currentPieceIndex]) {
+      const piece = collection.pieces[currentPieceIndex];
+      title = piece.title || `#${piece.tokenId}`;
+    }
+    openLightbox(detailImage.src, title);
+  });
 }
 
 // View management
@@ -331,6 +342,36 @@ function showRandomArt() {
     setTimeout(showInfo, 2000);
   }, 300);
 }
+
+// Lightbox functions
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxTitle = document.getElementById('lightbox-title');
+
+function openLightbox(imageSrc, title) {
+  lightboxImg.src = imageSrc;
+  lightboxTitle.textContent = title || '';
+  lightbox.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Close lightbox on background click or escape key
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target === lightboxImg) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+    closeLightbox();
+  }
+});
 
 // Start
 document.addEventListener('DOMContentLoaded', init);
