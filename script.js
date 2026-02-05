@@ -171,7 +171,8 @@ function showDetail(collectionId) {
 
   // Update detail view - use iframe for on-chain, img for others
   const firstPiece = collection.pieces?.[0];
-  const imageUrl = collection.heroImage || firstPiece?.image || '';
+  const fullImageUrl = collection.heroImage || firstPiece?.image || '';
+  const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
   const isOnchain = onchainCollections.includes(collection.id);
 
   // Hide/show appropriate element and actions
@@ -179,13 +180,14 @@ function showDetail(collectionId) {
   if (isOnchain) {
     detailImage.classList.add('hidden');
     detailIframe.classList.remove('hidden');
-    detailIframe.src = imageUrl;
+    detailIframe.src = fullImageUrl;
     imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
   } else {
     detailIframe.classList.add('hidden');
     detailImage.classList.remove('hidden');
-    detailImage.src = imageUrl;
-    detailImage.dataset.fullImage = imageUrl;
+    // Use thumbnail for fast loading, store full for lightbox/download
+    detailImage.src = thumbnailUrl;
+    detailImage.dataset.fullImage = fullImageUrl;
     imageActions.classList.remove('hidden');
   }
   detailTitle.textContent = collection.title;
@@ -305,14 +307,16 @@ function showPiece(collection, index) {
   currentPieceIndex = index;
 
   // Update main image - use iframe for on-chain, img for others
-  const imageUrl = piece.image || piece.thumbnail;
+  const fullImageUrl = piece.image || piece.thumbnail;
+  const thumbnailUrl = piece.thumbnail || piece.image;
   const isOnchain = onchainCollections.includes(collection.id);
 
   if (isOnchain) {
-    detailIframe.src = imageUrl;
+    detailIframe.src = fullImageUrl;
   } else {
-    detailImage.src = imageUrl;
-    detailImage.dataset.fullImage = imageUrl;
+    // Use thumbnail for fast loading, store full for lightbox/download
+    detailImage.src = thumbnailUrl;
+    detailImage.dataset.fullImage = fullImageUrl;
   }
 
   // Update title to show piece name
@@ -382,7 +386,11 @@ function showRandomArt() {
 
   if (collection.pieces && collection.pieces.length > 0) {
     const randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
-    imageUrl = randomPiece.image || collection.heroImage;
+    const isOnchain = onchainCollections.includes(collection.id);
+    // Use thumbnail for fast loading (except on-chain which needs full)
+    imageUrl = isOnchain
+      ? (randomPiece.image || collection.heroImage)
+      : (randomPiece.thumbnail || randomPiece.image || collection.heroImage);
     pieceTitle = randomPiece.title || collection.title;
   }
 
