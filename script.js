@@ -194,12 +194,25 @@ function showDetail(collectionId) {
     detailIframe.src = firstPiece.animationUrl;
     imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
   } else {
-    // Regular images - use full image to preserve animation
+    // Regular images - show thumbnail first, then load full for animation
     const fullImageUrl = collection.heroImage || firstPiece?.image || '';
+    const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
     detailIframe.classList.add('hidden');
     detailImage.classList.remove('hidden');
-    detailImage.src = fullImageUrl;
+
+    // Show thumbnail immediately as placeholder
+    detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
+    detailImage.classList.add('loading');
+
+    // Load full image in background, swap when ready
+    const fullImg = new Image();
+    fullImg.onload = () => {
+      detailImage.src = fullImageUrl;
+      detailImage.classList.remove('loading');
+    };
+    fullImg.src = fullImageUrl;
+
     imageActions.classList.remove('hidden');
   }
   detailTitle.textContent = collection.title;
@@ -325,10 +338,22 @@ function showPiece(collection, index) {
     // On-chain HTML art - use iframe with animationUrl
     detailIframe.src = piece.animationUrl;
   } else {
-    // Regular images - use full image to preserve animation
+    // Regular images - show thumbnail first, then load full for animation
     const fullImageUrl = piece.image || piece.thumbnail;
-    detailImage.src = fullImageUrl;
+    const thumbnailUrl = piece.thumbnail || piece.image;
+
+    // Show thumbnail immediately as placeholder
+    detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
+    detailImage.classList.add('loading');
+
+    // Load full image in background, swap when ready
+    const fullImg = new Image();
+    fullImg.onload = () => {
+      detailImage.src = fullImageUrl;
+      detailImage.classList.remove('loading');
+    };
+    fullImg.src = fullImageUrl;
   }
 
   // Update title to show piece name

@@ -350,6 +350,15 @@ a {
   object-fit: contain;
 }
 
+#detail-image.loading {
+  filter: blur(10px);
+  transition: filter 0.3s ease;
+}
+
+#detail-image:not(.loading) {
+  filter: blur(0);
+}
+
 #detail-iframe {
   aspect-ratio: 1;
   display: none;
