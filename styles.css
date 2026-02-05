@@ -350,13 +350,44 @@ a {
   object-fit: contain;
 }
 
-#detail-image.loading {
-  filter: blur(10px);
-  transition: filter 0.3s ease;
+.play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
 }
 
-#detail-image:not(.loading) {
-  filter: blur(0);
+.play-overlay:hover {
+  background: rgba(0, 0, 0, 0.9);
+  border-color: #fff;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.play-overlay svg {
+  margin-left: 4px;
+}
+
+.play-overlay.loading {
+  pointer-events: none;
+}
+
+.play-overlay.loading svg {
+  animation: spin 1s linear infinite;
+}
+
+.play-overlay.hidden {
+  display: none;
 }
 
 #detail-iframe {

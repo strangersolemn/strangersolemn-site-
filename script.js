@@ -88,6 +88,33 @@ function init() {
   detailImage.addEventListener('click', openFullscreen);
   document.querySelector('.fullscreen-btn').addEventListener('click', openFullscreen);
 
+  // Play button loads animated version
+  const playBtn = document.getElementById('play-animated');
+  playBtn.addEventListener('click', () => {
+    const fullImageUrl = detailImage.dataset.fullImage;
+    if (!fullImageUrl) return;
+
+    // Show loading state
+    playBtn.classList.add('loading');
+    playBtn.innerHTML = `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+      <circle cx="12" cy="12" r="10"/>
+    </svg>`;
+
+    // Load full image
+    const fullImg = new Image();
+    fullImg.onload = () => {
+      detailImage.src = fullImageUrl;
+      playBtn.classList.add('hidden');
+      playBtn.classList.remove('loading');
+      playBtn.innerHTML = `<svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>`;
+    };
+    fullImg.onerror = () => {
+      playBtn.classList.remove('loading');
+      playBtn.innerHTML = `<svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>`;
+    };
+    fullImg.src = fullImageUrl;
+  });
+
   // Download button
   document.querySelector('.download-btn').addEventListener('click', async () => {
     const collection = collections.find(c => c.id === currentCollectionId);
@@ -194,24 +221,23 @@ function showDetail(collectionId) {
     detailIframe.src = firstPiece.animationUrl;
     imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
   } else {
-    // Regular images - show thumbnail first, then load full for animation
+    // Regular images - show static thumbnail, play button loads animated
     const fullImageUrl = collection.heroImage || firstPiece?.image || '';
     const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
     detailIframe.classList.add('hidden');
     detailImage.classList.remove('hidden');
 
-    // Show thumbnail immediately as placeholder
+    // Show thumbnail immediately (static but fast)
     detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
-    detailImage.classList.add('loading');
 
-    // Load full image in background, swap when ready
-    const fullImg = new Image();
-    fullImg.onload = () => {
-      detailImage.src = fullImageUrl;
-      detailImage.classList.remove('loading');
-    };
-    fullImg.src = fullImageUrl;
+    // Show play button if there's an animated version to load
+    const playBtn = document.getElementById('play-animated');
+    if (thumbnailUrl !== fullImageUrl) {
+      playBtn.classList.remove('hidden');
+    } else {
+      playBtn.classList.add('hidden');
+    }
 
     imageActions.classList.remove('hidden');
   }
@@ -338,22 +364,21 @@ function showPiece(collection, index) {
     // On-chain HTML art - use iframe with animationUrl
     detailIframe.src = piece.animationUrl;
   } else {
-    // Regular images - show thumbnail first, then load full for animation
+    // Regular images - show static thumbnail, play button loads animated
     const fullImageUrl = piece.image || piece.thumbnail;
     const thumbnailUrl = piece.thumbnail || piece.image;
 
-    // Show thumbnail immediately as placeholder
+    // Show thumbnail immediately (static but fast)
     detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
-    detailImage.classList.add('loading');
 
-    // Load full image in background, swap when ready
-    const fullImg = new Image();
-    fullImg.onload = () => {
-      detailImage.src = fullImageUrl;
-      detailImage.classList.remove('loading');
-    };
-    fullImg.src = fullImageUrl;
+    // Show play button if there's an animated version to load
+    const playBtn = document.getElementById('play-animated');
+    if (thumbnailUrl !== fullImageUrl) {
+      playBtn.classList.remove('hidden');
+    } else {
+      playBtn.classList.add('hidden');
+    }
   }
 
   // Update title to show piece name
