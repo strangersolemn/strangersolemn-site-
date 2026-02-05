@@ -194,13 +194,11 @@ function showDetail(collectionId) {
     detailIframe.src = firstPiece.animationUrl;
     imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
   } else {
-    // Regular images
+    // Regular images - use full image to preserve animation
     const fullImageUrl = collection.heroImage || firstPiece?.image || '';
-    const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
     detailIframe.classList.add('hidden');
     detailImage.classList.remove('hidden');
-    // Use optimized thumbnail (AVIF/WebP) for fast loading, store full for lightbox/download
-    detailImage.src = toOptimizedUrl(thumbnailUrl);
+    detailImage.src = fullImageUrl;
     detailImage.dataset.fullImage = fullImageUrl;
     imageActions.classList.remove('hidden');
   }
@@ -247,7 +245,7 @@ function showDetail(collectionId) {
         <div class="pieces-grid">
           ${collection.pieces.map((piece, idx) => `
             <div class="piece-thumb" data-index="${idx}" title="${piece.title || '#' + piece.tokenId}">
-              <img src="${piece.thumbnail || piece.image}" alt="${piece.title || ''}" loading="lazy" />
+              <img src="${toOptimizedUrl(piece.thumbnail || piece.image)}" alt="${piece.title || ''}" loading="lazy" />
               <span class="piece-title">${piece.title || '#' + piece.tokenId}</span>
             </div>
           `).join('')}
@@ -327,11 +325,9 @@ function showPiece(collection, index) {
     // On-chain HTML art - use iframe with animationUrl
     detailIframe.src = piece.animationUrl;
   } else {
-    // Regular images
+    // Regular images - use full image to preserve animation
     const fullImageUrl = piece.image || piece.thumbnail;
-    const thumbnailUrl = piece.thumbnail || piece.image;
-    // Use optimized thumbnail (AVIF/WebP) for fast loading, store full for lightbox/download
-    detailImage.src = toOptimizedUrl(thumbnailUrl);
+    detailImage.src = fullImageUrl;
     detailImage.dataset.fullImage = fullImageUrl;
   }
 
@@ -404,10 +400,10 @@ function showRandomArt() {
   if (collection.pieces && collection.pieces.length > 0) {
     randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
     const isOnchain = isOnchainCollection(collection);
-    // Use animationUrl for on-chain, optimized thumbnail for others
+    // Use animationUrl for on-chain, full image for others (to preserve animation)
     imageUrl = (isOnchain && randomPiece.animationUrl)
       ? randomPiece.animationUrl
-      : toOptimizedUrl(randomPiece.thumbnail || randomPiece.image || collection.heroImage);
+      : (randomPiece.image || collection.heroImage);
     pieceTitle = randomPiece.title || collection.title;
   }
 
