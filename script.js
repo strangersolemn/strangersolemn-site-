@@ -29,6 +29,16 @@ let currentPieceIndex = 0;
 // On-chain collections that need iframes (HTML content)
 const onchainCollections = ['renascent', 'addicted'];
 
+// Convert thumbnail URL to AVIF/WebP via Cloudinary f_auto
+function toOptimizedUrl(url) {
+  if (!url) return url;
+  // Add f_auto,q_auto to Cloudinary URLs for AVIF/WebP
+  if (url.includes('res.cloudinary.com/alchemyapi/image/upload/')) {
+    return url.replace('/upload/', '/upload/f_auto,q_auto/');
+  }
+  return url;
+}
+
 // Chain display names
 const chainNames = {
   ordinals: 'ORD',
@@ -185,8 +195,8 @@ function showDetail(collectionId) {
   } else {
     detailIframe.classList.add('hidden');
     detailImage.classList.remove('hidden');
-    // Use thumbnail for fast loading, store full for lightbox/download
-    detailImage.src = thumbnailUrl;
+    // Use optimized thumbnail (AVIF/WebP) for fast loading, store full for lightbox/download
+    detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
     imageActions.classList.remove('hidden');
   }
@@ -314,8 +324,8 @@ function showPiece(collection, index) {
   if (isOnchain) {
     detailIframe.src = fullImageUrl;
   } else {
-    // Use thumbnail for fast loading, store full for lightbox/download
-    detailImage.src = thumbnailUrl;
+    // Use optimized thumbnail (AVIF/WebP) for fast loading, store full for lightbox/download
+    detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
   }
 
@@ -387,10 +397,10 @@ function showRandomArt() {
   if (collection.pieces && collection.pieces.length > 0) {
     const randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
     const isOnchain = onchainCollections.includes(collection.id);
-    // Use thumbnail for fast loading (except on-chain which needs full)
+    // Use optimized thumbnail (AVIF/WebP) for fast loading (except on-chain which needs full)
     imageUrl = isOnchain
       ? (randomPiece.image || collection.heroImage)
-      : (randomPiece.thumbnail || randomPiece.image || collection.heroImage);
+      : toOptimizedUrl(randomPiece.thumbnail || randomPiece.image || collection.heroImage);
     pieceTitle = randomPiece.title || collection.title;
   }
 
