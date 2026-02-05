@@ -26,8 +26,10 @@ let currentView = 'home';
 let currentCollectionId = null;
 let currentPieceIndex = 0;
 
-// On-chain collections that need iframes (HTML content)
-const onchainCollections = ['renascent', 'addicted'];
+// Check if collection is on-chain (uses animationUrl for HTML content)
+function isOnchainCollection(collection) {
+  return collection?.onchain === true;
+}
 
 // Convert thumbnail URL to AVIF/WebP via Cloudinary f_auto
 function toOptimizedUrl(url) {
@@ -179,20 +181,22 @@ function showDetail(collectionId) {
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
 
-  // Update detail view - use iframe for on-chain, img for others
+  // Update detail view - use iframe for on-chain HTML, img for regular images
   const firstPiece = collection.pieces?.[0];
-  const fullImageUrl = collection.heroImage || firstPiece?.image || '';
-  const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
-  const isOnchain = onchainCollections.includes(collection.id);
+  const isOnchain = isOnchainCollection(collection);
 
   // Hide/show appropriate element and actions
   const imageActions = document.querySelector('.image-actions');
-  if (isOnchain) {
+  if (isOnchain && firstPiece?.animationUrl) {
+    // On-chain HTML art - use iframe with animationUrl
     detailImage.classList.add('hidden');
     detailIframe.classList.remove('hidden');
-    detailIframe.src = fullImageUrl;
+    detailIframe.src = firstPiece.animationUrl;
     imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
   } else {
+    // Regular images
+    const fullImageUrl = collection.heroImage || firstPiece?.image || '';
+    const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
     detailIframe.classList.add('hidden');
     detailImage.classList.remove('hidden');
     // Use optimized thumbnail (AVIF/WebP) for fast loading, store full for lightbox/download
@@ -316,14 +320,16 @@ function showPiece(collection, index) {
 
   currentPieceIndex = index;
 
-  // Update main image - use iframe for on-chain, img for others
-  const fullImageUrl = piece.image || piece.thumbnail;
-  const thumbnailUrl = piece.thumbnail || piece.image;
-  const isOnchain = onchainCollections.includes(collection.id);
+  // Update main image - use iframe for on-chain HTML, img for regular images
+  const isOnchain = isOnchainCollection(collection);
 
-  if (isOnchain) {
-    detailIframe.src = fullImageUrl;
+  if (isOnchain && piece.animationUrl) {
+    // On-chain HTML art - use iframe with animationUrl
+    detailIframe.src = piece.animationUrl;
   } else {
+    // Regular images
+    const fullImageUrl = piece.image || piece.thumbnail;
+    const thumbnailUrl = piece.thumbnail || piece.image;
     // Use optimized thumbnail (AVIF/WebP) for fast loading, store full for lightbox/download
     detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
@@ -394,17 +400,18 @@ function showRandomArt() {
   let imageUrl = collection.heroImage;
   let pieceTitle = collection.title;
 
+  let randomPiece = null;
   if (collection.pieces && collection.pieces.length > 0) {
-    const randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
-    const isOnchain = onchainCollections.includes(collection.id);
-    // Use optimized thumbnail (AVIF/WebP) for fast loading (except on-chain which needs full)
-    imageUrl = isOnchain
-      ? (randomPiece.image || collection.heroImage)
+    randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
+    const isOnchain = isOnchainCollection(collection);
+    // Use animationUrl for on-chain, optimized thumbnail for others
+    imageUrl = (isOnchain && randomPiece.animationUrl)
+      ? randomPiece.animationUrl
       : toOptimizedUrl(randomPiece.thumbnail || randomPiece.image || collection.heroImage);
     pieceTitle = randomPiece.title || collection.title;
   }
 
-  const isOnchain = onchainCollections.includes(collection.id);
+  const isOnchain = isOnchainCollection(collection) && randomPiece?.animationUrl;
 
   // Fade out
   featuredArt.classList.remove('loaded');

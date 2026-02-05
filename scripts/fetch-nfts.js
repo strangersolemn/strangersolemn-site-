@@ -44,6 +44,7 @@ const COLLECTIONS = [
     description: 'Fully On-Chain Originals made with code',
     artistNote: 'Renascent is an ongoing journey to unlock the possibilities of onchain art on ETH',
     heroTokenId: null,
+    onchain: true,  // Uses animation_url for HTML content
   },
   {
     chain: 'ethereum',
@@ -52,6 +53,7 @@ const COLLECTIONS = [
     description: '420 seconds of freestyle energy, Fully OnChain',
     artistNote: 'Addicted is a way to channel my art making addiction',
     heroTokenId: null,
+    onchain: true,  // Uses animation_url for HTML content
   },
   {
     chain: 'ethereum',
@@ -126,6 +128,8 @@ async function fetchEthereumCollection(collection) {
       title: nft.name || nft.title || `#${nft.tokenId}`,
       image: resolveImageUrl(nft.image?.cachedUrl || nft.image?.originalUrl || nft.raw?.metadata?.image),
       thumbnail: nft.image?.thumbnailUrl || nft.image?.cachedUrl,
+      // animation_url is used for on-chain HTML/interactive art
+      animationUrl: resolveImageUrl(nft.raw?.metadata?.animation_url),
       description: nft.description,
       attributes: nft.raw?.metadata?.attributes || [],
     }));
@@ -149,6 +153,7 @@ async function fetchEthereumCollection(collection) {
       heroImage: heroImage,
       description: collection.description,
       artistNote: collection.artistNote,
+      onchain: collection.onchain || false,
       pieces: pieces,
       marketplaces: {
         opensea: `https://opensea.io/assets/ethereum/${collection.contract}`,
