@@ -19992,6 +19992,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": true,
+    "isEditions": false,
     "year": 2024,
     "pieces": [
       {
@@ -26159,6 +26160,7 @@ const collections = [
     "description": "A 300 Piece PFP collection",
     "artistNote": "Strangers is my OG collection, released in 2021 across 8 months, before the days of apple pencils, the artwork is finger painted",
     "onchain": false,
+    "isEditions": false,
     "pieces": [
       {
         "tokenId": "1",
@@ -26390,7 +26392,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": false,
-    "isEditions": true,
+    "isEditions": false,
     "year": 2021,
     "pieces": [
       {

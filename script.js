@@ -29,7 +29,8 @@ let activeChainFilter = null;
 
 // Check if collection is an edition (supply > unique pieces shown, or explicitly flagged)
 function isEditionCollection(collection) {
-  if (collection.isEditions) return true;
+  if (collection.isEditions === true) return true;
+  if (collection.isEditions === false) return false;
   const uniqueCount = collection.uniquePieces || collection.pieces?.length || 0;
   const supply = collection.supply || uniqueCount;
   return supply > uniqueCount;
