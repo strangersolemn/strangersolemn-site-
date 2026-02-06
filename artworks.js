@@ -20889,7 +20889,8 @@ const collections = [
       }
     ],
     "marketplaces": {},
-    "uniquePieces": 2693
+    "uniquePieces": 2693,
+    "isCollab": true
   },
   {
     "id": "a-solemn-rose",

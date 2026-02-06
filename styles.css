@@ -885,6 +885,19 @@ a {
   vertical-align: middle;
 }
 
+.timeline-item-collab {
+  display: inline-block;
+  font-size: 0.5rem;
+  color: #e040fb;
+  border: 1px solid #e040fb;
+  padding: 0.05rem 0.3rem;
+  border-radius: 2px;
+  margin-left: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+}
+
 .timeline-item-count {
   font-size: 0.6rem;
   color: var(--text-muted);

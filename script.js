@@ -231,11 +231,12 @@ function buildTimeline() {
     }
 
     const editionTag = isEditionCollection(collection) ? '<span class="timeline-item-editions">Editions</span>' : '';
+    const collabTag = collection.isCollab ? '<span class="timeline-item-collab">Collab</span>' : '';
 
     html += `
       <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
         <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
-        <span class="timeline-item-title">${collection.title}${editionTag}</span>
+        <span class="timeline-item-title">${collection.title}${editionTag}${collabTag}</span>
         <span class="timeline-item-count">${collection.supply || collection.pieces?.length || '?'}</span>
       </div>
     `;
