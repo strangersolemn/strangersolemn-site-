@@ -23611,5 +23611,707 @@ const collections = [
     ],
     "marketplaces": {},
     "uniquePieces": 200
+  },
+  {
+    "id": "open-edition-tez",
+    "title": "Open Edition",
+    "chain": "tezos",
+    "contract": "KT1Pss7sHcS6B66d8ACJ7V98kfSxQmvU8mK5",
+    "supply": 1,
+    "uniquePieces": 1,
+    "heroImage": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
+    "description": "OE's by Solemn",
+    "artistNote": "",
+    "onchain": false,
+    "year": 2023,
+    "pieces": [
+      {
+        "tokenId": "1",
+        "title": "Tez Pole",
+        "image": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
+        "thumbnail": "https://ipfs.io/ipfs/QmbYuYV76ZAXoHB5Xk8QoecjKumVeXkdA6eB16yVQLjkQH"
+      }
+    ],
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1Pss7sHcS6B66d8ACJ7V98kfSxQmvU8mK5"
+    }
+  },
+  {
+    "id": "strange-encounters",
+    "title": "Strange Encounters",
+    "chain": "tezos",
+    "contract": "KT1DLKUBqXFwLvEKGPdhXFaTm3q7jYa5PiLR",
+    "supply": 1,
+    "uniquePieces": 1,
+    "heroImage": "https://ipfs.io/ipfs/QmdVZKNzpk2BiKwgkTd5FgJ1WKLdJEKjProK2dyWEG7Jn3",
+    "description": "Collabs with Frens",
+    "artistNote": "",
+    "onchain": false,
+    "year": 2023,
+    "pieces": [
+      {
+        "tokenId": "0",
+        "title": "Stuck in the Noise With You",
+        "image": "https://ipfs.io/ipfs/QmdVZKNzpk2BiKwgkTd5FgJ1WKLdJEKjProK2dyWEG7Jn3",
+        "thumbnail": "https://ipfs.io/ipfs/QmcYhQ2FJ1BQyww4wwn7nFJhEKWGgQzPfSSANR1uHYz6b8"
+      }
+    ],
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1DLKUBqXFwLvEKGPdhXFaTm3q7jYa5PiLR"
+    }
+  },
+  {
+    "id": "the-creeps",
+    "title": "The Creeps",
+    "chain": "tezos",
+    "contract": "KT1LmKkWCiAfiYsp68yQbaTYb5KaqQDEWNR7",
+    "supply": 6,
+    "uniquePieces": 6,
+    "heroImage": "https://ipfs.io/ipfs/QmSkDJpahRNeraZ57pA8Cen36NYfFcvNmDL3hyHktyNbd2",
+    "description": "No matter what lies we tell, we cannot fool our own hearts",
+    "artistNote": "",
+    "onchain": false,
+    "year": 2022,
+    "pieces": [
+      {
+        "tokenId": "0",
+        "title": "Avarice",
+        "image": "https://ipfs.io/ipfs/QmSkDJpahRNeraZ57pA8Cen36NYfFcvNmDL3hyHktyNbd2",
+        "thumbnail": "https://ipfs.io/ipfs/QmXbtniFmX5EmE34KPfAd1emYqRepc62Coynok1he8iiMR"
+      },
+      {
+        "tokenId": "1",
+        "title": "Mirror Mirror",
+        "image": "https://ipfs.io/ipfs/QmPS8cGEKDMEAMWhUET6i6y4kAc2oTKMRPVycNEgHs7qb5",
+        "thumbnail": "https://ipfs.io/ipfs/QmPS8cGEKDMEAMWhUET6i6y4kAc2oTKMRPVycNEgHs7qb5"
+      },
+      {
+        "tokenId": "2",
+        "title": "F.O.M.O",
+        "image": "https://ipfs.io/ipfs/QmPZeFjCywU5RP6gK64pYBpjDAV6dPm8dEcPuGHjS3zWcP",
+        "thumbnail": "https://ipfs.io/ipfs/QmPZeFjCywU5RP6gK64pYBpjDAV6dPm8dEcPuGHjS3zWcP"
+      },
+      {
+        "tokenId": "3",
+        "title": "Dread",
+        "image": "https://ipfs.io/ipfs/QmbhDmmHuKKZsDHNebJwmeFNYHBXKJF9tQ7T2vJUgBf2fp",
+        "thumbnail": "https://ipfs.io/ipfs/QmbhDmmHuKKZsDHNebJwmeFNYHBXKJF9tQ7T2vJUgBf2fp"
+      },
+      {
+        "tokenId": "4",
+        "title": "Static Distortion",
+        "image": "https://ipfs.io/ipfs/QmNuSzqXKU35AZZfkzc5RBnL2Bab1YKQjzgqB3hUisnCYQ",
+        "thumbnail": "https://ipfs.io/ipfs/QmNuSzqXKU35AZZfkzc5RBnL2Bab1YKQjzgqB3hUisnCYQ"
+      },
+      {
+        "tokenId": "5",
+        "title": "Static Distortion",
+        "image": "https://ipfs.io/ipfs/QmNVKy1rkqFVKjMj5NZ5u3bVPRxgp9FcESwEZaK8A9sFvd",
+        "thumbnail": "https://ipfs.io/ipfs/QmNVKy1rkqFVKjMj5NZ5u3bVPRxgp9FcESwEZaK8A9sFvd"
+      }
+    ],
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1LmKkWCiAfiYsp68yQbaTYb5KaqQDEWNR7"
+    }
+  },
+  {
+    "id": "fuk-u-punks",
+    "title": "Fuk u PuNks",
+    "chain": "tezos",
+    "contract": "KT1FQFGviugjYyBp56C94tx71immkESMMUqb",
+    "supply": 1,
+    "uniquePieces": 1,
+    "heroImage": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB",
+    "description": "",
+    "artistNote": "",
+    "onchain": false,
+    "year": 2022,
+    "pieces": [
+      {
+        "tokenId": "0",
+        "title": "Fuk u PuNks",
+        "image": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB",
+        "thumbnail": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB"
+      }
+    ],
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1FQFGviugjYyBp56C94tx71immkESMMUqb"
+    }
+  },
+  {
+    "id": "parrot-party",
+    "title": "Parrot Party",
+    "chain": "tezos",
+    "contract": "KT1X9gMA5epGcW25zf9rgxr7WNETkfu4WB69",
+    "supply": 50,
+    "uniquePieces": 51,
+    "heroImage": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
+    "description": "50 Parrots shall enter, no more, no less",
+    "artistNote": "",
+    "onchain": false,
+    "year": 2022,
+    "pieces": [
+      {
+        "tokenId": "0",
+        "title": "It's a Parrot Thing",
+        "image": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
+        "thumbnail": "https://ipfs.io/ipfs/QmeYA3Y6HbVTyNoZngj9m4jQdsgynuJaYsAQHGoa3BXypV"
+      },
+      {
+        "tokenId": "1",
+        "title": "Parrot #001",
+        "image": "https://ipfs.io/ipfs/QmaSw2FVPzj6c3ZVoZ5TixnyinvtoWmckokhxwvvHZggt3",
+        "thumbnail": "https://ipfs.io/ipfs/QmPV1Btr9LnhuURvcSmFxp81BpsdCT4DqNrN1VhShoNvaL"
+      },
+      {
+        "tokenId": "2",
+        "title": "Parrot #002",
+        "image": "https://ipfs.io/ipfs/QmSV4Lpf4NrwfychFh1P2sNh2tcznqTHafrfS8USMy7WW4",
+        "thumbnail": "https://ipfs.io/ipfs/QmeEy3wUgwMANyjD13umHeSsnoeCTKzVNe1HdUzjrT3VMD"
+      },
+      {
+        "tokenId": "3",
+        "title": "Parrot #003",
+        "image": "https://ipfs.io/ipfs/QmYak6twLFKnoKAdMYCVya2rR8Mi1wKbp8u3cZoG1roHS5",
+        "thumbnail": "https://ipfs.io/ipfs/QmUw5RYxh1vcuDGLGaqV6dhNrkaAB6ws2nwFbmt39vWAFE"
+      },
+      {
+        "tokenId": "4",
+        "title": "Parrot #004",
+        "image": "https://ipfs.io/ipfs/Qmb5ubuCZtXkKYV5YTBb5sKTPVF24ZfWikfyy475UMos9y",
+        "thumbnail": "https://ipfs.io/ipfs/QmakLhPRXbyHvRqHCZsbJGhF6rcinaD9LpJAQ8DJN5DoYW"
+      },
+      {
+        "tokenId": "5",
+        "title": "Parrot #005",
+        "image": "https://ipfs.io/ipfs/QmNQQRSrJproBwi2es6NJDwh3sPBHP3qdwyDTnTN35ZLqp",
+        "thumbnail": "https://ipfs.io/ipfs/Qma69CMw7NuqSk5fhxAYVYid2ZoVrjr9h25u3tyxXhAS6m"
+      },
+      {
+        "tokenId": "6",
+        "title": "Parrot #006",
+        "image": "https://ipfs.io/ipfs/QmRjcqitAGTQ5uXk6Z1qEDZVhsVyT1E76iTbT3Zs1CQqTr",
+        "thumbnail": "https://ipfs.io/ipfs/QmRjcqitAGTQ5uXk6Z1qEDZVhsVyT1E76iTbT3Zs1CQqTr"
+      },
+      {
+        "tokenId": "7",
+        "title": "Parrot #007",
+        "image": "https://ipfs.io/ipfs/QmeGPkg6B3W4gRM6Gpvx7KETM6rSY72EtNFUeCVPMY1raV",
+        "thumbnail": "https://ipfs.io/ipfs/QmeGPkg6B3W4gRM6Gpvx7KETM6rSY72EtNFUeCVPMY1raV"
+      },
+      {
+        "tokenId": "8",
+        "title": "Parrot #008",
+        "image": "https://ipfs.io/ipfs/QmTZ3ncfqPqPhxtmZp61YBybpFXdorqv19q4Y8nzPCytAv",
+        "thumbnail": "https://ipfs.io/ipfs/QmTZ3ncfqPqPhxtmZp61YBybpFXdorqv19q4Y8nzPCytAv"
+      },
+      {
+        "tokenId": "9",
+        "title": "Parrot #09",
+        "image": "https://ipfs.io/ipfs/QmYeVsaQrhfGbAmFarzt8qUzqPH1bsK6WTq8df2NsS5pW2",
+        "thumbnail": "https://ipfs.io/ipfs/QmYeVsaQrhfGbAmFarzt8qUzqPH1bsK6WTq8df2NsS5pW2"
+      },
+      {
+        "tokenId": "10",
+        "title": "Parrot #009",
+        "image": "https://ipfs.io/ipfs/QmQ3hBrFiiB5h4TMeT7VY6883RycCnT8SY59CJyVgeXm2t",
+        "thumbnail": "https://ipfs.io/ipfs/Qmdz9EwD3tAWbtJucfqu9YjP1DiA3WvLQN2euCE7onU9k1"
+      },
+      {
+        "tokenId": "11",
+        "title": "Parrot #010",
+        "image": "https://ipfs.io/ipfs/QmQ3hBrFiiB5h4TMeT7VY6883RycCnT8SY59CJyVgeXm2t",
+        "thumbnail": "https://ipfs.io/ipfs/Qmdz9EwD3tAWbtJucfqu9YjP1DiA3WvLQN2euCE7onU9k1"
+      },
+      {
+        "tokenId": "12",
+        "title": "Parrot #011",
+        "image": "https://ipfs.io/ipfs/QmPP2pbcyisTrRJVUqatxvJKJ72ZguKLehjjyuuXb7MZuV",
+        "thumbnail": "https://ipfs.io/ipfs/QmPP2pbcyisTrRJVUqatxvJKJ72ZguKLehjjyuuXb7MZuV"
+      },
+      {
+        "tokenId": "13",
+        "title": "Parrot #012",
+        "image": "https://ipfs.io/ipfs/QmRRk31jDPQjyVhja1hyQ6sgwdSfnCENHtBcNb4g2KF77q",
+        "thumbnail": "https://ipfs.io/ipfs/QmP8WJ2N7FbMAnPxNSUuzUToVqo5dpGZ8c7pDutaZWWYdp"
+      },
+      {
+        "tokenId": "14",
+        "title": "Parrot #013",
+        "image": "https://ipfs.io/ipfs/QmehCU4mi1mGKVwrrhggjBPAr76vL1Ue7qKUXnNJ44M9kk",
+        "thumbnail": "https://ipfs.io/ipfs/QmcTwJYPQmnkXqTvsPPqcc9CCAG6gS9Z7eMGSGL3sW8RpP"
+      },
+      {
+        "tokenId": "15",
+        "title": "Parrot #014",
+        "image": "https://ipfs.io/ipfs/QmZSrjw71PD3uwN2LL1j8KdMsXvmd64PcZ8DTpJovyUCdM",
+        "thumbnail": "https://ipfs.io/ipfs/QmfUfmQegeEhFUZWig83CFkqDZH6Q3ohrTbUL4XXzJgAnT"
+      },
+      {
+        "tokenId": "16",
+        "title": "Parrot #015",
+        "image": "https://ipfs.io/ipfs/QmUSfvdvnf2neVJabQMDugDNvnWgkxA2WKHHXBik29Rnrw",
+        "thumbnail": "https://ipfs.io/ipfs/QmcPbyssVGnYYkRJLL3B9YMw2gh3tuB7gSPxiG2w62LdTz"
+      },
+      {
+        "tokenId": "17",
+        "title": "Parrot #016",
+        "image": "https://ipfs.io/ipfs/QmVZLCJisaXqnYPrcLz1jag9Ety1CDYyN6TvN2FcVT5ubb",
+        "thumbnail": "https://ipfs.io/ipfs/QmW8SA79EH4bJFdZ4EP3Hp6W2MDuMgEFKgwpfUqKWm6Anc"
+      },
+      {
+        "tokenId": "18",
+        "title": "Parrot #17",
+        "image": "https://ipfs.io/ipfs/QmYQczRCAxuZEYFd57DM3Q5q3z47vd2cNshQfSkoyYAAYy",
+        "thumbnail": "https://ipfs.io/ipfs/QmRFMd2jUyJH4MUrgoEm8iiPQVf6TxW7GqmpNzPYJRaNjt"
+      },
+      {
+        "tokenId": "19",
+        "title": "Parrot #18",
+        "image": "https://ipfs.io/ipfs/QmYNKAQasLyo2b34vfanJaSHRUADhzRCZA45CqmgA3rf63",
+        "thumbnail": "https://ipfs.io/ipfs/Qmc9CSxVVwhqtCtGK9eYQE7mjogjg7tpADfKmat2rVmo15"
+      },
+      {
+        "tokenId": "20",
+        "title": "Parrot #19",
+        "image": "https://ipfs.io/ipfs/QmVTp6XmWB15srKhYQCHkresanYz8F4gSPMo7TZrwSzFWu",
+        "thumbnail": "https://ipfs.io/ipfs/QmVvFaVoYZqJwtH6WjsK6yyKixmnmozrcdn8gtYQ6jksE3"
+      },
+      {
+        "tokenId": "21",
+        "title": "Parrot #20",
+        "image": "https://ipfs.io/ipfs/QmUFRN5jvvmUnBSbDpUBq5t59hZjLoYvHysDuGjUtgLktK",
+        "thumbnail": "https://ipfs.io/ipfs/QmXngZDFnVoxwJWknaUmDyEgzMtmD7eQeTnSfVMo1UaSo3"
+      },
+      {
+        "tokenId": "22",
+        "title": "Parrot #21",
+        "image": "https://ipfs.io/ipfs/QmfKHBVb2LjgstFiikpNg5HZeHHwHJ6d8NNSGPSr9rjJv7",
+        "thumbnail": "https://ipfs.io/ipfs/QmbqpuiLQjD1fBjC6fZjVJJ5Nyj3jNhFv5BMh4CUEA3oQs"
+      },
+      {
+        "tokenId": "23",
+        "title": "Parrot #22",
+        "image": "https://ipfs.io/ipfs/QmYvdhxrmcHN3f79Tdbh5DLWnXh8N3UZGC7WGSwbR5362b",
+        "thumbnail": "https://ipfs.io/ipfs/QmTymC6MY8woViHCyNTctfyNt8EfdFUzQ6MziwAFz9ezKx"
+      },
+      {
+        "tokenId": "24",
+        "title": "Parrot #23",
+        "image": "https://ipfs.io/ipfs/QmVg1QNPsS9fd9Vtdw4ducYyFTQ1FvFj3UZuJoxg5QRmxw",
+        "thumbnail": "https://ipfs.io/ipfs/QmewNFYi6mFL3zEewi9YyNRVWpNbfAnYgpABNxbUZ9fuBv"
+      },
+      {
+        "tokenId": "26",
+        "title": "Parrot #24",
+        "image": "https://ipfs.io/ipfs/QmTeMQoUCM1CwmArmvK29RAihd9BRkF2bjnKjP4bbwJ9n2",
+        "thumbnail": "https://ipfs.io/ipfs/QmXRCQ6PEeU26AiVYXV813BQsTEBJNABYEke7PtJDUft8u"
+      },
+      {
+        "tokenId": "27",
+        "title": "Parrot #25",
+        "image": "https://ipfs.io/ipfs/QmXzfvN9g28QtiN7XvmSeHdFSGSvXe61wUi3SdVPF8QDf9",
+        "thumbnail": "https://ipfs.io/ipfs/QmSBYR2vJxM9p6FYmn1dv5WYRiv6x3mn955R6Fk65CPdmp"
+      },
+      {
+        "tokenId": "28",
+        "title": "Parrot #26",
+        "image": "https://ipfs.io/ipfs/Qmf6DCiyU9pXdT9PM941ioin3vZRxituX2NAvnx8KnEnCd",
+        "thumbnail": "https://ipfs.io/ipfs/QmajG4VacTEcsQy9sdUKta1Bcz6xry8TJSQQD941iJbojC"
+      },
+      {
+        "tokenId": "29",
+        "title": "Parrot #27",
+        "image": "https://ipfs.io/ipfs/QmQUgjHvYF4PBkGcidKUMD1NLpfeGZ73voYP5KXnJbV3kA",
+        "thumbnail": "https://ipfs.io/ipfs/QmSgJeZd2MpDPNsPN5PSLrHi5NDwVbBgaJKjpncjteFvpQ"
+      },
+      {
+        "tokenId": "30",
+        "title": "Parrot #28",
+        "image": "https://ipfs.io/ipfs/QmUzvPY9LKThNGcNGAxpcjjtVFgVnejidgjPhcvSiL9ypv",
+        "thumbnail": "https://ipfs.io/ipfs/QmPhi69S4dxNNFGEQyi37wJyXtJEkmjb3zAJH7fki34mXD"
+      },
+      {
+        "tokenId": "31",
+        "title": "Parrot #29",
+        "image": "https://ipfs.io/ipfs/QmPFpXzD684CFTrTLYW3X24bpUAWwgQjdr5fEiCRs51LDU",
+        "thumbnail": "https://ipfs.io/ipfs/Qmd9RnKML96oooSg24HXAg26hbrJrrpWoSGiZTFdHvXn5n"
+      },
+      {
+        "tokenId": "33",
+        "title": "Parrot #30",
+        "image": "https://ipfs.io/ipfs/QmazakprWTXZqnmmygje7ZaDgA8DthaoMnNxGHxnyKrApz",
+        "thumbnail": "https://ipfs.io/ipfs/QmbkGmJ2y5dKCBCT4XuU37o9RC62zYCzGQNr1ZtSdWQsqN"
+      },
+      {
+        "tokenId": "34",
+        "title": "Parrot #31",
+        "image": "https://ipfs.io/ipfs/QmesqmuqxM2iN21hss7JMSP1otTKfHNCxkMevWyhisRmNb",
+        "thumbnail": "https://ipfs.io/ipfs/QmTjugdHuFtk5Gc52nfBTbY1qDtaaiNbmtAPtCHRxGgJVG"
+      },
+      {
+        "tokenId": "35",
+        "title": "Parrot #32",
+        "image": "https://ipfs.io/ipfs/QmYbQp7EBcZxRUTZJJr9hUecq3NFb53eL2MmwgU8LkMEFX",
+        "thumbnail": "https://ipfs.io/ipfs/QmZ5UcFvhDj9oYBiJH8iG5BSS7CmJ1nY6aJsfdUE1H945J"
+      },
+      {
+        "tokenId": "36",
+        "title": "Parrot #33",
+        "image": "https://ipfs.io/ipfs/QmfSYbWm6UwRyGNFLVJsHnjMDKWUXTA1mV9zFa7jE9vsq9",
+        "thumbnail": "https://ipfs.io/ipfs/QmPAYA8K9jXi2q4xUC4Znv9WEgxsLhUKZSLT13w8jzhMCB"
+      },
+      {
+        "tokenId": "37",
+        "title": "Parrot #34",
+        "image": "https://ipfs.io/ipfs/QmebEmdHN25ceQj7kcPp2KxYqfUhpQuenT5Ge2pYMP8zGK",
+        "thumbnail": "https://ipfs.io/ipfs/QmYrTWRo7cCA2nYNaCkwyXXBDewV6KHHuQe7BwBzVAqLMC"
+      },
+      {
+        "tokenId": "38",
+        "title": "Parrot #35",
+        "image": "https://ipfs.io/ipfs/QmQk6y93iq4muUvFfXcoQAyHdvPpapDLyHyvBgL8WiwU2M",
+        "thumbnail": "https://ipfs.io/ipfs/QmYNQZ7uW9mxVjFVXWn7kd7MSCUJSHkM9kHGVKYrJNsiLf"
+      },
+      {
+        "tokenId": "39",
+        "title": "Parrot #36",
+        "image": "https://ipfs.io/ipfs/QmcKNTgi8c2ma7F1SG4CJ92uvwEo3DBSTk8UMu9gNDvPxs",
+        "thumbnail": "https://ipfs.io/ipfs/QmPF28M9cNxRHmbkipuZu9gDWCSdW6PNYRKVAxFeCDuGCx"
+      },
+      {
+        "tokenId": "40",
+        "title": "Parrot #37",
+        "image": "https://ipfs.io/ipfs/QmYoaT2q8mLoPngsnEENih2RkHtbrtuNaWkYyEATt5ynv3",
+        "thumbnail": "https://ipfs.io/ipfs/QmfPvgJUnVbJgZEQGh9UZE9NrYPU978QYWK3yjE3zoYoys"
+      },
+      {
+        "tokenId": "41",
+        "title": "Parrot #38",
+        "image": "https://ipfs.io/ipfs/Qmdg1FRBpDW7k5CWt7eftHG7hmESzLkvF2Gi9t96PB3e2y",
+        "thumbnail": "https://ipfs.io/ipfs/QmYUhGJYudnz9cSNdfdEncSqaRdZ3SYVV278UEp9WAdGAb"
+      },
+      {
+        "tokenId": "42",
+        "title": "Parrot #39",
+        "image": "https://ipfs.io/ipfs/QmccTFTYC474YfTipaYn3NEGHdwB4tUvovCKpw31cRzTrA",
+        "thumbnail": "https://ipfs.io/ipfs/QmaHrjQ95SKNozBJHhEQQvBaXvngdDtqQf3GaDfwHDhMnx"
+      },
+      {
+        "tokenId": "43",
+        "title": "Parrot #40",
+        "image": "https://ipfs.io/ipfs/QmcvDvrrD1TTg3rqtMVUUd5xVTc5ApgRrZ5Qcibh8bt8tz",
+        "thumbnail": "https://ipfs.io/ipfs/QmbDqnL59rhhEbdubnMkrWRgr28rApcVR8m8vs6XQhMHBt"
+      },
+      {
+        "tokenId": "44",
+        "title": "Parrot #41",
+        "image": "https://ipfs.io/ipfs/QmRDVJQL8PtCiGGJSaRLfzsc88jDLJYXdNPcpHSGTzypMq",
+        "thumbnail": "https://ipfs.io/ipfs/QmYHU9DF9xQXd9D5W1RbUQssc9Y6QxrbFxd9pbYRGXWpjR"
+      },
+      {
+        "tokenId": "46",
+        "title": "Parrot #42",
+        "image": "https://ipfs.io/ipfs/Qmei3Sgfkfy2E3LCRKJRjciDLuSQipDm9sVVPDNKuJKj8K",
+        "thumbnail": "https://ipfs.io/ipfs/QmUkPwfnbTz3doANPMCsSH9Em6BcqRuFNPMMjn3agH67vG"
+      },
+      {
+        "tokenId": "47",
+        "title": "Parrot #43",
+        "image": "https://ipfs.io/ipfs/QmNo5Gv7cizZ8ydDMXT47jaapfVbRFDb9hKf3HsQa4EvHX",
+        "thumbnail": "https://ipfs.io/ipfs/QmSgscPbyyACgvbyZoJGbBYnEcA9zkHvNzobHA2rbcT7Rh"
+      },
+      {
+        "tokenId": "48",
+        "title": "Parrot #44",
+        "image": "https://ipfs.io/ipfs/QmRQs3UBhxyoaisA64VuBZFxkDeUhYf7qkAuoxpRDrFFDs",
+        "thumbnail": "https://ipfs.io/ipfs/QmNh1U8oeqX8E2F8XSGfwfTCrvWiqXDRG5ERtEotNaf6P7"
+      },
+      {
+        "tokenId": "49",
+        "title": "Parrot #45",
+        "image": "https://ipfs.io/ipfs/QmcMsgL2YSXwXKFnYfUzXhueSq65jzAHsj6BCbiJL4HNpi",
+        "thumbnail": "https://ipfs.io/ipfs/QmZXMwpS6yeTpCA3bo3T9u7gYcJLxVT18mmCG2W6YGWxSi"
+      },
+      {
+        "tokenId": "50",
+        "title": "Parrot #46",
+        "image": "https://ipfs.io/ipfs/QmS298wXBd5UEh6AkiSkHwUVPby9LTjfXKPEg8d2BbNtp8",
+        "thumbnail": "https://ipfs.io/ipfs/QmcG2jrs1yxPagQ6gSmVKSrRpJPPrcUQW2SbNsE1oAUcoK"
+      },
+      {
+        "tokenId": "51",
+        "title": "Parrot #47",
+        "image": "https://ipfs.io/ipfs/QmaqJeGULVFGhVHJi9F7iVn73VtEQHFtVi2datMRM7nbkd",
+        "thumbnail": "https://ipfs.io/ipfs/QmSKDKE28EuvqpwtCru1ovQQXB6KLZYs5ZdjBDvfA52SyN"
+      },
+      {
+        "tokenId": "52",
+        "title": "Parrot #48",
+        "image": "https://ipfs.io/ipfs/QmZ7LQzUu3HqxmWZqecpin3HXDHpjXfswz4pegHJemvgsM",
+        "thumbnail": "https://ipfs.io/ipfs/QmP42uttWk853Z7b5MdHVNvDuA5AANQdX6as9QGmCDYLKJ"
+      },
+      {
+        "tokenId": "53",
+        "title": "Parrot #49",
+        "image": "https://ipfs.io/ipfs/QmQFmhbnKVH5ndt6W3CztVexXEyPqYZZPSLBJbRgUWY6JG",
+        "thumbnail": "https://ipfs.io/ipfs/QmWHHG6ZuvG8tQqapT53Z1xGkR6trbH7zCRingwBHMeH5z"
+      }
+    ],
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1X9gMA5epGcW25zf9rgxr7WNETkfu4WB69"
+    }
+  },
+  {
+    "id": "fck-knows",
+    "title": "Fck Knows",
+    "chain": "tezos",
+    "contract": "KT1J3rtnjEr3Bv4F5iNPuSHck8FDGceGnb9P",
+    "supply": 6,
+    "uniquePieces": 8,
+    "heroImage": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
+    "description": "false start",
+    "artistNote": "",
+    "onchain": false,
+    "year": 2022,
+    "pieces": [
+      {
+        "tokenId": "0",
+        "title": "It a Parrot Thing",
+        "image": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
+        "thumbnail": "https://ipfs.io/ipfs/QmeYA3Y6HbVTyNoZngj9m4jQdsgynuJaYsAQHGoa3BXypV"
+      },
+      {
+        "tokenId": "1",
+        "title": "Parrot #001",
+        "image": "https://ipfs.io/ipfs/QmaSw2FVPzj6c3ZVoZ5TixnyinvtoWmckokhxwvvHZggt3",
+        "thumbnail": "https://ipfs.io/ipfs/QmPV1Btr9LnhuURvcSmFxp81BpsdCT4DqNrN1VhShoNvaL"
+      },
+      {
+        "tokenId": "2",
+        "title": "qi ji",
+        "image": "https://ipfs.io/ipfs/QmcnYvrHqhLSGGztfYPtLUTjt5QzZpx5r5vpDN4xbfUPRM",
+        "thumbnail": "https://ipfs.io/ipfs/QmawHfmxBmDksiQULk9emaHtKMVLzGgwB2BbkbrNVpncQw"
+      },
+      {
+        "tokenId": "3",
+        "title": "They/Them",
+        "image": "https://ipfs.io/ipfs/QmQAdiqnGuVXaQE45Uivop91Wp1rkhFy8mi6ZXDpxfzLZa",
+        "thumbnail": "https://ipfs.io/ipfs/Qmb2dPU4u25MPuBk1VmQXL2u9j2ZWsy83E1CxVChZ1EEYR"
+      },
+      {
+        "tokenId": "5",
+        "title": "Why do you build me up ?",
+        "image": "https://ipfs.io/ipfs/QmaW6sHuTcEYFS9YVb8wxetN75QaimuMXU6sUqXANmR2nS",
+        "thumbnail": "https://ipfs.io/ipfs/QmXqdUY7h8ew669nHb8KrcxHanZUAsT7hQiDvfKFFPMSFY"
+      },
+      {
+        "tokenId": "6",
+        "title": "Rhythmic Grind",
+        "image": "https://ipfs.io/ipfs/QmegnUZQBVG1x5ywthtpJ5s4Ur2NTpikMoM925zoNPVcCk",
+        "thumbnail": "https://ipfs.io/ipfs/QmVaGF2ZGeoBZSVb6FvHywgoUXTFVCXzsic9p3kj5Loc56"
+      },
+      {
+        "tokenId": "7",
+        "title": "Dread",
+        "image": "https://ipfs.io/ipfs/QmaMJcQ3eHuEZJ2tKeRrqpeEYgtcjmMVS17EMuFoKqyhtD",
+        "thumbnail": "https://ipfs.io/ipfs/QmNf46wGBt9jCKKjGTsuBVXqfpYBEsNY5bNVWYWQVWPpci"
+      },
+      {
+        "tokenId": "8",
+        "title": "Every Thing is Fine, Bruh",
+        "image": "https://ipfs.io/ipfs/QmUBRCqsb36bYDafUUohwZaK2YcgqqCoyttj98TtxyweGZ",
+        "thumbnail": "https://ipfs.io/ipfs/QmYCmCJoWkJ8eaeRVFyxeNHXBXrzqZ2p5ct1n6eXed8skU"
+      }
+    ],
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1J3rtnjEr3Bv4F5iNPuSHck8FDGceGnb9P"
+    }
+  },
+  {
+    "id": "stranger-danger",
+    "title": "Stranger Danger",
+    "chain": "tezos",
+    "contract": "KT1LCxvXgtbyxNvHtZEBnLmNn44mEuLd6rtg",
+    "supply": 22,
+    "uniquePieces": 28,
+    "heroImage": "https://ipfs.io/ipfs/QmfAgiBopQ7rphLsMRdDVUEwY2inc6smUp3pKREDFUzjJA",
+    "description": "Dark Shit",
+    "artistNote": "",
+    "onchain": false,
+    "year": 2021,
+    "pieces": [
+      {
+        "tokenId": "0",
+        "title": "Gang Gang",
+        "image": "https://ipfs.io/ipfs/QmfAgiBopQ7rphLsMRdDVUEwY2inc6smUp3pKREDFUzjJA",
+        "thumbnail": "https://ipfs.io/ipfs/QmQGzXH2vZEiHZtapueiAncvrRYLGsWfsUFyNhiES9hGsE"
+      },
+      {
+        "tokenId": "1",
+        "title": "Lifer",
+        "image": "https://ipfs.io/ipfs/QmenANJ4aw7LkWhg2nik87Eg6jRo8iAABkCZNbNbpezLkM",
+        "thumbnail": "https://ipfs.io/ipfs/QmYUtNDW3boetmWBqPJi4bv4JcAkByqBZaqJ8mzjj8CXkF"
+      },
+      {
+        "tokenId": "3",
+        "title": "The Secret",
+        "image": "https://ipfs.io/ipfs/QmUUVT5dc4NiqaHu5M1TE4cUCnMxDpJGoTCbjSZ9157jvn",
+        "thumbnail": "https://ipfs.io/ipfs/Qme9MrQcu6DhZfBneGobH496wgz9tcpXUbrexB2YpNonK7"
+      },
+      {
+        "tokenId": "5",
+        "title": "Cat Scan",
+        "image": "https://ipfs.io/ipfs/QmecziiT4MxKQofbJfbs8REWDmRBYvEABwR77vF7zGnHnj",
+        "thumbnail": "https://ipfs.io/ipfs/QmXRENyPFtMhiGPjcBM51qVeGh5SxfkMem78TBWdKkrgAf"
+      },
+      {
+        "tokenId": "6",
+        "title": "Sucker Punch",
+        "image": "https://ipfs.io/ipfs/QmV3y14Z2jyAhX6KYzmEKYsYYkeW4uV7uWRVXJgnj6nAjf",
+        "thumbnail": "https://ipfs.io/ipfs/QmV3y14Z2jyAhX6KYzmEKYsYYkeW4uV7uWRVXJgnj6nAjf"
+      },
+      {
+        "tokenId": "7",
+        "title": "King Wille",
+        "image": "https://ipfs.io/ipfs/QmebCA2YXu4EYQ47KEo2iqmCzGjWJfDFNtwTHeNHowUMcd",
+        "thumbnail": "https://ipfs.io/ipfs/QmPNfrTHS8mkFT5JRRp2m8gJG1WBDzTjejULMedeEXFKUp"
+      },
+      {
+        "tokenId": "8",
+        "title": "Cant Stop Wont Stop",
+        "image": "https://ipfs.io/ipfs/QmTmPuaCrf4KnmQNhn1ijeUvsAbNxfAyD5xAF4QeguMAXJ",
+        "thumbnail": "https://ipfs.io/ipfs/QmT5XQNQ7wpVC7oecN9Yx1Ewj8gQgxzpDAaSeyyi7YsAhB"
+      },
+      {
+        "tokenId": "9",
+        "title": "Full Power Mode",
+        "image": "https://ipfs.io/ipfs/QmeFPEP2tb25TgzmjJTqyJehC2WhmKhRw45MpLbUD8rVpy",
+        "thumbnail": "https://ipfs.io/ipfs/QmVSLZCFB8dZU1zVq9SyhYF5iMDD2vSUsTG2768RVkKY9o"
+      },
+      {
+        "tokenId": "10",
+        "title": "Bad Taste",
+        "image": "https://ipfs.io/ipfs/QmTmPuaCrf4KnmQNhn1ijeUvsAbNxfAyD5xAF4QeguMAXJ",
+        "thumbnail": "https://ipfs.io/ipfs/QmT5XQNQ7wpVC7oecN9Yx1Ewj8gQgxzpDAaSeyyi7YsAhB"
+      },
+      {
+        "tokenId": "11",
+        "title": "When your Strange",
+        "image": "https://ipfs.io/ipfs/QmPufDp7kDUGGZ8FUo1UPUWirD5W6rNBnCGf2M7sBGvutW",
+        "thumbnail": "https://ipfs.io/ipfs/QmNbyZAKafuuFA5wZ45GscwrZWLuSFnQAhrRprc7Gdfzwc"
+      },
+      {
+        "tokenId": "13",
+        "title": "Wrong Cave",
+        "image": "https://ipfs.io/ipfs/QmWfedgwGB5kmNDRyxSDFB53zuz8nRxMtb8CeKK1Rbt8PQ",
+        "thumbnail": "https://ipfs.io/ipfs/QmWfedgwGB5kmNDRyxSDFB53zuz8nRxMtb8CeKK1Rbt8PQ"
+      },
+      {
+        "tokenId": "14",
+        "title": "Pepe Rush",
+        "image": "https://ipfs.io/ipfs/QmahogZVSzgkDa7tcVYJw16dWUBQip4Y7a1W5jmzyHAsZ9",
+        "thumbnail": "https://ipfs.io/ipfs/QmTNTucm69cukSnzCgnTQAQffZoionwvuNpggoWA9o3uvR"
+      },
+      {
+        "tokenId": "15",
+        "title": "I Cant Let Go",
+        "image": "https://ipfs.io/ipfs/QmTZDeTojvrUQpistYLJ6aTtgZLhruPEhr8tovhiiJimRT",
+        "thumbnail": "https://ipfs.io/ipfs/Qme1xpNy9JL38Hw1jYuxG9yS5EoRfXc7KTN4VM1sDfbU2f"
+      },
+      {
+        "tokenId": "16",
+        "title": "Cant let Go",
+        "image": "https://ipfs.io/ipfs/QmTZDeTojvrUQpistYLJ6aTtgZLhruPEhr8tovhiiJimRT",
+        "thumbnail": "https://ipfs.io/ipfs/Qme1xpNy9JL38Hw1jYuxG9yS5EoRfXc7KTN4VM1sDfbU2f"
+      },
+      {
+        "tokenId": "17",
+        "title": "Parrot #001",
+        "image": "https://ipfs.io/ipfs/QmaSw2FVPzj6c3ZVoZ5TixnyinvtoWmckokhxwvvHZggt3",
+        "thumbnail": "https://ipfs.io/ipfs/QmPV1Btr9LnhuURvcSmFxp81BpsdCT4DqNrN1VhShoNvaL"
+      },
+      {
+        "tokenId": "18",
+        "title": "It's a Parrot Thing",
+        "image": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
+        "thumbnail": "https://ipfs.io/ipfs/QmeYA3Y6HbVTyNoZngj9m4jQdsgynuJaYsAQHGoa3BXypV"
+      },
+      {
+        "tokenId": "19",
+        "title": "Keepsake",
+        "image": "https://ipfs.io/ipfs/QmUWPLmNdRFhiYSMbhQ8Fy2oivSKBEeZd6FUkX6PbsPfNC",
+        "thumbnail": "https://ipfs.io/ipfs/QmQyJNtkePup3yBw5cm4T3Y4bdfAX1QsCX57xcAigRSWLQ"
+      },
+      {
+        "tokenId": "20",
+        "title": "Chinwag",
+        "image": "https://ipfs.io/ipfs/QmVirhZiWXf4BsSydPkuoQ7XCQcGjWnRMrrq2Q4xtWx2dx",
+        "thumbnail": "https://ipfs.io/ipfs/QmSdGWX4o2diAKacETwHK3JtJVkPCP2pSpDrKqBcjTPrrj"
+      },
+      {
+        "tokenId": "22",
+        "title": "Parrot #014",
+        "image": "https://ipfs.io/ipfs/QmZSrjw71PD3uwN2LL1j8KdMsXvmd64PcZ8DTpJovyUCdM",
+        "thumbnail": "https://ipfs.io/ipfs/QmfUfmQegeEhFUZWig83CFkqDZH6Q3ohrTbUL4XXzJgAnT"
+      },
+      {
+        "tokenId": "23",
+        "title": "Parrot #015",
+        "image": "https://ipfs.io/ipfs/QmUSfvdvnf2neVJabQMDugDNvnWgkxA2WKHHXBik29Rnrw",
+        "thumbnail": "https://ipfs.io/ipfs/QmcPbyssVGnYYkRJLL3B9YMw2gh3tuB7gSPxiG2w62LdTz"
+      },
+      {
+        "tokenId": "24",
+        "title": "Overmint",
+        "image": "https://ipfs.io/ipfs/QmX6xRXiYuBRbCz3JshyDiKr6jaCMDfeoQAQhrGV6HdsTU",
+        "thumbnail": "https://ipfs.io/ipfs/QmexmvyqHRhPoD8rANySm5szQVx9GBa6gyMogpXJqi8oX2"
+      },
+      {
+        "tokenId": "25",
+        "title": "Head games",
+        "image": "https://ipfs.io/ipfs/QmVnBmApzLoofQh7hqBU7CwgN9jUxq33QM3r2c5nqDWJYS",
+        "thumbnail": "https://ipfs.io/ipfs/QmWS75rH2nYJCYpy2UANteUDP4yofWGjPp7DXzyzuMwc7S"
+      },
+      {
+        "tokenId": "26",
+        "title": "Feedback",
+        "image": "https://ipfs.io/ipfs/QmXLWxoCmqLteCpJx8wtKB2xfEorhXnmgu8E5Z9Q4e1VxR",
+        "thumbnail": "https://ipfs.io/ipfs/QmQcnrRNkXkXCxf8LNuvC8SwHWBp3JB84DQFLyybj7SMh2"
+      },
+      {
+        "tokenId": "27",
+        "title": "Target Locked",
+        "image": "https://ipfs.io/ipfs/QmRRCVPWz1rxXJAdrkfVj3HU3nDXn4uwiPvwkvdPuxKofc",
+        "thumbnail": "https://ipfs.io/ipfs/QmbuwX1wxBPUisqJnRRchEYWpo3vC7cJwSLvMkaJbG8SfE"
+      },
+      {
+        "tokenId": "28",
+        "title": "I know what you did on tezos",
+        "image": "https://ipfs.io/ipfs/QmdnkEzPiFnAukJhLZ7ziHGV7xwi17PZ2p3mgQPixFHcbY",
+        "thumbnail": "https://ipfs.io/ipfs/QmdnkEzPiFnAukJhLZ7ziHGV7xwi17PZ2p3mgQPixFHcbY"
+      },
+      {
+        "tokenId": "29",
+        "title": "That Time She Checked Our Tezos Account",
+        "image": "https://ipfs.io/ipfs/Qmcbawy5YBATTQaeXgseJXPKUiEdsoFMSvVaL1FnpuoKh6",
+        "thumbnail": "https://ipfs.io/ipfs/QmSH6mtYoMncy2AFEaWrS9HhMPpt6jJXXeSGGgc6F7bfd7"
+      },
+      {
+        "tokenId": "30",
+        "title": "ANGST",
+        "image": "https://ipfs.io/ipfs/QmSxRXubdfhLyCaiSJJUvSW11ff7v3odbpK3YrpFwxnUpv",
+        "thumbnail": "https://ipfs.io/ipfs/QmUQay258F1wJ4CNwZXLaFWgDcu4iMUowKsej8D49TMw4H"
+      },
+      {
+        "tokenId": "32",
+        "title": "No Where to Run to",
+        "image": "https://ipfs.io/ipfs/QmX55bsMBcEMoHiH5HoJC8aiYccjxHaAhx44xND9DVvKwF",
+        "thumbnail": "https://ipfs.io/ipfs/QmX55bsMBcEMoHiH5HoJC8aiYccjxHaAhx44xND9DVvKwF"
+      }
+    ],
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1LCxvXgtbyxNvHtZEBnLmNn44mEuLd6rtg"
+    }
   }
 ];
