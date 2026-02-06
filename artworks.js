@@ -176,7 +176,8 @@ const collections = [
     "marketplaces": {
       "opensea": "https://opensea.io/assets/ethereum/0x3a2c989bfdd3b315b78717e4a6f43932a8b5023d"
     },
-    "uniquePieces": 18
+    "uniquePieces": 18,
+    "year": 2026
   },
   {
     "id": "addicted",
@@ -247,7 +248,8 @@ const collections = [
     "marketplaces": {
       "opensea": "https://opensea.io/assets/ethereum/0x51b804f7bb2ce7d742225003cac001721de76a2c"
     },
-    "uniquePieces": 6
+    "uniquePieces": 6,
+    "year": 2025
   },
   {
     "id": "glitch-bomb",
@@ -379,7 +381,8 @@ const collections = [
       "opensea": "https://opensea.io/assets/ethereum/0xd0cf83744db1fdee8a0fafe913391befb85190aa"
     },
     "uniquePieces": 7,
-    "isEditions": true
+    "isEditions": true,
+    "year": 2023
   },
   {
     "id": "reflections",
@@ -500,7 +503,8 @@ const collections = [
       "opensea": "https://opensea.io/assets/ethereum/0xe4cda4a0955f427ff7f0a05990ca154984966060"
     },
     "uniquePieces": 7,
-    "isEditions": true
+    "isEditions": true,
+    "year": 2023
   },
   {
     "id": "strangersnft",
@@ -560,7 +564,8 @@ const collections = [
     "marketplaces": {
       "opensea": "https://opensea.io/assets/ethereum/0x20727eb4191bfe6e15b9a2a34934d48f24e3b420"
     },
-    "uniquePieces": 1
+    "uniquePieces": 1,
+    "year": 2021
   },
   {
     "id": "blockclock-originals",
