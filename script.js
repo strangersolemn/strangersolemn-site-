@@ -449,6 +449,10 @@ function showDetail(collectionId) {
     });
   });
 
+  // Collection display mode button
+  const collDisplayBtn = document.getElementById('collection-display-btn');
+  collDisplayBtn.onclick = () => enterDisplayMode(collectionId);
+
   // Update timeline active state
   timeline.querySelectorAll('.timeline-item').forEach(item => {
     item.classList.toggle('active', item.dataset.id === collectionId);
@@ -572,20 +576,38 @@ function truncateId(id) {
 }
 
 
-// Build shuffled slideshow order
+// Build shuffled slideshow order - weighted by collection (not piece count)
 function buildSlideshowPieces() {
   slideshowPieces = [];
-  collections.forEach(col => {
-    if (col.pieces && col.pieces.length > 0) {
-      col.pieces.forEach(piece => {
-        slideshowPieces.push({ collection: col, piece: piece });
-      });
+  // Pick pieces round-robin across collections so each collection is equally represented
+  const colsWithPieces = collections.filter(c => c.pieces && c.pieces.length > 0);
+  // Shuffle each collection's pieces independently
+  const shuffledCols = colsWithPieces.map(col => {
+    const pieces = [...col.pieces];
+    for (let i = pieces.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pieces[i], pieces[j]] = [pieces[j], pieces[i]];
     }
+    return { col, pieces, idx: 0 };
   });
-  // Shuffle
-  for (let i = slideshowPieces.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [slideshowPieces[i], slideshowPieces[j]] = [slideshowPieces[j], slideshowPieces[i]];
+  // Interleave: cycle through collections, picking one piece from each
+  let remaining = shuffledCols.length;
+  while (remaining > 0) {
+    // Shuffle collection order each round for variety
+    for (let i = shuffledCols.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledCols[i], shuffledCols[j]] = [shuffledCols[j], shuffledCols[i]];
+    }
+    remaining = 0;
+    for (const entry of shuffledCols) {
+      if (entry.idx < entry.pieces.length) {
+        slideshowPieces.push({ collection: entry.col, piece: entry.pieces[entry.idx] });
+        entry.idx++;
+        if (entry.idx < entry.pieces.length) remaining++;
+      }
+    }
+    if (remaining === 0) break;
+    remaining = shuffledCols.filter(e => e.idx < e.pieces.length).length;
   }
 }
 
@@ -726,24 +748,56 @@ let displayIndex = 0;
 let displayControlsTimeout = null;
 let displayAutoplayInterval = null;
 
-function buildDisplayPieces() {
+function buildDisplayPieces(collectionId) {
   displayPieces = [];
-  collections.forEach(col => {
-    if (col.pieces && col.pieces.length > 0) {
+  if (collectionId) {
+    // Single collection mode
+    const col = collections.find(c => c.id === collectionId);
+    if (col && col.pieces) {
       col.pieces.forEach(piece => {
         displayPieces.push({ collection: col, piece: piece });
       });
     }
-  });
-  // Shuffle the array for variety
-  for (let i = displayPieces.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [displayPieces[i], displayPieces[j]] = [displayPieces[j], displayPieces[i]];
+  } else {
+    // All collections - weighted interleave (same as slideshow)
+    const colsWithPieces = collections.filter(c => c.pieces && c.pieces.length > 0);
+    const shuffledCols = colsWithPieces.map(col => {
+      const pieces = [...col.pieces];
+      for (let i = pieces.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pieces[i], pieces[j]] = [pieces[j], pieces[i]];
+      }
+      return { col, pieces, idx: 0 };
+    });
+    let remaining = shuffledCols.length;
+    while (remaining > 0) {
+      for (let i = shuffledCols.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledCols[i], shuffledCols[j]] = [shuffledCols[j], shuffledCols[i]];
+      }
+      remaining = 0;
+      for (const entry of shuffledCols) {
+        if (entry.idx < entry.pieces.length) {
+          displayPieces.push({ collection: entry.col, piece: entry.pieces[entry.idx] });
+          entry.idx++;
+          if (entry.idx < entry.pieces.length) remaining++;
+        }
+      }
+      if (remaining === 0) break;
+      remaining = shuffledCols.filter(e => e.idx < e.pieces.length).length;
+    }
+  }
+  // Final shuffle for single collection mode
+  if (collectionId) {
+    for (let i = displayPieces.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [displayPieces[i], displayPieces[j]] = [displayPieces[j], displayPieces[i]];
+    }
   }
 }
 
-function enterDisplayMode() {
-  buildDisplayPieces();
+function enterDisplayMode(collectionId) {
+  buildDisplayPieces(collectionId || null);
   if (displayPieces.length === 0) return;
 
   // Start with a random piece

@@ -502,6 +502,12 @@ a {
   display: none;
 }
 
+#collection-display-btn {
+  background: transparent;
+  font-family: var(--font-mono);
+  cursor: pointer;
+}
+
 /* Collection Description & Artist Note */
 .collection-description {
   margin-bottom: 1rem;
