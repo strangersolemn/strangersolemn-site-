@@ -654,37 +654,39 @@ function showHeroPiece(entry) {
       };
     }
 
-    // Preload next image in background
-    preloadNextSlide();
-
     // Fallback
     setTimeout(showInfo, 2000);
   }, 300);
 }
 
-// Preload a random piece from a different collection
+// Pre-pick and preload the next piece so it's ready when the timer fires
+let nextSlideshowEntry = null;
+
 function preloadNextSlide() {
-  const cols = collections.filter(c => c.pieces && c.pieces.length > 0 && !c.imagesUnavailable && c.id !== lastShownCollectionId);
-  if (cols.length === 0) return;
-  const col = cols[Math.floor(Math.random() * cols.length)];
-  const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
-  const isOnchain = isOnchainCollection(col) && piece.animationUrl && !piece.isImage;
+  nextSlideshowEntry = pickRandomPiece();
+  if (!nextSlideshowEntry) return;
+  const { collection, piece } = nextSlideshowEntry;
+  const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
   if (!isOnchain) {
     const img = new Image();
-    img.src = piece.image || piece.thumbnail || col.heroImage;
+    img.src = piece.image || piece.thumbnail || collection.heroImage;
   }
 }
 
-// Show random artwork
+// Show random artwork (first load)
 function showRandomArt() {
   const entry = pickRandomPiece();
-  if (entry) showHeroPiece(entry);
+  if (entry) {
+    showHeroPiece(entry);
+    // Pre-pick and preload the next one
+    preloadNextSlide();
+  }
 }
 
 // Slideshow controls
 function startSlideshow() {
   slideshowPlaying = true;
-  slideshowInterval = setInterval(slideshowNext, 10000);
+  slideshowInterval = setInterval(slideshowNext, 15000);
 }
 
 function stopSlideshow() {
@@ -694,8 +696,11 @@ function stopSlideshow() {
 }
 
 function slideshowNext() {
-  const entry = pickRandomPiece();
+  // Show the pre-loaded piece (or pick fresh if none ready)
+  const entry = nextSlideshowEntry || pickRandomPiece();
   if (entry) showHeroPiece(entry);
+  // Immediately pre-pick and preload the next one
+  preloadNextSlide();
 }
 
 // Display Mode (Frame Mode)
@@ -709,6 +714,18 @@ let displayControlsTimeout = null;
 let displayAutoplayInterval = null;
 let displaySourceCollections = null; // null = all, or [singleCol] for per-collection mode
 let currentDisplayEntry = null; // current {collection, piece} being shown
+let nextDisplayEntry = null; // pre-picked next piece for smooth transition
+
+function preloadNextDisplayPiece() {
+  nextDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
+  if (!nextDisplayEntry) return;
+  const { collection, piece } = nextDisplayEntry;
+  const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
+  if (!isOnchain) {
+    const img = new Image();
+    img.src = piece.image || piece.thumbnail || collection.heroImage;
+  }
+}
 
 function enterDisplayMode(collectionId) {
   if (collectionId) {
@@ -726,16 +743,18 @@ function enterDisplayMode(collectionId) {
   // Stop home slideshow if playing
   if (slideshowPlaying) stopSlideshow();
 
-  // Pick first piece
+  // Pick first piece and preload next
   currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
+  preloadNextDisplayPiece();
   showDisplayControls();
 
-  // Start auto-play in display mode (10s interval)
+  // Start auto-play in display mode (15s interval)
   displayAutoplayInterval = setInterval(() => {
-    currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
+    currentDisplayEntry = nextDisplayEntry || pickRandomDisplayPiece(displaySourceCollections);
     showDisplayPiece();
-  }, 10000);
+    preloadNextDisplayPiece();
+  }, 15000);
 
   // Request fullscreen
   if (document.documentElement.requestFullscreen) {
@@ -782,32 +801,22 @@ function showDisplayPiece() {
 
     displayTitle.textContent = piece.title || '#' + piece.tokenId;
     displayCollection.textContent = collection.title;
-
-    // Preload a piece from a different collection
-    const cols = (displaySourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0 && c.id !== lastDisplayCollectionId);
-    if (cols.length > 0) {
-      const preCol = cols[Math.floor(Math.random() * cols.length)];
-      const prePiece = preCol.pieces[Math.floor(Math.random() * preCol.pieces.length)];
-      const preOnchain = isOnchainCollection(preCol) && prePiece.animationUrl && !prePiece.isImage;
-      if (!preOnchain) {
-        const preImg = new Image();
-        preImg.src = prePiece.image || prePiece.thumbnail || preCol.heroImage;
-      }
-    }
   }, 200);
 }
 
 function resetDisplayAutoplay() {
   clearInterval(displayAutoplayInterval);
   displayAutoplayInterval = setInterval(() => {
-    currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
+    currentDisplayEntry = nextDisplayEntry || pickRandomDisplayPiece(displaySourceCollections);
     showDisplayPiece();
-  }, 10000);
+    preloadNextDisplayPiece();
+  }, 15000);
 }
 
 function displayNext() {
-  currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
+  currentDisplayEntry = nextDisplayEntry || pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
+  preloadNextDisplayPiece();
   showDisplayControls();
   resetDisplayAutoplay();
 }
@@ -815,6 +824,7 @@ function displayNext() {
 function displayPrev() {
   currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
+  preloadNextDisplayPiece();
   showDisplayControls();
   resetDisplayAutoplay();
 }
@@ -822,6 +832,7 @@ function displayPrev() {
 function displayShuffle() {
   currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
+  preloadNextDisplayPiece();
   showDisplayControls();
   resetDisplayAutoplay();
 }
