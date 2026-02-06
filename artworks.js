@@ -563,7 +563,7 @@ const collections = [
     "id": "blockclock-originals",
     "title": "Blockclock Originals",
     "chain": "ordinals",
-    "supply": 23,
+    "supply": 22,
     "heroImage": "https://ordinals.com/content/711f2f43186dd861aea98d3d2950871856f1aa5011ec6825f21e6eb6f41c73bdi0",
     "description": "",
     "artistNote": "",

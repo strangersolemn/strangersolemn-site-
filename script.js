@@ -25,6 +25,14 @@ const linkGamma = document.getElementById('link-gamma');
 let currentView = 'home';
 let currentCollectionId = null;
 let currentPieceIndex = 0;
+let activeChainFilter = null;
+
+// Check if collection is an edition (supply > unique pieces shown)
+function isEditionCollection(collection) {
+  const uniqueCount = collection.uniquePieces || collection.pieces?.length || 0;
+  const supply = collection.supply || uniqueCount;
+  return supply > uniqueCount;
+}
 
 // Check if collection is on-chain (uses animationUrl for HTML content)
 function isOnchainCollection(collection) {
@@ -62,6 +70,46 @@ function init() {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       showView('home');
+    });
+  });
+
+  // Chain filter - click legend items to filter timeline
+  document.querySelectorAll('.legend-item').forEach(item => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => {
+      const chain = item.dataset.chain;
+      if (activeChainFilter === chain) {
+        // Toggle off
+        activeChainFilter = null;
+        document.querySelectorAll('.legend-item').forEach(li => li.classList.remove('active'));
+      } else {
+        // Filter to this chain
+        activeChainFilter = chain;
+        document.querySelectorAll('.legend-item').forEach(li => {
+          li.classList.toggle('active', li.dataset.chain === chain);
+        });
+      }
+      // Apply filter to timeline items
+      timeline.querySelectorAll('.timeline-item').forEach(ti => {
+        if (!activeChainFilter || ti.dataset.chain === activeChainFilter) {
+          ti.style.display = '';
+        } else {
+          ti.style.display = 'none';
+        }
+      });
+      // Also show/hide year headers that have no visible items
+      timeline.querySelectorAll('.timeline-year').forEach(yearEl => {
+        let next = yearEl.nextElementSibling;
+        let hasVisible = false;
+        while (next && !next.classList.contains('timeline-year')) {
+          if (next.classList.contains('timeline-item') && next.style.display !== 'none') {
+            hasVisible = true;
+            break;
+          }
+          next = next.nextElementSibling;
+        }
+        yearEl.style.display = hasVisible ? '' : 'none';
+      });
     });
   });
 
@@ -181,10 +229,12 @@ function buildTimeline() {
       html += `<div class="timeline-year">${currentYear}</div>`;
     }
 
+    const editionTag = isEditionCollection(collection) ? '<span class="timeline-item-editions">Editions</span>' : '';
+
     html += `
       <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
         <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
-        <span class="timeline-item-title">${collection.title}</span>
+        <span class="timeline-item-title">${collection.title}${editionTag}</span>
         <span class="timeline-item-count">${collection.supply || collection.pieces?.length || '?'}</span>
       </div>
     `;
@@ -194,7 +244,15 @@ function buildTimeline() {
 
   // Add click handlers
   timeline.querySelectorAll('.timeline-item').forEach(item => {
-    item.addEventListener('click', () => {
+    item.addEventListener('click', (e) => {
+      // If they clicked the chain tag, filter by chain instead of opening detail
+      if (e.target.classList.contains('timeline-item-chain')) {
+        const chain = item.dataset.chain;
+        // Simulate clicking the corresponding legend item
+        const legendItem = document.querySelector(`.legend-item[data-chain="${chain}"]`);
+        if (legendItem) legendItem.click();
+        return;
+      }
       showDetail(item.dataset.id);
     });
   });
@@ -530,7 +588,14 @@ function showRandomArt() {
   setTimeout(() => {
     const showInfo = () => {
       artTitle.textContent = pieceTitle;
-      artCollection.textContent = collection.title + ' • ' + (collection.pieces?.length || collection.supply || '?') + ' pieces';
+      // Show edition count for edition collections, piece count for others
+      let infoText;
+      if (isEditionCollection(collection)) {
+        infoText = collection.title + ' • ' + (collection.supply || '?') + ' editions';
+      } else {
+        infoText = collection.title + ' • ' + (collection.pieces?.length || collection.supply || '?') + ' pieces';
+      }
+      artCollection.textContent = infoText;
       artChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
       artChain.setAttribute('data-chain', collection.chain);
       artInfo.classList.add('visible');

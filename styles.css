@@ -877,10 +877,32 @@ a {
   color: var(--text-primary);
 }
 
+.timeline-item-editions {
+  display: inline-block;
+  font-size: 0.5rem;
+  color: var(--text-muted);
+  border: 1px solid var(--text-muted);
+  padding: 0.05rem 0.3rem;
+  border-radius: 2px;
+  margin-left: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+}
+
 .timeline-item-count {
   font-size: 0.6rem;
   color: var(--text-muted);
   margin-left: 0.5rem;
+}
+
+.timeline-item-chain {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.timeline-item-chain:hover {
+  opacity: 0.7;
 }
 
 /* Footer */
@@ -902,9 +924,29 @@ a {
   border-radius: 2px;
 }
 
+.legend-item {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.legend-item:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.legend-item.active {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
 .legend-item[data-chain="ordinals"] {
   color: var(--chain-ordinals);
   border: 1px solid var(--chain-ordinals);
+}
+
+.legend-item[data-chain="ordinals"].active {
+  background: var(--chain-ordinals);
+  color: #000;
 }
 
 .legend-item[data-chain="ethereum"] {
@@ -912,14 +954,29 @@ a {
   border: 1px solid var(--chain-ethereum);
 }
 
+.legend-item[data-chain="ethereum"].active {
+  background: var(--chain-ethereum);
+  color: #fff;
+}
+
 .legend-item[data-chain="tezos"] {
   color: var(--chain-tezos);
   border: 1px solid var(--chain-tezos);
 }
 
+.legend-item[data-chain="tezos"].active {
+  background: var(--chain-tezos);
+  color: #fff;
+}
+
 .legend-item[data-chain="solana"] {
   color: var(--chain-solana);
   border: 1px solid var(--chain-solana);
+}
+
+.legend-item[data-chain="solana"].active {
+  background: var(--chain-solana);
+  color: #fff;
 }
 
 .copyright {
