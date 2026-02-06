@@ -43,7 +43,7 @@ function toOptimizedUrl(url) {
 
 // Chain display names
 const chainNames = {
-  ordinals: 'ORD',
+  ordinals: 'BTC',
   ethereum: 'ETH',
   tezos: 'TEZ',
   solana: 'SOL'
