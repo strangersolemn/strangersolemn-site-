@@ -1176,6 +1176,19 @@ a {
   opacity: 1;
 }
 
+/* Close button always has minimal visibility */
+.display-close {
+  opacity: 0.15;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  bottom: auto;
+}
+
+.display-mode.show-controls .display-close {
+  opacity: 1;
+}
+
 .display-btn {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);

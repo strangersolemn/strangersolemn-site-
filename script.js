@@ -909,10 +909,10 @@ function initDisplayMode() {
     }
   });
 
-  // Fullscreen change - if user presses ESC on fullscreen, exit display mode too
+  // Fullscreen change - if user exits fullscreen via ESC, also exit display mode
   document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement && displayMode.classList.contains('active')) {
-      // Don't exit display mode, just stay in windowed display mode
+      exitDisplayMode();
     }
   });
 }
