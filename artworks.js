@@ -22965,6 +22965,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": false,
+    "imagesUnavailable": true,
     "year": 2022,
     "pieces": [
       {
@@ -26359,6 +26360,7 @@ const collections = [
     "heroImage": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8edf78f21d9662a5773c806e63f3c558.gif",
     "description": "",
     "artistNote": "",
+    "imagesUnavailable": true,
     "onchain": false,
     "year": 2021,
     "pieces": [
@@ -27461,6 +27463,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": false,
+    "imagesUnavailable": true,
     "year": 2021,
     "pieces": [
       {

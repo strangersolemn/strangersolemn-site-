@@ -11,7 +11,6 @@ const artCollection = document.getElementById('art-collection');
 const artChain = document.getElementById('art-chain');
 const artInfo = document.querySelector('.art-info');
 const timeline = document.getElementById('timeline');
-const shuffleBtn = document.getElementById('shuffle-btn');
 
 const detailImage = document.getElementById('detail-image');
 const detailIframe = document.getElementById('detail-iframe');
@@ -69,14 +68,8 @@ function init() {
   showRandomArt();
   initDisplayMode();
 
-  // Event listeners
-  shuffleBtn.addEventListener('click', () => {
-    if (slideshowPlaying) stopSlideshow();
-    showRandomArt();
-  });
-
-  // Slideshow play/pause
-  document.getElementById('play-slideshow-btn').addEventListener('click', toggleSlideshow);
+  // Auto-start slideshow on home (cycles every 10s)
+  startSlideshow();
 
   // Navigation - home link
   document.querySelectorAll('[data-view="home"]').forEach(el => {
@@ -218,6 +211,11 @@ function showView(viewName) {
     timeline.querySelectorAll('.timeline-item').forEach(item => {
       item.classList.remove('active');
     });
+    // Restart slideshow when returning home
+    if (!slideshowPlaying) startSlideshow();
+  } else {
+    // Stop slideshow when leaving home
+    if (slideshowPlaying) stopSlideshow();
   }
 }
 
@@ -578,7 +576,7 @@ function truncateId(id) {
 let lastShownCollectionId = null;
 
 function pickRandomPiece(sourceCollections) {
-  const cols = (sourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0);
+  const cols = (sourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0 && !c.imagesUnavailable);
   if (cols.length === 0) return null;
   // Pick a collection that's different from the last one shown
   let available = cols.filter(c => c.id !== lastShownCollectionId);
@@ -593,7 +591,7 @@ function pickRandomPiece(sourceCollections) {
 let lastDisplayCollectionId = null;
 
 function pickRandomDisplayPiece(sourceCollections) {
-  const cols = (sourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0);
+  const cols = (sourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0 && !c.imagesUnavailable);
   if (cols.length === 0) return null;
   let available = cols.filter(c => c.id !== lastDisplayCollectionId);
   if (available.length === 0) available = cols;
@@ -666,7 +664,7 @@ function showHeroPiece(entry) {
 
 // Preload a random piece from a different collection
 function preloadNextSlide() {
-  const cols = collections.filter(c => c.pieces && c.pieces.length > 0 && c.id !== lastShownCollectionId);
+  const cols = collections.filter(c => c.pieces && c.pieces.length > 0 && !c.imagesUnavailable && c.id !== lastShownCollectionId);
   if (cols.length === 0) return;
   const col = cols[Math.floor(Math.random() * cols.length)];
   const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
@@ -686,45 +684,18 @@ function showRandomArt() {
 // Slideshow controls
 function startSlideshow() {
   slideshowPlaying = true;
-  updatePlayBtn();
-
-  // Show next immediately then every 10s
-  slideshowNext();
   slideshowInterval = setInterval(slideshowNext, 10000);
 }
 
 function stopSlideshow() {
   slideshowPlaying = false;
-  updatePlayBtn();
   clearInterval(slideshowInterval);
   slideshowInterval = null;
-}
-
-function toggleSlideshow() {
-  if (slideshowPlaying) {
-    stopSlideshow();
-  } else {
-    startSlideshow();
-  }
 }
 
 function slideshowNext() {
   const entry = pickRandomPiece();
   if (entry) showHeroPiece(entry);
-}
-
-function updatePlayBtn() {
-  const btn = document.getElementById('play-slideshow-btn');
-  if (!btn) return;
-  if (slideshowPlaying) {
-    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
-    btn.setAttribute('aria-label', 'Pause slideshow');
-    btn.classList.add('playing');
-  } else {
-    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>';
-    btn.setAttribute('aria-label', 'Play slideshow');
-    btn.classList.remove('playing');
-  }
 }
 
 // Display Mode (Frame Mode)
