@@ -185,7 +185,7 @@ function buildTimeline() {
       <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
         <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
         <span class="timeline-item-title">${collection.title}</span>
-        <span class="timeline-item-count">${collection.pieces?.length || collection.supply || '?'}</span>
+        <span class="timeline-item-count">${collection.supply || collection.pieces?.length || '?'}</span>
       </div>
     `;
   });
@@ -214,12 +214,32 @@ function showDetail(collectionId) {
 
   // Hide/show appropriate element and actions
   const imageActions = document.querySelector('.image-actions');
-  if (isOnchain && firstPiece?.animationUrl) {
-    // On-chain HTML art - use iframe with animationUrl
+  if (isOnchain && firstPiece?.animationUrl && !firstPiece?.isImage) {
+    // On-chain HTML art - use iframe with animationUrl (unless piece is marked as image)
     detailImage.classList.add('hidden');
     detailIframe.classList.remove('hidden');
     detailIframe.src = firstPiece.animationUrl;
     imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
+  } else if (firstPiece?.isImage) {
+    // Piece marked as image - show as image even in on-chain collection
+    const fullImageUrl = collection.heroImage || firstPiece?.image || '';
+    const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
+    detailIframe.classList.add('hidden');
+    detailImage.classList.remove('hidden');
+
+    // Show thumbnail immediately (static but fast)
+    detailImage.src = toOptimizedUrl(thumbnailUrl);
+    detailImage.dataset.fullImage = fullImageUrl;
+
+    // Show play button if there's an animated version to load
+    const playBtn = document.getElementById('play-animated');
+    if (thumbnailUrl !== fullImageUrl) {
+      playBtn.classList.remove('hidden');
+    } else {
+      playBtn.classList.add('hidden');
+    }
+
+    imageActions.classList.remove('hidden');
   } else {
     // Regular images - show static thumbnail, play button loads animated
     const fullImageUrl = collection.heroImage || firstPiece?.image || '';
@@ -270,7 +290,7 @@ function showDetail(collectionId) {
   // Stats
   metaHtml += `
     <div class="collection-stats">
-      ${metaRow('Pieces', collection.pieces?.length || collection.supply || '?')}
+      ${metaRow('Pieces', collection.supply || collection.pieces?.length || '?')}
       ${metaRow('Chain', getChainFullName(collection.chain))}
       ${collection.contract ? metaRow('Contract', truncateId(collection.contract), collection.contract) : ''}
     </div>
@@ -282,12 +302,25 @@ function showDetail(collectionId) {
       <div class="pieces-section">
         <span class="pieces-label">Pieces</span>
         <div class="pieces-grid">
-          ${collection.pieces.map((piece, idx) => `
-            <div class="piece-thumb" data-index="${idx}" title="${piece.title || '#' + piece.tokenId}">
-              <img src="${toOptimizedUrl(piece.thumbnail || piece.image)}" alt="${piece.title || ''}" loading="lazy" />
-              <span class="piece-title">${piece.title || '#' + piece.tokenId}</span>
-            </div>
-          `).join('')}
+          ${collection.pieces.map((piece, idx) => {
+            // Use iframe for on-chain collections unless piece is marked as image
+            if (isOnchain && !piece.isImage && piece.animationUrl) {
+              return `
+                <div class="piece-thumb" data-index="${idx}" title="${piece.title || '#' + piece.tokenId}">
+                  <iframe src="${piece.animationUrl}" sandbox="allow-scripts" frameborder="0" style="width: 100%; height: 100%; border: none; pointer-events: none;"></iframe>
+                  <span class="piece-title">${piece.title || '#' + piece.tokenId}</span>
+                </div>
+              `;
+            } else {
+              // Use img for regular images or pieces marked as images
+              return `
+                <div class="piece-thumb" data-index="${idx}" title="${piece.title || '#' + piece.tokenId}">
+                  <img src="${toOptimizedUrl(piece.thumbnail || piece.image)}" alt="${piece.title || ''}" loading="lazy" />
+                  <span class="piece-title">${piece.title || '#' + piece.tokenId}</span>
+                </div>
+              `;
+            }
+          }).join('')}
         </div>
       </div>
     `;
@@ -359,14 +392,21 @@ function showPiece(collection, index) {
 
   // Update main image - use iframe for on-chain HTML, img for regular images
   const isOnchain = isOnchainCollection(collection);
+  const imageActions = document.querySelector('.image-actions');
 
-  if (isOnchain && piece.animationUrl) {
-    // On-chain HTML art - use iframe with animationUrl
+  if (isOnchain && piece.animationUrl && !piece.isImage) {
+    // On-chain HTML art - use iframe with animationUrl (unless piece is marked as image)
+    detailImage.classList.add('hidden');
+    detailIframe.classList.remove('hidden');
     detailIframe.src = piece.animationUrl;
-  } else {
-    // Regular images - show static thumbnail, play button loads animated
+    imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
+  } else if (piece.isImage) {
+    // Piece marked as image - show as image even in on-chain collection
     const fullImageUrl = piece.image || piece.thumbnail;
     const thumbnailUrl = piece.thumbnail || piece.image;
+
+    detailIframe.classList.add('hidden');
+    detailImage.classList.remove('hidden');
 
     // Show thumbnail immediately (static but fast)
     detailImage.src = toOptimizedUrl(thumbnailUrl);
@@ -379,6 +419,29 @@ function showPiece(collection, index) {
     } else {
       playBtn.classList.add('hidden');
     }
+
+    imageActions.classList.remove('hidden');
+  } else {
+    // Regular images - show static thumbnail, play button loads animated
+    const fullImageUrl = piece.image || piece.thumbnail;
+    const thumbnailUrl = piece.thumbnail || piece.image;
+
+    detailIframe.classList.add('hidden');
+    detailImage.classList.remove('hidden');
+
+    // Show thumbnail immediately (static but fast)
+    detailImage.src = toOptimizedUrl(thumbnailUrl);
+    detailImage.dataset.fullImage = fullImageUrl;
+
+    // Show play button if there's an animated version to load
+    const playBtn = document.getElementById('play-animated');
+    if (thumbnailUrl !== fullImageUrl) {
+      playBtn.classList.remove('hidden');
+    } else {
+      playBtn.classList.add('hidden');
+    }
+
+    imageActions.classList.remove('hidden');
   }
 
   // Update title to show piece name
