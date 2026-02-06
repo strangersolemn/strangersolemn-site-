@@ -188,7 +188,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": true,
-    "year": 2024,
+    "year": 2025,
     "pieces": [
       {
         "tokenId": "37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
@@ -20254,7 +20254,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": true,
-    "year": 2024,
+    "year": 2025,
     "pieces": [
       {
         "tokenId": "ee1d744a8a61534e81f465e051be04084a9aaac6a550242be9cfb85d0ee1c224i0",
@@ -21670,7 +21670,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": true,
-    "year": 2024,
+    "year": 2023,
     "pieces": [
       {
         "tokenId": "ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
@@ -21796,7 +21796,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": true,
-    "year": 2023,
+    "year": 2025,
     "pieces": [
       {
         "tokenId": "711f2f43186dd861aea98d3d2950871856f1aa5011ec6825f21e6eb6f41c73bdi0",

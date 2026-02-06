@@ -18,6 +18,39 @@
       <span id="lightbox-title"></span>
     </div>
   </div>
+
+  <!-- Display Mode (Frame/Gallery Display) -->
+  <div id="display-mode" class="display-mode">
+    <div class="display-bg">
+      <!-- Pin holes -->
+      <div class="pin-hole pin-tl"></div>
+      <div class="pin-hole pin-tr"></div>
+      <div class="pin-hole pin-bl"></div>
+      <div class="pin-hole pin-br"></div>
+    </div>
+    <div class="display-frame">
+      <img id="display-art" src="" alt="" />
+      <iframe id="display-iframe" src="" title="Display artwork"></iframe>
+    </div>
+    <div class="display-info">
+      <span id="display-title"></span>
+      <span id="display-collection"></span>
+    </div>
+    <div class="display-controls">
+      <button class="display-btn display-prev" aria-label="Previous artwork">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <button class="display-btn display-shuffle" aria-label="Random artwork">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+      </button>
+      <button class="display-btn display-next" aria-label="Next artwork">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <button class="display-btn display-close" aria-label="Exit display mode">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
   <div class="container">
     <!-- Main Content Area -->
     <main class="main-content">
@@ -32,11 +65,25 @@
             <span id="art-chain" class="chain-badge"></span>
           </div>
         </div>
-        <button id="shuffle-btn" aria-label="Show random artwork">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
-          </svg>
-        </button>
+        <div class="home-actions">
+          <button id="play-slideshow-btn" aria-label="Play slideshow">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5,3 19,12 5,21"/>
+            </svg>
+          </button>
+          <button id="display-mode-btn" aria-label="Enter display mode">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </button>
+          <button id="shuffle-btn" aria-label="Show random artwork">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>
+            </svg>
+          </button>
+        </div>
       </section>
 
       <!-- Collection Detail View -->

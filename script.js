@@ -27,6 +27,12 @@ let currentCollectionId = null;
 let currentPieceIndex = 0;
 let activeChainFilter = null;
 
+// Slideshow state
+let slideshowInterval = null;
+let slideshowPlaying = false;
+let slideshowPieces = [];
+let slideshowIndex = 0;
+
 // Check if collection is an edition (supply > unique pieces shown, or explicitly flagged)
 function isEditionCollection(collection) {
   if (collection.isEditions === true) return true;
@@ -63,9 +69,16 @@ const chainNames = {
 function init() {
   buildTimeline();
   showRandomArt();
+  initDisplayMode();
 
   // Event listeners
-  shuffleBtn.addEventListener('click', showRandomArt);
+  shuffleBtn.addEventListener('click', () => {
+    if (slideshowPlaying) stopSlideshow();
+    showRandomArt();
+  });
+
+  // Slideshow play/pause
+  document.getElementById('play-slideshow-btn').addEventListener('click', toggleSlideshow);
 
   // Navigation - home link
   document.querySelectorAll('[data-view="home"]').forEach(el => {
@@ -559,29 +572,35 @@ function truncateId(id) {
 }
 
 
-// Show random artwork
-function showRandomArt() {
-  if (collections.length === 0) return;
+// Build shuffled slideshow order
+function buildSlideshowPieces() {
+  slideshowPieces = [];
+  collections.forEach(col => {
+    if (col.pieces && col.pieces.length > 0) {
+      col.pieces.forEach(piece => {
+        slideshowPieces.push({ collection: col, piece: piece });
+      });
+    }
+  });
+  // Shuffle
+  for (let i = slideshowPieces.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [slideshowPieces[i], slideshowPieces[j]] = [slideshowPieces[j], slideshowPieces[i]];
+  }
+}
 
-  const collection = collections[Math.floor(Math.random() * collections.length)];
+// Show a specific piece on the home hero
+function showHeroPiece(entry) {
+  if (!entry) return;
+  const { collection, piece } = entry;
+
   currentCollectionId = collection.id;
 
-  // Pick random piece from collection
-  let imageUrl = collection.heroImage;
-  let pieceTitle = collection.title;
-
-  let randomPiece = null;
-  if (collection.pieces && collection.pieces.length > 0) {
-    randomPiece = collection.pieces[Math.floor(Math.random() * collection.pieces.length)];
-    const isOnchain = isOnchainCollection(collection);
-    // Use animationUrl for on-chain, full image for others (to preserve animation)
-    imageUrl = (isOnchain && randomPiece.animationUrl)
-      ? randomPiece.animationUrl
-      : (randomPiece.image || collection.heroImage);
-    pieceTitle = randomPiece.title || collection.title;
-  }
-
-  const isOnchain = isOnchainCollection(collection) && randomPiece?.animationUrl;
+  const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
+  const imageUrl = isOnchain
+    ? piece.animationUrl
+    : (piece.image || piece.thumbnail || collection.heroImage);
+  const pieceTitle = piece.title || collection.title;
 
   // Fade out
   featuredArt.classList.remove('loaded');
@@ -591,14 +610,13 @@ function showRandomArt() {
   setTimeout(() => {
     const showInfo = () => {
       artTitle.textContent = pieceTitle;
-      // Show per-piece edition count if available, else collection-level info
       let infoText;
-      if (randomPiece?.editionCount) {
-        infoText = collection.title + ' • 1/' + randomPiece.editionCount;
+      if (piece.editionCount) {
+        infoText = collection.title + ' \u2022 1/' + piece.editionCount;
       } else if (isEditionCollection(collection)) {
-        infoText = collection.title + ' • ' + (collection.supply || '?') + ' editions';
+        infoText = collection.title + ' \u2022 ' + (collection.supply || '?') + ' editions';
       } else {
-        infoText = collection.title + ' • ' + (collection.pieces?.length || collection.supply || '?') + ' pieces';
+        infoText = collection.title + ' \u2022 ' + (collection.pieces?.length || collection.supply || '?') + ' pieces';
       }
       artCollection.textContent = infoText;
       artChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
@@ -624,9 +642,279 @@ function showRandomArt() {
       };
     }
 
+    // Preload next image in background
+    preloadNextSlide();
+
     // Fallback
     setTimeout(showInfo, 2000);
   }, 300);
+}
+
+// Preload next slide image
+function preloadNextSlide() {
+  const nextIdx = (slideshowIndex + 1) % slideshowPieces.length;
+  const next = slideshowPieces[nextIdx];
+  if (!next) return;
+  const isOnchain = isOnchainCollection(next.collection) && next.piece.animationUrl && !next.piece.isImage;
+  if (!isOnchain) {
+    const img = new Image();
+    img.src = next.piece.image || next.piece.thumbnail || next.collection.heroImage;
+  }
+}
+
+// Show random artwork
+function showRandomArt() {
+  if (slideshowPieces.length === 0) buildSlideshowPieces();
+  slideshowIndex = Math.floor(Math.random() * slideshowPieces.length);
+  showHeroPiece(slideshowPieces[slideshowIndex]);
+}
+
+// Slideshow controls
+function startSlideshow() {
+  if (slideshowPieces.length === 0) buildSlideshowPieces();
+  slideshowPlaying = true;
+  updatePlayBtn();
+
+  // Show next immediately then every 10s
+  slideshowNext();
+  slideshowInterval = setInterval(slideshowNext, 10000);
+}
+
+function stopSlideshow() {
+  slideshowPlaying = false;
+  updatePlayBtn();
+  clearInterval(slideshowInterval);
+  slideshowInterval = null;
+}
+
+function toggleSlideshow() {
+  if (slideshowPlaying) {
+    stopSlideshow();
+  } else {
+    startSlideshow();
+  }
+}
+
+function slideshowNext() {
+  slideshowIndex = (slideshowIndex + 1) % slideshowPieces.length;
+  showHeroPiece(slideshowPieces[slideshowIndex]);
+}
+
+function updatePlayBtn() {
+  const btn = document.getElementById('play-slideshow-btn');
+  if (!btn) return;
+  if (slideshowPlaying) {
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+    btn.setAttribute('aria-label', 'Pause slideshow');
+    btn.classList.add('playing');
+  } else {
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5,3 19,12 5,21"/></svg>';
+    btn.setAttribute('aria-label', 'Play slideshow');
+    btn.classList.remove('playing');
+  }
+}
+
+// Display Mode (Frame Mode)
+const displayMode = document.getElementById('display-mode');
+const displayArt = document.getElementById('display-art');
+const displayIframe = document.getElementById('display-iframe');
+const displayTitle = document.getElementById('display-title');
+const displayCollection = document.getElementById('display-collection');
+
+let displayPieces = []; // flat array of {collection, piece} for navigation
+let displayIndex = 0;
+let displayControlsTimeout = null;
+let displayAutoplayInterval = null;
+
+function buildDisplayPieces() {
+  displayPieces = [];
+  collections.forEach(col => {
+    if (col.pieces && col.pieces.length > 0) {
+      col.pieces.forEach(piece => {
+        displayPieces.push({ collection: col, piece: piece });
+      });
+    }
+  });
+  // Shuffle the array for variety
+  for (let i = displayPieces.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [displayPieces[i], displayPieces[j]] = [displayPieces[j], displayPieces[i]];
+  }
+}
+
+function enterDisplayMode() {
+  buildDisplayPieces();
+  if (displayPieces.length === 0) return;
+
+  // Start with a random piece
+  displayIndex = Math.floor(Math.random() * displayPieces.length);
+  displayMode.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // Stop home slideshow if playing
+  if (slideshowPlaying) stopSlideshow();
+
+  showDisplayPiece();
+  showDisplayControls();
+
+  // Start auto-play in display mode (10s interval)
+  displayAutoplayInterval = setInterval(() => {
+    displayIndex = (displayIndex + 1) % displayPieces.length;
+    showDisplayPiece();
+  }, 10000);
+
+  // Request fullscreen
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  }
+}
+
+function exitDisplayMode() {
+  displayMode.classList.remove('active');
+  displayMode.classList.remove('show-controls');
+  document.body.style.overflow = '';
+  displayIframe.src = '';
+  clearTimeout(displayControlsTimeout);
+  clearInterval(displayAutoplayInterval);
+
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => {});
+  }
+}
+
+function showDisplayPiece() {
+  const entry = displayPieces[displayIndex];
+  if (!entry) return;
+
+  const { collection, piece } = entry;
+  const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
+
+  // Fade out
+  displayArt.classList.remove('loaded');
+  displayIframe.classList.remove('loaded');
+
+  setTimeout(() => {
+    if (isOnchain) {
+      displayArt.classList.add('hidden');
+      displayIframe.classList.remove('hidden');
+      displayIframe.src = piece.animationUrl;
+      displayIframe.onload = () => displayIframe.classList.add('loaded');
+    } else {
+      displayIframe.classList.add('hidden');
+      displayIframe.src = '';
+      displayArt.classList.remove('hidden');
+      displayArt.src = piece.image || piece.thumbnail || collection.heroImage;
+      displayArt.onload = () => displayArt.classList.add('loaded');
+    }
+
+    displayTitle.textContent = piece.title || '#' + piece.tokenId;
+    displayCollection.textContent = collection.title;
+
+    // Preload next display piece
+    const nextIdx = (displayIndex + 1) % displayPieces.length;
+    const nextEntry = displayPieces[nextIdx];
+    if (nextEntry) {
+      const nextOnchain = isOnchainCollection(nextEntry.collection) && nextEntry.piece.animationUrl && !nextEntry.piece.isImage;
+      if (!nextOnchain) {
+        const preImg = new Image();
+        preImg.src = nextEntry.piece.image || nextEntry.piece.thumbnail || nextEntry.collection.heroImage;
+      }
+    }
+  }, 200);
+}
+
+function resetDisplayAutoplay() {
+  clearInterval(displayAutoplayInterval);
+  displayAutoplayInterval = setInterval(() => {
+    displayIndex = (displayIndex + 1) % displayPieces.length;
+    showDisplayPiece();
+  }, 10000);
+}
+
+function displayNext() {
+  displayIndex = (displayIndex + 1) % displayPieces.length;
+  showDisplayPiece();
+  showDisplayControls();
+  resetDisplayAutoplay();
+}
+
+function displayPrev() {
+  displayIndex = (displayIndex - 1 + displayPieces.length) % displayPieces.length;
+  showDisplayPiece();
+  showDisplayControls();
+  resetDisplayAutoplay();
+}
+
+function displayShuffle() {
+  displayIndex = Math.floor(Math.random() * displayPieces.length);
+  showDisplayPiece();
+  showDisplayControls();
+  resetDisplayAutoplay();
+}
+
+function showDisplayControls() {
+  displayMode.classList.add('show-controls');
+  clearTimeout(displayControlsTimeout);
+  displayControlsTimeout = setTimeout(() => {
+    displayMode.classList.remove('show-controls');
+  }, 3000);
+}
+
+// Display mode event listeners
+function initDisplayMode() {
+  // Enter display mode
+  document.getElementById('display-mode-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    enterDisplayMode();
+  });
+
+  // Controls
+  document.querySelector('.display-close').addEventListener('click', exitDisplayMode);
+  document.querySelector('.display-next').addEventListener('click', displayNext);
+  document.querySelector('.display-prev').addEventListener('click', displayPrev);
+  document.querySelector('.display-shuffle').addEventListener('click', displayShuffle);
+
+  // Mouse move shows controls
+  displayMode.addEventListener('mousemove', showDisplayControls);
+  // Touch shows controls
+  displayMode.addEventListener('touchstart', showDisplayControls);
+
+  // Keyboard navigation in display mode
+  document.addEventListener('keydown', (e) => {
+    if (!displayMode.classList.contains('active')) return;
+
+    if (e.key === 'Escape') {
+      exitDisplayMode();
+    } else if (e.key === 'ArrowRight' || e.key === ' ') {
+      e.preventDefault();
+      displayNext();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      displayPrev();
+    } else if (e.key === 'r' || e.key === 'R') {
+      displayShuffle();
+    }
+    showDisplayControls();
+  });
+
+  // Click on the display area (not controls) to show/hide controls
+  displayMode.addEventListener('click', (e) => {
+    if (e.target === displayMode || e.target.closest('.display-bg') || e.target.closest('.display-frame')) {
+      if (displayMode.classList.contains('show-controls')) {
+        displayMode.classList.remove('show-controls');
+        clearTimeout(displayControlsTimeout);
+      } else {
+        showDisplayControls();
+      }
+    }
+  });
+
+  // Fullscreen change - if user presses ESC on fullscreen, exit display mode too
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && displayMode.classList.contains('active')) {
+      // Don't exit display mode, just stay in windowed display mode
+    }
+  });
 }
 
 // Lightbox functions
@@ -661,7 +949,8 @@ lightbox.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+  // Don't handle lightbox escape if display mode is active (display mode has its own handler)
+  if (e.key === 'Escape' && lightbox.style.display === 'flex' && !displayMode.classList.contains('active')) {
     closeLightbox();
   }
 });
