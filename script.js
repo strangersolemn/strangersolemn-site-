@@ -30,8 +30,6 @@ let activeChainFilter = null;
 // Slideshow state
 let slideshowInterval = null;
 let slideshowPlaying = false;
-let slideshowPieces = [];
-let slideshowIndex = 0;
 
 // Check if collection is an edition (supply > unique pieces shown, or explicitly flagged)
 function isEditionCollection(collection) {
@@ -576,39 +574,33 @@ function truncateId(id) {
 }
 
 
-// Build shuffled slideshow order - weighted by collection (not piece count)
-function buildSlideshowPieces() {
-  slideshowPieces = [];
-  // Pick pieces round-robin across collections so each collection is equally represented
-  const colsWithPieces = collections.filter(c => c.pieces && c.pieces.length > 0);
-  // Shuffle each collection's pieces independently
-  const shuffledCols = colsWithPieces.map(col => {
-    const pieces = [...col.pieces];
-    for (let i = pieces.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [pieces[i], pieces[j]] = [pieces[j], pieces[i]];
-    }
-    return { col, pieces, idx: 0 };
-  });
-  // Interleave: cycle through collections, picking one piece from each
-  let remaining = shuffledCols.length;
-  while (remaining > 0) {
-    // Shuffle collection order each round for variety
-    for (let i = shuffledCols.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledCols[i], shuffledCols[j]] = [shuffledCols[j], shuffledCols[i]];
-    }
-    remaining = 0;
-    for (const entry of shuffledCols) {
-      if (entry.idx < entry.pieces.length) {
-        slideshowPieces.push({ collection: entry.col, piece: entry.pieces[entry.idx] });
-        entry.idx++;
-        if (entry.idx < entry.pieces.length) remaining++;
-      }
-    }
-    if (remaining === 0) break;
-    remaining = shuffledCols.filter(e => e.idx < e.pieces.length).length;
-  }
+// Pick a random piece, always from a different collection than the last shown
+let lastShownCollectionId = null;
+
+function pickRandomPiece(sourceCollections) {
+  const cols = (sourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0);
+  if (cols.length === 0) return null;
+  // Pick a collection that's different from the last one shown
+  let available = cols.filter(c => c.id !== lastShownCollectionId);
+  if (available.length === 0) available = cols; // fallback if only 1 collection
+  const col = available[Math.floor(Math.random() * available.length)];
+  const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
+  lastShownCollectionId = col.id;
+  return { collection: col, piece };
+}
+
+// Display mode also tracks its own last collection
+let lastDisplayCollectionId = null;
+
+function pickRandomDisplayPiece(sourceCollections) {
+  const cols = (sourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0);
+  if (cols.length === 0) return null;
+  let available = cols.filter(c => c.id !== lastDisplayCollectionId);
+  if (available.length === 0) available = cols;
+  const col = available[Math.floor(Math.random() * available.length)];
+  const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
+  lastDisplayCollectionId = col.id;
+  return { collection: col, piece };
 }
 
 // Show a specific piece on the home hero
@@ -672,28 +664,27 @@ function showHeroPiece(entry) {
   }, 300);
 }
 
-// Preload next slide image
+// Preload a random piece from a different collection
 function preloadNextSlide() {
-  const nextIdx = (slideshowIndex + 1) % slideshowPieces.length;
-  const next = slideshowPieces[nextIdx];
-  if (!next) return;
-  const isOnchain = isOnchainCollection(next.collection) && next.piece.animationUrl && !next.piece.isImage;
+  const cols = collections.filter(c => c.pieces && c.pieces.length > 0 && c.id !== lastShownCollectionId);
+  if (cols.length === 0) return;
+  const col = cols[Math.floor(Math.random() * cols.length)];
+  const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
+  const isOnchain = isOnchainCollection(col) && piece.animationUrl && !piece.isImage;
   if (!isOnchain) {
     const img = new Image();
-    img.src = next.piece.image || next.piece.thumbnail || next.collection.heroImage;
+    img.src = piece.image || piece.thumbnail || col.heroImage;
   }
 }
 
 // Show random artwork
 function showRandomArt() {
-  if (slideshowPieces.length === 0) buildSlideshowPieces();
-  slideshowIndex = Math.floor(Math.random() * slideshowPieces.length);
-  showHeroPiece(slideshowPieces[slideshowIndex]);
+  const entry = pickRandomPiece();
+  if (entry) showHeroPiece(entry);
 }
 
 // Slideshow controls
 function startSlideshow() {
-  if (slideshowPieces.length === 0) buildSlideshowPieces();
   slideshowPlaying = true;
   updatePlayBtn();
 
@@ -718,8 +709,8 @@ function toggleSlideshow() {
 }
 
 function slideshowNext() {
-  slideshowIndex = (slideshowIndex + 1) % slideshowPieces.length;
-  showHeroPiece(slideshowPieces[slideshowIndex]);
+  const entry = pickRandomPiece();
+  if (entry) showHeroPiece(entry);
 }
 
 function updatePlayBtn() {
@@ -743,77 +734,35 @@ const displayIframe = document.getElementById('display-iframe');
 const displayTitle = document.getElementById('display-title');
 const displayCollection = document.getElementById('display-collection');
 
-let displayPieces = []; // flat array of {collection, piece} for navigation
-let displayIndex = 0;
 let displayControlsTimeout = null;
 let displayAutoplayInterval = null;
-
-function buildDisplayPieces(collectionId) {
-  displayPieces = [];
-  if (collectionId) {
-    // Single collection mode
-    const col = collections.find(c => c.id === collectionId);
-    if (col && col.pieces) {
-      col.pieces.forEach(piece => {
-        displayPieces.push({ collection: col, piece: piece });
-      });
-    }
-  } else {
-    // All collections - weighted interleave (same as slideshow)
-    const colsWithPieces = collections.filter(c => c.pieces && c.pieces.length > 0);
-    const shuffledCols = colsWithPieces.map(col => {
-      const pieces = [...col.pieces];
-      for (let i = pieces.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pieces[i], pieces[j]] = [pieces[j], pieces[i]];
-      }
-      return { col, pieces, idx: 0 };
-    });
-    let remaining = shuffledCols.length;
-    while (remaining > 0) {
-      for (let i = shuffledCols.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledCols[i], shuffledCols[j]] = [shuffledCols[j], shuffledCols[i]];
-      }
-      remaining = 0;
-      for (const entry of shuffledCols) {
-        if (entry.idx < entry.pieces.length) {
-          displayPieces.push({ collection: entry.col, piece: entry.pieces[entry.idx] });
-          entry.idx++;
-          if (entry.idx < entry.pieces.length) remaining++;
-        }
-      }
-      if (remaining === 0) break;
-      remaining = shuffledCols.filter(e => e.idx < e.pieces.length).length;
-    }
-  }
-  // Final shuffle for single collection mode
-  if (collectionId) {
-    for (let i = displayPieces.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [displayPieces[i], displayPieces[j]] = [displayPieces[j], displayPieces[i]];
-    }
-  }
-}
+let displaySourceCollections = null; // null = all, or [singleCol] for per-collection mode
+let currentDisplayEntry = null; // current {collection, piece} being shown
 
 function enterDisplayMode(collectionId) {
-  buildDisplayPieces(collectionId || null);
-  if (displayPieces.length === 0) return;
+  if (collectionId) {
+    const col = collections.find(c => c.id === collectionId);
+    if (!col || !col.pieces || col.pieces.length === 0) return;
+    displaySourceCollections = [col];
+  } else {
+    displaySourceCollections = null; // all collections
+  }
+  lastDisplayCollectionId = null;
 
-  // Start with a random piece
-  displayIndex = Math.floor(Math.random() * displayPieces.length);
   displayMode.classList.add('active');
   document.body.style.overflow = 'hidden';
 
   // Stop home slideshow if playing
   if (slideshowPlaying) stopSlideshow();
 
+  // Pick first piece
+  currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
   showDisplayControls();
 
   // Start auto-play in display mode (10s interval)
   displayAutoplayInterval = setInterval(() => {
-    displayIndex = (displayIndex + 1) % displayPieces.length;
+    currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
     showDisplayPiece();
   }, 10000);
 
@@ -837,10 +786,9 @@ function exitDisplayMode() {
 }
 
 function showDisplayPiece() {
-  const entry = displayPieces[displayIndex];
-  if (!entry) return;
+  if (!currentDisplayEntry) return;
 
-  const { collection, piece } = entry;
+  const { collection, piece } = currentDisplayEntry;
   const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
 
   // Fade out
@@ -864,14 +812,15 @@ function showDisplayPiece() {
     displayTitle.textContent = piece.title || '#' + piece.tokenId;
     displayCollection.textContent = collection.title;
 
-    // Preload next display piece
-    const nextIdx = (displayIndex + 1) % displayPieces.length;
-    const nextEntry = displayPieces[nextIdx];
-    if (nextEntry) {
-      const nextOnchain = isOnchainCollection(nextEntry.collection) && nextEntry.piece.animationUrl && !nextEntry.piece.isImage;
-      if (!nextOnchain) {
+    // Preload a piece from a different collection
+    const cols = (displaySourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0 && c.id !== lastDisplayCollectionId);
+    if (cols.length > 0) {
+      const preCol = cols[Math.floor(Math.random() * cols.length)];
+      const prePiece = preCol.pieces[Math.floor(Math.random() * preCol.pieces.length)];
+      const preOnchain = isOnchainCollection(preCol) && prePiece.animationUrl && !prePiece.isImage;
+      if (!preOnchain) {
         const preImg = new Image();
-        preImg.src = nextEntry.piece.image || nextEntry.piece.thumbnail || nextEntry.collection.heroImage;
+        preImg.src = prePiece.image || prePiece.thumbnail || preCol.heroImage;
       }
     }
   }, 200);
@@ -880,27 +829,27 @@ function showDisplayPiece() {
 function resetDisplayAutoplay() {
   clearInterval(displayAutoplayInterval);
   displayAutoplayInterval = setInterval(() => {
-    displayIndex = (displayIndex + 1) % displayPieces.length;
+    currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
     showDisplayPiece();
   }, 10000);
 }
 
 function displayNext() {
-  displayIndex = (displayIndex + 1) % displayPieces.length;
+  currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
   showDisplayControls();
   resetDisplayAutoplay();
 }
 
 function displayPrev() {
-  displayIndex = (displayIndex - 1 + displayPieces.length) % displayPieces.length;
+  currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
   showDisplayControls();
   resetDisplayAutoplay();
 }
 
 function displayShuffle() {
-  displayIndex = Math.floor(Math.random() * displayPieces.length);
+  currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
   showDisplayControls();
   resetDisplayAutoplay();

@@ -26155,7 +26155,7 @@ const collections = [
     "title": "StrangersNFT",
     "chain": "ethereum",
     "contract": "0x20727eb4191bfe6e15b9a2a34934d48f24e3b420",
-    "supply": 100,
+    "supply": 300,
     "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/dbb2778f4dc6212168c4451e345d0ff8",
     "description": "A 300 Piece PFP collection",
     "artistNote": "Strangers is my OG collection, released in 2021 across 8 months, before the days of apple pencils, the artwork is finger painted",
