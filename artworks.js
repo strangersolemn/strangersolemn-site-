@@ -378,7 +378,8 @@ const collections = [
     "marketplaces": {
       "opensea": "https://opensea.io/assets/ethereum/0xd0cf83744db1fdee8a0fafe913391befb85190aa"
     },
-    "uniquePieces": 7
+    "uniquePieces": 7,
+    "isEditions": true
   },
   {
     "id": "reflections",
@@ -498,7 +499,8 @@ const collections = [
     "marketplaces": {
       "opensea": "https://opensea.io/assets/ethereum/0xe4cda4a0955f427ff7f0a05990ca154984966060"
     },
-    "uniquePieces": 7
+    "uniquePieces": 7,
+    "isEditions": true
   },
   {
     "id": "strangersnft",
@@ -551,7 +553,8 @@ const collections = [
             "value": "Spies",
             "trait_type": "Special"
           }
-        ]
+        ],
+        "editionCount": 100
       }
     ],
     "marketplaces": {
@@ -1096,21 +1099,24 @@ const collections = [
         "title": "Mr 303 #1",
         "image": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
         "thumbnail": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
-        "animationUrl": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0"
+        "animationUrl": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
+        "editionCount": 17
       },
       {
         "tokenId": "e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
         "title": "Mrs 303 #1",
         "image": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
         "thumbnail": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
-        "animationUrl": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0"
+        "animationUrl": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
+        "editionCount": 8
       },
       {
         "tokenId": "1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
         "title": "Baby 303 #1",
         "image": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
         "thumbnail": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
-        "animationUrl": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0"
+        "animationUrl": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
+        "editionCount": 9
       }
     ],
     "marketplaces": {},
@@ -2013,64 +2019,6 @@ const collections = [
     ],
     "marketplaces": {},
     "uniquePieces": 105
-  },
-  {
-    "id": "untitled",
-    "title": "Untitled",
-    "chain": "ordinals",
-    "supply": 34,
-    "heroImage": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
-    "description": "",
-    "artistNote": "",
-    "onchain": true,
-    "year": 2024,
-    "pieces": [
-      {
-        "tokenId": "37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
-        "title": "Mr 303 #1",
-        "image": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
-        "thumbnail": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
-        "animationUrl": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0"
-      },
-      {
-        "tokenId": "e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
-        "title": "Mrs 303 #1",
-        "image": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
-        "thumbnail": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
-        "animationUrl": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0"
-      },
-      {
-        "tokenId": "1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
-        "title": "Baby 303 #1",
-        "image": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
-        "thumbnail": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
-        "animationUrl": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0"
-      }
-    ],
-    "marketplaces": {},
-    "uniquePieces": 3
-  },
-  {
-    "id": "leverage",
-    "title": "Leverage",
-    "chain": "ordinals",
-    "supply": 4066,
-    "heroImage": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-    "description": "",
-    "artistNote": "",
-    "onchain": true,
-    "year": 2024,
-    "pieces": [
-      {
-        "tokenId": "6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-        "title": "LEVERAGE #01",
-        "image": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-        "thumbnail": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-        "animationUrl": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0"
-      }
-    ],
-    "marketplaces": {},
-    "uniquePieces": 1
   },
   {
     "id": "fiat-mafia",
@@ -20954,7 +20902,8 @@ const collections = [
         "title": "A SOLEMN ROSE #1",
         "image": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
         "thumbnail": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
-        "animationUrl": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20"
+        "animationUrl": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
+        "editionCount": 21
       }
     ],
     "marketplaces": {},
@@ -20976,84 +20925,96 @@ const collections = [
         "title": "Obyor #1",
         "image": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
         "thumbnail": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
-        "animationUrl": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41"
+        "animationUrl": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
+        "editionCount": 220
       },
       {
         "tokenId": "00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0",
         "title": "Arctefact #1",
         "image": "https://ordinals.com/content/00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0",
         "thumbnail": "https://ordinals.com/content/00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0",
-        "animationUrl": "https://ordinals.com/content/00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0"
+        "animationUrl": "https://ordinals.com/content/00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0",
+        "editionCount": 212
       },
       {
         "tokenId": "feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0",
         "title": "ZENOYIS #01",
         "image": "https://ordinals.com/content/feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0",
         "thumbnail": "https://ordinals.com/content/feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0",
-        "animationUrl": "https://ordinals.com/content/feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0"
+        "animationUrl": "https://ordinals.com/content/feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0",
+        "editionCount": 102
       },
       {
         "tokenId": "82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0",
         "title": "Anzomez #01",
         "image": "https://ordinals.com/content/82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0",
         "thumbnail": "https://ordinals.com/content/82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0",
-        "animationUrl": "https://ordinals.com/content/82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0"
+        "animationUrl": "https://ordinals.com/content/82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0",
+        "editionCount": 57
       },
       {
         "tokenId": "9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0",
         "title": "SOLEMN #01",
         "image": "https://ordinals.com/content/9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0",
         "thumbnail": "https://ordinals.com/content/9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0",
-        "animationUrl": "https://ordinals.com/content/9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0"
+        "animationUrl": "https://ordinals.com/content/9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0",
+        "editionCount": 44
       },
       {
         "tokenId": "1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0",
         "title": "Glitchesst #01",
         "image": "https://ordinals.com/content/1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0",
         "thumbnail": "https://ordinals.com/content/1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0",
-        "animationUrl": "https://ordinals.com/content/1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0"
+        "animationUrl": "https://ordinals.com/content/1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0",
+        "editionCount": 72
       },
       {
         "tokenId": "b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0",
         "title": "Zanoza #01",
         "image": "https://ordinals.com/content/b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0",
         "thumbnail": "https://ordinals.com/content/b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0",
-        "animationUrl": "https://ordinals.com/content/b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0"
+        "animationUrl": "https://ordinals.com/content/b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0",
+        "editionCount": 38
       },
       {
         "tokenId": "3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1",
         "title": "King Xerox #01",
         "image": "https://ordinals.com/content/3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1",
         "thumbnail": "https://ordinals.com/content/3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1",
-        "animationUrl": "https://ordinals.com/content/3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1"
+        "animationUrl": "https://ordinals.com/content/3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1",
+        "editionCount": 74
       },
       {
         "tokenId": "53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0",
         "title": "Vstrvl_1",
         "image": "https://ordinals.com/content/53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0",
         "thumbnail": "https://ordinals.com/content/53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0",
-        "animationUrl": "https://ordinals.com/content/53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0"
+        "animationUrl": "https://ordinals.com/content/53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0",
+        "editionCount": 47
       },
       {
         "tokenId": "0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0",
         "title": "Spellamin_1",
         "image": "https://ordinals.com/content/0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0",
         "thumbnail": "https://ordinals.com/content/0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0",
-        "animationUrl": "https://ordinals.com/content/0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0"
+        "animationUrl": "https://ordinals.com/content/0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0",
+        "editionCount": 56
       },
       {
         "tokenId": "36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0",
         "title": "Sunken0x_1",
         "image": "https://ordinals.com/content/36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0",
         "thumbnail": "https://ordinals.com/content/36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0",
-        "animationUrl": "https://ordinals.com/content/36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0"
+        "animationUrl": "https://ordinals.com/content/36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0",
+        "editionCount": 45
       },
       {
         "tokenId": "fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0",
         "title": "Terminatezz #1",
         "image": "https://ordinals.com/content/fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0",
         "thumbnail": "https://ordinals.com/content/fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0",
-        "animationUrl": "https://ordinals.com/content/fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0"
+        "animationUrl": "https://ordinals.com/content/fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0",
+        "editionCount": 61
       }
     ],
     "marketplaces": {},
@@ -21063,7 +21024,7 @@ const collections = [
     "id": "btc-editions",
     "title": "BTC Editions",
     "chain": "ordinals",
-    "supply": 1827,
+    "supply": 5893,
     "heroImage": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
     "description": "",
     "artistNote": "",
@@ -21075,95 +21036,116 @@ const collections = [
         "title": "GL1TCH GAREE #1",
         "image": "https://ordinals.com/content/0ec7d889c5ce06ab0c8677ec4008c14b8dfb5e0a989b2b94e36ef229baf38641i0",
         "thumbnail": "https://ordinals.com/content/0ec7d889c5ce06ab0c8677ec4008c14b8dfb5e0a989b2b94e36ef229baf38641i0",
-        "animationUrl": "https://ordinals.com/content/0ec7d889c5ce06ab0c8677ec4008c14b8dfb5e0a989b2b94e36ef229baf38641i0"
+        "animationUrl": "https://ordinals.com/content/0ec7d889c5ce06ab0c8677ec4008c14b8dfb5e0a989b2b94e36ef229baf38641i0",
+        "editionCount": 41
       },
       {
         "tokenId": "53bf65d077d4b3c1c6bda7b60729ac5ab90770db64b4ddd7f757b420021a8873i0",
         "title": "FULL CIRCLE #1",
         "image": "https://ordinals.com/content/53bf65d077d4b3c1c6bda7b60729ac5ab90770db64b4ddd7f757b420021a8873i0",
         "thumbnail": "https://ordinals.com/content/53bf65d077d4b3c1c6bda7b60729ac5ab90770db64b4ddd7f757b420021a8873i0",
-        "animationUrl": "https://ordinals.com/content/53bf65d077d4b3c1c6bda7b60729ac5ab90770db64b4ddd7f757b420021a8873i0"
+        "animationUrl": "https://ordinals.com/content/53bf65d077d4b3c1c6bda7b60729ac5ab90770db64b4ddd7f757b420021a8873i0",
+        "editionCount": 21
       },
       {
         "tokenId": "5211460090e5b86c3c5e961bf33483b2e70b7c9653d91d5752aa0345b1f8147ci0",
         "title": "MEMENTO MORI #1",
         "image": "https://ordinals.com/content/5211460090e5b86c3c5e961bf33483b2e70b7c9653d91d5752aa0345b1f8147ci0",
         "thumbnail": "https://ordinals.com/content/5211460090e5b86c3c5e961bf33483b2e70b7c9653d91d5752aa0345b1f8147ci0",
-        "animationUrl": "https://ordinals.com/content/5211460090e5b86c3c5e961bf33483b2e70b7c9653d91d5752aa0345b1f8147ci0"
+        "animationUrl": "https://ordinals.com/content/5211460090e5b86c3c5e961bf33483b2e70b7c9653d91d5752aa0345b1f8147ci0",
+        "editionCount": 348
       },
       {
         "tokenId": "8ffb2b5171538c257ebd2e6b780da908e1966307531979ce1df2ca3c5cbda634i0",
         "title": "THE SPIN #1",
         "image": "https://ordinals.com/content/8ffb2b5171538c257ebd2e6b780da908e1966307531979ce1df2ca3c5cbda634i0",
         "thumbnail": "https://ordinals.com/content/8ffb2b5171538c257ebd2e6b780da908e1966307531979ce1df2ca3c5cbda634i0",
-        "animationUrl": "https://ordinals.com/content/8ffb2b5171538c257ebd2e6b780da908e1966307531979ce1df2ca3c5cbda634i0"
+        "animationUrl": "https://ordinals.com/content/8ffb2b5171538c257ebd2e6b780da908e1966307531979ce1df2ca3c5cbda634i0",
+        "editionCount": 306
       },
       {
         "tokenId": "e0456990c4da5d7428adb16559779f37fa0a29eeaa10f5742afd91812c722388i0",
         "title": "GL1TCH BEAR #01",
         "image": "https://ordinals.com/content/e0456990c4da5d7428adb16559779f37fa0a29eeaa10f5742afd91812c722388i0",
         "thumbnail": "https://ordinals.com/content/e0456990c4da5d7428adb16559779f37fa0a29eeaa10f5742afd91812c722388i0",
-        "animationUrl": "https://ordinals.com/content/e0456990c4da5d7428adb16559779f37fa0a29eeaa10f5742afd91812c722388i0"
+        "animationUrl": "https://ordinals.com/content/e0456990c4da5d7428adb16559779f37fa0a29eeaa10f5742afd91812c722388i0",
+        "editionCount": 97
       },
       {
         "tokenId": "cfb7ed0bfb7ed82a4b00156ffe6fdfa273ed5c2f078e89b0f6e281c435c14993i0",
         "title": "GL1TCH NODE #01",
         "image": "https://ordinals.com/content/cfb7ed0bfb7ed82a4b00156ffe6fdfa273ed5c2f078e89b0f6e281c435c14993i0",
         "thumbnail": "https://ordinals.com/content/cfb7ed0bfb7ed82a4b00156ffe6fdfa273ed5c2f078e89b0f6e281c435c14993i0",
-        "animationUrl": "https://ordinals.com/content/cfb7ed0bfb7ed82a4b00156ffe6fdfa273ed5c2f078e89b0f6e281c435c14993i0"
+        "animationUrl": "https://ordinals.com/content/cfb7ed0bfb7ed82a4b00156ffe6fdfa273ed5c2f078e89b0f6e281c435c14993i0",
+        "editionCount": 92
       },
       {
         "tokenId": "f846b23c03df3aa8fbe835fe6e530aa15b74558299078f15c6d23f8fbf6ccd16i1",
         "title": "GL1TCH FROG #01",
         "image": "https://ordinals.com/content/f846b23c03df3aa8fbe835fe6e530aa15b74558299078f15c6d23f8fbf6ccd16i1",
         "thumbnail": "https://ordinals.com/content/f846b23c03df3aa8fbe835fe6e530aa15b74558299078f15c6d23f8fbf6ccd16i1",
-        "animationUrl": "https://ordinals.com/content/f846b23c03df3aa8fbe835fe6e530aa15b74558299078f15c6d23f8fbf6ccd16i1"
+        "animationUrl": "https://ordinals.com/content/f846b23c03df3aa8fbe835fe6e530aa15b74558299078f15c6d23f8fbf6ccd16i1",
+        "editionCount": 105
       },
       {
         "tokenId": "7b00805c5f1b79f0e8f9657b8ee4023ba7c1f857e852982237e409756d8f2584i0",
         "title": "GL1TCH WHALE #108",
         "image": "https://ordinals.com/content/7b00805c5f1b79f0e8f9657b8ee4023ba7c1f857e852982237e409756d8f2584i0",
         "thumbnail": "https://ordinals.com/content/7b00805c5f1b79f0e8f9657b8ee4023ba7c1f857e852982237e409756d8f2584i0",
-        "animationUrl": "https://ordinals.com/content/7b00805c5f1b79f0e8f9657b8ee4023ba7c1f857e852982237e409756d8f2584i0"
+        "animationUrl": "https://ordinals.com/content/7b00805c5f1b79f0e8f9657b8ee4023ba7c1f857e852982237e409756d8f2584i0",
+        "editionCount": 121
       },
       {
         "tokenId": "c4a3870539cfb69dd96811f73793b82cc705ab84d2f35157ddaba8b343788f11i0",
         "title": "Dick on Acid #1",
         "image": "https://ordinals.com/content/c4a3870539cfb69dd96811f73793b82cc705ab84d2f35157ddaba8b343788f11i0",
         "thumbnail": "https://ordinals.com/content/c4a3870539cfb69dd96811f73793b82cc705ab84d2f35157ddaba8b343788f11i0",
-        "animationUrl": "https://ordinals.com/content/c4a3870539cfb69dd96811f73793b82cc705ab84d2f35157ddaba8b343788f11i0"
+        "animationUrl": "https://ordinals.com/content/c4a3870539cfb69dd96811f73793b82cc705ab84d2f35157ddaba8b343788f11i0",
+        "editionCount": 22
       },
       {
         "tokenId": "cfb4e9a2fa03e0be25183e6565d455703aaa69cb0c671b8003c4086e610d043di0",
         "title": "Black Mirror #1",
         "image": "https://ordinals.com/content/cfb4e9a2fa03e0be25183e6565d455703aaa69cb0c671b8003c4086e610d043di0",
         "thumbnail": "https://ordinals.com/content/cfb4e9a2fa03e0be25183e6565d455703aaa69cb0c671b8003c4086e610d043di0",
-        "animationUrl": "https://ordinals.com/content/cfb4e9a2fa03e0be25183e6565d455703aaa69cb0c671b8003c4086e610d043di0"
+        "animationUrl": "https://ordinals.com/content/cfb4e9a2fa03e0be25183e6565d455703aaa69cb0c671b8003c4086e610d043di0",
+        "editionCount": 24
       },
       {
         "tokenId": "317822cad186d8ae043a7667f02dfb9079312edcd4e4338f0e769de62ea3471bi0",
         "title": "Patience #1",
         "image": "https://ordinals.com/content/317822cad186d8ae043a7667f02dfb9079312edcd4e4338f0e769de62ea3471bi0",
         "thumbnail": "https://ordinals.com/content/317822cad186d8ae043a7667f02dfb9079312edcd4e4338f0e769de62ea3471bi0",
-        "animationUrl": "https://ordinals.com/content/317822cad186d8ae043a7667f02dfb9079312edcd4e4338f0e769de62ea3471bi0"
+        "animationUrl": "https://ordinals.com/content/317822cad186d8ae043a7667f02dfb9079312edcd4e4338f0e769de62ea3471bi0",
+        "editionCount": 25
       },
       {
         "tokenId": "c3a522c317525230daaa6ce3e5d9d572fa5ba5f06851207e3bf29cbecacea706i0",
         "title": "Sky Slasher #1",
         "image": "https://ordinals.com/content/c3a522c317525230daaa6ce3e5d9d572fa5ba5f06851207e3bf29cbecacea706i0",
         "thumbnail": "https://ordinals.com/content/c3a522c317525230daaa6ce3e5d9d572fa5ba5f06851207e3bf29cbecacea706i0",
-        "animationUrl": "https://ordinals.com/content/c3a522c317525230daaa6ce3e5d9d572fa5ba5f06851207e3bf29cbecacea706i0"
+        "animationUrl": "https://ordinals.com/content/c3a522c317525230daaa6ce3e5d9d572fa5ba5f06851207e3bf29cbecacea706i0",
+        "editionCount": 29
       },
       {
         "tokenId": "3133ec253494d81c57e04e49e8daaa540f203f0668d3eac59830949adbf74039i0",
         "title": "Pepe Mc'Parrot #1",
         "image": "https://ordinals.com/content/3133ec253494d81c57e04e49e8daaa540f203f0668d3eac59830949adbf74039i0",
         "thumbnail": "https://ordinals.com/content/3133ec253494d81c57e04e49e8daaa540f203f0668d3eac59830949adbf74039i0",
-        "animationUrl": "https://ordinals.com/content/3133ec253494d81c57e04e49e8daaa540f203f0668d3eac59830949adbf74039i0"
+        "animationUrl": "https://ordinals.com/content/3133ec253494d81c57e04e49e8daaa540f203f0668d3eac59830949adbf74039i0",
+        "editionCount": 21
+      },
+      {
+        "tokenId": "6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
+        "title": "LEVERAGE #01",
+        "image": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
+        "thumbnail": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
+        "animationUrl": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
+        "editionCount": 4066
       }
     ],
     "marketplaces": {},
-    "uniquePieces": 13
+    "uniquePieces": 14
   },
   {
     "id": "block-party",
@@ -22597,98 +22579,112 @@ const collections = [
         "title": "CYPHERPUNK",
         "image": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
         "thumbnail": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
-        "animationUrl": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0"
+        "animationUrl": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
+        "editionCount": 69
       },
       {
         "tokenId": "a3198dffc591b52414c3f845375544a10837a65584baaafade88c7feed220905i0",
         "title": "DECODED",
         "image": "https://ordinals.com/content/a3198dffc591b52414c3f845375544a10837a65584baaafade88c7feed220905i0",
         "thumbnail": "https://ordinals.com/content/a3198dffc591b52414c3f845375544a10837a65584baaafade88c7feed220905i0",
-        "animationUrl": "https://ordinals.com/content/a3198dffc591b52414c3f845375544a10837a65584baaafade88c7feed220905i0"
+        "animationUrl": "https://ordinals.com/content/a3198dffc591b52414c3f845375544a10837a65584baaafade88c7feed220905i0",
+        "editionCount": 69
       },
       {
         "tokenId": "05561d8bf77be584d25b55dfabd17977c09ea8a3a06513e92ce684c286e2d65bi0",
         "title": "CREATION",
         "image": "https://ordinals.com/content/05561d8bf77be584d25b55dfabd17977c09ea8a3a06513e92ce684c286e2d65bi0",
         "thumbnail": "https://ordinals.com/content/05561d8bf77be584d25b55dfabd17977c09ea8a3a06513e92ce684c286e2d65bi0",
-        "animationUrl": "https://ordinals.com/content/05561d8bf77be584d25b55dfabd17977c09ea8a3a06513e92ce684c286e2d65bi0"
+        "animationUrl": "https://ordinals.com/content/05561d8bf77be584d25b55dfabd17977c09ea8a3a06513e92ce684c286e2d65bi0",
+        "editionCount": 69
       },
       {
         "tokenId": "d5376ddca8a903569fc99c35ec8d0d00807cf09352e8f40bc1af008c37274716i0",
         "title": "PORTAL",
         "image": "https://ordinals.com/content/d5376ddca8a903569fc99c35ec8d0d00807cf09352e8f40bc1af008c37274716i0",
         "thumbnail": "https://ordinals.com/content/d5376ddca8a903569fc99c35ec8d0d00807cf09352e8f40bc1af008c37274716i0",
-        "animationUrl": "https://ordinals.com/content/d5376ddca8a903569fc99c35ec8d0d00807cf09352e8f40bc1af008c37274716i0"
+        "animationUrl": "https://ordinals.com/content/d5376ddca8a903569fc99c35ec8d0d00807cf09352e8f40bc1af008c37274716i0",
+        "editionCount": 68
       },
       {
         "tokenId": "91e22bcce32a02d4fce9ae2f229ec643c2a35004e927addf8135485540559067i0",
         "title": "IMMERSION",
         "image": "https://ordinals.com/content/91e22bcce32a02d4fce9ae2f229ec643c2a35004e927addf8135485540559067i0",
         "thumbnail": "https://ordinals.com/content/91e22bcce32a02d4fce9ae2f229ec643c2a35004e927addf8135485540559067i0",
-        "animationUrl": "https://ordinals.com/content/91e22bcce32a02d4fce9ae2f229ec643c2a35004e927addf8135485540559067i0"
+        "animationUrl": "https://ordinals.com/content/91e22bcce32a02d4fce9ae2f229ec643c2a35004e927addf8135485540559067i0",
+        "editionCount": 64
       },
       {
         "tokenId": "a0926d4ca3b36848d2c24e6f138b09f05c8766bd64e9b212452308df2ee9538ei0",
         "title": "BTC IS DEAD",
         "image": "https://ordinals.com/content/a0926d4ca3b36848d2c24e6f138b09f05c8766bd64e9b212452308df2ee9538ei0",
         "thumbnail": "https://ordinals.com/content/a0926d4ca3b36848d2c24e6f138b09f05c8766bd64e9b212452308df2ee9538ei0",
-        "animationUrl": "https://ordinals.com/content/a0926d4ca3b36848d2c24e6f138b09f05c8766bd64e9b212452308df2ee9538ei0"
+        "animationUrl": "https://ordinals.com/content/a0926d4ca3b36848d2c24e6f138b09f05c8766bd64e9b212452308df2ee9538ei0",
+        "editionCount": 69
       },
       {
         "tokenId": "26e9d13664dfa22b9edbb19aa330f0a2481a85ca5c0402112f8fc39ec2808e98i0",
         "title": "THE GIFT",
         "image": "https://ordinals.com/content/26e9d13664dfa22b9edbb19aa330f0a2481a85ca5c0402112f8fc39ec2808e98i0",
         "thumbnail": "https://ordinals.com/content/26e9d13664dfa22b9edbb19aa330f0a2481a85ca5c0402112f8fc39ec2808e98i0",
-        "animationUrl": "https://ordinals.com/content/26e9d13664dfa22b9edbb19aa330f0a2481a85ca5c0402112f8fc39ec2808e98i0"
+        "animationUrl": "https://ordinals.com/content/26e9d13664dfa22b9edbb19aa330f0a2481a85ca5c0402112f8fc39ec2808e98i0",
+        "editionCount": 69
       },
       {
         "tokenId": "30780ee42beca64079430fad54004fe12e57e8ae4875ff0d87552429b23a2153i0",
         "title": "COLD STORAGE #1",
         "image": "https://ordinals.com/content/30780ee42beca64079430fad54004fe12e57e8ae4875ff0d87552429b23a2153i0",
         "thumbnail": "https://ordinals.com/content/30780ee42beca64079430fad54004fe12e57e8ae4875ff0d87552429b23a2153i0",
-        "animationUrl": "https://ordinals.com/content/30780ee42beca64079430fad54004fe12e57e8ae4875ff0d87552429b23a2153i0"
+        "animationUrl": "https://ordinals.com/content/30780ee42beca64079430fad54004fe12e57e8ae4875ff0d87552429b23a2153i0",
+        "editionCount": 6
       },
       {
         "tokenId": "096728ca2ce8276bd367322e3c4b791a075a71f6c8adb1053a5276ba96f85044i0",
         "title": "FIAT MONEY #1",
         "image": "https://ordinals.com/content/096728ca2ce8276bd367322e3c4b791a075a71f6c8adb1053a5276ba96f85044i0",
         "thumbnail": "https://ordinals.com/content/096728ca2ce8276bd367322e3c4b791a075a71f6c8adb1053a5276ba96f85044i0",
-        "animationUrl": "https://ordinals.com/content/096728ca2ce8276bd367322e3c4b791a075a71f6c8adb1053a5276ba96f85044i0"
+        "animationUrl": "https://ordinals.com/content/096728ca2ce8276bd367322e3c4b791a075a71f6c8adb1053a5276ba96f85044i0",
+        "editionCount": 22
       },
       {
         "tokenId": "0da4c9cb0dcd30205b75cb994d68a49938fb65406796a4adf29ef0fe266bc657i0",
         "title": "RAWLER #1",
         "image": "https://ordinals.com/content/0da4c9cb0dcd30205b75cb994d68a49938fb65406796a4adf29ef0fe266bc657i0",
         "thumbnail": "https://ordinals.com/content/0da4c9cb0dcd30205b75cb994d68a49938fb65406796a4adf29ef0fe266bc657i0",
-        "animationUrl": "https://ordinals.com/content/0da4c9cb0dcd30205b75cb994d68a49938fb65406796a4adf29ef0fe266bc657i0"
+        "animationUrl": "https://ordinals.com/content/0da4c9cb0dcd30205b75cb994d68a49938fb65406796a4adf29ef0fe266bc657i0",
+        "editionCount": 20
       },
       {
         "tokenId": "1246422bc1666133b0543c29d92380394222aeea061cf5598deb0577caba9546i0",
         "title": "WHEN YOU KNOW #1",
         "image": "https://ordinals.com/content/1246422bc1666133b0543c29d92380394222aeea061cf5598deb0577caba9546i0",
         "thumbnail": "https://ordinals.com/content/1246422bc1666133b0543c29d92380394222aeea061cf5598deb0577caba9546i0",
-        "animationUrl": "https://ordinals.com/content/1246422bc1666133b0543c29d92380394222aeea061cf5598deb0577caba9546i0"
+        "animationUrl": "https://ordinals.com/content/1246422bc1666133b0543c29d92380394222aeea061cf5598deb0577caba9546i0",
+        "editionCount": 22
       },
       {
         "tokenId": "12deea5f4770321e9dd05607a8fc025bade2390cfc157448148c2e6ee8ff6bdfi0",
         "title": "CORRUPTED #1",
         "image": "https://ordinals.com/content/12deea5f4770321e9dd05607a8fc025bade2390cfc157448148c2e6ee8ff6bdfi0",
         "thumbnail": "https://ordinals.com/content/12deea5f4770321e9dd05607a8fc025bade2390cfc157448148c2e6ee8ff6bdfi0",
-        "animationUrl": "https://ordinals.com/content/12deea5f4770321e9dd05607a8fc025bade2390cfc157448148c2e6ee8ff6bdfi0"
+        "animationUrl": "https://ordinals.com/content/12deea5f4770321e9dd05607a8fc025bade2390cfc157448148c2e6ee8ff6bdfi0",
+        "editionCount": 13
       },
       {
         "tokenId": "1a123c0f358062e7d9ce49a9fed1bc31d638c17db07e8cb1d30d51a049c26e0fi0",
         "title": "MOON DOG #1",
         "image": "https://ordinals.com/content/1a123c0f358062e7d9ce49a9fed1bc31d638c17db07e8cb1d30d51a049c26e0fi0",
         "thumbnail": "https://ordinals.com/content/1a123c0f358062e7d9ce49a9fed1bc31d638c17db07e8cb1d30d51a049c26e0fi0",
-        "animationUrl": "https://ordinals.com/content/1a123c0f358062e7d9ce49a9fed1bc31d638c17db07e8cb1d30d51a049c26e0fi0"
+        "animationUrl": "https://ordinals.com/content/1a123c0f358062e7d9ce49a9fed1bc31d638c17db07e8cb1d30d51a049c26e0fi0",
+        "editionCount": 15
       },
       {
         "tokenId": "fcfbd122e6e370904f9b381623b5a234f717334ca9b583172b115072f37d0fedi0",
         "title": "Blockrunner",
         "image": "https://ordinals.com/content/fcfbd122e6e370904f9b381623b5a234f717334ca9b583172b115072f37d0fedi0",
         "thumbnail": "https://ordinals.com/content/fcfbd122e6e370904f9b381623b5a234f717334ca9b583172b115072f37d0fedi0",
-        "animationUrl": "https://ordinals.com/content/fcfbd122e6e370904f9b381623b5a234f717334ca9b583172b115072f37d0fedi0"
+        "animationUrl": "https://ordinals.com/content/fcfbd122e6e370904f9b381623b5a234f717334ca9b583172b115072f37d0fedi0",
+        "editionCount": 1
       }
     ],
     "marketplaces": {}

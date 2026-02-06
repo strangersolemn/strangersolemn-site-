@@ -91,11 +91,10 @@ a {
 
 #featured-iframe {
   aspect-ratio: 1;
-  width: 100%;
+  width: 80vmin;
   max-width: 800px;
-  max-height: 70vh;
+  max-height: 80vmin;
   display: none;
-  max-width:800px; max-height:70vh;
 }
 
 #featured-art.hidden,
@@ -316,9 +315,6 @@ a {
   min-height: 400px;
   max-height: 90vh;
   position: relative;
-  overflow: hidden;
-  min-height: 400px;
-  overflow:hidden;
 }
 
 .image-actions {
@@ -408,13 +404,12 @@ a {
 
 #detail-iframe {
   aspect-ratio: 1;
-  width: 100%;
+  width: 70vmin;
   max-width: 800px;
-  max-height: 80vh;
+  max-height: 70vmin;
   display: none;
   border: none;
   background: var(--bg-tertiary);
-  width:100%; max-width:800px; max-height:80vh;
 }
 
 #detail-image.hidden,

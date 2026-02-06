@@ -27,8 +27,9 @@ let currentCollectionId = null;
 let currentPieceIndex = 0;
 let activeChainFilter = null;
 
-// Check if collection is an edition (supply > unique pieces shown)
+// Check if collection is an edition (supply > unique pieces shown, or explicitly flagged)
 function isEditionCollection(collection) {
+  if (collection.isEditions) return true;
   const uniqueCount = collection.uniquePieces || collection.pieces?.length || 0;
   const supply = collection.supply || uniqueCount;
   return supply > uniqueCount;
@@ -588,9 +589,11 @@ function showRandomArt() {
   setTimeout(() => {
     const showInfo = () => {
       artTitle.textContent = pieceTitle;
-      // Show edition count for edition collections, piece count for others
+      // Show per-piece edition count if available, else collection-level info
       let infoText;
-      if (isEditionCollection(collection)) {
+      if (randomPiece?.editionCount) {
+        infoText = collection.title + ' • 1/' + randomPiece.editionCount;
+      } else if (isEditionCollection(collection)) {
         infoText = collection.title + ' • ' + (collection.supply || '?') + ' editions';
       } else {
         infoText = collection.title + ' • ' + (collection.pieces?.length || collection.supply || '?') + ' pieces';
