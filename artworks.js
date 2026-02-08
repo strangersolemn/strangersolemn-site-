@@ -25645,7 +25645,7 @@ const collections = [
     "description": "",
     "artistNote": "",
     "onchain": false,
-    "year": 2021,
+    "year": 2023,
     "marketplaces": {},
     "pieces": [
       {
