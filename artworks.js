@@ -22915,9 +22915,9 @@ const collections = [
     "uniquePieces": 6,
     "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/948ec733badb9ba67ec1e46b7a6457f1",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Strangers offshoots",
     "onchain": false,
-    "year": 2022,
+    "year": 2021,
     "pieces": [
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831509213716152321",
@@ -25643,7 +25643,7 @@ const collections = [
     "uniquePieces": 24,
     "heroImage": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
     "description": "",
-    "artistNote": "Strangers offshoots",
+    "artistNote": "",
     "onchain": false,
     "year": 2021,
     "marketplaces": {},
@@ -26208,7 +26208,7 @@ const collections = [
     "description": "false start",
     "artistNote": "Your guess is as good as mine",
     "onchain": false,
-    "year": 2022,
+    "year": 2024,
     "pieces": [
       {
         "tokenId": "0",
@@ -28154,7 +28154,7 @@ const collections = [
     "description": "",
     "artistNote": "Original artworks across multiple smart contracts",
     "onchain": false,
-    "year": 2021,
+    "year": 2024,
     "pieces": [
       {
         "tokenId": "1",
