@@ -25639,13 +25639,13 @@ const collections = [
     "title": "Tez Misc",
     "chain": "tezos",
     "contract": "",
-    "supply": 3,
-    "uniquePieces": 3,
+    "supply": 24,
+    "uniquePieces": 24,
     "heroImage": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
     "description": "",
     "artistNote": "Strangers offshoots",
     "onchain": false,
-    "year": 2022,
+    "year": 2021,
     "marketplaces": {},
     "pieces": [
       {
