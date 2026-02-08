@@ -25639,8 +25639,8 @@ const collections = [
     "title": "Tez Misc",
     "chain": "tezos",
     "contract": "",
-    "supply": 24,
-    "uniquePieces": 24,
+    "supply": 9,
+    "uniquePieces": 9,
     "heroImage": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
     "description": "",
     "artistNote": "",
@@ -25669,6 +25669,65 @@ const collections = [
         "thumbnail": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB",
         "contract": "KT1FQFGviugjYyBp56C94tx71immkESMMUqb"
       },
+      {
+        "title": "FOMO Pill",
+        "tokenId": "120",
+        "image": "https://ipfs.io/ipfs/QmPUztpRNeKMTB59wQfx3UPqtKD3BMpueagQhqUTb9JuEu",
+        "thumbnail": "https://ipfs.io/ipfs/QmPUztpRNeKMTB59wQfx3UPqtKD3BMpueagQhqUTb9JuEu",
+        "description": "Take twice a day to soothe any degenerate urges"
+      },
+      {
+        "title": "Slippage",
+        "tokenId": "6",
+        "image": "https://ipfs.io/ipfs/QmYbT5UKc6jNKtUGTKRtsKfu7NBtuRa76Amtc3TmSjVGL1",
+        "thumbnail": "https://ipfs.io/ipfs/QmYbT5UKc6jNKtUGTKRtsKfu7NBtuRa76Amtc3TmSjVGL1",
+        "description": ""
+      },
+      {
+        "title": "I'm Doing This for Both of Us",
+        "tokenId": "8",
+        "image": "https://ipfs.io/ipfs/Qmbqy7EzQiEjbiFmsyxACi3Zg1D7u9sNEpnmVWZGhnGc1c",
+        "thumbnail": "https://ipfs.io/ipfs/Qmbqy7EzQiEjbiFmsyxACi3Zg1D7u9sNEpnmVWZGhnGc1c",
+        "description": ""
+      },
+      {
+        "title": "Beady Eyes",
+        "tokenId": "3933",
+        "image": "https://ipfs.io/ipfs/QmWNPVU3Du7eQTgsxftL9VyJm7Crjjr3zEz6fcgq4ZSeSJ",
+        "thumbnail": "https://ipfs.io/ipfs/QmWNPVU3Du7eQTgsxftL9VyJm7Crjjr3zEz6fcgq4ZSeSJ",
+        "description": "I just wanna make art all day"
+      },
+      {
+        "title": "Bagman",
+        "tokenId": "11018",
+        "image": "https://ipfs.io/ipfs/Qmdqfzwmdz4vGMxZoBQi8MQpepuoVL4UFutV7vzUMqurU1",
+        "thumbnail": "https://ipfs.io/ipfs/Qmdqfzwmdz4vGMxZoBQi8MQpepuoVL4UFutV7vzUMqurU1",
+        "animationUrl": "https://ipfs.io/ipfs/QmcdSfCxNVbN87EdACU5RwNd1xdNcj2QowZCCfE6frNNaQ",
+        "description": "Bagman is the first collab between Solemn Stranger and The Owl"
+      },
+      {
+        "title": "Gatekeepers",
+        "tokenId": "6105",
+        "image": "https://ipfs.io/ipfs/QmeYZ3STok2vzkEfC4KhPcMNCDDwYHxAJF1g7ZMzaNpNUQ",
+        "thumbnail": "https://ipfs.io/ipfs/QmeYZ3STok2vzkEfC4KhPcMNCDDwYHxAJF1g7ZMzaNpNUQ",
+        "description": "They roam the corridors of power"
+      }
+    ]
+  },
+  {
+    "id": "hic-et-nunc",
+    "title": "Hic Et Nunc",
+    "chain": "tezos",
+    "contract": "KT1RJ6PbjHpwc3M5rw5s2Nbmefwbuwbdxton",
+    "supply": 21,
+    "uniquePieces": 21,
+    "heroImage": "https://ipfs.io/ipfs/QmQsi99Zkej7AvUa9SbGogo3XeTEMBpMm8xKVdWSnWaK9X",
+    "description": "",
+    "artistNote": "",
+    "onchain": false,
+    "year": 2021,
+    "marketplaces": {},
+    "pieces": [
       {
         "title": "Loose Change",
         "tokenId": "249179",
