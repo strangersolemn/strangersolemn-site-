@@ -186,7 +186,7 @@ const collections = [
     "supply": 34,
     "heroImage": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Bitcoin first acid house family",
     "onchain": true,
     "year": 2025,
     "pieces": [
@@ -225,7 +225,7 @@ const collections = [
     "supply": 19,
     "heroImage": "https://ordinals.com/content/e7d54f68fedc1071d5968b6b2e935a80d8b4c7f54917f782889290449afccf01i0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "19 Cursed warriors",
     "onchain": true,
     "year": 2024,
     "pieces": [
@@ -373,7 +373,7 @@ const collections = [
     "supply": 105,
     "heroImage": "https://ordinals.com/content/24246f4c6c2b39bce3e0b0fb5515513bbbd88958b90a94ee9378e575b9e85c7ei6",
     "description": "",
-    "artistNote": "",
+    "artistNote": "A homage the classic 'The Doomed'. by Xcopyart",
     "onchain": true,
     "year": 2024,
     "pieces": [
@@ -1123,7 +1123,7 @@ const collections = [
     "supply": 2693,
     "heroImage": "https://ordinals.com/content/a65f7c2d446c8706d4957b8b6fa1dcc2578be2c3079b1b16d45b9b6ca8e528cfi0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "A community compiled parody collection created to celebrate the BTC ETF Approval",
     "onchain": true,
     "year": 2024,
     "pieces": [
@@ -19990,7 +19990,7 @@ const collections = [
     "supply": 21,
     "heroImage": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
     "description": "",
-    "artistNote": "",
+    "artistNote": "21 Roses forever on chain",
     "onchain": true,
     "isEditions": false,
     "year": 2024,
@@ -20014,7 +20014,7 @@ const collections = [
     "supply": 1028,
     "heroImage": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
     "description": "",
-    "artistNote": "",
+    "artistNote": "12 Artist collab curated by yours truly",
     "onchain": true,
     "year": 2024,
     "pieces": [
@@ -20120,12 +20120,12 @@ const collections = [
   },
   {
     "id": "btc-editions",
-    "title": "BTC Editions",
+    "title": "BTC Editions 23/26",
     "chain": "ordinals",
     "supply": 5893,
     "heroImage": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Various editions and drops",
     "onchain": true,
     "year": 2024,
     "pieces": [
@@ -20252,7 +20252,7 @@ const collections = [
     "supply": 200,
     "heroImage": "https://ordinals.com/content/ee1d744a8a61534e81f465e051be04084a9aaac6a550242be9cfb85d0ee1c224i0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Dance Dance I said Dance",
     "onchain": true,
     "year": 2025,
     "pieces": [
@@ -21668,7 +21668,7 @@ const collections = [
     "uniquePieces": 14,
     "heroImage": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Numbered prints released on the iconic Gamma Prints",
     "onchain": true,
     "year": 2023,
     "pieces": [
@@ -21794,7 +21794,7 @@ const collections = [
     "supply": 22,
     "heroImage": "https://ordinals.com/content/711f2f43186dd861aea98d3d2950871856f1aa5011ec6825f21e6eb6f41c73bdi0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Blockclocks are dynamic network art that react to Bitcoin blocks",
     "onchain": true,
     "year": 2025,
     "pieces": [
@@ -21963,7 +21963,7 @@ const collections = [
     "supply": 25,
     "heroImage": "https://ordinals.com/content/2c762a593dc60bcd92169b07de5a60d588a94819d165178ca317d45e4eeb2b11i0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "1/1 Orginals and Print Master Copies",
     "onchain": true,
     "year": 2023,
     "pieces": [
@@ -22153,7 +22153,7 @@ const collections = [
     "supply": 21,
     "heroImage": "https://ordinals.com/content/60ee1a7e10109c5c9374d9fc8c31bbfeb972b3c97ea1664aeb1903e32f815f4di0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "21 CC0 Recursive Glitch inscriptions",
     "onchain": true,
     "year": 2023,
     "pieces": [
@@ -22316,7 +22316,7 @@ const collections = [
     "supply": 7,
     "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/4ac6a9b00c3946b4e28693021c822a09",
     "description": "Exclusive burn / redeem collection",
-    "artistNote": "For Diamond Hands only",
+    "artistNote": "Exclusive collection for Diamond Hands only",
     "onchain": false,
     "pieces": [
       {
@@ -22449,7 +22449,7 @@ const collections = [
     "supply": 7,
     "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/493b3b8a1f5102a7b7ddcf847db6f88a",
     "description": "Art Editions",
-    "artistNote": "This collection began in Jan 23, fresh off the back of my 2022 everydays, the style is what I call my reflections style",
+    "artistNote": "Art for art sake",
     "onchain": false,
     "pieces": [
       {
@@ -22572,7 +22572,7 @@ const collections = [
     "uniquePieces": 4,
     "heroImage": "https://ipfs.io/ipfs/QmRkX4xkoEMoE2kxWrv5To2DyzmxbzWxFvBYXJLSUjPsaE/nft.gif",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Welcome to the digital jungle",
     "onchain": false,
     "year": 2023,
     "pieces": [
@@ -22610,54 +22610,6 @@ const collections = [
     }
   },
   {
-    "id": "open-edition-tez",
-    "title": "Open Edition",
-    "chain": "tezos",
-    "contract": "KT1Pss7sHcS6B66d8ACJ7V98kfSxQmvU8mK5",
-    "supply": 1,
-    "uniquePieces": 1,
-    "heroImage": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
-    "description": "OE's by Solemn",
-    "artistNote": "",
-    "onchain": false,
-    "year": 2023,
-    "pieces": [
-      {
-        "tokenId": "1",
-        "title": "Tez Pole",
-        "image": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
-        "thumbnail": "https://ipfs.io/ipfs/QmbYuYV76ZAXoHB5Xk8QoecjKumVeXkdA6eB16yVQLjkQH"
-      }
-    ],
-    "marketplaces": {
-      "objkt": "https://objkt.com/collection/KT1Pss7sHcS6B66d8ACJ7V98kfSxQmvU8mK5"
-    }
-  },
-  {
-    "id": "strange-encounters",
-    "title": "Strange Encounters",
-    "chain": "tezos",
-    "contract": "KT1DLKUBqXFwLvEKGPdhXFaTm3q7jYa5PiLR",
-    "supply": 1,
-    "uniquePieces": 1,
-    "heroImage": "https://ipfs.io/ipfs/QmdVZKNzpk2BiKwgkTd5FgJ1WKLdJEKjProK2dyWEG7Jn3",
-    "description": "Collabs with Frens",
-    "artistNote": "",
-    "onchain": false,
-    "year": 2023,
-    "pieces": [
-      {
-        "tokenId": "0",
-        "title": "Stuck in the Noise With You",
-        "image": "https://ipfs.io/ipfs/QmdVZKNzpk2BiKwgkTd5FgJ1WKLdJEKjProK2dyWEG7Jn3",
-        "thumbnail": "https://ipfs.io/ipfs/QmcYhQ2FJ1BQyww4wwn7nFJhEKWGgQzPfSSANR1uHYz6b8"
-      }
-    ],
-    "marketplaces": {
-      "objkt": "https://objkt.com/collection/KT1DLKUBqXFwLvEKGPdhXFaTm3q7jYa5PiLR"
-    }
-  },
-  {
     "id": "editions-by-solemn",
     "title": "Editions by Solemn",
     "chain": "ethereum",
@@ -22666,7 +22618,7 @@ const collections = [
     "uniquePieces": 25,
     "heroImage": "https://arweave.net/MFREzMqF9gaGZr5vjAOrHcOcLuEiu_oEaMfJhbJgaj0",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Minted across multiple smart contracts",
     "onchain": false,
     "isEditions": true,
     "year": 2022,
@@ -22860,7 +22812,7 @@ const collections = [
     "uniquePieces": 12,
     "heroImage": "https://arweave.net/58E5AJ4uaePN8r1yATkG4m40aflAguQffDNFSdVz1pw",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Blockchain parties feat CC0 collections",
     "onchain": false,
     "isEditions": true,
     "year": 2022,
@@ -22961,53 +22913,52 @@ const collections = [
     "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
     "supply": 6,
     "uniquePieces": 6,
-    "heroImage": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/08aa951cbb64b5f5a10dc55e608f99a4.gif",
+    "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/948ec733badb9ba67ec1e46b7a6457f1",
     "description": "",
     "artistNote": "",
     "onchain": false,
-    "imagesUnavailable": true,
     "year": 2022,
     "pieces": [
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831509213716152321",
         "title": "#001 Feat Stranger #28",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/08aa951cbb64b5f5a10dc55e608f99a4.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/08aa951cbb64b5f5a10dc55e608f99a4.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/948ec733badb9ba67ec1e46b7a6457f1",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/948ec733badb9ba67ec1e46b7a6457f1",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831538900530102273",
         "title": "#002 Feat Stranger #25",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3908cd688cfe2581dd760d7266a349b5.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3908cd688cfe2581dd760d7266a349b5.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/fc25ba03da69f3e80e2cd09a22251016",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/fc25ba03da69f3e80e2cd09a22251016",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831767598948679681",
         "title": "#003 Feat Stranger #113",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/178966044d750be0adb9cb1c6e844242.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/178966044d750be0adb9cb1c6e844242.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/69804d109143592e23037b701a7b17b8",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/69804d109143592e23037b701a7b17b8",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831780793088212993",
         "title": "#004",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/da9e6d1d1de21ff033dbd93fac7d47f9.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/da9e6d1d1de21ff033dbd93fac7d47f9.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/b7c6bdabe6962f0167d62a96aa6946a3",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/b7c6bdabe6962f0167d62a96aa6946a3",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831840166716112897",
         "title": "#005 Feat Stranger #109",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cfdaebc4c47385b834baece55da34427.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cfdaebc4c47385b834baece55da34427.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/e95273da48d68e3a3b1807d8ffb6e8f4",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/e95273da48d68e3a3b1807d8ffb6e8f4",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831924829111451649",
         "title": "#006 Bielzo Guard",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/469a40837ce6bc1b83acb674f1f937d8.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/469a40837ce6bc1b83acb674f1f937d8.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/f7f11e0cae5d77fd984b3f58b9eebd62",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/f7f11e0cae5d77fd984b3f58b9eebd62",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       }
     ],
@@ -23024,7 +22975,7 @@ const collections = [
     "uniquePieces": 11,
     "heroImage": "https://arweave.net/R09-KodUD-xsWN6mSqNHQNRhitPgY0d4lcsR8lWZ56Q",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Exclusive PFP collectors for 1/1 holders only",
     "onchain": false,
     "year": 2022,
     "pieces": [
@@ -23119,7 +23070,7 @@ const collections = [
     "uniquePieces": 365,
     "heroImage": "https://arweave.net/l08RHTHgskzmgKvW2sb1km6-fP2zNgUrOMmVek7ohcM",
     "description": "",
-    "artistNote": "",
+    "artistNote": "1 year of cerative energy",
     "onchain": false,
     "year": 2022,
     "pieces": [
@@ -25684,6 +25635,43 @@ const collections = [
     }
   },
   {
+    "id": "tez-misc",
+    "title": "Tez Misc",
+    "chain": "tezos",
+    "contract": "",
+    "supply": 3,
+    "uniquePieces": 3,
+    "heroImage": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
+    "description": "",
+    "artistNote": "Strangers offshoots",
+    "onchain": false,
+    "year": 2022,
+    "marketplaces": {},
+    "pieces": [
+      {
+        "tokenId": "1",
+        "title": "Tez Pole",
+        "image": "https://ipfs.io/ipfs/QmcHe7ZFgcgLmnpKwVGpJ5wH5LfEH1DtqvB9YKD8aGTjZs",
+        "thumbnail": "https://ipfs.io/ipfs/QmbYuYV76ZAXoHB5Xk8QoecjKumVeXkdA6eB16yVQLjkQH",
+        "contract": "KT1Pss7sHcS6B66d8ACJ7V98kfSxQmvU8mK5"
+      },
+      {
+        "tokenId": "0",
+        "title": "Stuck in the Noise With You",
+        "image": "https://ipfs.io/ipfs/QmdVZKNzpk2BiKwgkTd5FgJ1WKLdJEKjProK2dyWEG7Jn3",
+        "thumbnail": "https://ipfs.io/ipfs/QmcYhQ2FJ1BQyww4wwn7nFJhEKWGgQzPfSSANR1uHYz6b8",
+        "contract": "KT1DLKUBqXFwLvEKGPdhXFaTm3q7jYa5PiLR"
+      },
+      {
+        "tokenId": "0",
+        "title": "Fuk u PuNks",
+        "image": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB",
+        "thumbnail": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB",
+        "contract": "KT1FQFGviugjYyBp56C94tx71immkESMMUqb"
+      }
+    ]
+  },
+  {
     "id": "the-creeps",
     "title": "The Creeps",
     "chain": "tezos",
@@ -25692,7 +25680,7 @@ const collections = [
     "uniquePieces": 6,
     "heroImage": "https://ipfs.io/ipfs/QmSkDJpahRNeraZ57pA8Cen36NYfFcvNmDL3hyHktyNbd2",
     "description": "No matter what lies we tell, we cannot fool our own hearts",
-    "artistNote": "",
+    "artistNote": "Dark Vibes",
     "onchain": false,
     "year": 2022,
     "pieces": [
@@ -25738,30 +25726,6 @@ const collections = [
     }
   },
   {
-    "id": "fuk-u-punks",
-    "title": "Fuk u PuNks",
-    "chain": "tezos",
-    "contract": "KT1FQFGviugjYyBp56C94tx71immkESMMUqb",
-    "supply": 1,
-    "uniquePieces": 1,
-    "heroImage": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB",
-    "description": "",
-    "artistNote": "",
-    "onchain": false,
-    "year": 2022,
-    "pieces": [
-      {
-        "tokenId": "0",
-        "title": "Fuk u PuNks",
-        "image": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB",
-        "thumbnail": "https://ipfs.io/ipfs/QmVN4w6K3pCLFVtR5adwBEhVNJkWwMby3jW7n3Bt5eFPWB"
-      }
-    ],
-    "marketplaces": {
-      "objkt": "https://objkt.com/collection/KT1FQFGviugjYyBp56C94tx71immkESMMUqb"
-    }
-  },
-  {
     "id": "parrot-party",
     "title": "Parrot Party",
     "chain": "tezos",
@@ -25770,7 +25734,7 @@ const collections = [
     "uniquePieces": 51,
     "heroImage": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
     "description": "50 Parrots shall enter, no more, no less",
-    "artistNote": "",
+    "artistNote": "50 Parrots shall enter no more no less",
     "onchain": false,
     "year": 2022,
     "pieces": [
@@ -26094,7 +26058,7 @@ const collections = [
     "uniquePieces": 8,
     "heroImage": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
     "description": "false start",
-    "artistNote": "",
+    "artistNote": "Your guess is as good as mine",
     "onchain": false,
     "year": 2022,
     "pieces": [
@@ -26159,7 +26123,7 @@ const collections = [
     "supply": 300,
     "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/dbb2778f4dc6212168c4451e345d0ff8",
     "description": "A 300 Piece PFP collection",
-    "artistNote": "Strangers is my OG collection, released in 2021 across 8 months, before the days of apple pencils, the artwork is finger painted",
+    "artistNote": "Strangers is my OG collection, released in 2021 one by one over 8 months, this is where I made my bones.",
     "onchain": false,
     "isEditions": false,
     "pieces": [
@@ -26214,168 +26178,30 @@ const collections = [
     "year": 2021
   },
   {
-    "id": "when-your-strange",
-    "title": "When Your Strange",
-    "chain": "ethereum",
-    "contract": "0x841E16499a31f265b128A94DeCc625801702024D",
-    "supply": 17,
-    "uniquePieces": 17,
-    "heroImage": "https://ipfs.io/ipfs/QmNkyj7N2rAo9178HMRQBdooiizbZmJ9tAhx9q7A16Z4HX/nft.gif",
-    "description": "",
-    "artistNote": "",
-    "onchain": false,
-    "year": 2021,
-    "pieces": [
-      {
-        "tokenId": "1",
-        "title": "The Artist",
-        "image": "https://ipfs.io/ipfs/QmNkyj7N2rAo9178HMRQBdooiizbZmJ9tAhx9q7A16Z4HX/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmNkyj7N2rAo9178HMRQBdooiizbZmJ9tAhx9q7A16Z4HX/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "2",
-        "title": "Revolutionary",
-        "image": "https://ipfs.io/ipfs/QmTErjdvsQQUf8cTc6ei26pu2ueKtoSuSoYc99dCE1SFku/nft.jpg",
-        "thumbnail": "https://ipfs.io/ipfs/QmTErjdvsQQUf8cTc6ei26pu2ueKtoSuSoYc99dCE1SFku/nft.jpg",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "3",
-        "title": "King Glitch-a-bit",
-        "image": "https://ipfs.io/ipfs/QmV1fLC3ECJjKJjJWLpqU5X2kewHHyzzruLydLSjk9mAek/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmV1fLC3ECJjKJjJWLpqU5X2kewHHyzzruLydLSjk9mAek/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "4",
-        "title": "White lines",
-        "image": "https://ipfs.io/ipfs/QmV13uzDSY5xfahJKtjr5GVGuRAAQANavnDExQUUZ7oPmE/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmV13uzDSY5xfahJKtjr5GVGuRAAQANavnDExQUUZ7oPmE/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "5",
-        "title": "Afterthought",
-        "image": "https://ipfs.io/ipfs/QmRhQFTzMuY1QAZ7opupGxVYPA6Z6KLN4oC35oaiGth2Bz/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmRhQFTzMuY1QAZ7opupGxVYPA6Z6KLN4oC35oaiGth2Bz/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "6",
-        "title": "Attention Seeker",
-        "image": "https://ipfs.io/ipfs/QmQTwTXpruV32b3WkLzP683csbfcAu9dHwFRjTP6uAttp8/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmQTwTXpruV32b3WkLzP683csbfcAu9dHwFRjTP6uAttp8/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "7",
-        "title": "Doxxed",
-        "image": "https://ipfs.io/ipfs/QmWhVUFMdtJVd1ZBYt6Tkt4WDAQP3x2B9frShMZ2mjeUgB/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmWhVUFMdtJVd1ZBYt6Tkt4WDAQP3x2B9frShMZ2mjeUgB/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "8",
-        "title": "Quid Pro Quo",
-        "image": "https://ipfs.io/ipfs/QmbE8gMhQ7kKPcFjwa2vdz9MMGCfpj88EGqd4CUED2SrU7/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmbE8gMhQ7kKPcFjwa2vdz9MMGCfpj88EGqd4CUED2SrU7/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "9",
-        "title": "Wifey",
-        "image": "https://ipfs.io/ipfs/QmbLidwEik8dE5HTknzPZ2CW2QQpYEPKqLz5BqAZzdvtqs/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmbLidwEik8dE5HTknzPZ2CW2QQpYEPKqLz5BqAZzdvtqs/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "10",
-        "title": "Punk My Bitch Up",
-        "image": "https://ipfs.io/ipfs/QmTM9jQX1TyWyjU7f1nAU2g6XSR4EnNqoZi1XyMuTjUb3K/nft.mp4",
-        "thumbnail": "https://ipfs.io/ipfs/QmTM9jQX1TyWyjU7f1nAU2g6XSR4EnNqoZi1XyMuTjUb3K/nft.mp4",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "11",
-        "title": "The Glitchmaker",
-        "image": "https://ipfs.io/ipfs/Qmen8srveum13cjFDPUNB6auMatt24jAthMv6Kn9c3bquM/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/Qmen8srveum13cjFDPUNB6auMatt24jAthMv6Kn9c3bquM/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "12",
-        "title": "Snakes and Ladders",
-        "image": "https://ipfs.io/ipfs/QmRkxW1saEJ9ULZtfLF2VG4kMHH6KVaosFst4UH9ZWEs8L/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmRkxW1saEJ9ULZtfLF2VG4kMHH6KVaosFst4UH9ZWEs8L/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "13",
-        "title": "You've Been Here Before, You and your Mind",
-        "image": "https://ipfs.io/ipfs/Qma6zqDkxKAVj5pbJEhH3EYs3gScZXhyuwbsPnN2i6ZU1o/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/Qma6zqDkxKAVj5pbJEhH3EYs3gScZXhyuwbsPnN2i6ZU1o/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "14",
-        "title": "Salvation",
-        "image": "https://ipfs.io/ipfs/QmRHzvCAN9q5CkgTwajJeoYP6pZztKxvZ9jo2Q36fMwgiH/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmRHzvCAN9q5CkgTwajJeoYP6pZztKxvZ9jo2Q36fMwgiH/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "15",
-        "title": "Censor",
-        "image": "https://ipfs.io/ipfs/QmRUM1RtsdBrHzajGTjDD1YRS5BKSK99exdCvUz1SuW9EU/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmRUM1RtsdBrHzajGTjDD1YRS5BKSK99exdCvUz1SuW9EU/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "16",
-        "title": "Patience",
-        "image": "https://ipfs.io/ipfs/QmPPLraEUVWbPicLFvxgVMTDdRfFkrKgBtEpsi9zbf7E6H/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmPPLraEUVWbPicLFvxgVMTDdRfFkrKgBtEpsi9zbf7E6H/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      },
-      {
-        "tokenId": "17",
-        "title": "Ogle",
-        "image": "https://ipfs.io/ipfs/QmdFofatrvECkj8w4T3uAAsyoNhTi5Qm7AGyNCoHAB461b/nft.gif",
-        "thumbnail": "https://ipfs.io/ipfs/QmdFofatrvECkj8w4T3uAAsyoNhTi5Qm7AGyNCoHAB461b/nft.gif",
-        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
-      }
-    ],
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/when-your-strange"
-    }
-  },
-  {
     "id": "ether-creeps",
     "title": "Ether Creeps",
     "chain": "ethereum",
     "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
     "supply": 2,
     "uniquePieces": 2,
-    "heroImage": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8edf78f21d9662a5773c806e63f3c558.gif",
+    "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/945b2f274d9b1916aeacf6354e3790e4",
     "description": "",
     "artistNote": "",
-    "imagesUnavailable": true,
     "onchain": false,
     "year": 2021,
     "pieces": [
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831741210669613057",
         "title": "ETHER CREEP #002",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8edf78f21d9662a5773c806e63f3c558.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8edf78f21d9662a5773c806e63f3c558.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/945b2f274d9b1916aeacf6354e3790e4",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/945b2f274d9b1916aeacf6354e3790e4",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831748907251007489",
         "title": "ETHER CREEP #010",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/df96da8a6ad7fea3d7b5cd8d08b22266.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/df96da8a6ad7fea3d7b5cd8d08b22266.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/248920d91b2237762d8f8a522fa657da",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/248920d91b2237762d8f8a522fa657da",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       }
     ],
@@ -26392,7 +26218,7 @@ const collections = [
     "uniquePieces": 150,
     "heroImage": "https://ipfs.io/ipfs/QmPg9oSR7aFz8yZeznwbtC8AkAqu2Xkux4Dut97S124zaq/1.jpg",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Exclsuive airdrop for Strangers NFT holders",
     "onchain": false,
     "isEditions": false,
     "year": 2021,
@@ -27459,711 +27285,710 @@ const collections = [
     "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
     "supply": 100,
     "uniquePieces": 100,
-    "heroImage": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0692a02c56076adae0e6e8c17be137f6.jpeg",
+    "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/0bb5d0a8abdb311aab39fb735be09a4e",
     "description": "",
-    "artistNote": "",
+    "artistNote": "1/1 Originals made in 2021",
     "onchain": false,
-    "imagesUnavailable": true,
     "year": 2021,
     "pieces": [
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831430048878952449",
         "title": "Day 1",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0692a02c56076adae0e6e8c17be137f6.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0692a02c56076adae0e6e8c17be137f6.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/0bb5d0a8abdb311aab39fb735be09a4e",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/0bb5d0a8abdb311aab39fb735be09a4e",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831432247902208001",
         "title": "Self Portrait",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/d69b1a0d6286cf68be1ff6c825a91743.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/d69b1a0d6286cf68be1ff6c825a91743.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/7776b3688952d01761711b5771996b40",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/7776b3688952d01761711b5771996b40",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831433347413835777",
         "title": "Folie a deux",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/c6fe6259885a679ec041a8541aacb62b.png",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/c6fe6259885a679ec041a8541aacb62b.png",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/17206c777e845ff7edb6dba7bf4c1da2",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/17206c777e845ff7edb6dba7bf4c1da2",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831434446925463553",
         "title": "Day 4 - Seedy Gaze",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/75e902b987f69b6550acc605ccb2a8b6.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/75e902b987f69b6550acc605ccb2a8b6.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/bd45bc4fedb46e99714d9c6536df2456",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/bd45bc4fedb46e99714d9c6536df2456",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831435546437091329",
         "title": "Randall Flag",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/79781b26278953b61889cddac2af4af3.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/79781b26278953b61889cddac2af4af3.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/2e756727c6c9087e1933525a5729d481",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/2e756727c6c9087e1933525a5729d481",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831436645948719105",
         "title": "Distraction",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/66a4df8a2fad8ea6d6c705ae642d8830.png",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/66a4df8a2fad8ea6d6c705ae642d8830.png",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/429151be285e13f7c21c97cd90f41f7e",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/429151be285e13f7c21c97cd90f41f7e",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831437745460346881",
         "title": "Tragic Comedy",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/9b7a455d636305224c9342929962a280.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/9b7a455d636305224c9342929962a280.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/9a63bd66c8d1ba22cb542bebcdbd032f",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/9a63bd66c8d1ba22cb542bebcdbd032f",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831438844971974657",
         "title": "Edgy",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3960e7edbf20b69346679d1a01e79771.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3960e7edbf20b69346679d1a01e79771.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/ba0972eac783b718133ba659194846ac",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/ba0972eac783b718133ba659194846ac",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831439944483602433",
         "title": "Bliss",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/f2e1995aedf91fd5d9b025b956a30d19.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/f2e1995aedf91fd5d9b025b956a30d19.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/894a8c45223ab1e352ad2b1a4c88c72d",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/894a8c45223ab1e352ad2b1a4c88c72d",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831441043995230209",
         "title": "Blofield",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e9dc5bf779825e59c3072516291db36c.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e9dc5bf779825e59c3072516291db36c.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/c239713ccccbb754e5b8abdf51d6ec4f",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/c239713ccccbb754e5b8abdf51d6ec4f",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831442143506857985",
         "title": "Deblo",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0550abc5199409d0aebbf88a69a53581.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0550abc5199409d0aebbf88a69a53581.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/40e3fb7bc280ee70fd31368a2af51854",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/40e3fb7bc280ee70fd31368a2af51854",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831443243018485761",
         "title": "Pingrin",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/d249599f48e04db0d9b7ae8912364375.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/d249599f48e04db0d9b7ae8912364375.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/e1350b5000d30d07b56c30ffaf11a9f2",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/e1350b5000d30d07b56c30ffaf11a9f2",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831444342530113537",
         "title": "Boxit",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0cf81edf5c45f8d3572fd4fa25a16115.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0cf81edf5c45f8d3572fd4fa25a16115.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/9daffe4d7b923b85cbc201e1407c9b62",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/9daffe4d7b923b85cbc201e1407c9b62",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831445442041741313",
         "title": "Eye See",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/efd8505591d79c62d902c177a0800874.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/efd8505591d79c62d902c177a0800874.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/453e1582fe46a7786a550735de9549ee",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/453e1582fe46a7786a550735de9549ee",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831446541553369089",
         "title": "Greener Grass",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/c643c8d54aa6c573ade053332737b725.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/c643c8d54aa6c573ade053332737b725.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/57413dfa62440a772cceaa87d26e3456",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/57413dfa62440a772cceaa87d26e3456",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831447641064996865",
         "title": "What me worry",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0cafb14796b74a4cd03331690a5c1a9f.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0cafb14796b74a4cd03331690a5c1a9f.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/4675163f12804e8b483aef5a67105c59",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/4675163f12804e8b483aef5a67105c59",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831448740576624641",
         "title": "tedagita",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/2e0b4421c14a88043d2cc4584f171bf8.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/2e0b4421c14a88043d2cc4584f171bf8.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/af1656dab3635e884c37c3038be8af91",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/af1656dab3635e884c37c3038be8af91",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831449840088252417",
         "title": "Gripper",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8288458263d0293c27d185b1a74ae1fb.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8288458263d0293c27d185b1a74ae1fb.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/7eb29d69f0fdad73f1f6ecd5ad4b9824",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/7eb29d69f0fdad73f1f6ecd5ad4b9824",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831450939599880193",
         "title": "Skully",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a3222d9c22c0c256f1d425bd21e90b77.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a3222d9c22c0c256f1d425bd21e90b77.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/b14c6522bd48bf43121ab15ece35dc56",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/b14c6522bd48bf43121ab15ece35dc56",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831452039111507969",
         "title": "Ivan",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/51db7e0a7a5466c2c097ba3f878ee006.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/51db7e0a7a5466c2c097ba3f878ee006.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/570c48b515ac59740acf60e495cb1c4c",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/570c48b515ac59740acf60e495cb1c4c",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831453138623135745",
         "title": "Defamation",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3858c42d3a4c07d59614a3eb10286eb5.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3858c42d3a4c07d59614a3eb10286eb5.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/0c31a5b3e666b45bafc1d0f4f17d0ddd",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/0c31a5b3e666b45bafc1d0f4f17d0ddd",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831454238134763521",
         "title": "Regret Tank",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a299487f201b59badae77727b78dc050.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a299487f201b59badae77727b78dc050.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/4fefdffbf7cf5e7352dfa2b810b5ff9d",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/4fefdffbf7cf5e7352dfa2b810b5ff9d",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831455337646391297",
         "title": "Horace",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/1e2faef9d781163d219703f91b03a8b5.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/1e2faef9d781163d219703f91b03a8b5.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/ba49f603b41eb883f11abafbe70fe090",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/ba49f603b41eb883f11abafbe70fe090",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831456437158019073",
         "title": "wagdog",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/fbbda9c428e6b71388d2bf1ca2a54021.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/fbbda9c428e6b71388d2bf1ca2a54021.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/2dd94d94d9a02520c21fefbf848271b0",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/2dd94d94d9a02520c21fefbf848271b0",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831457536669646849",
         "title": "why me worry",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/118cbb697ae1dd7964bdb5d2e43fe296.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/118cbb697ae1dd7964bdb5d2e43fe296.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/18772acfa306de0956e15606d06e6c07",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/18772acfa306de0956e15606d06e6c07",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831458636181274625",
         "title": "liquidated",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/bf4981e6d9141b45dc40f1f651c49256.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/bf4981e6d9141b45dc40f1f651c49256.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/f0e73d41155d4c1efe5c35eb5f07497b",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/f0e73d41155d4c1efe5c35eb5f07497b",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831459735692902401",
         "title": "You got out?",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0427647be0a1c4bb86754f93ce0f805a.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0427647be0a1c4bb86754f93ce0f805a.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/177aeca75598f4c478949e35ef53739e",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/177aeca75598f4c478949e35ef53739e",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831460835204530177",
         "title": "brain feed",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/34187635fdde09a6775e9cf89a994780.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/34187635fdde09a6775e9cf89a994780.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/b25131b3605f1a7a3211d18189b47a00",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/b25131b3605f1a7a3211d18189b47a00",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831461934716157953",
         "title": "Rapid Response",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e03c442c2adea395a6ddc83a0e2583e5.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e03c442c2adea395a6ddc83a0e2583e5.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/44df46b7b9525ec348f6af805e72eb6b",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/44df46b7b9525ec348f6af805e72eb6b",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831463034227785729",
         "title": "Moonstruck",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/895635494d4631202c2b32066dbe4dd7.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/895635494d4631202c2b32066dbe4dd7.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/2f12ebadbafbe07e7cc03440dcfed5c0",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/2f12ebadbafbe07e7cc03440dcfed5c0",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831464133739413505",
         "title": "Facetime",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/23db4fbd59eebecd43aee0a76715ee1c.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/23db4fbd59eebecd43aee0a76715ee1c.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/962428b4aa45dab42aa3e45b6c07cd3d",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/962428b4aa45dab42aa3e45b6c07cd3d",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831465233251041281",
         "title": "Moonwalkies",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a916942c384e93511faaf0baefe5d3d6.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a916942c384e93511faaf0baefe5d3d6.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/beae3ce564abb95b3a7b87d1942d3c17",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/beae3ce564abb95b3a7b87d1942d3c17",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831466332762669057",
         "title": "Mood",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/adfc62c0613565cd61184204188adee1.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/adfc62c0613565cd61184204188adee1.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/dfea0148ea7e6c564528b89d0dad3439",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/dfea0148ea7e6c564528b89d0dad3439",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831467432274296833",
         "title": "The baliff",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/15d14f19c910bc5341502d81fcc5d38f.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/15d14f19c910bc5341502d81fcc5d38f.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/b195c867a4f8a3f5021979785ac6f614",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/b195c867a4f8a3f5021979785ac6f614",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831469631297552385",
         "title": "Pressure",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8f75558a3ac957ba9cd29d8b0602a901.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8f75558a3ac957ba9cd29d8b0602a901.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/82827b51f6b6427d47e591914138ad2c",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/82827b51f6b6427d47e591914138ad2c",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831508114204524545",
         "title": "The Deficient",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/179c1b3c49246bd11828eafc970ee13e.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/179c1b3c49246bd11828eafc970ee13e.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/fd9ebe4bbdf46a51f5f6da939017d9f5",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/fd9ebe4bbdf46a51f5f6da939017d9f5",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831533402971963393",
         "title": "overly attached",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8280c9489608954cc4b548d65fcfcd50.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/8280c9489608954cc4b548d65fcfcd50.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/ff87b3a93d816abefd5cb61db106b913",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/ff87b3a93d816abefd5cb61db106b913",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831534502483591169",
         "title": "Dr Strangelove",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/66ded2959fe255430224b2f174638c48.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/66ded2959fe255430224b2f174638c48.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/0a32934b98e1a7ccfce69c4b1a162a92",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/0a32934b98e1a7ccfce69c4b1a162a92",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831536701506846721",
         "title": "Window Lick",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/1e15e371b13f4aa72a8bfa07b9a9e0c3.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/1e15e371b13f4aa72a8bfa07b9a9e0c3.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/3741f2827dfdeb55d678f4a63c292b00",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/3741f2827dfdeb55d678f4a63c292b00",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831540000041730049",
         "title": "The Offer",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ba9825ea699b9a9d5cda8f45b76f7998.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ba9825ea699b9a9d5cda8f45b76f7998.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/67198a1456cee4913f3d489080e127e9",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/67198a1456cee4913f3d489080e127e9",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831541099553357825",
         "title": "The Insider",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3f5d27977731130633eac72239577e15.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3f5d27977731130633eac72239577e15.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/a523a963acfeaf7a46b3233049a5ab07",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/a523a963acfeaf7a46b3233049a5ab07",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831544398088241153",
         "title": "The Redempted",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/19b83443a57681e4df76ffd5380c6e1f.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/19b83443a57681e4df76ffd5380c6e1f.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/d54cef53b0cd5b83262895e1f58e9118",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/d54cef53b0cd5b83262895e1f58e9118",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831545497599868929",
         "title": "Dr yeah yeah",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0a7b73c98a562d0e8b71966a3b1c02e4.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0a7b73c98a562d0e8b71966a3b1c02e4.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/73c44e6b8d79cf2a896a0859507e2259",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/73c44e6b8d79cf2a896a0859507e2259",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831546597111496705",
         "title": "Elvis",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/7f3187e5b9bfb78993d6393bd96f129d.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/7f3187e5b9bfb78993d6393bd96f129d.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/700b9c21f0e8b50c5eb0089225c3bc7a",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/700b9c21f0e8b50c5eb0089225c3bc7a",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831555393204518913",
         "title": "The Migrane",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/4c31e63991d50a99ff25f4421626f62a.png",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/4c31e63991d50a99ff25f4421626f62a.png",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/c48747d5e430cb65bb9fb29c2dee942e",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/c48747d5e430cb65bb9fb29c2dee942e",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831556492716146689",
         "title": "The Jenkinsons",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3eb042de5ebd12de8c0dda1c26a01f10.png",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/3eb042de5ebd12de8c0dda1c26a01f10.png",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/294974b9b2c54776d543c5b16dbb777a",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/294974b9b2c54776d543c5b16dbb777a",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831557592227774465",
         "title": "They dont know....",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0e000f832d3019d4e4fa5f3f463ed291.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0e000f832d3019d4e4fa5f3f463ed291.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/a655cbaee1b6bc0b107eda5b17fa648a",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/a655cbaee1b6bc0b107eda5b17fa648a",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831572985390563329",
         "title": "Asylum",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a75358aa74129db760ffe5031d11407e.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a75358aa74129db760ffe5031d11407e.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/5ce67f2f8e9cf56abd3effc364bd51c5",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/5ce67f2f8e9cf56abd3effc364bd51c5",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831574084902191105",
         "title": "The Whitelist",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cf789a0a5ce0817908488aaf80c95b8d.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cf789a0a5ce0817908488aaf80c95b8d.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/b779ff4e57e6bc6976faeaa4b7643667",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/b779ff4e57e6bc6976faeaa4b7643667",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831586179530096641",
         "title": "Cheryl",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cb4d3dfeef4d3b0683a51f0bec39144c.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cb4d3dfeef4d3b0683a51f0bec39144c.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/f235d56e7cdd907fce1200b250833b3b",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/f235d56e7cdd907fce1200b250833b3b",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831587279041724417",
         "title": "Errol",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5118aecced260c583304747491926b41.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5118aecced260c583304747491926b41.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/86045a390dda039201421910919f334d",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/86045a390dda039201421910919f334d",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831588378553352193",
         "title": "Beryl",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5f84621da836a3e3ef12e7ed174965e6.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5f84621da836a3e3ef12e7ed174965e6.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/83a5d15ed50a2d0b2c5e8d39360e1587",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/83a5d15ed50a2d0b2c5e8d39360e1587",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831589478064979969",
         "title": "Tainted Love",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ce8f8aa79c576f8fa27374b830726283.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ce8f8aa79c576f8fa27374b830726283.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/c65d40602b9ff6f4319ed84095ac27e3",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/c65d40602b9ff6f4319ed84095ac27e3",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831601572692885505",
         "title": "Cap'n Greet'a'lot",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/2d7e70f4fd94f6ae4e5473c74704e0e3.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/2d7e70f4fd94f6ae4e5473c74704e0e3.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/f20ac5317bead4d94f74ebd594641916",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/f20ac5317bead4d94f74ebd594641916",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831602672204513281",
         "title": "True Romance",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/06555c106cfd9f3cd12829835ee92cb9.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/06555c106cfd9f3cd12829835ee92cb9.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/8570c738dff288c881d493193c39a45e",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/8570c738dff288c881d493193c39a45e",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831603771716141057",
         "title": "The Screaming Popes",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a4a2f095f97b27aae9a8f33e4c23b5c8.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a4a2f095f97b27aae9a8f33e4c23b5c8.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/f9d01fa1e443722cb6bb76a555a0029a",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/f9d01fa1e443722cb6bb76a555a0029a",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831604871227768833",
         "title": "Funhouse",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/fefe9ecf0a1173c14663435de84208e9.png",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/fefe9ecf0a1173c14663435de84208e9.png",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/c9c0ee5c897ea75be5b7defe492f16d0",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/c9c0ee5c897ea75be5b7defe492f16d0",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831616965855674369",
         "title": "The Caretaker",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/dcf9f45af69599eb10af777418c3eba2.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/dcf9f45af69599eb10af777418c3eba2.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/350652a8eee91c016c39b7a3598cdebd",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/350652a8eee91c016c39b7a3598cdebd",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831618065367302145",
         "title": "Rugpuller",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/9508cee4f2935a1ee0abf819ded16878.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/9508cee4f2935a1ee0abf819ded16878.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/2f099a5dda31416a184f0012b444fdd2",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/2f099a5dda31416a184f0012b444fdd2",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831619164878929921",
         "title": "Timezones",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/f31a22c359b6631fa3e5fdaafa6c97af.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/f31a22c359b6631fa3e5fdaafa6c97af.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/7eb0822dae7fc414324842bae142f2ad",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/7eb0822dae7fc414324842bae142f2ad",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831620264390557697",
         "title": "Gorli Cool",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/7c3f9f77576b80ea555ad01a27de7bd2.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/7c3f9f77576b80ea555ad01a27de7bd2.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/b730279c32edd3340c8a647da873376d",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/b730279c32edd3340c8a647da873376d",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831622463413813249",
         "title": "Madre",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a6dcf70a69715886d1d198eae4fab56c.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a6dcf70a69715886d1d198eae4fab56c.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/35774ad6c708f0eeccc86176fe6c5863",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/35774ad6c708f0eeccc86176fe6c5863",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
         "tokenId": "90144564011191553255551171483351008933440029025118662744023831623562925441025",
         "title": "Padre",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/2ef953b8e2fb311ad03d368db79d0513.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/2ef953b8e2fb311ad03d368db79d0513.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/d7ccb7dffe45b8a864b578e475eb0840",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/d7ccb7dffe45b8a864b578e475eb0840",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "64",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831624662437068801",
         "title": "Nana",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/031c893846580902baca3e0b47e0f38a.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/031c893846580902baca3e0b47e0f38a.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/808e0f8e8ce1041906e30f284d685f3d",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/808e0f8e8ce1041906e30f284d685f3d",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "65",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831625761948696577",
         "title": "Merry Go Round",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/1d339393b70d2cbd14194f617be0d528.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/1d339393b70d2cbd14194f617be0d528.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/6b06e6d4aa9d37d012b46b931de5bdda",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/6b06e6d4aa9d37d012b46b931de5bdda",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "66",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831643354134740993",
         "title": "The formula",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/af3217377a62a99395447b734581b334.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/af3217377a62a99395447b734581b334.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/70fdc12fd9e3638d6bf04c85b98bb659",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/70fdc12fd9e3638d6bf04c85b98bb659",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "67",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831645553157996545",
         "title": "Comedy Club",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/201c6d500de400a15d9ff908ca275abe.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/201c6d500de400a15d9ff908ca275abe.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/9daf47feb1701278e7382d8cd61ce634",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/9daf47feb1701278e7382d8cd61ce634",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "68",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831663145344040961",
         "title": "Blackout",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/61d63d6898be8103e57f728a40d61fa6.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/61d63d6898be8103e57f728a40d61fa6.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/4c8478c1e246e886c2062cdcd42d2b07",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/4c8478c1e246e886c2062cdcd42d2b07",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "69",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831664244855668737",
         "title": "Wired",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5c7d7efb3b1521bd95ed898a84278cb7.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5c7d7efb3b1521bd95ed898a84278cb7.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/51edbfd5203475c7528231a22e8411a0",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/51edbfd5203475c7528231a22e8411a0",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "70",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831665344367296513",
         "title": "Glitch Monkey #1",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/9571cd805cf3bbac09fca11b8a4187a3.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/9571cd805cf3bbac09fca11b8a4187a3.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/3a69aa55b5192cdf58acc69ebee18b16",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/3a69aa55b5192cdf58acc69ebee18b16",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "71",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831678538506829825",
         "title": "Glitch Monkey #2",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a2b1a54c946a303c1288a741ea082a7a.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a2b1a54c946a303c1288a741ea082a7a.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/56d3da47f5c00a08c5ce3573372ae491",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/56d3da47f5c00a08c5ce3573372ae491",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "72",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831679638018457601",
         "title": "Lord DooDar",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a9e5f59f3ef4d726f689957fd46bfa64.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a9e5f59f3ef4d726f689957fd46bfa64.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/4ab78bc1304edb200d535f687143869d",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/4ab78bc1304edb200d535f687143869d",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "73",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831701628251013121",
         "title": "The Spectator",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/1ff8f03bfd08ea615b24c935cffe89c6.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/1ff8f03bfd08ea615b24c935cffe89c6.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/a6288f91e67d80d7797698582b714e72",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/a6288f91e67d80d7797698582b714e72",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "74",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831737912134729729",
         "title": "Cousin HeHe",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/4a96487cdfc3b70966aa94e20215882e.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/4a96487cdfc3b70966aa94e20215882e.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/20adcdfb33db06563b4ab4da6f842c92",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/20adcdfb33db06563b4ab4da6f842c92",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "75",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831761001878913025",
         "title": "Bedroom Rave",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/de0b0a2d65eade19c4714a012bb719ce.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/de0b0a2d65eade19c4714a012bb719ce.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/89901c7e46b405b405aec57cc9a27b29",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/89901c7e46b405b405aec57cc9a27b29",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "76",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831762101390540801",
         "title": "Photobomb",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/996e0b057b46dd214dce7871a963a85a.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/996e0b057b46dd214dce7871a963a85a.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/dbecef988ace2f0df350f58507aee3e0",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/dbecef988ace2f0df350f58507aee3e0",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "77",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831779693576585217",
         "title": "The Scarecrow",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/706b855c1c67c5656c1e8172372ad26b.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/706b855c1c67c5656c1e8172372ad26b.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/0f5569b08fa76756d1f05aaf5f8279d8",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/0f5569b08fa76756d1f05aaf5f8279d8",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "78",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831793987227746305",
         "title": "Mirror Mirror",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e4e81963a4b803460c330c3a08be039e.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e4e81963a4b803460c330c3a08be039e.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/037b4e945ac1b558eba30571bd38d1b7",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/037b4e945ac1b558eba30571bd38d1b7",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "79",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831810479902162945",
         "title": "Only the Lonely",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/35fadaf3f765a191d3fff4f0e84ec930.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/35fadaf3f765a191d3fff4f0e84ec930.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/e37b1ac9c9c76f9f6ae1ddfc7df880c3",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/e37b1ac9c9c76f9f6ae1ddfc7df880c3",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "80",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831811579413790721",
         "title": "Illiquidity",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/50a0f4ca893c75a2bb6bb0564df9a8b1.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/50a0f4ca893c75a2bb6bb0564df9a8b1.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/6d399ad72f50f547459946c55865447b",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/6d399ad72f50f547459946c55865447b",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "81",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831823674041696257",
         "title": "Gratitude",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a48cd443ec6ff828f29b21fb438a5602.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/a48cd443ec6ff828f29b21fb438a5602.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/1648934fddcce1ad975cb9999e0fbb15",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/1648934fddcce1ad975cb9999e0fbb15",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "82",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831841266227740673",
         "title": "Professor Griff",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ac52dfdc33717ff68695b89d57210674.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ac52dfdc33717ff68695b89d57210674.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/ef7d3a69f6bfcfdb9bd78cb00277cea8",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/ef7d3a69f6bfcfdb9bd78cb00277cea8",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "83",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831853360855646209",
         "title": "Spotters",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/446ae2137ec4c1041d9460109234434d.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/446ae2137ec4c1041d9460109234434d.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/c1b08b3390eafece22f5bc4e5216de11",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/c1b08b3390eafece22f5bc4e5216de11",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "84",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831854460367273985",
         "title": "Snapper",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/08ebe41c72bcf1ecb3e1433b63ef9dc4.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/08ebe41c72bcf1ecb3e1433b63ef9dc4.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/080c2f0667d705b60cdc3ab5e67ae8f0",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/080c2f0667d705b60cdc3ab5e67ae8f0",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "85",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831856659390529537",
         "title": "Good Marigolds?",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e6af5f047df4c4967b9ff6283b1d1adc.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e6af5f047df4c4967b9ff6283b1d1adc.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/21d17f0c2073ead9348f7f1660e0b84d",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/21d17f0c2073ead9348f7f1660e0b84d",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "86",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831868754018435073",
         "title": "Gossip",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ba8a0dfd621637e846a19b000a707d5c.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ba8a0dfd621637e846a19b000a707d5c.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/ca33983bef3e4c2ae47b41140b1a8fdb",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/ca33983bef3e4c2ae47b41140b1a8fdb",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "87",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831869853530062849",
         "title": "Dads Army",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/957b204d0f945c8c96a8960c986535bf.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/957b204d0f945c8c96a8960c986535bf.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/29ae1c4190d567f19404d79f317c2dc3",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/29ae1c4190d567f19404d79f317c2dc3",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "88",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831870953041690625",
         "title": "The Minter",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/50a25abbe2fd87a17edd2e4d093d032d.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/50a25abbe2fd87a17edd2e4d093d032d.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/51f3f482a7e4201b0375955a72391c98",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/51f3f482a7e4201b0375955a72391c98",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "89",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831872052553318401",
         "title": "Levels",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/232c1a86d53c8d616c977e3c80e5a689.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/232c1a86d53c8d616c977e3c80e5a689.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/8bf105cd1c9ca14380f34397a31408df",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/8bf105cd1c9ca14380f34397a31408df",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "90",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831885246692851713",
         "title": "What lies Beyond",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cc65a387854a03e2bd78ce8f03f1c5a4.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cc65a387854a03e2bd78ce8f03f1c5a4.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/45d200616c737729948bc6023226fab8",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/45d200616c737729948bc6023226fab8",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "91",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831886346204479489",
         "title": "Dear Calm",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/87db08b586d0c85d7c46c468b844f107.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/87db08b586d0c85d7c46c468b844f107.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/1b6727ba9127e830c926a1c3524ff326",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/1b6727ba9127e830c926a1c3524ff326",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "92",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831887445716107265",
         "title": "Eyeballer",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ee71829a7eb23e28622ceec9c0436b19.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/ee71829a7eb23e28622ceec9c0436b19.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/1ff1829747ba47d910fc06cd6bed5a3b",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/1ff1829747ba47d910fc06cd6bed5a3b",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "93",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831888545227735041",
         "title": "Curtain Call",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0ff2ac1b08d0aa25b15bb04b441dfe8c.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/0ff2ac1b08d0aa25b15bb04b441dfe8c.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/8472b1c591385e46b4ea9aa15786855c",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/8472b1c591385e46b4ea9aa15786855c",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "94",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831892943274246145",
         "title": "Insomnia",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e5681f21430097afc723b70bd5a5046b.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/e5681f21430097afc723b70bd5a5046b.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/2da390cdb18590869baed4b6ae9e5ef5",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/2da390cdb18590869baed4b6ae9e5ef5",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "95",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831894042785873921",
         "title": "Coercion",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/c93b949ab87020358402df6655c70006.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/c93b949ab87020358402df6655c70006.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/4bc7456f48edd62bf7a78097f10b04c9",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/4bc7456f48edd62bf7a78097f10b04c9",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "96",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831895142297501697",
         "title": "Robocope",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/124a28f563617c3591e78573d233e491.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/124a28f563617c3591e78573d233e491.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/ca06d1b6932501fb478d39e20ac3afc7",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/ca06d1b6932501fb478d39e20ac3afc7",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "97",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831896241809129473",
         "title": "Night Shift: Illiquid",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5edaf7005f2feba89eb3e09bc6139d03.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5edaf7005f2feba89eb3e09bc6139d03.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/ca5bfadf771157623de00edd29ad3ac6",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/ca5bfadf771157623de00edd29ad3ac6",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "98",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831897341320757249",
         "title": "Night Shift: Trolled",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/572499b16a06be2c078485bf4d4a2e98.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/572499b16a06be2c078485bf4d4a2e98.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/cedbd6afdf9516643080b67c6a6e6eb5",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/cedbd6afdf9516643080b67c6a6e6eb5",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "99",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831899540344012801",
         "title": "Night Shift: Fomode",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/7647422a84f52e29c32318238912b39c.gif",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/7647422a84f52e29c32318238912b39c.gif",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/71998bfbc83a6e40c2be98b3c147c372",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/71998bfbc83a6e40c2be98b3c147c372",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       },
       {
-        "tokenId": "100",
+        "tokenId": "90144564011191553255551171483351008933440029025118662744023831900639855640577",
         "title": "Find your Feet",
-        "image": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/d44b9447ca54841c39af03875b9130a6.jpeg",
-        "thumbnail": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/d44b9447ca54841c39af03875b9130a6.jpeg",
+        "image": "https://nft-cdn.alchemy.com/eth-mainnet/35d992b5542150a0ffdf437f6ff320be",
+        "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/35d992b5542150a0ffdf437f6ff320be",
         "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
       }
     ],
@@ -28173,16 +27998,135 @@ const collections = [
   },
   {
     "id": "one-of-one-originals",
-    "title": "1/1 Originals",
+    "title": "1/1 Originals 21/25",
     "chain": "ethereum",
-    "supply": 29,
+    "supply": 46,
     "uniquePieces": 29,
     "heroImage": "https://arweave.net/SQiBGTuoUfLQeKtE4kjG4RaCwin3HAFl7io4kL5Ul5g",
     "description": "",
-    "artistNote": "",
+    "artistNote": "Original artworks across multiple smart contracts",
     "onchain": false,
     "year": 2021,
     "pieces": [
+      {
+        "tokenId": "1",
+        "title": "The Artist",
+        "image": "https://ipfs.io/ipfs/QmNkyj7N2rAo9178HMRQBdooiizbZmJ9tAhx9q7A16Z4HX/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmNkyj7N2rAo9178HMRQBdooiizbZmJ9tAhx9q7A16Z4HX/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "2",
+        "title": "Revolutionary",
+        "image": "https://ipfs.io/ipfs/QmTErjdvsQQUf8cTc6ei26pu2ueKtoSuSoYc99dCE1SFku/nft.jpg",
+        "thumbnail": "https://ipfs.io/ipfs/QmTErjdvsQQUf8cTc6ei26pu2ueKtoSuSoYc99dCE1SFku/nft.jpg",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "3",
+        "title": "King Glitch-a-bit",
+        "image": "https://ipfs.io/ipfs/QmV1fLC3ECJjKJjJWLpqU5X2kewHHyzzruLydLSjk9mAek/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmV1fLC3ECJjKJjJWLpqU5X2kewHHyzzruLydLSjk9mAek/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "4",
+        "title": "White lines",
+        "image": "https://ipfs.io/ipfs/QmV13uzDSY5xfahJKtjr5GVGuRAAQANavnDExQUUZ7oPmE/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmV13uzDSY5xfahJKtjr5GVGuRAAQANavnDExQUUZ7oPmE/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "5",
+        "title": "Afterthought",
+        "image": "https://ipfs.io/ipfs/QmRhQFTzMuY1QAZ7opupGxVYPA6Z6KLN4oC35oaiGth2Bz/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmRhQFTzMuY1QAZ7opupGxVYPA6Z6KLN4oC35oaiGth2Bz/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "6",
+        "title": "Attention Seeker",
+        "image": "https://ipfs.io/ipfs/QmQTwTXpruV32b3WkLzP683csbfcAu9dHwFRjTP6uAttp8/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmQTwTXpruV32b3WkLzP683csbfcAu9dHwFRjTP6uAttp8/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "7",
+        "title": "Doxxed",
+        "image": "https://ipfs.io/ipfs/QmWhVUFMdtJVd1ZBYt6Tkt4WDAQP3x2B9frShMZ2mjeUgB/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmWhVUFMdtJVd1ZBYt6Tkt4WDAQP3x2B9frShMZ2mjeUgB/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "8",
+        "title": "Quid Pro Quo",
+        "image": "https://ipfs.io/ipfs/QmbE8gMhQ7kKPcFjwa2vdz9MMGCfpj88EGqd4CUED2SrU7/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmbE8gMhQ7kKPcFjwa2vdz9MMGCfpj88EGqd4CUED2SrU7/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "9",
+        "title": "Wifey",
+        "image": "https://ipfs.io/ipfs/QmbLidwEik8dE5HTknzPZ2CW2QQpYEPKqLz5BqAZzdvtqs/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmbLidwEik8dE5HTknzPZ2CW2QQpYEPKqLz5BqAZzdvtqs/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "10",
+        "title": "Punk My Bitch Up",
+        "image": "https://ipfs.io/ipfs/QmTM9jQX1TyWyjU7f1nAU2g6XSR4EnNqoZi1XyMuTjUb3K/nft.mp4",
+        "thumbnail": "https://ipfs.io/ipfs/QmTM9jQX1TyWyjU7f1nAU2g6XSR4EnNqoZi1XyMuTjUb3K/nft.mp4",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "11",
+        "title": "The Glitchmaker",
+        "image": "https://ipfs.io/ipfs/Qmen8srveum13cjFDPUNB6auMatt24jAthMv6Kn9c3bquM/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/Qmen8srveum13cjFDPUNB6auMatt24jAthMv6Kn9c3bquM/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "12",
+        "title": "Snakes and Ladders",
+        "image": "https://ipfs.io/ipfs/QmRkxW1saEJ9ULZtfLF2VG4kMHH6KVaosFst4UH9ZWEs8L/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmRkxW1saEJ9ULZtfLF2VG4kMHH6KVaosFst4UH9ZWEs8L/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "13",
+        "title": "You've Been Here Before, You and your Mind",
+        "image": "https://ipfs.io/ipfs/Qma6zqDkxKAVj5pbJEhH3EYs3gScZXhyuwbsPnN2i6ZU1o/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/Qma6zqDkxKAVj5pbJEhH3EYs3gScZXhyuwbsPnN2i6ZU1o/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "14",
+        "title": "Salvation",
+        "image": "https://ipfs.io/ipfs/QmRHzvCAN9q5CkgTwajJeoYP6pZztKxvZ9jo2Q36fMwgiH/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmRHzvCAN9q5CkgTwajJeoYP6pZztKxvZ9jo2Q36fMwgiH/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "15",
+        "title": "Censor",
+        "image": "https://ipfs.io/ipfs/QmRUM1RtsdBrHzajGTjDD1YRS5BKSK99exdCvUz1SuW9EU/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmRUM1RtsdBrHzajGTjDD1YRS5BKSK99exdCvUz1SuW9EU/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "16",
+        "title": "Patience",
+        "image": "https://ipfs.io/ipfs/QmPPLraEUVWbPicLFvxgVMTDdRfFkrKgBtEpsi9zbf7E6H/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmPPLraEUVWbPicLFvxgVMTDdRfFkrKgBtEpsi9zbf7E6H/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
+      {
+        "tokenId": "17",
+        "title": "Ogle",
+        "image": "https://ipfs.io/ipfs/QmdFofatrvECkj8w4T3uAAsyoNhTi5Qm7AGyNCoHAB461b/nft.gif",
+        "thumbnail": "https://ipfs.io/ipfs/QmdFofatrvECkj8w4T3uAAsyoNhTi5Qm7AGyNCoHAB461b/nft.gif",
+        "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
+      },
       {
         "tokenId": "1",
         "title": "The Pulse",
@@ -28206,7 +28150,7 @@ const collections = [
       },
       {
         "tokenId": "4",
-        "title": "\ud835\udd4f",
+        "title": "𝕏",
         "image": "https://arweave.net/l_u8CHKuZAxoiaohkEGMCLiU5FItuQgfYOMkGlX4kPE",
         "thumbnail": "https://arweave.net/l_u8CHKuZAxoiaohkEGMCLiU5FItuQgfYOMkGlX4kPE",
         "contract": "0xB782644735A84cF338B2c2cA0E6d9F5dCCe27559"
@@ -28407,7 +28351,8 @@ const collections = [
     ],
     "marketplaces": {
       "opensea": "https://opensea.io/collection/solemn-v2"
-    }
+    },
+    "contract": "0x841E16499a31f265b128A94DeCc625801702024D"
   },
   {
     "id": "stranger-danger",
@@ -28418,7 +28363,7 @@ const collections = [
     "uniquePieces": 28,
     "heroImage": "https://ipfs.io/ipfs/QmfAgiBopQ7rphLsMRdDVUEwY2inc6smUp3pKREDFUzjJA",
     "description": "Dark Shit",
-    "artistNote": "",
+    "artistNote": "Didnt ya momma ever tell you not to talk to strangers",
     "onchain": false,
     "year": 2021,
     "pieces": [

@@ -19,6 +19,7 @@ const detailChain = document.getElementById('detail-chain');
 const detailMetadata = document.getElementById('detail-metadata');
 const linkMagicEden = document.getElementById('link-magiceden');
 const linkGamma = document.getElementById('link-gamma');
+const linkOrdinals = document.getElementById('link-ordinals');
 
 // State
 let currentView = 'home';
@@ -363,6 +364,12 @@ function showDetail(collectionId) {
       ${metaRow('Pieces', collection.supply || collection.pieces?.length || '?')}
       ${metaRow('Chain', getChainFullName(collection.chain))}
       ${collection.contract ? metaRow('Contract', truncateId(collection.contract), collection.contract) : ''}
+      ${collection.chain === 'ordinals' && firstPiece ? `
+        <div class="meta-row" id="inscription-row">
+          <span class="meta-label">Inscription</span>
+          <a class="meta-value inscription-link" href="https://ordinals.com/inscription/${firstPiece.tokenId}" target="_blank" rel="noopener" title="${firstPiece.tokenId}">${truncateId(firstPiece.tokenId)}</a>
+        </div>
+      ` : ''}
     </div>
   `;
 
@@ -424,6 +431,14 @@ function showDetail(collectionId) {
   } else {
     linkMagicEden.classList.add('hidden');
     linkGamma.classList.add('hidden');
+  }
+
+  // Ordinals link
+  if (collection.chain === 'ordinals' && firstPiece) {
+    linkOrdinals.href = 'https://ordinals.com/inscription/' + firstPiece.tokenId;
+    linkOrdinals.classList.remove('hidden');
+  } else {
+    linkOrdinals.classList.add('hidden');
   }
 
   // Add piece click handlers
@@ -523,6 +538,22 @@ function showPiece(collection, index) {
     ${collection.title}
     <span class="piece-indicator">${piece.title || '#' + piece.tokenId}</span>
   `;
+
+  // Update inscription info for ordinals
+  if (collection.chain === 'ordinals' && piece.tokenId) {
+    const inscriptionRow = document.getElementById('inscription-row');
+    if (inscriptionRow) {
+      const link = inscriptionRow.querySelector('.inscription-link');
+      if (link) {
+        link.href = 'https://ordinals.com/inscription/' + piece.tokenId;
+        link.textContent = truncateId(piece.tokenId);
+        link.title = piece.tokenId;
+      }
+    }
+    if (linkOrdinals) {
+      linkOrdinals.href = 'https://ordinals.com/inscription/' + piece.tokenId;
+    }
+  }
 
   // Highlight active thumbnail
   detailMetadata.querySelectorAll('.piece-thumb').forEach((thumb, idx) => {

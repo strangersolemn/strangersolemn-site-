@@ -116,7 +116,7 @@ a {
 }
 
 .art-info {
-  margin-top: 1.5rem;
+  margin-top: 0.6rem;
   text-align: center;
   opacity: 0;
   transition: opacity 0.5s ease 0.2s;
@@ -136,6 +136,7 @@ a {
 #art-collection {
   font-size: 0.75rem;
   color: var(--text-secondary);
+  margin-top: 0.1rem;
   margin-bottom: 0.5rem;
 }
 
@@ -456,13 +457,22 @@ a {
   color: var(--text-primary);
 }
 
-.meta-value a {
+.meta-value a,
+a.meta-value {
   color: var(--text-secondary);
+  text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.meta-value a:hover {
+.meta-value a:hover,
+a.meta-value:hover {
   color: var(--text-primary);
+}
+
+.inscription-link {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  cursor: pointer;
 }
 
 .marketplace-links {
@@ -709,7 +719,7 @@ a {
 
 .lightbox-info {
   position: absolute;
-  bottom: 30px;
+  bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -1124,7 +1134,7 @@ a {
 /* Info bar at bottom - always visible */
 .display-info {
   position: absolute;
-  bottom: 36px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -1149,7 +1159,7 @@ a {
   font-size: 0.65rem;
   color: rgba(255,255,255,0.4);
   letter-spacing: 0.03em;
-  margin-top: 4px;
+  margin-top: 2px;
   text-shadow: 0 1px 4px rgba(0,0,0,0.8);
 }
 
