@@ -285,26 +285,26 @@ function showDetail(collectionId) {
   const isOnchain = isOnchainCollection(collection);
 
   // Hide/show appropriate element and actions
-
-      // Check if piece has a video URL (MP4, WebM, etc.)
-      const hasVideo = firstPiece?.video || (firstPiece?.animationUrl && (
-                firstPiece.animationUrl.endsWith('.mp4') || 
-                firstPiece.animationUrl.endsWith('.webm') ||
-                firstPiece.animationUrl.endsWith('.mov') ||
-                firstPiece.animationUrl.includes('video')
-            ));
-
-      if (hasVideo) {
-                // Use video element for actual video files
-                const videoUrl = firstPiece.video || firstPiece.animationUrl;
-                detailImage.classList.add('hidden');
-                detailIframe.classList.add('hidden');
-                detailVideo.classList.remove('hidden');
-                detailVideo.src = videoUrl;
-                detailVideo.load();
-      } else if (isOnchain && firstPiece?.animationUrl && !firstPiece?.isImage) {
   const imageActions = document.querySelector('.image-actions');
-  if (isOnchain && firstPiece?.animationUrl && !firstPiece?.isImage) {
+
+  // Check if piece has a video URL (MP4, WebM, etc.)
+  const hasVideo = firstPiece?.video || (firstPiece?.animationUrl && (
+    firstPiece.animationUrl.endsWith('.mp4') ||
+    firstPiece.animationUrl.endsWith('.webm') ||
+    firstPiece.animationUrl.endsWith('.mov') ||
+    firstPiece.animationUrl.includes('video')
+  ));
+
+  if (hasVideo) {
+    // Use video element for actual video files
+    const videoUrl = firstPiece.video || firstPiece.animationUrl;
+    detailImage.classList.add('hidden');
+    detailIframe.classList.add('hidden');
+    detailVideo.classList.remove('hidden');
+    detailVideo.src = videoUrl;
+    detailVideo.load();
+    imageActions.classList.add('hidden');
+  } else if (isOnchain && firstPiece?.animationUrl && !firstPiece?.isImage) {
     // On-chain HTML art - use iframe with animationUrl (unless piece is marked as image)
     detailImage.classList.add('hidden');
             detailVideo.classList.add('hidden');
