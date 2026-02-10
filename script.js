@@ -32,7 +32,7 @@ let activeChainFilter = null;
 let slideshowInterval = null;
 let slideshowPlaying = false;
 
-// Check if collection is an edition (supply > unique pieces shown, or explicitly flagged)
+// Check if collection is an edition
 function isEditionCollection(collection) {
   if (collection.isEditions === true) return true;
   if (collection.isEditions === false) return false;
@@ -41,12 +41,12 @@ function isEditionCollection(collection) {
   return supply > uniqueCount;
 }
 
-// Check if collection is on-chain (uses animationUrl for HTML content)
+// Check if collection is on-chain
 function isOnchainCollection(collection) {
   return collection?.onchain === true;
 }
 
-// Convert thumbnail URL to AVIF/WebP via Cloudinary f_auto
+// Convert thumbnail URL
 function toOptimizedUrl(url) {
   if (!url) return url;
   if (url.includes('res.cloudinary.com/alchemyapi/image/upload/')) {
@@ -111,59 +111,6 @@ function init() {
   document.querySelector('.art-container').addEventListener('click', () => {
     if (currentCollectionId) showDetail(currentCollectionId);
   });
-
-  const openFullscreen = () => {
-    const collection = collections.find(c => c.id === currentCollectionId);
-    let title = collection?.title || '';
-    if (collection?.pieces?.[currentPieceIndex]) {
-      const piece = collection.pieces[currentPieceIndex];
-      title = piece.title || `#${piece.tokenId}`;
-    }
-    const fullImage = detailImage.dataset.fullImage || detailImage.src;
-    openLightbox(fullImage, title);
-  };
-
-  detailImage.addEventListener('click', openFullscreen);
-  document.querySelector('.fullscreen-btn').addEventListener('click', openFullscreen);
-
-  const playBtn = document.getElementById('play-animated');
-  playBtn.addEventListener('click', () => {
-    const fullImageUrl = detailImage.dataset.fullImage;
-    if (!fullImageUrl) return;
-    playBtn.classList.add('loading');
-    const fullImg = new Image();
-    fullImg.onload = () => {
-      detailImage.src = fullImageUrl;
-      playBtn.classList.add('hidden');
-      playBtn.classList.remove('loading');
-    };
-    fullImg.src = fullImageUrl;
-  });
-
-  document.querySelector('.download-btn').addEventListener('click', async () => {
-    const collection = collections.find(c => c.id === currentCollectionId);
-    let filename = collection?.title || 'artwork';
-    if (collection?.pieces?.[currentPieceIndex]) {
-      const piece = collection.pieces[currentPieceIndex];
-      filename = piece.title || `${collection.title}-${piece.tokenId}`;
-    }
-    filename = filename.replace(/[^a-z0-9]/gi, '-').toLowerCase();
-    const imageUrl = detailImage.dataset.fullImage || detailImage.src;
-    try {
-      const response = await fetch(imageUrl);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${filename}.png`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    } catch (e) {
-      window.open(imageUrl, '_blank');
-    }
-  });
 }
 
 function showView(viewName) {
@@ -177,18 +124,27 @@ function showView(viewName) {
   }
 }
 
+// RESTORED ORIGINAL TIMELINE LOGIC
 function buildTimeline() {
-  const sorted = [...collections].sort((a, b) => (b.year || 2024) - (a.year || 2024));
+  const sorted = [...collections].sort((a, b) => {
+    const yearA = a.year || 2024;
+    const yearB = b.year || 2024;
+    return yearB - yearA;
+  });
+
   let currentYear = null;
   let html = '';
+
   sorted.forEach((collection) => {
     const year = collection.year || 2024;
     if (year !== currentYear) {
       currentYear = year;
       html += `<div class="timeline-year">${currentYear}</div>`;
     }
+
     const editionTag = isEditionCollection(collection) ? '<span class="timeline-item-editions">Editions</span>' : '';
     const collabTag = collection.isCollab ? '<span class="timeline-item-collab">Collab</span>' : '';
+
     html += `
       <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
         <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
@@ -196,11 +152,13 @@ function buildTimeline() {
         <span class="timeline-item-count">${collection.supply || collection.pieces?.length || '?'}</span>
       </div>`;
   });
+
   timeline.innerHTML = html;
   timeline.querySelectorAll('.timeline-item').forEach(item => {
     item.addEventListener('click', (e) => {
       if (e.target.classList.contains('timeline-item-chain')) {
-        const legendItem = document.querySelector(`.legend-item[data-chain="${item.dataset.chain}"]`);
+        const chain = item.dataset.chain;
+        const legendItem = document.querySelector(`.legend-item[data-chain="${chain}"]`);
         if (legendItem) legendItem.click();
         return;
       }
@@ -209,16 +167,18 @@ function buildTimeline() {
   });
 }
 
+// RESTORED ORIGINAL DETAIL LOGIC WITH VIDEO FIX
 function showDetail(collectionId) {
   const collection = collections.find(c => c.id === collectionId);
   if (!collection) return;
+
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
   const firstPiece = collection.pieces?.[0];
   const isOnchain = isOnchainCollection(collection);
   const imageActions = document.querySelector('.image-actions');
 
-  // FIX: Reset all media first
+  // THE VIDEO FIX
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   if (detailVideo) {
@@ -229,7 +189,7 @@ function showDetail(collectionId) {
 
   const hasVideo = firstPiece?.video || (firstPiece?.animationUrl && (
     firstPiece.animationUrl.endsWith('.mp4') || firstPiece.animationUrl.endsWith('.webm') ||
-    firstPiece.animationUrl.endsWith('.mov') || firstPiece.animationUrl.includes('video')
+    firstPiece.animationUrl.includes('video')
   ));
 
   if (hasVideo) {
@@ -237,28 +197,30 @@ function showDetail(collectionId) {
     detailVideo.classList.remove('hidden');
     imageActions.classList.add('hidden');
   } else if (isOnchain && firstPiece?.animationUrl && !firstPiece?.isImage) {
-    detailIframe.classList.remove('hidden');
     detailIframe.src = firstPiece.animationUrl;
+    detailIframe.classList.remove('hidden');
     imageActions.classList.add('hidden');
   } else {
     const fullImageUrl = collection.heroImage || firstPiece?.image || '';
     const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
-    detailImage.classList.remove('hidden');
     detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
-    const playBtn = document.getElementById('play-animated');
-    playBtn.classList.toggle('hidden', thumbnailUrl === fullImageUrl);
+    detailImage.classList.remove('hidden');
     imageActions.classList.remove('hidden');
+    
+    const playBtn = document.getElementById('play-animated');
+    if (playBtn) playBtn.classList.toggle('hidden', thumbnailUrl === fullImageUrl);
   }
 
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
 
-  // Metadata building (Exactly as your original)
+  // RESTORED METADATA STRUCTURE
   let metaHtml = '';
   if (collection.description) metaHtml += `<div class="collection-description"><p>${collection.description}</p></div>`;
   if (collection.artistNote) metaHtml += `<div class="artist-note"><span class="note-label">Artist Note</span><p>${collection.artistNote}</p></div>`;
+  
   metaHtml += `
     <div class="collection-stats">
       ${metaRow('Pieces', collection.supply || collection.pieces?.length || '?')}
@@ -281,15 +243,14 @@ function showDetail(collectionId) {
   }
   detailMetadata.innerHTML = metaHtml;
 
-  // Marketplace links
-  if (collection.marketplaces) {
-    linkMagicEden.href = collection.marketplaces.magicEden || '';
-    linkMagicEden.classList.toggle('hidden', !collection.marketplaces.magicEden);
-    linkGamma.href = collection.marketplaces.gamma || collection.marketplaces.opensea || '';
-    linkGamma.classList.toggle('hidden', !linkGamma.href);
-  }
+  detailMetadata.querySelectorAll('.piece-thumb').forEach(t => {
+    t.addEventListener('click', () => showPiece(collection, parseInt(t.dataset.index)));
+  });
 
-  detailMetadata.querySelectorAll('.piece-thumb').forEach(t => t.addEventListener('click', () => showPiece(collection, parseInt(t.dataset.index))));
+  timeline.querySelectorAll('.timeline-item').forEach(item => {
+    item.classList.toggle('active', item.dataset.id === collectionId);
+  });
+
   showView('detail');
 }
 
@@ -297,20 +258,15 @@ function showPiece(collection, index) {
   const piece = collection.pieces[index];
   if (!piece) return;
   currentPieceIndex = index;
-  const imageActions = document.querySelector('.image-actions');
-
-  // Reset media
+  
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   if (detailVideo) { detailVideo.classList.add('hidden'); detailVideo.src = ""; detailVideo.load(); }
 
-  if (piece.isImage || (!piece.video && !piece.animationUrl)) {
-    const fullImageUrl = piece.image || piece.thumbnail;
-    detailImage.classList.remove('hidden');
-    detailImage.src = toOptimizedUrl(piece.thumbnail || piece.image);
-    detailImage.dataset.fullImage = fullImageUrl;
-    imageActions.classList.remove('hidden');
-  }
+  const fullImageUrl = piece.image || piece.thumbnail;
+  detailImage.src = toOptimizedUrl(piece.thumbnail || piece.image);
+  detailImage.dataset.fullImage = fullImageUrl;
+  detailImage.classList.remove('hidden');
 
   detailTitle.innerHTML = `${collection.title} <span class="piece-indicator">${piece.title || '#' + piece.tokenId}</span>`;
   detailMetadata.querySelectorAll('.piece-thumb').forEach((t, i) => t.classList.toggle('active', i === index));
@@ -332,6 +288,7 @@ function showHeroPiece(entry) {
   artTitle.textContent = piece.title || collection.title;
   artCollection.textContent = collection.title;
   artChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
+  artChain.setAttribute('data-chain', collection.chain);
 }
 
 function startSlideshow() { slideshowPlaying = true; slideshowInterval = setInterval(() => showHeroPiece(pickRandomPiece()), 15000); }
@@ -343,6 +300,4 @@ function initDisplayMode() {
   });
 }
 
-function openLightbox(s, t) { lightbox.style.display = 'flex'; lightboxImg.src = s; lightboxTitle.textContent = t; }
-function closeLightbox() { lightbox.style.display = 'none'; }
 document.addEventListener('DOMContentLoaded', init);
