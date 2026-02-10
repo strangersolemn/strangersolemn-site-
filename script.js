@@ -77,6 +77,7 @@ function init() {
     });
   });
 
+  // Chain filter logic
   document.querySelectorAll('.legend-item').forEach(item => {
     item.style.cursor = 'pointer';
     item.addEventListener('click', () => {
@@ -124,14 +125,9 @@ function showView(viewName) {
   }
 }
 
-// RESTORED ORIGINAL TIMELINE LOGIC
+// --- RESTORED EXACT SIDE PANEL HTML ---
 function buildTimeline() {
-  const sorted = [...collections].sort((a, b) => {
-    const yearA = a.year || 2024;
-    const yearB = b.year || 2024;
-    return yearB - yearA;
-  });
-
+  const sorted = [...collections].sort((a, b) => (b.year || 2024) - (a.year || 2024));
   let currentYear = null;
   let html = '';
 
@@ -145,6 +141,7 @@ function buildTimeline() {
     const editionTag = isEditionCollection(collection) ? '<span class="timeline-item-editions">Editions</span>' : '';
     const collabTag = collection.isCollab ? '<span class="timeline-item-collab">Collab</span>' : '';
 
+    // IMPORTANT: Keep original spans/classes so CSS doesn't stretch
     html += `
       <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
         <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
@@ -157,8 +154,7 @@ function buildTimeline() {
   timeline.querySelectorAll('.timeline-item').forEach(item => {
     item.addEventListener('click', (e) => {
       if (e.target.classList.contains('timeline-item-chain')) {
-        const chain = item.dataset.chain;
-        const legendItem = document.querySelector(`.legend-item[data-chain="${chain}"]`);
+        const legendItem = document.querySelector(`.legend-item[data-chain="${item.dataset.chain}"]`);
         if (legendItem) legendItem.click();
         return;
       }
@@ -167,7 +163,7 @@ function buildTimeline() {
   });
 }
 
-// RESTORED ORIGINAL DETAIL LOGIC WITH VIDEO FIX
+// --- VIDEO FIX IN DETAIL VIEW ---
 function showDetail(collectionId) {
   const collection = collections.find(c => c.id === collectionId);
   if (!collection) return;
@@ -178,17 +174,19 @@ function showDetail(collectionId) {
   const isOnchain = isOnchainCollection(collection);
   const imageActions = document.querySelector('.image-actions');
 
-  // THE VIDEO FIX
+  // THE FIX: Reset every single media element before loading the new one
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   if (detailVideo) {
     detailVideo.classList.add('hidden');
-    detailVideo.src = "";
+    detailVideo.src = ""; // Kill the previous video
     detailVideo.load();
   }
 
+  // Detect if the piece is actually a video
   const hasVideo = firstPiece?.video || (firstPiece?.animationUrl && (
-    firstPiece.animationUrl.endsWith('.mp4') || firstPiece.animationUrl.endsWith('.webm') ||
+    firstPiece.animationUrl.endsWith('.mp4') || 
+    firstPiece.animationUrl.endsWith('.webm') ||
     firstPiece.animationUrl.includes('video')
   ));
 
@@ -201,6 +199,7 @@ function showDetail(collectionId) {
     detailIframe.classList.remove('hidden');
     imageActions.classList.add('hidden');
   } else {
+    // Normal Images (Acid Family)
     const fullImageUrl = collection.heroImage || firstPiece?.image || '';
     const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
     detailImage.src = toOptimizedUrl(thumbnailUrl);
@@ -212,11 +211,12 @@ function showDetail(collectionId) {
     if (playBtn) playBtn.classList.toggle('hidden', thumbnailUrl === fullImageUrl);
   }
 
+  // Update text
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
 
-  // RESTORED METADATA STRUCTURE
+  // Metadata
   let metaHtml = '';
   if (collection.description) metaHtml += `<div class="collection-description"><p>${collection.description}</p></div>`;
   if (collection.artistNote) metaHtml += `<div class="artist-note"><span class="note-label">Artist Note</span><p>${collection.artistNote}</p></div>`;
@@ -225,7 +225,6 @@ function showDetail(collectionId) {
     <div class="collection-stats">
       ${metaRow('Pieces', collection.supply || collection.pieces?.length || '?')}
       ${metaRow('Chain', getChainFullName(collection.chain))}
-      ${collection.contract ? metaRow('Contract', truncateId(collection.contract), collection.contract) : ''}
     </div>`;
 
   if (collection.pieces && collection.pieces.length > 0) {
@@ -259,6 +258,7 @@ function showPiece(collection, index) {
   if (!piece) return;
   currentPieceIndex = index;
   
+  // RESET MEDIA AGAIN
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   if (detailVideo) { detailVideo.classList.add('hidden'); detailVideo.src = ""; detailVideo.load(); }
@@ -269,11 +269,10 @@ function showPiece(collection, index) {
   detailImage.classList.remove('hidden');
 
   detailTitle.innerHTML = `${collection.title} <span class="piece-indicator">${piece.title || '#' + piece.tokenId}</span>`;
-  detailMetadata.querySelectorAll('.piece-thumb').forEach((t, i) => t.classList.toggle('active', i === index));
 }
 
 function getChainFullName(c) { return { ordinals: 'Bitcoin (Ordinals)', ethereum: 'Ethereum', tezos: 'Tezos', solana: 'Solana' }[c] || c; }
-function metaRow(l, v, f = null) { return `<div class="meta-row"><span class="meta-label">${l}</span><span class="meta-value ${f ? 'copyable' : ''}" data-full="${f || ''}" data-display="${v}">${v}</span></div>`; }
+function metaRow(l, v) { return `<div class="meta-row"><span class="meta-label">${l}</span><span class="meta-value">${v}</span></div>`; }
 function truncateId(i) { return i && i.length > 16 ? i.slice(0, 8) + '...' + i.slice(-6) : i; }
 
 function pickRandomPiece() {
