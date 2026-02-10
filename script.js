@@ -27,8 +27,6 @@ let currentView = 'home';
 let currentCollectionId = null;
 let currentPieceIndex = 0;
 let activeChainFilter = null;
-
-// Slideshow state
 let slideshowInterval = null;
 let slideshowPlaying = false;
 
@@ -36,8 +34,7 @@ let slideshowPlaying = false;
 function isEditionCollection(collection) {
   if (collection.isEditions === true) return true;
   const uniqueCount = collection.uniquePieces || collection.pieces?.length || 0;
-  const supply = collection.supply || uniqueCount;
-  return supply > uniqueCount;
+  return (collection.supply || uniqueCount) > uniqueCount;
 }
 
 function isOnchainCollection(collection) {
@@ -72,22 +69,6 @@ function init() {
       showView('home');
     });
   });
-
-  document.querySelectorAll('.legend-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const chain = item.dataset.chain;
-      activeChainFilter = (activeChainFilter === chain) ? null : chain;
-      document.querySelectorAll('.legend-item').forEach(li => li.classList.toggle('active', li.dataset.chain === activeChainFilter));
-      
-      timeline.querySelectorAll('.timeline-item').forEach(ti => {
-        ti.style.display = (!activeChainFilter || ti.dataset.chain === activeChainFilter) ? '' : 'none';
-      });
-    });
-  });
-
-  document.querySelector('.art-container').addEventListener('click', () => {
-    if (currentCollectionId) showDetail(currentCollectionId);
-  });
 }
 
 function showView(viewName) {
@@ -100,7 +81,7 @@ function showView(viewName) {
   }
 }
 
-// 1. FIXED TIMELINE (Restores sidebar layout)
+// 1. FIXED TIMELINE (Restores sidebar layout using original classes)
 function buildTimeline() {
   const sorted = [...collections].sort((a, b) => (b.year || 2024) - (a.year || 2024));
   let currentYear = null;
@@ -116,7 +97,7 @@ function buildTimeline() {
     const editionTag = isEditionCollection(collection) ? '<span class="timeline-item-editions">Editions</span>' : '';
     const collabTag = collection.isCollab ? '<span class="timeline-item-collab">Collab</span>' : '';
 
-    // Fixed: Restored exact span classes so styles.css works
+    // These specific span classes MUST match your styles.css exactly
     html += `
       <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
         <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
@@ -131,7 +112,7 @@ function buildTimeline() {
   });
 }
 
-// 2. FIXED DETAIL VIEW (Kills video bug)
+// 2. FIXED DETAIL VIEW (Kills video bug for Acid Family)
 function showDetail(collectionId) {
   const collection = collections.find(c => c.id === collectionId);
   if (!collection) return;
@@ -141,14 +122,14 @@ function showDetail(collectionId) {
   const firstPiece = collection.pieces?.[0];
   const imageActions = document.querySelector('.image-actions');
 
-  // THE KILL SWITCH: Clear all media states and reset the video engine
+  // THE VIDEO KILL SWITCH: Clear all media states and reset the video engine
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   if (detailVideo) {
     detailVideo.classList.add('hidden');
     detailVideo.pause();
-    detailVideo.src = ""; // Force clear source
-    detailVideo.load();    // Reset element
+    detailVideo.src = ""; // Force clear the video source
+    detailVideo.load();    // Reset the element to stop playback
   }
 
   const hasVideo = firstPiece?.video || (firstPiece?.animationUrl && (
@@ -164,6 +145,7 @@ function showDetail(collectionId) {
     detailIframe.classList.remove('hidden');
     imageActions.classList.add('hidden');
   } else {
+    // Standard pieces (Acid Family)
     const fullUrl = firstPiece?.image || collection.heroImage || '';
     detailImage.src = toOptimizedUrl(firstPiece?.thumbnail || fullUrl);
     detailImage.dataset.fullImage = fullUrl;
@@ -175,7 +157,7 @@ function showDetail(collectionId) {
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
 
-  // Metadata & Grid Logic
+  // Metadata Grid
   let metaHtml = `<div class="collection-stats">${metaRow('Pieces', collection.supply || '?')}${metaRow('Chain', collection.chain)}</div>`;
   if (collection.pieces?.length > 0) {
     metaHtml += `<div class="pieces-grid">${collection.pieces.map((p, idx) => `
