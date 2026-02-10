@@ -287,15 +287,6 @@ function showDetail(collectionId) {
   // Hide/show appropriate element and actions
   const imageActions = document.querySelector('.image-actions');
 
-  // RESET ALL MEDIA ELEMENTS FIRST TO PREVENT GHOST VIDEOS
-  detailImage.classList.add('hidden');
-  detailIframe.classList.add('hidden');
-  if (detailVideo) {
-    detailVideo.classList.add('hidden');
-    detailVideo.src = ""; 
-    detailVideo.load();
-  }
-
   // Check if piece has a video URL (MP4, WebM, etc.)
   const hasVideo = firstPiece?.video || (firstPiece?.animationUrl && (
     firstPiece.animationUrl.endsWith('.mp4') ||
@@ -307,23 +298,52 @@ function showDetail(collectionId) {
   if (hasVideo) {
     // Use video element for actual video files
     const videoUrl = firstPiece.video || firstPiece.animationUrl;
-    detailVideo.src = videoUrl;
+    detailImage.classList.add('hidden');
+    detailIframe.classList.add('hidden');
     detailVideo.classList.remove('hidden');
+    detailVideo.src = videoUrl;
+    detailVideo.load();
     imageActions.classList.add('hidden');
   } else if (isOnchain && firstPiece?.animationUrl && !firstPiece?.isImage) {
-    // On-chain HTML art
+    // On-chain HTML art - use iframe with animationUrl (unless piece is marked as image)
+    detailImage.classList.add('hidden');
+            detailVideo.classList.add('hidden');
     detailIframe.classList.remove('hidden');
     detailIframe.src = firstPiece.animationUrl;
-    imageActions.classList.add('hidden'); 
-  } else {
-    // Regular images (like Acid Family)
+    imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
+  } else if (firstPiece?.isImage) {
+    // Piece marked as image - show as image even in on-chain collection
     const fullImageUrl = collection.heroImage || firstPiece?.image || '';
     const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
+    detailIframe.classList.add('hidden');
     detailImage.classList.remove('hidden');
+            detailVideo.classList.add('hidden');
 
+    // Show thumbnail immediately (static but fast)
     detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
 
+    // Show play button if there's an animated version to load
+    const playBtn = document.getElementById('play-animated');
+    if (thumbnailUrl !== fullImageUrl) {
+      playBtn.classList.remove('hidden');
+    } else {
+      playBtn.classList.add('hidden');
+    }
+
+    imageActions.classList.remove('hidden');
+  } else {
+    // Regular images - show static thumbnail, play button loads animated
+    const fullImageUrl = collection.heroImage || firstPiece?.image || '';
+    const thumbnailUrl = firstPiece?.thumbnail || fullImageUrl;
+    detailIframe.classList.add('hidden');
+    detailImage.classList.remove('hidden');
+
+    // Show thumbnail immediately (static but fast)
+    detailImage.src = toOptimizedUrl(thumbnailUrl);
+    detailImage.dataset.fullImage = fullImageUrl;
+
+    // Show play button if there's an animated version to load
     const playBtn = document.getElementById('play-animated');
     if (thumbnailUrl !== fullImageUrl) {
       playBtn.classList.remove('hidden');
@@ -333,20 +353,33 @@ function showDetail(collectionId) {
 
     imageActions.classList.remove('hidden');
   }
-
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
 
   // Build metadata
   let metaHtml = '';
+
+  // Description
   if (collection.description) {
-    metaHtml += `<div class="collection-description"><p>${collection.description}</p></div>`;
-  }
-  if (collection.artistNote) {
-    metaHtml += `<div class="artist-note"><span class="note-label">Artist Note</span><p>${collection.artistNote}</p></div>`;
+    metaHtml += `
+      <div class="collection-description">
+        <p>${collection.description}</p>
+      </div>
+    `;
   }
 
+  // Artist note
+  if (collection.artistNote) {
+    metaHtml += `
+      <div class="artist-note">
+        <span class="note-label">Artist Note</span>
+        <p>${collection.artistNote}</p>
+      </div>
+    `;
+  }
+
+  // Stats
   metaHtml += `
     <div class="collection-stats">
       ${metaRow('Pieces', collection.supply || collection.pieces?.length || '?')}
@@ -361,33 +394,39 @@ function showDetail(collectionId) {
     </div>
   `;
 
+  // Pieces grid
   if (collection.pieces && collection.pieces.length > 0) {
     metaHtml += `
       <div class="pieces-section">
         <span class="pieces-label">Pieces</span>
         <div class="pieces-grid">
           ${collection.pieces.map((piece, idx) => {
+            // Use iframe for on-chain collections unless piece is marked as image
             if (isOnchain && !piece.isImage && piece.animationUrl) {
               return `
                 <div class="piece-thumb" data-index="${idx}" title="${piece.title || '#' + piece.tokenId}">
                   <iframe src="${piece.animationUrl}" sandbox="allow-scripts" frameborder="0" style="width: 100%; height: 100%; border: none; pointer-events: none;"></iframe>
                   <span class="piece-title">${piece.title || '#' + piece.tokenId}</span>
-                </div>`;
+                </div>
+              `;
             } else {
+              // Use img for regular images or pieces marked as images
               return `
                 <div class="piece-thumb" data-index="${idx}" title="${piece.title || '#' + piece.tokenId}">
                   <img src="${toOptimizedUrl(piece.thumbnail || piece.image)}" alt="${piece.title || ''}" loading="lazy" />
                   <span class="piece-title">${piece.title || '#' + piece.tokenId}</span>
-                </div>`;
+                </div>
+              `;
             }
           }).join('')}
         </div>
-      </div>`;
+      </div>
+    `;
   }
 
   detailMetadata.innerHTML = metaHtml;
 
-  // Marketplace links
+  // Set marketplace links
   if (collection.marketplaces) {
     if (collection.marketplaces.magicEden) {
       linkMagicEden.href = collection.marketplaces.magicEden;
@@ -415,6 +454,7 @@ function showDetail(collectionId) {
     linkGamma.classList.add('hidden');
   }
 
+  // Ordinals link
   if (collection.chain === 'ordinals' && firstPiece) {
     linkOrdinals.href = 'https://ordinals.com/inscription/' + firstPiece.tokenId;
     linkOrdinals.classList.remove('hidden');
@@ -422,6 +462,7 @@ function showDetail(collectionId) {
     linkOrdinals.classList.add('hidden');
   }
 
+  // Add piece click handlers
   detailMetadata.querySelectorAll('.piece-thumb').forEach(thumb => {
     thumb.addEventListener('click', () => {
       const idx = parseInt(thumb.dataset.index);
@@ -429,17 +470,22 @@ function showDetail(collectionId) {
     });
   });
 
+  // Add copy functionality for contract
   detailMetadata.querySelectorAll('.copyable').forEach(el => {
     el.addEventListener('click', () => {
       navigator.clipboard.writeText(el.dataset.full);
       el.textContent = 'Copied!';
-      setTimeout(() => { el.textContent = el.dataset.display; }, 1000);
+      setTimeout(() => {
+        el.textContent = el.dataset.display;
+      }, 1000);
     });
   });
 
+  // Collection display mode button
   const collDisplayBtn = document.getElementById('collection-display-btn');
   collDisplayBtn.onclick = () => enterDisplayMode(collectionId);
 
+  // Update timeline active state
   timeline.querySelectorAll('.timeline-item').forEach(item => {
     item.classList.toggle('active', item.dataset.id === collectionId);
   });
@@ -453,36 +499,68 @@ function showPiece(collection, index) {
   if (!piece) return;
 
   currentPieceIndex = index;
+
+  // Update main image - use iframe for on-chain HTML, img for regular images
   const isOnchain = isOnchainCollection(collection);
   const imageActions = document.querySelector('.image-actions');
 
-  // RESET ALL MEDIA ELEMENTS
-  detailImage.classList.add('hidden');
-  detailIframe.classList.add('hidden');
-  if (detailVideo) {
-    detailVideo.classList.add('hidden');
-    detailVideo.src = "";
-    detailVideo.load();
-  }
-
   if (isOnchain && piece.animationUrl && !piece.isImage) {
+    // On-chain HTML art - use iframe with animationUrl (unless piece is marked as image)
+    detailImage.classList.add('hidden');
     detailIframe.classList.remove('hidden');
     detailIframe.src = piece.animationUrl;
-    imageActions.classList.add('hidden');
-  } else {
+    imageActions.classList.add('hidden'); // No download/fullscreen for on-chain HTML
+  } else if (piece.isImage) {
+    // Piece marked as image - show as image even in on-chain collection
     const fullImageUrl = piece.image || piece.thumbnail;
     const thumbnailUrl = piece.thumbnail || piece.image;
+
+    detailIframe.classList.add('hidden');
     detailImage.classList.remove('hidden');
+
+    // Show thumbnail immediately (static but fast)
     detailImage.src = toOptimizedUrl(thumbnailUrl);
     detailImage.dataset.fullImage = fullImageUrl;
 
+    // Show play button if there's an animated version to load
     const playBtn = document.getElementById('play-animated');
-    playBtn.classList.toggle('hidden', thumbnailUrl === fullImageUrl);
+    if (thumbnailUrl !== fullImageUrl) {
+      playBtn.classList.remove('hidden');
+    } else {
+      playBtn.classList.add('hidden');
+    }
+
+    imageActions.classList.remove('hidden');
+  } else {
+    // Regular images - show static thumbnail, play button loads animated
+    const fullImageUrl = piece.image || piece.thumbnail;
+    const thumbnailUrl = piece.thumbnail || piece.image;
+
+    detailIframe.classList.add('hidden');
+    detailImage.classList.remove('hidden');
+
+    // Show thumbnail immediately (static but fast)
+    detailImage.src = toOptimizedUrl(thumbnailUrl);
+    detailImage.dataset.fullImage = fullImageUrl;
+
+    // Show play button if there's an animated version to load
+    const playBtn = document.getElementById('play-animated');
+    if (thumbnailUrl !== fullImageUrl) {
+      playBtn.classList.remove('hidden');
+    } else {
+      playBtn.classList.add('hidden');
+    }
+
     imageActions.classList.remove('hidden');
   }
 
-  detailTitle.innerHTML = `${collection.title} <span class="piece-indicator">${piece.title || '#' + piece.tokenId}</span>`;
+  // Update title to show piece name
+  detailTitle.innerHTML = `
+    ${collection.title}
+    <span class="piece-indicator">${piece.title || '#' + piece.tokenId}</span>
+  `;
 
+  // Update inscription info for ordinals
   if (collection.chain === 'ordinals' && piece.tokenId) {
     const inscriptionRow = document.getElementById('inscription-row');
     if (inscriptionRow) {
@@ -490,50 +568,78 @@ function showPiece(collection, index) {
       if (link) {
         link.href = 'https://ordinals.com/inscription/' + piece.tokenId;
         link.textContent = truncateId(piece.tokenId);
+        link.title = piece.tokenId;
       }
+    }
+    if (linkOrdinals) {
+      linkOrdinals.href = 'https://ordinals.com/inscription/' + piece.tokenId;
     }
   }
 
+  // Highlight active thumbnail
   detailMetadata.querySelectorAll('.piece-thumb').forEach((thumb, idx) => {
     thumb.classList.toggle('active', idx === index);
   });
 
+  // Scroll thumbnail into view
   const activeThumb = detailMetadata.querySelector('.piece-thumb.active');
   if (activeThumb) {
     activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 }
 
+// Get full chain name
 function getChainFullName(chain) {
-  const names = { ordinals: 'Bitcoin (Ordinals)', ethereum: 'Ethereum', tezos: 'Tezos', solana: 'Solana' };
+  const names = {
+    ordinals: 'Bitcoin (Ordinals)',
+    ethereum: 'Ethereum',
+    tezos: 'Tezos',
+    solana: 'Solana'
+  };
   return names[chain] || chain;
 }
 
+// Helper: create metadata row
 function metaRow(label, value, fullValue = null) {
   if (fullValue) {
-    return `<div class="meta-row"><span class="meta-label">${label}</span><span class="meta-value copyable" data-full="${fullValue}" data-display="${value}" title="Click to copy">${value}</span></div>`;
+    return `
+      <div class="meta-row">
+        <span class="meta-label">${label}</span>
+        <span class="meta-value copyable" data-full="${fullValue}" data-display="${value}" title="Click to copy">${value}</span>
+      </div>
+    `;
   }
-  return `<div class="meta-row"><span class="meta-label">${label}</span><span class="meta-value">${value}</span></div>`;
+  return `
+    <div class="meta-row">
+      <span class="meta-label">${label}</span>
+      <span class="meta-value">${value}</span>
+    </div>
+  `;
 }
 
+// Helper: truncate long IDs
 function truncateId(id) {
   if (!id || id.length <= 16) return id;
   return id.slice(0, 8) + '...' + id.slice(-6);
 }
 
+
+// Pick a random piece, always from a different collection than the last shown
 let lastShownCollectionId = null;
 
 function pickRandomPiece(sourceCollections) {
   const cols = (sourceCollections || collections).filter(c => c.pieces && c.pieces.length > 0 && !c.imagesUnavailable);
   if (cols.length === 0) return null;
+  // Pick a collection that's different from the last one shown
   let available = cols.filter(c => c.id !== lastShownCollectionId);
-  if (available.length === 0) available = cols; 
+  if (available.length === 0) available = cols; // fallback if only 1 collection
   const col = available[Math.floor(Math.random() * available.length)];
   const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
   lastShownCollectionId = col.id;
   return { collection: col, piece };
 }
 
+// Display mode also tracks its own last collection
 let lastDisplayCollectionId = null;
 
 function pickRandomDisplayPiece(sourceCollections) {
@@ -547,14 +653,20 @@ function pickRandomDisplayPiece(sourceCollections) {
   return { collection: col, piece };
 }
 
+// Show a specific piece on the home hero
 function showHeroPiece(entry) {
   if (!entry) return;
   const { collection, piece } = entry;
+
   currentCollectionId = collection.id;
+
   const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
-  const imageUrl = isOnchain ? piece.animationUrl : (piece.image || piece.thumbnail || collection.heroImage);
+  const imageUrl = isOnchain
+    ? piece.animationUrl
+    : (piece.image || piece.thumbnail || collection.heroImage);
   const pieceTitle = piece.title || collection.title;
 
+  // Fade out
   featuredArt.classList.remove('loaded');
   featuredIframe.classList.remove('loaded');
   artInfo.classList.remove('visible');
@@ -562,7 +674,15 @@ function showHeroPiece(entry) {
   setTimeout(() => {
     const showInfo = () => {
       artTitle.textContent = pieceTitle;
-      artCollection.textContent = collection.title + (isEditionCollection(collection) ? ` \u2022 ${collection.supply || '?'} editions` : ` \u2022 ${collection.pieces?.length || '?'} pieces`);
+      let infoText;
+      if (piece.editionCount) {
+        infoText = collection.title + ' \u2022 1/' + piece.editionCount;
+      } else if (isEditionCollection(collection)) {
+        infoText = collection.title + ' \u2022 ' + (collection.supply || '?') + ' editions';
+      } else {
+        infoText = collection.title + ' \u2022 ' + (collection.pieces?.length || collection.supply || '?') + ' pieces';
+      }
+      artCollection.textContent = infoText;
       artChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
       artChain.setAttribute('data-chain', collection.chain);
       artInfo.classList.add('visible');
@@ -572,38 +692,70 @@ function showHeroPiece(entry) {
       featuredArt.classList.add('hidden');
       featuredIframe.classList.remove('hidden');
       featuredIframe.src = imageUrl;
-      featuredIframe.onload = () => { featuredIframe.classList.add('loaded'); showInfo(); };
+      featuredIframe.onload = () => {
+        featuredIframe.classList.add('loaded');
+        showInfo();
+      };
     } else {
       featuredIframe.classList.add('hidden');
       featuredArt.classList.remove('hidden');
       featuredArt.src = imageUrl;
-      featuredArt.onload = () => { featuredArt.classList.add('loaded'); showInfo(); };
+      featuredArt.onload = () => {
+        featuredArt.classList.add('loaded');
+        showInfo();
+      };
     }
+
+    // Fallback
+    setTimeout(showInfo, 2000);
   }, 300);
 }
 
+// Pre-pick and preload the next piece so it's ready when the timer fires
 let nextSlideshowEntry = null;
 
 function preloadNextSlide() {
   nextSlideshowEntry = pickRandomPiece();
   if (!nextSlideshowEntry) return;
   const { collection, piece } = nextSlideshowEntry;
-  if (!(isOnchainCollection(collection) && piece.animationUrl && !piece.isImage)) {
+  const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
+  if (!isOnchain) {
     const img = new Image();
     img.src = piece.image || piece.thumbnail || collection.heroImage;
   }
 }
 
+// Show random artwork (first load)
 function showRandomArt() {
   const entry = pickRandomPiece();
-  if (entry) { showHeroPiece(entry); preloadNextSlide(); }
+  if (entry) {
+    showHeroPiece(entry);
+    // Pre-pick and preload the next one
+    preloadNextSlide();
+  }
 }
 
-function startSlideshow() { slideshowPlaying = true; slideshowInterval = setInterval(slideshowNext, 15000); }
-function stopSlideshow() { slideshowPlaying = false; clearInterval(slideshowInterval); slideshowInterval = null; }
-function slideshowNext() { const entry = nextSlideshowEntry || pickRandomPiece(); if (entry) showHeroPiece(entry); preloadNextSlide(); }
+// Slideshow controls
+function startSlideshow() {
+  slideshowPlaying = true;
+  slideshowInterval = setInterval(slideshowNext, 15000);
+}
 
-// Display Mode logic
+function stopSlideshow() {
+  slideshowPlaying = false;
+  clearInterval(slideshowInterval);
+  slideshowInterval = null;
+}
+
+function slideshowNext() {
+  // Show the pre-loaded piece (or pick fresh if none ready)
+  const entry = nextSlideshowEntry || pickRandomPiece();
+  if (entry) showHeroPiece(entry);
+  // Immediately pre-pick and preload the next one
+  preloadNextSlide();
+}
+
+// Display Mode (Frame Mode)
 const displayMode = document.getElementById('display-mode');
 const displayArt = document.getElementById('display-art');
 const displayIframe = document.getElementById('display-iframe');
@@ -612,15 +764,16 @@ const displayCollection = document.getElementById('display-collection');
 
 let displayControlsTimeout = null;
 let displayAutoplayInterval = null;
-let displaySourceCollections = null;
-let currentDisplayEntry = null;
-let nextDisplayEntry = null;
+let displaySourceCollections = null; // null = all, or [singleCol] for per-collection mode
+let currentDisplayEntry = null; // current {collection, piece} being shown
+let nextDisplayEntry = null; // pre-picked next piece for smooth transition
 
 function preloadNextDisplayPiece() {
   nextDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   if (!nextDisplayEntry) return;
   const { collection, piece } = nextDisplayEntry;
-  if (!(isOnchainCollection(collection) && piece.animationUrl && !piece.isImage)) {
+  const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
+  if (!isOnchain) {
     const img = new Image();
     img.src = piece.image || piece.thumbnail || collection.heroImage;
   }
@@ -632,38 +785,55 @@ function enterDisplayMode(collectionId) {
     if (!col || !col.pieces || col.pieces.length === 0) return;
     displaySourceCollections = [col];
   } else {
-    displaySourceCollections = null;
+    displaySourceCollections = null; // all collections
   }
+  lastDisplayCollectionId = null;
+
   displayMode.classList.add('active');
   document.body.style.overflow = 'hidden';
+
+  // Stop home slideshow if playing
   if (slideshowPlaying) stopSlideshow();
 
+  // Pick first piece and preload next
   currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
   showDisplayPiece();
   preloadNextDisplayPiece();
   showDisplayControls();
 
+  // Start auto-play in display mode (15s interval)
   displayAutoplayInterval = setInterval(() => {
     currentDisplayEntry = nextDisplayEntry || pickRandomDisplayPiece(displaySourceCollections);
     showDisplayPiece();
     preloadNextDisplayPiece();
   }, 15000);
 
-  if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(() => {});
+  // Request fullscreen
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  }
 }
 
 function exitDisplayMode() {
   displayMode.classList.remove('active');
+  displayMode.classList.remove('show-controls');
   document.body.style.overflow = '';
   displayIframe.src = '';
+  clearTimeout(displayControlsTimeout);
   clearInterval(displayAutoplayInterval);
-  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+
+  if (document.fullscreenElement) {
+    document.exitFullscreen().catch(() => {});
+  }
 }
 
 function showDisplayPiece() {
   if (!currentDisplayEntry) return;
+
   const { collection, piece } = currentDisplayEntry;
   const isOnchain = isOnchainCollection(collection) && piece.animationUrl && !piece.isImage;
+
+  // Fade out
   displayArt.classList.remove('loaded');
   displayIframe.classList.remove('loaded');
 
@@ -675,45 +845,152 @@ function showDisplayPiece() {
       displayIframe.onload = () => displayIframe.classList.add('loaded');
     } else {
       displayIframe.classList.add('hidden');
+      displayIframe.src = '';
       displayArt.classList.remove('hidden');
       displayArt.src = piece.image || piece.thumbnail || collection.heroImage;
       displayArt.onload = () => displayArt.classList.add('loaded');
     }
+
     displayTitle.textContent = piece.title || '#' + piece.tokenId;
     displayCollection.textContent = collection.title;
   }, 200);
 }
 
+function resetDisplayAutoplay() {
+  clearInterval(displayAutoplayInterval);
+  displayAutoplayInterval = setInterval(() => {
+    currentDisplayEntry = nextDisplayEntry || pickRandomDisplayPiece(displaySourceCollections);
+    showDisplayPiece();
+    preloadNextDisplayPiece();
+  }, 15000);
+}
+
+function displayNext() {
+  currentDisplayEntry = nextDisplayEntry || pickRandomDisplayPiece(displaySourceCollections);
+  showDisplayPiece();
+  preloadNextDisplayPiece();
+  showDisplayControls();
+  resetDisplayAutoplay();
+}
+
+function displayPrev() {
+  currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
+  showDisplayPiece();
+  preloadNextDisplayPiece();
+  showDisplayControls();
+  resetDisplayAutoplay();
+}
+
+function displayShuffle() {
+  currentDisplayEntry = pickRandomDisplayPiece(displaySourceCollections);
+  showDisplayPiece();
+  preloadNextDisplayPiece();
+  showDisplayControls();
+  resetDisplayAutoplay();
+}
+
 function showDisplayControls() {
   displayMode.classList.add('show-controls');
   clearTimeout(displayControlsTimeout);
-  displayControlsTimeout = setTimeout(() => { displayMode.classList.remove('show-controls'); }, 3000);
+  displayControlsTimeout = setTimeout(() => {
+    displayMode.classList.remove('show-controls');
+  }, 3000);
 }
 
+// Display mode event listeners
 function initDisplayMode() {
-  document.getElementById('display-mode-btn').addEventListener('click', (e) => { e.stopPropagation(); enterDisplayMode(); });
+  // Enter display mode
+  document.getElementById('display-mode-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    enterDisplayMode();
+  });
+
+  // Controls
   document.querySelector('.display-close').addEventListener('click', exitDisplayMode);
+  document.querySelector('.display-next').addEventListener('click', displayNext);
+  document.querySelector('.display-prev').addEventListener('click', displayPrev);
+  document.querySelector('.display-shuffle').addEventListener('click', displayShuffle);
+
+  // Mouse move shows controls
   displayMode.addEventListener('mousemove', showDisplayControls);
+  // Touch shows controls
+  displayMode.addEventListener('touchstart', showDisplayControls);
+
+  // Keyboard navigation in display mode
   document.addEventListener('keydown', (e) => {
     if (!displayMode.classList.contains('active')) return;
-    if (e.key === 'Escape') exitDisplayMode();
+
+    if (e.key === 'Escape') {
+      exitDisplayMode();
+    } else if (e.key === 'ArrowRight' || e.key === ' ') {
+      e.preventDefault();
+      displayNext();
+    } else if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      displayPrev();
+    } else if (e.key === 'r' || e.key === 'R') {
+      displayShuffle();
+    }
+    showDisplayControls();
+  });
+
+  // Click on the display area (not controls) to show/hide controls
+  displayMode.addEventListener('click', (e) => {
+    if (e.target === displayMode || e.target.closest('.display-bg') || e.target.closest('.display-frame')) {
+      if (displayMode.classList.contains('show-controls')) {
+        displayMode.classList.remove('show-controls');
+        clearTimeout(displayControlsTimeout);
+      } else {
+        showDisplayControls();
+      }
+    }
+  });
+
+  // Fullscreen change - if user exits fullscreen via ESC, also exit display mode
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && displayMode.classList.contains('active')) {
+      exitDisplayMode();
+    }
   });
 }
 
+// Lightbox functions
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxTitle = document.getElementById('lightbox-title');
 
 function openLightbox(imageSrc, title) {
+  // Show loading state
   lightbox.style.display = 'flex';
   lightbox.classList.add('loading');
   lightboxTitle.textContent = title || '';
   document.body.style.overflow = 'hidden';
-  lightboxImg.onload = () => lightbox.classList.remove('loading');
+
+  // Load full image
+  lightboxImg.onload = () => {
+    lightbox.classList.remove('loading');
+  };
   lightboxImg.src = imageSrc;
 }
 
-function closeLightbox() { lightbox.style.display = 'none'; document.body.style.overflow = ''; }
-lightbox.addEventListener('click', (e) => { if (e.target === lightbox || e.target === lightboxImg) closeLightbox(); });
+function closeLightbox() {
+  lightbox.style.display = 'none';
+  document.body.style.overflow = '';
+}
 
+// Close lightbox on background click or escape key
+lightbox.addEventListener('click', (e) => {
+  if (e.target === lightbox || e.target === lightboxImg) {
+    closeLightbox();
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  // Don't handle lightbox escape if display mode is active (display mode has its own handler)
+  if (e.key === 'Escape' && lightbox.style.display === 'flex' && !displayMode.classList.contains('active')) {
+    closeLightbox();
+  }
+});
+
+// Start
 document.addEventListener('DOMContentLoaded', init);
