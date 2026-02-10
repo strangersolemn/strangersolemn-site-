@@ -30,11 +30,12 @@ let activeChainFilter = null;
 let slideshowInterval = null;
 let slideshowPlaying = false;
 
-// Helpers
 function isEditionCollection(collection) {
   if (collection.isEditions === true) return true;
+  if (collection.isEditions === false) return false;
   const uniqueCount = collection.uniquePieces || collection.pieces?.length || 0;
-  return (collection.supply || uniqueCount) > uniqueCount;
+  const supply = collection.supply || uniqueCount;
+  return supply > uniqueCount;
 }
 
 function isOnchainCollection(collection) {
@@ -56,7 +57,6 @@ const chainNames = {
   solana: 'SOL'
 };
 
-// Initialize
 function init() {
   buildTimeline();
   showRandomArt();
@@ -72,16 +72,19 @@ function init() {
 }
 
 function showView(viewName) {
-  Object.keys(views).forEach(key => views[key].classList.toggle('active', key === viewName));
+  Object.keys(views).forEach(key => {
+    views[key].classList.toggle('active', key === viewName);
+  });
   currentView = viewName;
   if (viewName === 'home') {
+    timeline.querySelectorAll('.timeline-item').forEach(item => item.classList.remove('active'));
     if (!slideshowPlaying) startSlideshow();
   } else {
-    stopSlideshow();
+    if (slideshowPlaying) stopSlideshow();
   }
 }
 
-// 1. FIXED TIMELINE (Restores sidebar layout using original classes)
+// RESTORED: Your exact original timeline logic to fix the "stretched" look
 function buildTimeline() {
   const sorted = [...collections].sort((a, b) => (b.year || 2024) - (a.year || 2024));
   let currentYear = null;
@@ -93,11 +96,9 @@ function buildTimeline() {
       currentYear = year;
       html += `<div class="timeline-year">${currentYear}</div>`;
     }
-
     const editionTag = isEditionCollection(collection) ? '<span class="timeline-item-editions">Editions</span>' : '';
     const collabTag = collection.isCollab ? '<span class="timeline-item-collab">Collab</span>' : '';
 
-    // These specific span classes MUST match your styles.css exactly
     html += `
       <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
         <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
@@ -112,7 +113,7 @@ function buildTimeline() {
   });
 }
 
-// 2. FIXED DETAIL VIEW (Kills video bug for Acid Family)
+// FIXED: showDetail function with the Video reset
 function showDetail(collectionId) {
   const collection = collections.find(c => c.id === collectionId);
   if (!collection) return;
@@ -120,16 +121,17 @@ function showDetail(collectionId) {
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
   const firstPiece = collection.pieces?.[0];
+  const isOnchain = isOnchainCollection(collection);
   const imageActions = document.querySelector('.image-actions');
 
-  // THE VIDEO KILL SWITCH: Clear all media states and reset the video engine
+  // THE FIX: Reset every media element before loading the new one
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   if (detailVideo) {
     detailVideo.classList.add('hidden');
-    detailVideo.pause();
-    detailVideo.src = ""; // Force clear the video source
-    detailVideo.load();    // Reset the element to stop playback
+    detailVideo.pause(); 
+    detailVideo.src = ""; // This kills the "ghost" video playback
+    detailVideo.load();    // Forces the browser to stop the video engine
   }
 
   const hasVideo = firstPiece?.video || (firstPiece?.animationUrl && (
@@ -140,15 +142,15 @@ function showDetail(collectionId) {
     detailVideo.src = firstPiece.video || firstPiece.animationUrl;
     detailVideo.classList.remove('hidden');
     imageActions.classList.add('hidden');
-  } else if (isOnchainCollection(collection) && firstPiece?.animationUrl && !firstPiece?.isImage) {
+  } else if (isOnchain && firstPiece?.animationUrl && !firstPiece?.isImage) {
     detailIframe.src = firstPiece.animationUrl;
     detailIframe.classList.remove('hidden');
     imageActions.classList.add('hidden');
   } else {
-    // Standard pieces (Acid Family)
-    const fullUrl = firstPiece?.image || collection.heroImage || '';
-    detailImage.src = toOptimizedUrl(firstPiece?.thumbnail || fullUrl);
-    detailImage.dataset.fullImage = fullUrl;
+    // Regular images (like Acid Family)
+    const fullImageUrl = collection.heroImage || firstPiece?.image || '';
+    detailImage.src = toOptimizedUrl(firstPiece?.thumbnail || fullImageUrl);
+    detailImage.dataset.fullImage = fullImageUrl;
     detailImage.classList.remove('hidden');
     imageActions.classList.remove('hidden');
   }
@@ -156,8 +158,8 @@ function showDetail(collectionId) {
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
-
-  // Metadata Grid
+  
+  // Re-build your metadata area (Original logic)
   let metaHtml = `<div class="collection-stats">${metaRow('Pieces', collection.supply || '?')}${metaRow('Chain', collection.chain)}</div>`;
   if (collection.pieces?.length > 0) {
     metaHtml += `<div class="pieces-grid">${collection.pieces.map((p, idx) => `
@@ -166,6 +168,7 @@ function showDetail(collectionId) {
       </div>`).join('')}</div>`;
   }
   detailMetadata.innerHTML = metaHtml;
+  
   detailMetadata.querySelectorAll('.piece-thumb').forEach(t => {
     t.addEventListener('click', () => showPiece(collection, parseInt(t.dataset.index)));
   });
@@ -176,15 +179,16 @@ function showDetail(collectionId) {
 function showPiece(collection, index) {
   const piece = collection.pieces[index];
   if (!piece) return;
+  currentPieceIndex = index;
   
   // Reset media again for thumb switching
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   if (detailVideo) { detailVideo.classList.add('hidden'); detailVideo.src = ""; detailVideo.load(); }
 
-  const fullUrl = piece.image || piece.thumbnail;
+  const fullImageUrl = piece.image || piece.thumbnail;
   detailImage.src = toOptimizedUrl(piece.thumbnail || piece.image);
-  detailImage.dataset.fullImage = fullUrl;
+  detailImage.dataset.fullImage = fullImageUrl;
   detailImage.classList.remove('hidden');
   detailTitle.innerHTML = `${collection.title} <span class="piece-indicator">${piece.title || '#' + piece.tokenId}</span>`;
 }
@@ -211,9 +215,12 @@ function startSlideshow() { slideshowPlaying = true; slideshowInterval = setInte
 function stopSlideshow() { slideshowPlaying = false; clearInterval(slideshowInterval); }
 
 function initDisplayMode() {
-  document.getElementById('display-mode-btn').addEventListener('click', () => {
-    document.getElementById('display-mode').classList.add('active');
-  });
+  const btn = document.getElementById('display-mode-btn');
+  if(btn) {
+    btn.addEventListener('click', () => {
+      document.getElementById('display-mode').classList.add('active');
+    });
+  }
 }
 
 document.addEventListener('DOMContentLoaded', init);
