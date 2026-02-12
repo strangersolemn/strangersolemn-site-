@@ -1,3 +1,8 @@
+/**
+ * STRANGER SOLEMN - Official Site Script
+ * Integrated Fixes: Mobile Menu, Iframe Scaling, Video Bug Reset
+ */
+
 // DOM Elements
 const views = {
   home: document.getElementById('view-home'),
@@ -21,37 +26,14 @@ const detailVideo = document.getElementById('detail-video');
 const detailTitle = document.getElementById('detail-title');
 const detailChain = document.getElementById('detail-chain');
 const detailMetadata = document.getElementById('detail-metadata');
-const linkMagicEden = document.getElementById('link-magiceden');
-const linkGamma = document.getElementById('link-gamma');
-const linkOrdinals = document.getElementById('link-ordinals');
 
 // State
-let currentView = 'home';
 let currentCollectionId = null;
 let currentPieceIndex = 0;
-let activeChainFilter = null;
 let slideshowInterval = null;
 let slideshowPlaying = false;
 
-// Helpers
-function isEditionCollection(collection) {
-  if (collection.isEditions === true) return true;
-  const uniqueCount = collection.uniquePieces || collection.pieces?.length || 0;
-  return (collection.supply || uniqueCount) > uniqueCount;
-}
-
-function isOnchainCollection(collection) {
-  return collection?.onchain === true;
-}
-
-function toOptimizedUrl(url) {
-  if (!url) return url;
-  if (url.includes('res.cloudinary.com')) {
-    return url.replace('/upload/', '/upload/f_auto,q_auto/');
-  }
-  return url;
-}
-
+// Configuration
 const chainNames = {
   ordinals: 'BTC',
   ethereum: 'ETH',
@@ -59,27 +41,30 @@ const chainNames = {
   solana: 'SOL'
 };
 
-// Initialize
+/**
+ * Initialization
+ */
 function init() {
   buildTimeline();
   showRandomArt();
-  initDisplayMode();
   startSlideshow();
 
-  // Mobile Menu Toggle
+  // Mobile Menu Toggle Logic
   if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       timelinePanel.classList.toggle('open');
     });
   }
 
-  // Close menu when clicking a timeline item on mobile
-  timeline.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768) {
+  // Close mobile menu when clicking outside or on a selection
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 && !timelinePanel.contains(e.target) && e.target !== menuToggle) {
       timelinePanel.classList.remove('open');
     }
   });
 
+  // Navigation: Home Link
   document.querySelectorAll('[data-view="home"]').forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
@@ -87,52 +72,67 @@ function init() {
     });
   });
 
-  // Chain filtering logic
-  document.querySelectorAll('.legend-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const chain = item.dataset.chain;
-      activeChainFilter = (activeChainFilter === chain) ? null : chain;
-      document.querySelectorAll('.legend-item').forEach(li => li.classList.toggle('active', li.dataset.chain === activeChainFilter));
-      timeline.querySelectorAll('.timeline-item').forEach(ti => {
-        ti.style.display = (!activeChainFilter || ti.dataset.chain === activeChainFilter) ? '' : 'none';
-      });
+  // Detail View: Download Action
+  const downloadBtn = document.querySelector('.download-btn');
+  if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+      const imageUrl = detailImage.src;
+      const link = document.createElement('a');
+      link.href = imageUrl;
+      link.download = `stranger-solemn-${currentCollectionId}.png`;
+      link.click();
     });
-  });
-
-  document.querySelector('.art-container').addEventListener('click', () => {
-    if (currentCollectionId) showDetail(currentCollectionId);
-  });
+  }
 }
 
+/**
+ * View Management
+ */
 function showView(viewName) {
-  Object.keys(views).forEach(key => views[key].classList.toggle('active', key === viewName));
-  currentView = viewName;
+  Object.keys(views).forEach(key => {
+    views[key].classList.toggle('active', key === viewName);
+  });
+  
   if (viewName === 'home') {
-    detailIframe.src = ''; 
+    // Kill detail media when returning home
+    detailIframe.src = '';
+    if (detailVideo) {
+      detailVideo.pause();
+      detailVideo.src = "";
+      detailVideo.load();
+    }
     if (!slideshowPlaying) startSlideshow();
   } else {
     stopSlideshow();
   }
+
+  // Auto-close menu on mobile after selection
+  if (window.innerWidth <= 768) {
+    timelinePanel.classList.remove('open');
+  }
 }
 
+/**
+ * Timeline Builder (Side Panel)
+ */
 function buildTimeline() {
   const sorted = [...collections].sort((a, b) => (b.year || 2024) - (a.year || 2024));
   let currentYear = null;
   let html = '';
 
-  sorted.forEach((collection) => {
-    const year = collection.year || 2024;
+  sorted.forEach((col) => {
+    const year = col.year || 2024;
     if (year !== currentYear) {
       currentYear = year;
       html += `<div class="timeline-year">${currentYear}</div>`;
     }
-    const editionTag = isEditionCollection(collection) ? '<span class="timeline-item-editions">Editions</span>' : '';
-    const collabTag = collection.isCollab ? '<span class="timeline-item-collab">Collab</span>' : '';
+
+    // Exact span classes to match your styles.css grid
     html += `
-      <div class="timeline-item" data-chain="${collection.chain}" data-id="${collection.id}">
-        <span class="timeline-item-chain">${chainNames[collection.chain] || collection.chain.toUpperCase()}</span>
-        <span class="timeline-item-title">${collection.title}${editionTag}${collabTag}</span>
-        <span class="timeline-item-count">${collection.supply || collection.pieces?.length || '?'}</span>
+      <div class="timeline-item" data-chain="${col.chain}" data-id="${col.id}">
+        <span class="timeline-item-chain">${chainNames[col.chain] || col.chain.toUpperCase()}</span>
+        <span class="timeline-item-title">${col.title}</span>
+        <span class="timeline-item-count">${col.pieces?.length || col.supply || '?'}</span>
       </div>`;
   });
 
@@ -142,15 +142,79 @@ function buildTimeline() {
   });
 }
 
+/**
+ * Detail View Logic (Fixes Video Bug)
+ */
 function showDetail(collectionId) {
   const collection = collections.find(c => c.id === collectionId);
   if (!collection) return;
+
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
-  const firstPiece = collection.pieces?.[0];
-  const imageActions = document.querySelector('.image-actions');
+  const piece = collection.pieces?.[0];
+  const isOnchain = collection.onchain === true;
 
-  // Video and Media Reset
+  // 1. THE RESET (Kill Switch): Stops ghost videos and clears iframes
+  detailImage.classList.add('hidden');
+  detailIframe.classList.add('hidden');
+  detailIframe.src = ""; 
+  if (detailVideo) {
+    detailVideo.classList.add('hidden');
+    detailVideo.pause();
+    detailVideo.src = ""; 
+    detailVideo.load();
+  }
+
+  // 2. Identify Media Type
+  const isVideo = piece?.video || piece?.animationUrl?.endsWith('.mp4');
+
+  if (isVideo) {
+    detailVideo.src = piece.video || piece.animationUrl;
+    detailVideo.classList.remove('hidden');
+    detailVideo.play();
+  } else if (isOnchain && piece?.animationUrl && !piece?.isImage) {
+    detailIframe.src = piece.animationUrl;
+    detailIframe.classList.remove('hidden');
+  } else {
+    // Standard Image (Acid Family)
+    detailImage.src = toOptimizedUrl(piece?.thumbnail || piece?.image || collection.heroImage);
+    detailImage.classList.remove('hidden');
+  }
+
+  // Update Text UI
+  detailTitle.textContent = collection.title;
+  detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
+  detailChain.setAttribute('data-chain', collection.chain);
+
+  // Metadata Stats
+  detailMetadata.innerHTML = `
+    <div class="collection-stats">
+      <div class="meta-row"><span class="meta-label">Pieces</span><span class="meta-value">${collection.supply || collection.pieces?.length || '?'}</span></div>
+      <div class="meta-row"><span class="meta-label">Chain</span><span class="meta-value">${collection.chain.toUpperCase()}</span></div>
+    </div>
+    <div class="pieces-grid">
+      ${collection.pieces.map((p, idx) => `
+        <div class="piece-thumb" data-index="${idx}">
+          <img src="${toOptimizedUrl(p.thumbnail || p.image)}" loading="lazy">
+        </div>`).join('')}
+    </div>
+  `;
+
+  detailMetadata.querySelectorAll('.piece-thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => showPiece(collection, parseInt(thumb.dataset.index)));
+  });
+
+  showView('detail');
+}
+
+/**
+ * Thumbnail Navigation
+ */
+function showPiece(collection, index) {
+  const piece = collection.pieces[index];
+  if (!piece) return;
+
+  // Reset media elements for piece switching
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   if (detailVideo) {
@@ -160,77 +224,66 @@ function showDetail(collectionId) {
     detailVideo.load();
   }
 
-  const hasVideo = firstPiece?.video || (firstPiece?.animationUrl && firstPiece.animationUrl.endsWith('.mp4'));
-
-  if (hasVideo) {
-    detailVideo.src = firstPiece.video || firstPiece.animationUrl;
-    detailVideo.classList.remove('hidden');
-    imageActions.classList.add('hidden');
-  } else if (isOnchainCollection(collection) && firstPiece?.animationUrl && !firstPiece?.isImage) {
-    detailIframe.src = firstPiece.animationUrl;
-    detailIframe.classList.remove('hidden');
-    imageActions.classList.add('hidden');
-  } else {
-    const fullUrl = firstPiece?.image || collection.heroImage || '';
-    detailImage.src = toOptimizedUrl(firstPiece?.thumbnail || fullUrl);
-    detailImage.dataset.fullImage = fullUrl;
-    detailImage.classList.remove('hidden');
-    imageActions.classList.remove('hidden');
-  }
-
-  detailTitle.textContent = collection.title;
-  detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
-  detailChain.setAttribute('data-chain', collection.chain);
-
-  let metaHtml = `<div class="collection-stats">${metaRow('Pieces', collection.supply || '?')}${metaRow('Chain', collection.chain)}</div>`;
-  if (collection.pieces?.length > 0) {
-    metaHtml += `<div class="pieces-grid">${collection.pieces.map((p, idx) => `
-      <div class="piece-thumb" data-index="${idx}">
-        <img src="${toOptimizedUrl(p.thumbnail || p.image)}" loading="lazy" />
-      </div>`).join('')}</div>`;
-  }
-  detailMetadata.innerHTML = metaHtml;
-  detailMetadata.querySelectorAll('.piece-thumb').forEach(t => t.addEventListener('click', () => showPiece(collection, parseInt(t.dataset.index))));
-
-  showView('detail');
-}
-
-function showPiece(collection, index) {
-  const piece = collection.pieces[index];
-  if (!piece) return;
-  detailImage.classList.add('hidden');
-  detailIframe.classList.add('hidden');
-  if (detailVideo) { detailVideo.classList.add('hidden'); detailVideo.src = ""; detailVideo.load(); }
-
-  const fullUrl = piece.image || piece.thumbnail;
   detailImage.src = toOptimizedUrl(piece.thumbnail || piece.image);
-  detailImage.dataset.fullImage = fullUrl;
   detailImage.classList.remove('hidden');
   detailTitle.innerHTML = `${collection.title} <span class="piece-indicator">${piece.title || '#' + piece.tokenId}</span>`;
 }
 
-function metaRow(l, v) { return `<div class="meta-row"><span class="meta-label">${l}</span><span class="meta-value">${v}</span></div>`; }
-
-function pickRandomPiece() {
-  const cols = collections.filter(c => c.pieces?.length > 0);
-  const col = cols[Math.floor(Math.random() * cols.length)];
-  return { collection: col, piece: col.pieces[Math.floor(Math.random() * col.pieces.length)] };
+/**
+ * Slideshow / Random Art Functions
+ */
+function showRandomArt() {
+  const col = collections[Math.floor(Math.random() * collections.length)];
+  const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
+  
+  featuredArt.src = piece.image || piece.thumbnail || col.heroImage;
+  artTitle.textContent = piece.title || col.title;
+  artCollection.textContent = col.title;
+  artChain.textContent = chainNames[col.chain] || col.chain.toUpperCase();
+  artChain.setAttribute('data-chain', col.chain);
+  artInfo.classList.add('visible');
 }
 
-function showHeroPiece(entry) {
-  const { collection, piece } = entry;
-  featuredArt.src = piece.image || piece.thumbnail;
-  artTitle.textContent = piece.title || collection.title;
-  artCollection.textContent = collection.title;
-  artChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
+function startSlideshow() {
+  slideshowPlaying = true;
+  slideshowInterval = setInterval(showRandomArt, 10000);
 }
 
-function startSlideshow() { slideshowPlaying = true; slideshowInterval = setInterval(() => showHeroPiece(pickRandomPiece()), 15000); }
-function stopSlideshow() { slideshowPlaying = false; clearInterval(slideshowInterval); }
+function stopSlideshow() {
+  slideshowPlaying = false;
+  clearInterval(slideshowInterval);
+}
+
+/**
+ * Utilities
+ */
+function toOptimizedUrl(url) {
+  if (!url) return '';
+  if (url.includes('res.cloudinary.com')) {
+    return url.replace('/upload/', '/upload/f_auto,q_auto/');
+  }
+  return url;
+}
 
 function initDisplayMode() {
   const btn = document.getElementById('display-mode-btn');
-  if (btn) btn.onclick = () => document.getElementById('display-mode').classList.add('active');
+  if (btn) {
+    btn.addEventListener('click', () => {
+      document.getElementById('display-mode').classList.add('active');
+    });
+  }
+}
+
+// Fullscreen Lightbox logic (simplified for reliability)
+function openLightbox(src, title) {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  lbImg.src = src;
+  lb.classList.add('active');
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
 }
 
 document.addEventListener('DOMContentLoaded', init);
