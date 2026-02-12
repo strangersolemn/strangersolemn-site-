@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stranger Solemn Art</title>  
+  <title>Stranger Solemn</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
   <div id="lightbox" class="lightbox">
@@ -34,15 +34,29 @@
       <span id="display-collection"></span>
     </div>
     <div class="display-controls">
-      <button class="display-btn display-prev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
-      <button class="display-btn display-shuffle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></button>
-      <button class="display-btn display-next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-      <button class="display-btn display-close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+      <button class="display-btn display-prev" aria-label="Previous artwork">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <button class="display-btn display-shuffle" aria-label="Random artwork">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+      </button>
+      <button class="display-btn display-next" aria-label="Next artwork">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <button class="display-btn display-close" aria-label="Exit display mode">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
     </div>
   </div>
 
   <div class="container">
     <main class="main-content">
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
       <section id="view-home" class="view active">
         <div class="art-container">
           <img id="featured-art" src="" alt="Featured artwork" />
@@ -54,7 +68,7 @@
           </div>
         </div>
         <div class="home-actions">
-          <button id="display-mode-btn">
+          <button id="display-mode-btn" aria-label="Enter display mode">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
             </svg>
@@ -64,34 +78,48 @@
 
       <section id="view-detail" class="view">
         <div class="detail-header">
-          <button class="back-btn" data-view="home">Back</button>
+          <button class="back-btn" data-view="home">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back
+          </button>
         </div>
         <div class="detail-content">
           <div class="detail-image-container">
             <img id="detail-image" src="" alt="Artwork" />
             <iframe id="detail-iframe" src="" title="Artwork"></iframe>
             <video id="detail-video" class="hidden" src="" controls loop autoplay muted></video>
-            <button class="play-overlay hidden" id="play-animated">
+            <button class="play-overlay hidden" id="play-animated" aria-label="Load animated version">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
             </button>
+            <div class="image-actions">
+              <button class="download-btn" aria-label="Download image">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              </button>
+            </div>
           </div>
           <div class="detail-info">
             <h1 id="detail-title"></h1>
             <span id="detail-chain" class="chain-badge"></span>
             <div id="detail-metadata" class="detail-metadata"></div>
             <div class="marketplace-links">
-              <a id="link-magiceden" class="detail-link" href="#" target="_blank">Magic Eden</a>
-              <a id="link-gamma" class="detail-link" href="#" target="_blank">Gamma</a>
-              <button id="collection-display-btn" class="detail-link">Display</button>
+              <a id="link-magiceden" class="detail-link" href="" target="_blank" rel="noopener">Magic Eden</a>
+              <a id="link-gamma" class="detail-link" href="" target="_blank" rel="noopener">Gamma</a>
+              <a id="link-ordinals" class="detail-link hidden" href="" target="_blank" rel="noopener">Ordinals</a>
+              <button id="collection-display-btn" class="detail-link" aria-label="Display mode">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: -2px; margin-right: 4px;">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                </svg> Display
+              </button>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <aside class="timeline-panel">
+    <aside class="timeline-panel" id="timeline-panel">
       <header class="panel-header">
-        <a href="#" class="home-link" data-view="home"><h1 class="site-title">Stranger Solemn</h1></a>
+        <a href="#" class="home-link" data-view="home">
+          <h1 class="site-title">Stranger Solemn</h1>
+        </a>
         <p class="tagline">Art across chains</p>
       </header>
       <nav class="timeline" id="timeline"></nav>
@@ -107,7 +135,7 @@
     </aside>
   </div>
 
-  <script src="artworks.js?v=13"></script>
-  <script src="script.js?v=8"></script>
+  <script src="artworks.js?v=14"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>
