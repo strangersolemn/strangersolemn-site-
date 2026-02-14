@@ -129,6 +129,7 @@ html, body {
   height: 100vh;
   border: none;
   display: none;
+  pointer-events: none;
 }
 
 .display-controls {
