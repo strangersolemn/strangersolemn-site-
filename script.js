@@ -32,16 +32,17 @@ const displayTitle = document.getElementById('display-title');
 const displayCollection = document.getElementById('display-collection');
 
 // State
-let currentCollectionId = null;
-let currentPieceIndex = 0;
-let slideshowInterval = null;
-let slideshowPlaying = false;
-let displayCollectionData = null;
-let displayPieceIndex = 0;
-let currentCarouselCollection = null;
+var currentCollectionId = null;
+var currentPieceIndex = 0;
+var slideshowInterval = null;
+var slideshowPlaying = false;
+var displayCollectionData = null;
+var displayPieceIndex = 0;
+var displaySingleMode = false;
+var currentCarouselCollection = null;
 
 // Configuration
-const chainNames = {
+var chainNames = {
   ordinals: 'BTC', ethereum: 'ETH', tezos: 'TEZ', solana: 'SOL'
 };
 
@@ -53,36 +54,50 @@ function pieceNeedsIframe(collection, piece) {
   return false;
 }
 
+/**
+ * For the detail hero, prefer showing the static image/thumbnail
+ * even for on-chain pieces, if a real image URL exists.
+ * The iframe is only used if there's no static image at all.
+ */
+function shouldShowStaticInHero(collection, piece) {
+  if (!piece) return true;
+  var hasStaticImage = piece.image || piece.thumbnail;
+  // If the image is a data URI or same as animationUrl, it's not a real static image
+  if (hasStaticImage && !piece.image?.startsWith('data:')) return true;
+  if (piece.thumbnail) return true;
+  return false;
+}
+
 function init() {
   buildTimeline();
   showRandomArt();
   startSlideshow();
 
   if (menuToggle) {
-    menuToggle.addEventListener('click', (e) => {
+    menuToggle.addEventListener('click', function(e) {
       e.stopPropagation();
       timelinePanel.classList.toggle('open');
     });
   }
 
-  document.addEventListener('click', (e) => {
+  document.addEventListener('click', function(e) {
     if (window.innerWidth <= 768 && !timelinePanel.contains(e.target) && e.target !== menuToggle) {
       timelinePanel.classList.remove('open');
     }
   });
 
-  document.querySelectorAll('[data-view="home"]').forEach(el => {
-    el.addEventListener('click', (e) => {
+  document.querySelectorAll('[data-view="home"]').forEach(function(el) {
+    el.addEventListener('click', function(e) {
       e.preventDefault();
       showView('home');
     });
   });
 
-  const downloadBtn = document.querySelector('.download-btn');
+  var downloadBtn = document.querySelector('.download-btn');
   if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      const imageUrl = detailImage.src;
-      const link = document.createElement('a');
+    downloadBtn.addEventListener('click', function() {
+      var imageUrl = detailImage.src;
+      var link = document.createElement('a');
       link.href = imageUrl;
       link.download = 'stranger-solemn-' + currentCollectionId + '.png';
       link.click();
@@ -91,7 +106,7 @@ function init() {
 
   // Clickable carousel - title, collection name, and chain badge
   if (artTitle) {
-    artTitle.addEventListener('click', (e) => {
+    artTitle.addEventListener('click', function(e) {
       e.stopPropagation();
       if (currentCarouselCollection) {
         stopSlideshow();
@@ -100,7 +115,7 @@ function init() {
     });
   }
   if (artCollection) {
-    artCollection.addEventListener('click', (e) => {
+    artCollection.addEventListener('click', function(e) {
       e.stopPropagation();
       if (currentCarouselCollection) {
         stopSlideshow();
@@ -109,7 +124,7 @@ function init() {
     });
   }
   if (artChain) {
-    artChain.addEventListener('click', (e) => {
+    artChain.addEventListener('click', function(e) {
       e.stopPropagation();
       if (currentCarouselCollection) {
         stopSlideshow();
@@ -122,7 +137,7 @@ function init() {
 }
 
 function showView(viewName) {
-  Object.keys(views).forEach(key => {
+  Object.keys(views).forEach(function(key) {
     views[key].classList.toggle('active', key === viewName);
   });
   if (viewName === 'home') {
@@ -142,11 +157,11 @@ function showView(viewName) {
 }
 
 function buildTimeline() {
-  const sorted = [...collections].sort((a, b) => (b.year || 2024) - (a.year || 2024));
-  let currentYear = null;
-  let html = '';
-  sorted.forEach((col) => {
-    const year = col.year || 2024;
+  var sorted = [...collections].sort(function(a, b) { return (b.year || 2024) - (a.year || 2024); });
+  var currentYear = null;
+  var html = '';
+  sorted.forEach(function(col) {
+    var year = col.year || 2024;
     if (year !== currentYear) {
       currentYear = year;
       html += '<div class="timeline-year">' + currentYear + '</div>';
@@ -158,17 +173,17 @@ function buildTimeline() {
     '</div>';
   });
   timeline.innerHTML = html;
-  timeline.querySelectorAll('.timeline-item').forEach(item => {
-    item.addEventListener('click', () => showDetail(item.dataset.id));
+  timeline.querySelectorAll('.timeline-item').forEach(function(item) {
+    item.addEventListener('click', function() { showDetail(item.dataset.id); });
   });
 }
 
 function showDetail(collectionId) {
-  const collection = collections.find(c => c.id === collectionId);
+  var collection = collections.find(function(c) { return c.id === collectionId; });
   if (!collection) return;
   currentCollectionId = collectionId;
   currentPieceIndex = 0;
-  const piece = collection.pieces?.[0];
+  var piece = collection.pieces?.[0];
 
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
@@ -180,22 +195,26 @@ function showDetail(collectionId) {
     detailVideo.load();
   }
 
-  const isVideo = piece?.video || piece?.animationUrl?.endsWith('.mp4');
-  const needsIframe = pieceNeedsIframe(collection, piece);
+  var isVideo = piece?.video || piece?.animationUrl?.endsWith('.mp4');
 
   if (isVideo) {
     detailVideo.src = piece.video || piece.animationUrl;
     detailVideo.classList.remove('hidden');
     detailVideo.play();
-  } else if (needsIframe) {
-    detailIframe.src = piece.animationUrl || piece.image;
-    detailIframe.classList.remove('hidden');
-  } else if (collection.onchain && piece?.animationUrl && piece.animationUrl !== piece.image) {
-    detailIframe.src = piece.animationUrl;
-    detailIframe.classList.remove('hidden');
-  } else {
+  } else if (shouldShowStaticInHero(collection, piece)) {
+    // Prefer static image/thumbnail in the hero
     detailImage.src = toOptimizedUrl(piece?.thumbnail || piece?.image || collection.heroImage);
     detailImage.classList.remove('hidden');
+  } else {
+    // Fallback to iframe for truly on-chain-only content
+    var needsIframe = pieceNeedsIframe(collection, piece);
+    if (needsIframe) {
+      detailIframe.src = piece.animationUrl || piece.image;
+      detailIframe.classList.remove('hidden');
+    } else {
+      detailImage.src = toOptimizedUrl(piece?.thumbnail || piece?.image || collection.heroImage);
+      detailImage.classList.remove('hidden');
+    }
   }
 
   detailTitle.textContent = collection.title;
@@ -232,11 +251,12 @@ function showDetail(collectionId) {
     });
   });
 
+  // Per-piece display button => single piece mode (no navigation)
   detailMetadata.querySelectorAll('.piece-display-btn').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
       var idx = parseInt(btn.dataset.displayIndex);
-      enterDisplayMode(collection, idx);
+      enterDisplayMode(collection, idx, true);
     });
   });
 
@@ -257,16 +277,18 @@ function showPiece(collection, index) {
     detailVideo.load();
   }
 
-  var needsIframe = pieceNeedsIframe(collection, piece);
-  if (needsIframe) {
-    detailIframe.src = piece.animationUrl || piece.image;
-    detailIframe.classList.remove('hidden');
-  } else if (collection.onchain && piece.animationUrl && piece.animationUrl !== piece.image) {
-    detailIframe.src = piece.animationUrl;
-    detailIframe.classList.remove('hidden');
-  } else {
+  if (shouldShowStaticInHero(collection, piece)) {
     detailImage.src = toOptimizedUrl(piece.thumbnail || piece.image);
     detailImage.classList.remove('hidden');
+  } else {
+    var needsIframe = pieceNeedsIframe(collection, piece);
+    if (needsIframe) {
+      detailIframe.src = piece.animationUrl || piece.image;
+      detailIframe.classList.remove('hidden');
+    } else {
+      detailImage.src = toOptimizedUrl(piece.thumbnail || piece.image);
+      detailImage.classList.remove('hidden');
+    }
   }
 
   detailTitle.innerHTML = collection.title + ' <span class="piece-indicator">' + (piece.title || '#' + piece.tokenId) + '</span>';
@@ -278,14 +300,16 @@ function showRandomArt() {
   currentCarouselCollection = col;
 
   var needsIframe = pieceNeedsIframe(col, piece);
-  if (needsIframe) {
+  // For carousel, prefer static images when available
+  if (shouldShowStaticInHero(col, piece)) {
+    featuredIframe.classList.remove('active');
+    featuredIframe.src = '';
+    featuredArt.style.display = '';
+    featuredArt.src = piece.image || piece.thumbnail || col.heroImage;
+  } else if (needsIframe) {
     featuredArt.style.display = 'none';
     featuredIframe.classList.add('active');
     featuredIframe.src = piece.animationUrl || piece.image;
-  } else if (col.onchain && piece.animationUrl && piece.animationUrl !== piece.image) {
-    featuredArt.style.display = 'none';
-    featuredIframe.classList.add('active');
-    featuredIframe.src = piece.animationUrl;
   } else {
     featuredIframe.classList.remove('active');
     featuredIframe.src = '';
@@ -321,12 +345,26 @@ function toOptimizedUrl(url) {
 // ==========================================
 // DISPLAY MODE - Fullscreen art display
 // ==========================================
-function enterDisplayMode(collection, pieceIndex) {
+
+/**
+ * Enter display mode.
+ * @param {object} collection - collection data
+ * @param {number} pieceIndex - index of piece to show
+ * @param {boolean} singleOnly - if true, show ONLY this piece (no nav controls)
+ */
+function enterDisplayMode(collection, pieceIndex, singleOnly) {
   displayCollectionData = collection;
   displayPieceIndex = pieceIndex;
+  displaySingleMode = !!singleOnly;
   loadDisplayPiece();
   displayMode.classList.add('active');
   document.body.style.overflow = 'hidden';
+
+  // Show/hide nav controls based on mode
+  var navBtns = displayMode.querySelectorAll('.display-prev, .display-next, .display-shuffle');
+  navBtns.forEach(function(btn) {
+    btn.style.display = displaySingleMode ? 'none' : '';
+  });
 }
 
 function exitDisplayMode() {
@@ -350,7 +388,7 @@ function loadDisplayPiece() {
   if (needsIframe) {
     displayIframe.src = piece.animationUrl || piece.image;
     displayIframe.style.display = 'block';
-  } else if (displayCollectionData.onchain && piece.animationUrl && piece.animationUrl !== piece.image) {
+  } else if (displayCollectionData.onchain && piece.animationUrl && piece.animationUrl !== piece.image && !piece.animationUrl.startsWith('data:')) {
     displayIframe.src = piece.animationUrl;
     displayIframe.style.display = 'block';
   } else {
@@ -363,23 +401,23 @@ function loadDisplayPiece() {
 }
 
 function initDisplayMode() {
-  // Home page display mode button
+  // Home page display mode button - random from all collections
   var btn = document.getElementById('display-mode-btn');
   if (btn) {
     btn.addEventListener('click', function() {
       var col = collections[Math.floor(Math.random() * collections.length)];
       var idx = Math.floor(Math.random() * col.pieces.length);
-      enterDisplayMode(col, idx);
+      enterDisplayMode(col, idx, false);
     });
   }
 
-  // Collection-level display button in detail view
+  // Collection-level display button in detail view - cycles through collection
   var collectionDisplayBtn = document.getElementById('collection-display-btn');
   if (collectionDisplayBtn) {
     collectionDisplayBtn.addEventListener('click', function() {
       var collection = collections.find(function(c) { return c.id === currentCollectionId; });
       if (collection) {
-        enterDisplayMode(collection, 0);
+        enterDisplayMode(collection, 0, false);
       }
     });
   }
@@ -394,7 +432,7 @@ function initDisplayMode() {
   var nextBtn = document.querySelector('.display-next');
   if (nextBtn) {
     nextBtn.addEventListener('click', function() {
-      if (!displayCollectionData) return;
+      if (!displayCollectionData || displaySingleMode) return;
       displayPieceIndex = (displayPieceIndex + 1) % displayCollectionData.pieces.length;
       loadDisplayPiece();
     });
@@ -404,7 +442,7 @@ function initDisplayMode() {
   var prevBtn = document.querySelector('.display-prev');
   if (prevBtn) {
     prevBtn.addEventListener('click', function() {
-      if (!displayCollectionData) return;
+      if (!displayCollectionData || displaySingleMode) return;
       displayPieceIndex = (displayPieceIndex - 1 + displayCollectionData.pieces.length) % displayCollectionData.pieces.length;
       loadDisplayPiece();
     });
@@ -414,19 +452,19 @@ function initDisplayMode() {
   var shuffleBtn = document.querySelector('.display-shuffle');
   if (shuffleBtn) {
     shuffleBtn.addEventListener('click', function() {
-      if (!displayCollectionData) return;
+      if (!displayCollectionData || displaySingleMode) return;
       displayPieceIndex = Math.floor(Math.random() * displayCollectionData.pieces.length);
       loadDisplayPiece();
     });
   }
 
-  // ESC key to exit display mode
+  // Keyboard controls
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && displayMode.classList.contains('active')) {
+    if (!displayMode.classList.contains('active')) return;
+    if (e.key === 'Escape') {
       exitDisplayMode();
     }
-    // Arrow keys for navigation in display mode
-    if (displayMode.classList.contains('active') && displayCollectionData) {
+    if (!displaySingleMode && displayCollectionData) {
       if (e.key === 'ArrowRight') {
         displayPieceIndex = (displayPieceIndex + 1) % displayCollectionData.pieces.length;
         loadDisplayPiece();
