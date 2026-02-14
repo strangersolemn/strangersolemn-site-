@@ -20,14 +20,12 @@ const detailVideo = document.getElementById('detail-video');
 const detailTitle = document.getElementById('detail-title');
 const detailChain = document.getElementById('detail-chain');
 const detailMetadata = document.getElementById('detail-metadata');
-// Display mode elements
 const displayMode = document.getElementById('display-mode');
 const displayArt = document.getElementById('display-art');
 const displayIframe = document.getElementById('display-iframe');
 const displayTitle = document.getElementById('display-title');
 const displayCollection = document.getElementById('display-collection');
 
-// State
 var currentCollectionId = null;
 var currentPieceIndex = 0;
 var slideshowInterval = null;
@@ -36,24 +34,21 @@ var displayCollectionData = null;
 var displayPieceIndex = 0;
 var displaySingleMode = false;
 var currentCarouselCollection = null;
-
 var chainNames = { ordinals: 'BTC', ethereum: 'ETH', tezos: 'TEZ', solana: 'SOL' };
 
 /**
- * Check if a piece needs an iframe to render.
- * Ordinals content URLs always need iframes.
- * ETH on-chain with animationUrl different from image needs iframe.
+ * Check if a piece MUST use an iframe (no good static image available).
+ * Only ordinals pieces truly need iframes - their URLs serve HTML, not images.
  */
 function pieceNeedsIframe(collection, piece) {
     if (!collection.onchain) return false;
     if (piece.isImage) return false;
     if (collection.chain === 'ordinals') return true;
-    if (piece.animationUrl && piece.animationUrl !== piece.image) return true;
     return false;
 }
 
 /**
- * Check if a piece has a REAL static image (not an ordinals URL or data URI).
+ * Check if a piece has a real static image that can render in an img tag.
  */
 function hasStaticImage(piece) {
     if (!piece) return false;
@@ -75,10 +70,6 @@ function getStaticImageUrl(piece) {
     return '';
 }
 
-/**
- * Get the best iframe URL for a piece.
- * For on-chain pieces, prefer animationUrl, then image URL.
- */
 function getIframeUrl(piece) {
     if (!piece) return '';
     return piece.animationUrl || piece.image || '';
@@ -115,7 +106,6 @@ function init() {
         });
     }
 
-    // Clickable carousel
     [artTitle, artCollection, artChain].forEach(function(el) {
         if (el) {
             el.addEventListener('click', function(e) {
@@ -169,11 +159,10 @@ function buildTimeline() {
 
 /**
  * Show the hero media for a piece.
- * For on-chain collections (ordinals + ETH on-chain like Renascent):
- *   - Use iframe to show the animated/interactive content
- * For off-chain collections (regular ETH, TEZ, SOL):
- *   - Use img tag to show the static image
- * When a thumbnail is clicked, show that specific piece's content.
+ * Strategy:
+ * - If piece has a real static image => show it (ETH, TEZ, SOL, and ETH on-chain like Renascent)
+ * - If piece needs iframe (ordinals only) => show iframe
+ * - Fallback => try any available URL
  */
 function showHeroMedia(collection, piece) {
     detailImage.classList.add('hidden');
@@ -187,7 +176,6 @@ function showHeroMedia(collection, piece) {
     }
     if (!piece) return;
 
-    // Check for video first
     var isVideo = piece.video || (piece.animationUrl && piece.animationUrl.endsWith('.mp4'));
     if (isVideo) {
         detailVideo.src = piece.video || piece.animationUrl;
@@ -196,18 +184,18 @@ function showHeroMedia(collection, piece) {
         return;
     }
 
-    // For on-chain pieces that need iframe (ordinals + ETH on-chain with animation)
-    if (pieceNeedsIframe(collection, piece)) {
-        detailIframe.src = getIframeUrl(piece);
-        detailIframe.classList.remove('hidden');
+    // Prefer static image when available (works for ETH on-chain like Renascent too)
+    var staticUrl = getStaticImageUrl(piece);
+    if (staticUrl) {
+        detailImage.src = toOptimizedUrl(staticUrl);
+        detailImage.classList.remove('hidden');
         return;
     }
 
-    // For everything else, use static image
-    var imgUrl = getStaticImageUrl(piece);
-    if (imgUrl) {
-        detailImage.src = toOptimizedUrl(imgUrl);
-        detailImage.classList.remove('hidden');
+    // For ordinals (no static image), use iframe
+    if (pieceNeedsIframe(collection, piece)) {
+        detailIframe.src = getIframeUrl(piece);
+        detailIframe.classList.remove('hidden');
         return;
     }
 
@@ -229,14 +217,12 @@ function showDetail(collectionId) {
     detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
     detailChain.setAttribute('data-chain', collection.chain);
 
-    // Build pieces grid
     var displayIcon = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>';
 
     var thumbsHtml = collection.pieces.map(function(p, idx) {
         var displayBtn = '<div class="piece-thumb-actions"><button class="piece-display-btn" data-display-index="' + idx + '" title="Display this piece">' + displayIcon + '</button></div>';
-        
-        // For thumbnails: always use static image if available, even for on-chain
-        // This makes the grid load fast and look clean
+
+        // For thumbnails: always use static image if available
         var staticUrl = getStaticImageUrl(p);
         if (staticUrl) {
             var thumbUrl = toOptimizedUrl(p.thumbnail || p.image);
@@ -244,14 +230,13 @@ function showDetail(collectionId) {
                 '<img src="' + thumbUrl + '" loading="lazy">' +
                 displayBtn + '</div>';
         } else {
-            // Ordinals: use iframe thumbnail
             return '<div class="piece-thumb" data-index="' + idx + '">' +
                 '<iframe src="' + (p.animationUrl || p.image) + '" loading="lazy" sandbox="allow-scripts" scrolling="no"></iframe>' +
                 displayBtn + '</div>';
         }
     }).join('');
 
-    // Build marketplace links
+    // Build marketplace links from collection-level data
     var linksHtml = '';
     if (collection.marketplaceLinks) {
         collection.marketplaceLinks.forEach(function(link) {
@@ -296,7 +281,6 @@ function showRandomArt() {
     var piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
     currentCarouselCollection = col;
 
-    // For carousel, show static image if available, otherwise iframe
     var staticUrl = getStaticImageUrl(piece);
     if (staticUrl) {
         featuredIframe.classList.remove('active');
@@ -333,7 +317,6 @@ function toOptimizedUrl(url) {
 // ==========================================
 // DISPLAY MODE - Fullscreen art display
 // ==========================================
-
 function enterDisplayMode(collection, pieceIndex, singleOnly) {
     displayCollectionData = collection;
     displayPieceIndex = pieceIndex;
@@ -362,8 +345,6 @@ function loadDisplayPiece() {
     displayIframe.style.display = 'none';
     displayIframe.src = '';
 
-    // Display mode: for best experience, prefer static image on dark bg
-    // But for ordinals (no static image), use iframe
     var staticUrl = getStaticImageUrl(piece);
     if (staticUrl) {
         displayArt.src = staticUrl;
