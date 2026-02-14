@@ -41,11 +41,15 @@ var displayPieceIndex = 0;
 var displaySingleMode = false;
 var currentCarouselCollection = null;
 
-// Configuration
 var chainNames = {
   ordinals: 'BTC', ethereum: 'ETH', tezos: 'TEZ', solana: 'SOL'
 };
 
+/**
+ * Check if a piece needs an iframe to render.
+ * Ordinals content URLs always need iframes.
+ * ETH on-chain with animationUrl different from image needs iframe.
+ */
 function pieceNeedsIframe(collection, piece) {
   if (!collection.onchain) return false;
   if (piece.isImage) return false;
@@ -55,17 +59,30 @@ function pieceNeedsIframe(collection, piece) {
 }
 
 /**
- * For the detail hero, prefer showing the static image/thumbnail
- * even for on-chain pieces, if a real image URL exists.
- * The iframe is only used if there's no static image at all.
+ * Check if a piece has a REAL static image that can be shown in an <img> tag.
+ * Ordinals URLs are NOT real images - they serve HTML content.
+ * Data URIs for HTML are NOT real images.
+ * Alchemy CDN, Cloudinary, IPFS gateway URLs ARE real images.
  */
-function shouldShowStaticInHero(collection, piece) {
-  if (!piece) return true;
-  var hasStaticImage = piece.image || piece.thumbnail;
-  // If the image is a data URI or same as animationUrl, it's not a real static image
-  if (hasStaticImage && !piece.image?.startsWith('data:')) return true;
-  if (piece.thumbnail) return true;
-  return false;
+function hasStaticImage(piece) {
+  if (!piece) return false;
+  var url = piece.image;
+  if (!url) return false;
+  if (url.startsWith('data:text/html')) return false;
+  if (url.includes('ordinals.com/content/')) return false;
+  return true;
+}
+
+function getStaticImageUrl(piece) {
+  if (!piece) return '';
+  // Prefer full image over thumbnail for quality
+  if (piece.image && !piece.image.startsWith('data:') && !piece.image.includes('ordinals.com/content/')) {
+    return piece.image;
+  }
+  if (piece.thumbnail && !piece.thumbnail.startsWith('data:') && !piece.thumbnail.includes('ordinals.com/content/')) {
+    return piece.thumbnail;
+  }
+  return '';
 }
 
 function init() {
@@ -104,34 +121,18 @@ function init() {
     });
   }
 
-  // Clickable carousel - title, collection name, and chain badge
-  if (artTitle) {
-    artTitle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (currentCarouselCollection) {
-        stopSlideshow();
-        showDetail(currentCarouselCollection.id);
-      }
-    });
-  }
-  if (artCollection) {
-    artCollection.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (currentCarouselCollection) {
-        stopSlideshow();
-        showDetail(currentCarouselCollection.id);
-      }
-    });
-  }
-  if (artChain) {
-    artChain.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (currentCarouselCollection) {
-        stopSlideshow();
-        showDetail(currentCarouselCollection.id);
-      }
-    });
-  }
+  // Clickable carousel
+  [artTitle, artCollection, artChain].forEach(function(el) {
+    if (el) {
+      el.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (currentCarouselCollection) {
+          stopSlideshow();
+          showDetail(currentCarouselCollection.id);
+        }
+      });
+    }
+  });
 
   initDisplayMode();
 }
@@ -178,13 +179,12 @@ function buildTimeline() {
   });
 }
 
-function showDetail(collectionId) {
-  var collection = collections.find(function(c) { return c.id === collectionId; });
-  if (!collection) return;
-  currentCollectionId = collectionId;
-  currentPieceIndex = 0;
-  var piece = collection.pieces?.[0];
-
+/**
+ * Show the hero media for a piece.
+ * If it has a real static image, show that (big and crisp).
+ * Otherwise use iframe for on-chain content.
+ */
+function showHeroMedia(collection, piece) {
   detailImage.classList.add('hidden');
   detailIframe.classList.add('hidden');
   detailIframe.src = "";
@@ -195,33 +195,50 @@ function showDetail(collectionId) {
     detailVideo.load();
   }
 
-  var isVideo = piece?.video || piece?.animationUrl?.endsWith('.mp4');
+  if (!piece) return;
 
+  var isVideo = piece.video || (piece.animationUrl && piece.animationUrl.endsWith('.mp4'));
   if (isVideo) {
     detailVideo.src = piece.video || piece.animationUrl;
     detailVideo.classList.remove('hidden');
     detailVideo.play();
-  } else if (shouldShowStaticInHero(collection, piece)) {
-    // Prefer static image/thumbnail in the hero
-    detailImage.src = toOptimizedUrl(piece?.thumbnail || piece?.image || collection.heroImage);
-    detailImage.classList.remove('hidden');
-  } else {
-    // Fallback to iframe for truly on-chain-only content
-    var needsIframe = pieceNeedsIframe(collection, piece);
-    if (needsIframe) {
-      detailIframe.src = piece.animationUrl || piece.image;
-      detailIframe.classList.remove('hidden');
-    } else {
-      detailImage.src = toOptimizedUrl(piece?.thumbnail || piece?.image || collection.heroImage);
-      detailImage.classList.remove('hidden');
-    }
+    return;
   }
+
+  // If the piece has a real static image, use it for the hero
+  var staticUrl = getStaticImageUrl(piece);
+  if (staticUrl) {
+    detailImage.src = toOptimizedUrl(staticUrl);
+    detailImage.classList.remove('hidden');
+    return;
+  }
+
+  // Otherwise use iframe
+  if (pieceNeedsIframe(collection, piece)) {
+    detailIframe.src = piece.animationUrl || piece.image;
+    detailIframe.classList.remove('hidden');
+    return;
+  }
+
+  // Final fallback
+  detailImage.src = toOptimizedUrl(piece.image || piece.thumbnail || collection.heroImage || '');
+  detailImage.classList.remove('hidden');
+}
+
+function showDetail(collectionId) {
+  var collection = collections.find(function(c) { return c.id === collectionId; });
+  if (!collection) return;
+  currentCollectionId = collectionId;
+  currentPieceIndex = 0;
+  var piece = collection.pieces?.[0];
+
+  showHeroMedia(collection, piece);
 
   detailTitle.textContent = collection.title;
   detailChain.textContent = chainNames[collection.chain] || collection.chain.toUpperCase();
   detailChain.setAttribute('data-chain', collection.chain);
 
-  // Build pieces grid with per-piece display buttons
+  // Build pieces grid
   var displayIcon = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>';
   var thumbsHtml = collection.pieces.map(function(p, idx) {
     var usesIframe = pieceNeedsIframe(collection, p);
@@ -251,7 +268,6 @@ function showDetail(collectionId) {
     });
   });
 
-  // Per-piece display button => single piece mode (no navigation)
   detailMetadata.querySelectorAll('.piece-display-btn').forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -266,31 +282,7 @@ function showDetail(collectionId) {
 function showPiece(collection, index) {
   var piece = collection.pieces[index];
   if (!piece) return;
-
-  detailImage.classList.add('hidden');
-  detailIframe.classList.add('hidden');
-  detailIframe.src = "";
-  if (detailVideo) {
-    detailVideo.classList.add('hidden');
-    detailVideo.pause();
-    detailVideo.src = "";
-    detailVideo.load();
-  }
-
-  if (shouldShowStaticInHero(collection, piece)) {
-    detailImage.src = toOptimizedUrl(piece.thumbnail || piece.image);
-    detailImage.classList.remove('hidden');
-  } else {
-    var needsIframe = pieceNeedsIframe(collection, piece);
-    if (needsIframe) {
-      detailIframe.src = piece.animationUrl || piece.image;
-      detailIframe.classList.remove('hidden');
-    } else {
-      detailImage.src = toOptimizedUrl(piece.thumbnail || piece.image);
-      detailImage.classList.remove('hidden');
-    }
-  }
-
+  showHeroMedia(collection, piece);
   detailTitle.innerHTML = collection.title + ' <span class="piece-indicator">' + (piece.title || '#' + piece.tokenId) + '</span>';
 }
 
@@ -299,14 +291,14 @@ function showRandomArt() {
   var piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
   currentCarouselCollection = col;
 
-  var needsIframe = pieceNeedsIframe(col, piece);
-  // For carousel, prefer static images when available
-  if (shouldShowStaticInHero(col, piece)) {
+  // For carousel, show static image if available, otherwise iframe
+  var staticUrl = getStaticImageUrl(piece);
+  if (staticUrl) {
     featuredIframe.classList.remove('active');
     featuredIframe.src = '';
     featuredArt.style.display = '';
-    featuredArt.src = piece.image || piece.thumbnail || col.heroImage;
-  } else if (needsIframe) {
+    featuredArt.src = staticUrl;
+  } else if (pieceNeedsIframe(col, piece)) {
     featuredArt.style.display = 'none';
     featuredIframe.classList.add('active');
     featuredIframe.src = piece.animationUrl || piece.image;
@@ -345,13 +337,6 @@ function toOptimizedUrl(url) {
 // ==========================================
 // DISPLAY MODE - Fullscreen art display
 // ==========================================
-
-/**
- * Enter display mode.
- * @param {object} collection - collection data
- * @param {number} pieceIndex - index of piece to show
- * @param {boolean} singleOnly - if true, show ONLY this piece (no nav controls)
- */
 function enterDisplayMode(collection, pieceIndex, singleOnly) {
   displayCollectionData = collection;
   displayPieceIndex = pieceIndex;
@@ -360,7 +345,6 @@ function enterDisplayMode(collection, pieceIndex, singleOnly) {
   displayMode.classList.add('active');
   document.body.style.overflow = 'hidden';
 
-  // Show/hide nav controls based on mode
   var navBtns = displayMode.querySelectorAll('.display-prev, .display-next, .display-shuffle');
   navBtns.forEach(function(btn) {
     btn.style.display = displaySingleMode ? 'none' : '';
@@ -380,15 +364,16 @@ function loadDisplayPiece() {
   var piece = displayCollectionData.pieces[displayPieceIndex];
   if (!piece) return;
 
-  var needsIframe = pieceNeedsIframe(displayCollectionData, piece);
   displayArt.style.display = 'none';
   displayIframe.style.display = 'none';
   displayIframe.src = '';
 
-  if (needsIframe) {
+  // In display mode, use the on-chain/iframe version if available
+  // (this shows the actual art, not just a thumbnail)
+  if (pieceNeedsIframe(displayCollectionData, piece)) {
     displayIframe.src = piece.animationUrl || piece.image;
     displayIframe.style.display = 'block';
-  } else if (displayCollectionData.onchain && piece.animationUrl && piece.animationUrl !== piece.image && !piece.animationUrl.startsWith('data:')) {
+  } else if (displayCollectionData.onchain && piece.animationUrl && piece.animationUrl !== piece.image) {
     displayIframe.src = piece.animationUrl;
     displayIframe.style.display = 'block';
   } else {
@@ -401,7 +386,6 @@ function loadDisplayPiece() {
 }
 
 function initDisplayMode() {
-  // Home page display mode button - random from all collections
   var btn = document.getElementById('display-mode-btn');
   if (btn) {
     btn.addEventListener('click', function() {
@@ -411,24 +395,17 @@ function initDisplayMode() {
     });
   }
 
-  // Collection-level display button in detail view - cycles through collection
   var collectionDisplayBtn = document.getElementById('collection-display-btn');
   if (collectionDisplayBtn) {
     collectionDisplayBtn.addEventListener('click', function() {
       var collection = collections.find(function(c) { return c.id === currentCollectionId; });
-      if (collection) {
-        enterDisplayMode(collection, 0, false);
-      }
+      if (collection) enterDisplayMode(collection, 0, false);
     });
   }
 
-  // Close display mode
   var closeBtn = document.querySelector('.display-close');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', exitDisplayMode);
-  }
+  if (closeBtn) closeBtn.addEventListener('click', exitDisplayMode);
 
-  // Next piece
   var nextBtn = document.querySelector('.display-next');
   if (nextBtn) {
     nextBtn.addEventListener('click', function() {
@@ -438,7 +415,6 @@ function initDisplayMode() {
     });
   }
 
-  // Previous piece
   var prevBtn = document.querySelector('.display-prev');
   if (prevBtn) {
     prevBtn.addEventListener('click', function() {
@@ -448,7 +424,6 @@ function initDisplayMode() {
     });
   }
 
-  // Shuffle
   var shuffleBtn = document.querySelector('.display-shuffle');
   if (shuffleBtn) {
     shuffleBtn.addEventListener('click', function() {
@@ -458,12 +433,9 @@ function initDisplayMode() {
     });
   }
 
-  // Keyboard controls
   document.addEventListener('keydown', function(e) {
     if (!displayMode.classList.contains('active')) return;
-    if (e.key === 'Escape') {
-      exitDisplayMode();
-    }
+    if (e.key === 'Escape') exitDisplayMode();
     if (!displaySingleMode && displayCollectionData) {
       if (e.key === 'ArrowRight') {
         displayPieceIndex = (displayPieceIndex + 1) % displayCollectionData.pieces.length;
@@ -478,8 +450,7 @@ function initDisplayMode() {
 
 function openLightbox(src, title) {
   var lb = document.getElementById('lightbox');
-  var lbImg = document.getElementById('lightbox-img');
-  lbImg.src = src;
+  document.getElementById('lightbox-img').src = src;
   lb.classList.add('active');
 }
 
