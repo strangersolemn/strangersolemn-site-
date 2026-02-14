@@ -368,13 +368,14 @@ function loadDisplayPiece() {
   displayIframe.style.display = 'none';
   displayIframe.src = '';
 
-  // In display mode, use the on-chain/iframe version if available
-  // (this shows the actual art, not just a thumbnail)
-  if (pieceNeedsIframe(displayCollectionData, piece)) {
+  // For display mode: prefer static images for clean dark background
+  // Only use iframe if there's no static image (e.g. ordinals-only content)
+  var staticUrl = getStaticImageUrl(piece);
+  if (staticUrl) {
+    displayArt.src = staticUrl;
+    displayArt.style.display = 'block';
+  } else if (pieceNeedsIframe(displayCollectionData, piece)) {
     displayIframe.src = piece.animationUrl || piece.image;
-    displayIframe.style.display = 'block';
-  } else if (displayCollectionData.onchain && piece.animationUrl && piece.animationUrl !== piece.image) {
-    displayIframe.src = piece.animationUrl;
     displayIframe.style.display = 'block';
   } else {
     displayArt.src = piece.image || piece.thumbnail;
