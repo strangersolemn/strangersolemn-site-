@@ -142,23 +142,23 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 .detail-content { display: flex; gap: 3rem; flex: 1; align-items: flex-start; }
 
 .detail-image-container {
-    flex: 1; display: flex; align-items: center; justify-content: center;
-    min-height: 400px; height: calc(100vh - 120px); position: relative;
+    flex: 1; display: flex; align-items: flex-start; justify-content: center;
+    min-height: 400px; max-height: calc(100vh - 120px); position: relative;
     background: var(--bg-tertiary);
 }
 
 #detail-image {
-    width: 100%; height: 100%; max-height: calc(100vh - 120px);
+    width: 100%; height: auto; max-height: calc(100vh - 120px);
     border: none; background: var(--bg-tertiary); object-fit: contain;
 }
 
 #detail-iframe {
-    width: 100%; height: 100%; max-height: calc(100vh - 120px);
+    width: 100%; aspect-ratio: 1 / 1; max-height: calc(100vh - 120px);
     border: none; background: var(--bg-tertiary);
 }
 
 #detail-video {
-    width: 100%; height: 100%; max-height: calc(100vh - 120px);
+    width: 100%; height: auto; max-height: calc(100vh - 120px);
     border: none; background: var(--bg-tertiary); object-fit: contain;
 }
 
