@@ -139,7 +139,7 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 }
 .back-btn:hover { color: var(--text-primary); }
 
-.detail-content { display: flex; gap: 3rem; flex: 1; align-items: flex-start; }
+.detail-content { display: flex; gap: 3rem; flex: 1; align-items: flex-start; width: 100%; }
 
 .detail-image-container {
     flex: 1; display: flex; align-items: flex-start; justify-content: center;
