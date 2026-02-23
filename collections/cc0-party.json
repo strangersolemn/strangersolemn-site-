@@ -1,0 +1,103 @@
+{
+  "id": "cc0-party",
+  "title": "CC0 Party",
+  "chain": "ethereum",
+  "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A",
+  "supply": 12,
+  "uniquePieces": 12,
+  "heroImage": "https://arweave.net/58E5AJ4uaePN8r1yATkG4m40aflAguQffDNFSdVz1pw",
+  "description": "",
+  "artistNote": "Blockchain parties feat CC0 collections",
+  "onchain": false,
+  "isEditions": true,
+  "year": 2022,
+  "pieces": [
+    {
+      "tokenId": "1",
+      "title": "Lo-Fi Beach #01",
+      "image": "https://arweave.net/58E5AJ4uaePN8r1yATkG4m40aflAguQffDNFSdVz1pw",
+      "thumbnail": "https://arweave.net/58E5AJ4uaePN8r1yATkG4m40aflAguQffDNFSdVz1pw",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "2",
+      "title": "Lo-Fi Beach #02",
+      "image": "https://arweave.net/_b7yU76Nn5BZYtmfXmpL6qCIHH4caHVXYoOF-IiZwPg",
+      "thumbnail": "https://arweave.net/_b7yU76Nn5BZYtmfXmpL6qCIHH4caHVXYoOF-IiZwPg",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "3",
+      "title": "Lo-Fi Beach #03",
+      "image": "https://arweave.net/WWkCcCNZOUboS0p3RKBRWrNODjobnhonazb8_rneOKw",
+      "thumbnail": "https://arweave.net/WWkCcCNZOUboS0p3RKBRWrNODjobnhonazb8_rneOKw",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "4",
+      "title": "Lo-Fi Beach #04",
+      "image": "https://arweave.net/OKS-6STHsKHvCQfHIqT1eQvFbJeD5BalSZqbiDThp68",
+      "thumbnail": "https://arweave.net/OKS-6STHsKHvCQfHIqT1eQvFbJeD5BalSZqbiDThp68",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "5",
+      "title": "Lo-Fi Beach #05",
+      "image": "https://arweave.net/RBkZMmmRrSiiQwm3IuoPOgCWB_lI5xKB0ORdZ00aWi8",
+      "thumbnail": "https://arweave.net/RBkZMmmRrSiiQwm3IuoPOgCWB_lI5xKB0ORdZ00aWi8",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "6",
+      "title": "Rekt @ The Mansion",
+      "image": "https://arweave.net/D9O-cSLWHk1vJfURbcvN4ehy4ob0odNLxmPhC7pEBzg",
+      "thumbnail": "https://arweave.net/D9O-cSLWHk1vJfURbcvN4ehy4ob0odNLxmPhC7pEBzg",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "7",
+      "title": "Rekt @ The Mansion Full Moon Party",
+      "image": "https://arweave.net/vaKr_oaZZBusiljoCTIEXxA79kOK3IGHrAq2NU7kg58",
+      "thumbnail": "https://arweave.net/vaKr_oaZZBusiljoCTIEXxA79kOK3IGHrAq2NU7kg58",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "8",
+      "title": "Rekt Afterparty @ Club Strange",
+      "image": "https://arweave.net/U2poWXDz99MXc_aP43KCXMc6YjZSTqbMofh2ngcmPjA",
+      "thumbnail": "https://arweave.net/U2poWXDz99MXc_aP43KCXMc6YjZSTqbMofh2ngcmPjA",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "9",
+      "title": "Grifter Party @ RED ROOM",
+      "image": "https://arweave.net/1dGEytzYNz5Ju7Xtx3ue4gfiGP8qdV6tG_oWUSZL3x0",
+      "thumbnail": "https://arweave.net/1dGEytzYNz5Ju7Xtx3ue4gfiGP8qdV6tG_oWUSZL3x0",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "10",
+      "title": "Strangers 1st Bday @ The Baller Room",
+      "image": "https://arweave.net/KkbBV2o7sKWJvcn6JkaIR5ClxPKBOlQU1EBi7racIsU",
+      "thumbnail": "https://arweave.net/KkbBV2o7sKWJvcn6JkaIR5ClxPKBOlQU1EBi7racIsU",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "11",
+      "title": "CC0 Halloween @ Stranger Hollow",
+      "image": "https://arweave.net/kmeQ9PrFcria8tx7msjutEGs8YdMzyPx51P2w76kfG8",
+      "thumbnail": "https://arweave.net/kmeQ9PrFcria8tx7msjutEGs8YdMzyPx51P2w76kfG8",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    },
+    {
+      "tokenId": "12",
+      "title": "Grifter VIP Bday Bash",
+      "image": "https://arweave.net/5clPQW15fbWoa59ZFPZtPBK5DRFQVO5FWrjd-r6Nm1A",
+      "thumbnail": "https://arweave.net/5clPQW15fbWoa59ZFPZtPBK5DRFQVO5FWrjd-r6Nm1A",
+      "contract": "0xC01C7145A3c5949B38E4C6cB94c2e8EAaC9e327A"
+    }
+  ],
+  "marketplaces": {
+    "opensea": "https://opensea.io/collection/cc0party"
+  }
+}
