@@ -1,0 +1,148 @@
+{
+  "id": "deliverance",
+  "title": "Deliverance",
+  "chain": "ordinals",
+  "supply": 19,
+  "heroImage": "https://ordinals.com/content/e7d54f68fedc1071d5968b6b2e935a80d8b4c7f54917f782889290449afccf01i0",
+  "description": "",
+  "artistNote": "19 Cursed warriors",
+  "onchain": true,
+  "year": 2024,
+  "pieces": [
+    {
+      "tokenId": "e7d54f68fedc1071d5968b6b2e935a80d8b4c7f54917f782889290449afccf01i0",
+      "title": "DELIVERANCE #01",
+      "image": "https://ordinals.com/content/e7d54f68fedc1071d5968b6b2e935a80d8b4c7f54917f782889290449afccf01i0",
+      "thumbnail": "https://ordinals.com/content/e7d54f68fedc1071d5968b6b2e935a80d8b4c7f54917f782889290449afccf01i0",
+      "animationUrl": "https://ordinals.com/content/e7d54f68fedc1071d5968b6b2e935a80d8b4c7f54917f782889290449afccf01i0"
+    },
+    {
+      "tokenId": "1d65e2ed430878394288b8b9c015a1ab62308821e7f75c7ebc105c4bf60ff1f3i0",
+      "title": "DELIVERANCE #02",
+      "image": "https://ordinals.com/content/1d65e2ed430878394288b8b9c015a1ab62308821e7f75c7ebc105c4bf60ff1f3i0",
+      "thumbnail": "https://ordinals.com/content/1d65e2ed430878394288b8b9c015a1ab62308821e7f75c7ebc105c4bf60ff1f3i0",
+      "animationUrl": "https://ordinals.com/content/1d65e2ed430878394288b8b9c015a1ab62308821e7f75c7ebc105c4bf60ff1f3i0"
+    },
+    {
+      "tokenId": "5804be1fd36dd720a709245a8c4003a44908a2a5cc62ae5bb0eff0dc6191ce15i0",
+      "title": "DELIVERANCE #03",
+      "image": "https://ordinals.com/content/5804be1fd36dd720a709245a8c4003a44908a2a5cc62ae5bb0eff0dc6191ce15i0",
+      "thumbnail": "https://ordinals.com/content/5804be1fd36dd720a709245a8c4003a44908a2a5cc62ae5bb0eff0dc6191ce15i0",
+      "animationUrl": "https://ordinals.com/content/5804be1fd36dd720a709245a8c4003a44908a2a5cc62ae5bb0eff0dc6191ce15i0"
+    },
+    {
+      "tokenId": "04af56b78fffc3443410418a5ba458729e8316dd0e9a883743376deab4b251e7i0",
+      "title": "DELIVERANCE #04",
+      "image": "https://ordinals.com/content/04af56b78fffc3443410418a5ba458729e8316dd0e9a883743376deab4b251e7i0",
+      "thumbnail": "https://ordinals.com/content/04af56b78fffc3443410418a5ba458729e8316dd0e9a883743376deab4b251e7i0",
+      "animationUrl": "https://ordinals.com/content/04af56b78fffc3443410418a5ba458729e8316dd0e9a883743376deab4b251e7i0"
+    },
+    {
+      "tokenId": "7f0792842d84698da67366fc6c849daf1d5b622a0a25ad0e6838f5b7f288b973i0",
+      "title": "DELIVERANCE #05",
+      "image": "https://ordinals.com/content/7f0792842d84698da67366fc6c849daf1d5b622a0a25ad0e6838f5b7f288b973i0",
+      "thumbnail": "https://ordinals.com/content/7f0792842d84698da67366fc6c849daf1d5b622a0a25ad0e6838f5b7f288b973i0",
+      "animationUrl": "https://ordinals.com/content/7f0792842d84698da67366fc6c849daf1d5b622a0a25ad0e6838f5b7f288b973i0"
+    },
+    {
+      "tokenId": "aed0cdcd5df3704656b1a3e627fd0d240aec7aee8680048da4df84ef21c17ca0i0",
+      "title": "DELIVERANCE #06",
+      "image": "https://ordinals.com/content/aed0cdcd5df3704656b1a3e627fd0d240aec7aee8680048da4df84ef21c17ca0i0",
+      "thumbnail": "https://ordinals.com/content/aed0cdcd5df3704656b1a3e627fd0d240aec7aee8680048da4df84ef21c17ca0i0",
+      "animationUrl": "https://ordinals.com/content/aed0cdcd5df3704656b1a3e627fd0d240aec7aee8680048da4df84ef21c17ca0i0"
+    },
+    {
+      "tokenId": "ae4f9d1ccbd72ed44ad667433a3d4ea0e93740418851228cb8d95ff8a88b784bi0",
+      "title": "DELIVERANCE #07",
+      "image": "https://ordinals.com/content/ae4f9d1ccbd72ed44ad667433a3d4ea0e93740418851228cb8d95ff8a88b784bi0",
+      "thumbnail": "https://ordinals.com/content/ae4f9d1ccbd72ed44ad667433a3d4ea0e93740418851228cb8d95ff8a88b784bi0",
+      "animationUrl": "https://ordinals.com/content/ae4f9d1ccbd72ed44ad667433a3d4ea0e93740418851228cb8d95ff8a88b784bi0"
+    },
+    {
+      "tokenId": "76df62aba86e85e83bbff405ffdaebd039b0c64bcd645e95e500d58fac93866ai0",
+      "title": "DELIVERANCE #08",
+      "image": "https://ordinals.com/content/76df62aba86e85e83bbff405ffdaebd039b0c64bcd645e95e500d58fac93866ai0",
+      "thumbnail": "https://ordinals.com/content/76df62aba86e85e83bbff405ffdaebd039b0c64bcd645e95e500d58fac93866ai0",
+      "animationUrl": "https://ordinals.com/content/76df62aba86e85e83bbff405ffdaebd039b0c64bcd645e95e500d58fac93866ai0"
+    },
+    {
+      "tokenId": "4cd290010aab0171068e45a10106abb5c54897a15b7a1a9d0fc0c3411a83bd6ai0",
+      "title": "DELIVERANCE #09",
+      "image": "https://ordinals.com/content/4cd290010aab0171068e45a10106abb5c54897a15b7a1a9d0fc0c3411a83bd6ai0",
+      "thumbnail": "https://ordinals.com/content/4cd290010aab0171068e45a10106abb5c54897a15b7a1a9d0fc0c3411a83bd6ai0",
+      "animationUrl": "https://ordinals.com/content/4cd290010aab0171068e45a10106abb5c54897a15b7a1a9d0fc0c3411a83bd6ai0"
+    },
+    {
+      "tokenId": "476aa957ded55444fefe56c38c722953f3ce4383baa718042ad8166a02ef7d1fi0",
+      "title": "DELIVERANCE #10",
+      "image": "https://ordinals.com/content/476aa957ded55444fefe56c38c722953f3ce4383baa718042ad8166a02ef7d1fi0",
+      "thumbnail": "https://ordinals.com/content/476aa957ded55444fefe56c38c722953f3ce4383baa718042ad8166a02ef7d1fi0",
+      "animationUrl": "https://ordinals.com/content/476aa957ded55444fefe56c38c722953f3ce4383baa718042ad8166a02ef7d1fi0"
+    },
+    {
+      "tokenId": "906015853a3c493ed7ea3673b37017182b62d5445e7738594bd28811f3b80f5ci0",
+      "title": "DELIVERANCE #11",
+      "image": "https://ordinals.com/content/906015853a3c493ed7ea3673b37017182b62d5445e7738594bd28811f3b80f5ci0",
+      "thumbnail": "https://ordinals.com/content/906015853a3c493ed7ea3673b37017182b62d5445e7738594bd28811f3b80f5ci0",
+      "animationUrl": "https://ordinals.com/content/906015853a3c493ed7ea3673b37017182b62d5445e7738594bd28811f3b80f5ci0"
+    },
+    {
+      "tokenId": "bad399ba630da91432d229357e657c6fc58f356de95203090b46379f6641abafi0",
+      "title": "DELIVERANCE #12",
+      "image": "https://ordinals.com/content/bad399ba630da91432d229357e657c6fc58f356de95203090b46379f6641abafi0",
+      "thumbnail": "https://ordinals.com/content/bad399ba630da91432d229357e657c6fc58f356de95203090b46379f6641abafi0",
+      "animationUrl": "https://ordinals.com/content/bad399ba630da91432d229357e657c6fc58f356de95203090b46379f6641abafi0"
+    },
+    {
+      "tokenId": "b521f7135d1f3a9487abd21d5228b62d64cdbb65637fd96eff1a1200dd58bbeai0",
+      "title": "DELIVERANCE #13",
+      "image": "https://ordinals.com/content/b521f7135d1f3a9487abd21d5228b62d64cdbb65637fd96eff1a1200dd58bbeai0",
+      "thumbnail": "https://ordinals.com/content/b521f7135d1f3a9487abd21d5228b62d64cdbb65637fd96eff1a1200dd58bbeai0",
+      "animationUrl": "https://ordinals.com/content/b521f7135d1f3a9487abd21d5228b62d64cdbb65637fd96eff1a1200dd58bbeai0"
+    },
+    {
+      "tokenId": "61e95a2e5b7731d31835d8befb7d48c2f2afce1a9b120215b9b3eae0f6b0c7e3i0",
+      "title": "DELIVERANCE #14",
+      "image": "https://ordinals.com/content/61e95a2e5b7731d31835d8befb7d48c2f2afce1a9b120215b9b3eae0f6b0c7e3i0",
+      "thumbnail": "https://ordinals.com/content/61e95a2e5b7731d31835d8befb7d48c2f2afce1a9b120215b9b3eae0f6b0c7e3i0",
+      "animationUrl": "https://ordinals.com/content/61e95a2e5b7731d31835d8befb7d48c2f2afce1a9b120215b9b3eae0f6b0c7e3i0"
+    },
+    {
+      "tokenId": "e9d7168f733146e95eab5191aaeffc1e7cc222f0bc07b36b0cdb4879121dfaddi0",
+      "title": "DELIVERANCE #15",
+      "image": "https://ordinals.com/content/e9d7168f733146e95eab5191aaeffc1e7cc222f0bc07b36b0cdb4879121dfaddi0",
+      "thumbnail": "https://ordinals.com/content/e9d7168f733146e95eab5191aaeffc1e7cc222f0bc07b36b0cdb4879121dfaddi0",
+      "animationUrl": "https://ordinals.com/content/e9d7168f733146e95eab5191aaeffc1e7cc222f0bc07b36b0cdb4879121dfaddi0"
+    },
+    {
+      "tokenId": "ac8cff1c7a4d9b934c7cd5542f76610fbf8fe17b6164a1fa6c6dd2ef9e885456i0",
+      "title": "DELIVERANCE #016",
+      "image": "https://ordinals.com/content/ac8cff1c7a4d9b934c7cd5542f76610fbf8fe17b6164a1fa6c6dd2ef9e885456i0",
+      "thumbnail": "https://ordinals.com/content/ac8cff1c7a4d9b934c7cd5542f76610fbf8fe17b6164a1fa6c6dd2ef9e885456i0",
+      "animationUrl": "https://ordinals.com/content/ac8cff1c7a4d9b934c7cd5542f76610fbf8fe17b6164a1fa6c6dd2ef9e885456i0"
+    },
+    {
+      "tokenId": "11aeb53f0797f1ca56510c3be88b5546c3330ec63a802fbf369962d93697662bi0",
+      "title": "DELIVERANCE #17",
+      "image": "https://ordinals.com/content/11aeb53f0797f1ca56510c3be88b5546c3330ec63a802fbf369962d93697662bi0",
+      "thumbnail": "https://ordinals.com/content/11aeb53f0797f1ca56510c3be88b5546c3330ec63a802fbf369962d93697662bi0",
+      "animationUrl": "https://ordinals.com/content/11aeb53f0797f1ca56510c3be88b5546c3330ec63a802fbf369962d93697662bi0"
+    },
+    {
+      "tokenId": "9aed4bbda3362fe0a4dff5474b0b6d0ba69cbec0eb15ecc15db76bcafad17f79i0",
+      "title": "DELIVERANCE #18",
+      "image": "https://ordinals.com/content/9aed4bbda3362fe0a4dff5474b0b6d0ba69cbec0eb15ecc15db76bcafad17f79i0",
+      "thumbnail": "https://ordinals.com/content/9aed4bbda3362fe0a4dff5474b0b6d0ba69cbec0eb15ecc15db76bcafad17f79i0",
+      "animationUrl": "https://ordinals.com/content/9aed4bbda3362fe0a4dff5474b0b6d0ba69cbec0eb15ecc15db76bcafad17f79i0"
+    },
+    {
+      "tokenId": "6ba73c8c1dafb0c8a9d2404c7dd7fa47cad843e5f448b1abca48b3d53cd761b6i0",
+      "title": "DELIVERANCE #19",
+      "image": "https://ordinals.com/content/6ba73c8c1dafb0c8a9d2404c7dd7fa47cad843e5f448b1abca48b3d53cd761b6i0",
+      "thumbnail": "https://ordinals.com/content/6ba73c8c1dafb0c8a9d2404c7dd7fa47cad843e5f448b1abca48b3d53cd761b6i0",
+      "animationUrl": "https://ordinals.com/content/6ba73c8c1dafb0c8a9d2404c7dd7fa47cad843e5f448b1abca48b3d53cd761b6i0"
+    }
+  ],
+  "marketplaces": {},
+  "uniquePieces": 19
+}
