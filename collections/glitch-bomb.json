@@ -1,0 +1,133 @@
+{
+  "id": "glitch-bomb",
+  "title": "Glitch Bomb",
+  "chain": "ethereum",
+  "contract": "0xd0cf83744db1fdee8a0fafe913391befb85190aa",
+  "supply": 7,
+  "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/4ac6a9b00c3946b4e28693021c822a09",
+  "description": "Exclusive burn / redeem collection",
+  "artistNote": "Exclusive collection for Diamond Hands only",
+  "onchain": false,
+  "pieces": [
+    {
+      "tokenId": "1",
+      "title": "Placeholder",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/4ac6a9b00c3946b4e28693021c822a09",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/4ac6a9b00c3946b4e28693021c822a09",
+      "animationUrl": null,
+      "description": "placeholder",
+      "attributes": [
+        {
+          "value": "Solemn",
+          "trait_type": "Artist"
+        }
+      ]
+    },
+    {
+      "tokenId": "2",
+      "title": "GLITCH BOMB",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/b194e4363e03c94c8334c7bb9fa21290",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/b194e4363e03c94c8334c7bb9fa21290",
+      "animationUrl": null,
+      "description": "Burn this token for any piece in this collection (link in each piece description)\n\nLink in each piece description",
+      "attributes": [
+        {
+          "value": "Solemn",
+          "trait_type": "Artist"
+        }
+      ]
+    },
+    {
+      "tokenId": "3",
+      "title": "WTF",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/3884be8a536bc7dd23802601b0e2395b",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/3884be8a536bc7dd23802601b0e2395b",
+      "animationUrl": null,
+      "description": "Burn/redeem https://app.manifold.xyz/br/WTFISGLITCH",
+      "attributes": [
+        {
+          "value": "Solemn",
+          "trait_type": "Artist"
+        },
+        {
+          "value": "Fractured",
+          "trait_type": "GLITCH"
+        }
+      ]
+    },
+    {
+      "tokenId": "4",
+      "title": "CANCEL CULTURE",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/67482b4385f11e84f8c75c05b184fa1d",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/67482b4385f11e84f8c75c05b184fa1d",
+      "animationUrl": null,
+      "description": "Web2 vibes\n\nClaim this piece by burning a Glitch Bomb - https://app.manifold.xyz/br/cancelculture",
+      "attributes": [
+        {
+          "value": "Solemn",
+          "trait_type": "Artist"
+        },
+        {
+          "value": "Fractured",
+          "trait_type": "GLITCH"
+        }
+      ]
+    },
+    {
+      "tokenId": "5",
+      "title": "DISSONANCE",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/a460aac5f503fe0bdff5d6e4464bc214",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/a460aac5f503fe0bdff5d6e4464bc214",
+      "animationUrl": null,
+      "description": "Too many cooks\n\nClaim this piece by burning a Glitch Bomb - https://app.manifold.xyz/br/dissonance",
+      "attributes": [
+        {
+          "value": "Solemn",
+          "trait_type": "Artist"
+        }
+      ]
+    },
+    {
+      "tokenId": "6",
+      "title": "Pop Justice",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/51b9789c111d12176350e8656828d6c8",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/51b9789c111d12176350e8656828d6c8",
+      "animationUrl": null,
+      "description": "Judge not, that ye be not judged - Matthew\n\nClaim this piece by burning a Glitch Bomb - https://app.manifold.xyz/br/popjustice",
+      "attributes": [
+        {
+          "value": "Solemn",
+          "trait_type": "Artist"
+        },
+        {
+          "value": "Static",
+          "trait_type": "Glitch"
+        }
+      ]
+    },
+    {
+      "tokenId": "7",
+      "title": "MEEB BOMB",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/58bbf28005aa8a95f31e59f85d8050c4",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/58bbf28005aa8a95f31e59f85d8050c4",
+      "animationUrl": null,
+      "description": "Feat meebit #14235\n\nClaim this piece by burning a Glitch Bomb - https://app.manifold.xyz/br/meebbomb",
+      "attributes": [
+        {
+          "value": "Solemn",
+          "trait_type": "Artist"
+        },
+        {
+          "value": "Motion",
+          "trait_type": "Glitch"
+        }
+      ]
+    }
+  ],
+  "marketplaces": {
+    "opensea": "https://opensea.io/assets/ethereum/0xd0cf83744db1fdee8a0fafe913391befb85190aa"
+  },
+  "uniquePieces": 7,
+  "isEditions": true,
+  "year": 2023
+}
