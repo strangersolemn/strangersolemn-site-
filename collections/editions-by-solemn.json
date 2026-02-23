@@ -1,0 +1,194 @@
+{
+  "id": "editions-by-solemn",
+  "title": "Editions by Solemn",
+  "chain": "ethereum",
+  "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076",
+  "supply": 25,
+  "uniquePieces": 25,
+  "heroImage": "https://arweave.net/MFREzMqF9gaGZr5vjAOrHcOcLuEiu_oEaMfJhbJgaj0",
+  "description": "",
+  "artistNote": "Minted across multiple smart contracts",
+  "onchain": false,
+  "isEditions": true,
+  "year": 2022,
+  "pieces": [
+    {
+      "tokenId": "1",
+      "title": "The Art of Darkness",
+      "image": "https://arweave.net/MFREzMqF9gaGZr5vjAOrHcOcLuEiu_oEaMfJhbJgaj0",
+      "thumbnail": "https://arweave.net/MFREzMqF9gaGZr5vjAOrHcOcLuEiu_oEaMfJhbJgaj0",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "2",
+      "title": "Desire",
+      "image": "https://arweave.net/d2xdjdJFRxKf8EuynNiewkraezW55t906NNHgu81kjw",
+      "thumbnail": "https://arweave.net/d2xdjdJFRxKf8EuynNiewkraezW55t906NNHgu81kjw",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "3",
+      "title": "Work in Progress",
+      "image": "https://arweave.net/RNeFLaegYGcKEKfWXM2tz6Nj1bEvoQIHMaV2Uw6MZZg",
+      "thumbnail": "https://arweave.net/RNeFLaegYGcKEKfWXM2tz6Nj1bEvoQIHMaV2Uw6MZZg",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "4",
+      "title": "Rekt Mfer's Secrets",
+      "image": "https://arweave.net/AWO4Gn1D8A69yv8JMs4C4ny8yFl76S1Z0x5dlNNOFcc",
+      "thumbnail": "https://arweave.net/AWO4Gn1D8A69yv8JMs4C4ny8yFl76S1Z0x5dlNNOFcc",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "5",
+      "title": "The Wives (Green)",
+      "image": "https://arweave.net/8D0f5ZKgBZZ4hT2SWMdLZL701FgFUPoyOO107CWaPiA",
+      "thumbnail": "https://arweave.net/8D0f5ZKgBZZ4hT2SWMdLZL701FgFUPoyOO107CWaPiA",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "6",
+      "title": "The Wives (Blue)",
+      "image": "https://i2c.seadn.io/ethereum/0xae7d9f6c206c095530654fa4881661ba62284076/dbbb38dd74691ab642f28ff1c32d557a.gif",
+      "thumbnail": "https://i2c.seadn.io/ethereum/0xae7d9f6c206c095530654fa4881661ba62284076/dbbb38dd74691ab642f28ff1c32d557a.gif",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "7",
+      "title": "The Wives (Red)",
+      "image": "https://arweave.net/MV_bvYGVEix0lZijJJdjLrIlE1KgVJSc-7FJIp2m5SA",
+      "thumbnail": "https://arweave.net/MV_bvYGVEix0lZijJJdjLrIlE1KgVJSc-7FJIp2m5SA",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "8",
+      "title": "The Wives (Orange)",
+      "image": "https://arweave.net/VnLhfxN3OB_2xnE2tQHh-FDmzXxrwngAs5qWq3lxQEQ",
+      "thumbnail": "https://arweave.net/VnLhfxN3OB_2xnE2tQHh-FDmzXxrwngAs5qWq3lxQEQ",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "9",
+      "title": "Bairnz (Blue)",
+      "image": "https://arweave.net/_12Cf_DFCi1_EYbnCmjJW9g1iQv3FvYDix1ZubwA16I",
+      "thumbnail": "https://arweave.net/_12Cf_DFCi1_EYbnCmjJW9g1iQv3FvYDix1ZubwA16I",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "10",
+      "title": "Bairnz (Orange)",
+      "image": "https://arweave.net/OCQfzxGUNJlII7yrPS8T2I0hd0s6pNAXmcZA2JXRqfo",
+      "thumbnail": "https://arweave.net/OCQfzxGUNJlII7yrPS8T2I0hd0s6pNAXmcZA2JXRqfo",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "11",
+      "title": "Bairnz (Green)",
+      "image": "https://arweave.net/FL7GjQsoiTA46J6zZXwDUtu0mFIvL6_jb76jqyPf77I",
+      "thumbnail": "https://arweave.net/FL7GjQsoiTA46J6zZXwDUtu0mFIvL6_jb76jqyPf77I",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "12",
+      "title": "Bairnz Fetus",
+      "image": "https://arweave.net/QJlF1197kE1Yi470wFxXmxDRrHCW0llAzCJoWa7U7B4",
+      "thumbnail": "https://arweave.net/QJlF1197kE1Yi470wFxXmxDRrHCW0llAzCJoWa7U7B4",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "13",
+      "title": "Bairnz (Red)",
+      "image": "https://arweave.net/eMGKxDNoNNRyb-n-_LxzJobLHeDSq05VOQ2ftAWmmpA",
+      "thumbnail": "https://arweave.net/eMGKxDNoNNRyb-n-_LxzJobLHeDSq05VOQ2ftAWmmpA",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "14",
+      "title": "Max Pivot",
+      "image": "https://arweave.net/Jj_fhGdfUyR_glNujGnJl-bAd9DsZ1IShtmK4-KACDg",
+      "thumbnail": "https://arweave.net/Jj_fhGdfUyR_glNujGnJl-bAd9DsZ1IShtmK4-KACDg",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "15",
+      "title": "Fck em",
+      "image": "https://arweave.net/fxT6CENtUNllKnXK4GL0GcccNthC0zlAdwWqMtJf6EU",
+      "thumbnail": "https://arweave.net/fxT6CENtUNllKnXK4GL0GcccNthC0zlAdwWqMtJf6EU",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "16",
+      "title": "LFG",
+      "image": "https://arweave.net/5VrP31_D8nxgnZEY52uAqsyVyuvcIvruIY1qMiQYRm4",
+      "thumbnail": "https://arweave.net/5VrP31_D8nxgnZEY52uAqsyVyuvcIvruIY1qMiQYRm4",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "17",
+      "title": "21 Reasons",
+      "image": "https://arweave.net/SntIPpE4GpgJTe0AFlWHMEvcLL-DOZnvciKMxVQW2Dc",
+      "thumbnail": "https://arweave.net/SntIPpE4GpgJTe0AFlWHMEvcLL-DOZnvciKMxVQW2Dc",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "18",
+      "title": "Unbroken",
+      "image": "https://arweave.net/fGvM477glLV47Y6R_djmeL2yJdXNTtUgVfCTmzl9XZc",
+      "thumbnail": "https://arweave.net/fGvM477glLV47Y6R_djmeL2yJdXNTtUgVfCTmzl9XZc",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "19",
+      "title": "Housekeeping",
+      "image": "https://arweave.net/QfcYsGccRKGPaIospdljsTwttXfeibHq2LHmjvyOu2o",
+      "thumbnail": "https://arweave.net/QfcYsGccRKGPaIospdljsTwttXfeibHq2LHmjvyOu2o",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "20",
+      "title": "Family Beef",
+      "image": "https://arweave.net/BYGZjdRh6-KKU7pEJfGIUxEtvZwUmL_S9OM7UGTfG2U",
+      "thumbnail": "https://arweave.net/BYGZjdRh6-KKU7pEJfGIUxEtvZwUmL_S9OM7UGTfG2U",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "21",
+      "title": "Mincemeat",
+      "image": "https://arweave.net/Plf9Fvv8deMUFcH79aFZZ3th1_zveYkSPhl40tfjyvw",
+      "thumbnail": "https://arweave.net/Plf9Fvv8deMUFcH79aFZZ3th1_zveYkSPhl40tfjyvw",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "22",
+      "title": "Proof of Steak",
+      "image": "https://arweave.net/A3MP1QACh0PWqR6Rgtu-cncGT3BS9Zl4f2P4W1PSSQw",
+      "thumbnail": "https://arweave.net/A3MP1QACh0PWqR6Rgtu-cncGT3BS9Zl4f2P4W1PSSQw",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "23",
+      "title": "Hackers",
+      "image": "https://arweave.net/QMBvOZexrgEiRujF7Tf-zQB-yIKcNOwg7vIe_mAAJAU",
+      "thumbnail": "https://arweave.net/QMBvOZexrgEiRujF7Tf-zQB-yIKcNOwg7vIe_mAAJAU",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "24",
+      "title": "Monitor",
+      "image": "https://arweave.net/3o8LZJA7HIB658KJrtOfB3IqzCl2SLSOpqqnMRNN_tA",
+      "thumbnail": "https://arweave.net/3o8LZJA7HIB658KJrtOfB3IqzCl2SLSOpqqnMRNN_tA",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    },
+    {
+      "tokenId": "25",
+      "title": "Snap",
+      "image": "https://arweave.net/62yxholll2-1oZMjQMhEhZk8Q2HNkckVumY2cMkkG6A",
+      "thumbnail": "https://arweave.net/62yxholll2-1oZMjQMhEhZk8Q2HNkckVumY2cMkkG6A",
+      "contract": "0xaE7d9f6C206C095530654FA4881661ba62284076"
+    }
+  ],
+  "marketplaces": {
+    "opensea": "https://opensea.io/collection/editionsbysolemn"
+  }
+}
