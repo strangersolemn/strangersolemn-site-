@@ -1,0 +1,32 @@
+{
+  "id": "ether-creeps",
+  "title": "Ether Creeps",
+  "chain": "ethereum",
+  "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+  "supply": 2,
+  "uniquePieces": 2,
+  "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/945b2f274d9b1916aeacf6354e3790e4",
+  "description": "",
+  "artistNote": "",
+  "onchain": false,
+  "year": 2021,
+  "pieces": [
+    {
+      "tokenId": "90144564011191553255551171483351008933440029025118662744023831741210669613057",
+      "title": "ETHER CREEP #002",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/945b2f274d9b1916aeacf6354e3790e4",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/945b2f274d9b1916aeacf6354e3790e4",
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+    },
+    {
+      "tokenId": "90144564011191553255551171483351008933440029025118662744023831748907251007489",
+      "title": "ETHER CREEP #010",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/248920d91b2237762d8f8a522fa657da",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/248920d91b2237762d8f8a522fa657da",
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+    }
+  ],
+  "marketplaces": {
+    "opensea": "https://opensea.io/collection/ether-creeps"
+  }
+}
