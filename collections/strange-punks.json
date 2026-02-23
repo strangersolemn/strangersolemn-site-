@@ -1,0 +1,95 @@
+{
+  "id": "strange-punks",
+  "title": "Strange Punks",
+  "chain": "ethereum",
+  "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2",
+  "supply": 11,
+  "uniquePieces": 11,
+  "heroImage": "https://arweave.net/R09-KodUD-xsWN6mSqNHQNRhitPgY0d4lcsR8lWZ56Q",
+  "description": "",
+  "artistNote": "Exclusive PFP collectors for 1/1 holders only",
+  "onchain": false,
+  "year": 2022,
+  "pieces": [
+    {
+      "tokenId": "1",
+      "title": "Strange Punk #001",
+      "image": "https://arweave.net/R09-KodUD-xsWN6mSqNHQNRhitPgY0d4lcsR8lWZ56Q",
+      "thumbnail": "https://arweave.net/R09-KodUD-xsWN6mSqNHQNRhitPgY0d4lcsR8lWZ56Q",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "2",
+      "title": "Strange Punk #002",
+      "image": "https://arweave.net/AHb6gkQFzfQMU3UGFokkXBV0m2V_BW1Moal7F4LB7dQ",
+      "thumbnail": "https://arweave.net/AHb6gkQFzfQMU3UGFokkXBV0m2V_BW1Moal7F4LB7dQ",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "3",
+      "title": "Strange Punk #003",
+      "image": "https://arweave.net/BbW74RVV48YhZs9DqSRD__ZhmH_xk5OSKE2Dol4AM-o",
+      "thumbnail": "https://arweave.net/BbW74RVV48YhZs9DqSRD__ZhmH_xk5OSKE2Dol4AM-o",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "4",
+      "title": "Strange Punk #004",
+      "image": "https://arweave.net/liv8LeTYQbLC18fZ7vHRfr-EoLzfmb6dIoFFjtS1WIA",
+      "thumbnail": "https://arweave.net/liv8LeTYQbLC18fZ7vHRfr-EoLzfmb6dIoFFjtS1WIA",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "5",
+      "title": "Strange Punk #005",
+      "image": "https://arweave.net/VGs35fNl4q_qfPoxiNvN6ApQJr8rB2fkTQpNwDANPeg",
+      "thumbnail": "https://arweave.net/VGs35fNl4q_qfPoxiNvN6ApQJr8rB2fkTQpNwDANPeg",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "6",
+      "title": "Strange Punk #006",
+      "image": "https://arweave.net/bb7wtFAzS6SKqQ_ZJD6pp0G0zipyuwSGgV10-U3Uxqo",
+      "thumbnail": "https://arweave.net/bb7wtFAzS6SKqQ_ZJD6pp0G0zipyuwSGgV10-U3Uxqo",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "7",
+      "title": "Strange Punk #007",
+      "image": "https://arweave.net/Ac_KrupUS2yeO-vk0fymoM",
+      "thumbnail": "https://arweave.net/Ac_KrupUS2yeO-vk0fymoM",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "8",
+      "title": "Strange Punk #008",
+      "image": "https://arweave.net/WyE4DNujCWn5JelKupexQxQCxwBApbJEesPs7JMzt4U",
+      "thumbnail": "https://arweave.net/WyE4DNujCWn5JelKupexQxQCxwBApbJEesPs7JMzt4U",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "9",
+      "title": "Strange Punk #009",
+      "image": "https://arweave.net/1M6e0XF0M-OgOF_DFyDwjyU75Zm2-RqEVQ5v_JASdNQ",
+      "thumbnail": "https://arweave.net/1M6e0XF0M-OgOF_DFyDwjyU75Zm2-RqEVQ5v_JASdNQ",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "10",
+      "title": "Strange Punk #010",
+      "image": "https://arweave.net/1L2kmz5HAVIozWo0HfRdr1d-L5Sem1WcNVeoyjd--vY",
+      "thumbnail": "https://arweave.net/1L2kmz5HAVIozWo0HfRdr1d-L5Sem1WcNVeoyjd--vY",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    },
+    {
+      "tokenId": "11",
+      "title": "Strange Punk #11",
+      "image": "https://arweave.net/F1BhjCz6wfVtQwtkbHStn6OtkDLO7eyt4c8ZYREwFRs",
+      "thumbnail": "https://arweave.net/F1BhjCz6wfVtQwtkbHStn6OtkDLO7eyt4c8ZYREwFRs",
+      "contract": "0xaa9603f452055A64a470aFF9103CDE9Dd05519B2"
+    }
+  ],
+  "marketplaces": {
+    "opensea": "https://opensea.io/collection/strangepunksbysolemnstranger"
+  }
+}
