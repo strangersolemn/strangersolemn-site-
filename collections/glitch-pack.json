@@ -1,0 +1,111 @@
+{
+  "id": "glitch-pack",
+  "title": "Glitch Pack",
+  "chain": "ordinals",
+  "supply": 1028,
+  "heroImage": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
+  "description": "",
+  "artistNote": "12 Artist collab curated by yours truly",
+  "onchain": true,
+  "year": 2024,
+  "pieces": [
+    {
+      "tokenId": "28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
+      "title": "Obyor #1",
+      "image": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
+      "thumbnail": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
+      "animationUrl": "https://ordinals.com/content/28ca9d41b7c06c5720206f3e2c87c80ed068c6403e9b5bb24cf1cad792ddd25bi41",
+      "editionCount": 220
+    },
+    {
+      "tokenId": "00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0",
+      "title": "Arctefact #1",
+      "image": "https://ordinals.com/content/00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0",
+      "thumbnail": "https://ordinals.com/content/00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0",
+      "animationUrl": "https://ordinals.com/content/00fc638e1693218d40f6b86df3252877cc64fae9172aa8e4913acdbff40793dci0",
+      "editionCount": 212
+    },
+    {
+      "tokenId": "feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0",
+      "title": "ZENOYIS #01",
+      "image": "https://ordinals.com/content/feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0",
+      "thumbnail": "https://ordinals.com/content/feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0",
+      "animationUrl": "https://ordinals.com/content/feaae5f7d71af478726453b869bdba574c222ee1eeb39e6d25a963734959c1afi0",
+      "editionCount": 102
+    },
+    {
+      "tokenId": "82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0",
+      "title": "Anzomez #01",
+      "image": "https://ordinals.com/content/82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0",
+      "thumbnail": "https://ordinals.com/content/82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0",
+      "animationUrl": "https://ordinals.com/content/82a9c206003dc2b79030a761b2a01985e79d5413ad1b0136450e1a97ee4964b9i0",
+      "editionCount": 57
+    },
+    {
+      "tokenId": "9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0",
+      "title": "SOLEMN #01",
+      "image": "https://ordinals.com/content/9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0",
+      "thumbnail": "https://ordinals.com/content/9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0",
+      "animationUrl": "https://ordinals.com/content/9a0e7eb295a37fd943e39af800da72f3ad159617dc62755ab7f1d5811ef9a3b4i0",
+      "editionCount": 44
+    },
+    {
+      "tokenId": "1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0",
+      "title": "Glitchesst #01",
+      "image": "https://ordinals.com/content/1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0",
+      "thumbnail": "https://ordinals.com/content/1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0",
+      "animationUrl": "https://ordinals.com/content/1e03a22f5e370037b57bcb5aef45d8a8988707bcf0290fd7bb57cd8e0b20fc29i0",
+      "editionCount": 72
+    },
+    {
+      "tokenId": "b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0",
+      "title": "Zanoza #01",
+      "image": "https://ordinals.com/content/b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0",
+      "thumbnail": "https://ordinals.com/content/b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0",
+      "animationUrl": "https://ordinals.com/content/b98d9a52ed69e30c716301a6dcb3b3341d742f8c660536339d469331adcc62f0i0",
+      "editionCount": 38
+    },
+    {
+      "tokenId": "3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1",
+      "title": "King Xerox #01",
+      "image": "https://ordinals.com/content/3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1",
+      "thumbnail": "https://ordinals.com/content/3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1",
+      "animationUrl": "https://ordinals.com/content/3a96103ddc96e4d04ff0e2c87b4c38c34e07809c994b6b2dd1a3457deab75f56i1",
+      "editionCount": 74
+    },
+    {
+      "tokenId": "53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0",
+      "title": "Vstrvl_1",
+      "image": "https://ordinals.com/content/53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0",
+      "thumbnail": "https://ordinals.com/content/53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0",
+      "animationUrl": "https://ordinals.com/content/53ea2175a0009beaa4f428918ce83e27f2da8b9f0010e7765be040777ffe9a6ci0",
+      "editionCount": 47
+    },
+    {
+      "tokenId": "0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0",
+      "title": "Spellamin_1",
+      "image": "https://ordinals.com/content/0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0",
+      "thumbnail": "https://ordinals.com/content/0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0",
+      "animationUrl": "https://ordinals.com/content/0f1789025a367a70f41189efa59adafd59e51babf8810baf480efe368e341bc3i0",
+      "editionCount": 56
+    },
+    {
+      "tokenId": "36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0",
+      "title": "Sunken0x_1",
+      "image": "https://ordinals.com/content/36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0",
+      "thumbnail": "https://ordinals.com/content/36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0",
+      "animationUrl": "https://ordinals.com/content/36efc0fe2f5924581d804b6e8f9c90b2a921080ab58bd6f7ce19e8dc4d6526fai0",
+      "editionCount": 45
+    },
+    {
+      "tokenId": "fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0",
+      "title": "Terminatezz #1",
+      "image": "https://ordinals.com/content/fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0",
+      "thumbnail": "https://ordinals.com/content/fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0",
+      "animationUrl": "https://ordinals.com/content/fbaf005ee7833ea49f398ebad584402544046f280822772411e8b40aad952e91i0",
+      "editionCount": 61
+    }
+  ],
+  "marketplaces": {},
+  "uniquePieces": 12
+}
