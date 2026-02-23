@@ -1,0 +1,66 @@
+{
+  "id": "fck-knows",
+  "title": "Fck Knows",
+  "chain": "tezos",
+  "contract": "KT1J3rtnjEr3Bv4F5iNPuSHck8FDGceGnb9P",
+  "supply": 6,
+  "uniquePieces": 8,
+  "heroImage": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
+  "description": "false start",
+  "artistNote": "Your guess is as good as mine",
+  "onchain": false,
+  "year": 2024,
+  "pieces": [
+    {
+      "tokenId": "0",
+      "title": "It a Parrot Thing",
+      "image": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
+      "thumbnail": "https://ipfs.io/ipfs/QmeYA3Y6HbVTyNoZngj9m4jQdsgynuJaYsAQHGoa3BXypV"
+    },
+    {
+      "tokenId": "1",
+      "title": "Parrot #001",
+      "image": "https://ipfs.io/ipfs/QmaSw2FVPzj6c3ZVoZ5TixnyinvtoWmckokhxwvvHZggt3",
+      "thumbnail": "https://ipfs.io/ipfs/QmPV1Btr9LnhuURvcSmFxp81BpsdCT4DqNrN1VhShoNvaL"
+    },
+    {
+      "tokenId": "2",
+      "title": "qi ji",
+      "image": "https://ipfs.io/ipfs/QmcnYvrHqhLSGGztfYPtLUTjt5QzZpx5r5vpDN4xbfUPRM",
+      "thumbnail": "https://ipfs.io/ipfs/QmawHfmxBmDksiQULk9emaHtKMVLzGgwB2BbkbrNVpncQw"
+    },
+    {
+      "tokenId": "3",
+      "title": "They/Them",
+      "image": "https://ipfs.io/ipfs/QmQAdiqnGuVXaQE45Uivop91Wp1rkhFy8mi6ZXDpxfzLZa",
+      "thumbnail": "https://ipfs.io/ipfs/Qmb2dPU4u25MPuBk1VmQXL2u9j2ZWsy83E1CxVChZ1EEYR"
+    },
+    {
+      "tokenId": "5",
+      "title": "Why do you build me up ?",
+      "image": "https://ipfs.io/ipfs/QmaW6sHuTcEYFS9YVb8wxetN75QaimuMXU6sUqXANmR2nS",
+      "thumbnail": "https://ipfs.io/ipfs/QmXqdUY7h8ew669nHb8KrcxHanZUAsT7hQiDvfKFFPMSFY"
+    },
+    {
+      "tokenId": "6",
+      "title": "Rhythmic Grind",
+      "image": "https://ipfs.io/ipfs/QmegnUZQBVG1x5ywthtpJ5s4Ur2NTpikMoM925zoNPVcCk",
+      "thumbnail": "https://ipfs.io/ipfs/QmVaGF2ZGeoBZSVb6FvHywgoUXTFVCXzsic9p3kj5Loc56"
+    },
+    {
+      "tokenId": "7",
+      "title": "Dread",
+      "image": "https://ipfs.io/ipfs/QmaMJcQ3eHuEZJ2tKeRrqpeEYgtcjmMVS17EMuFoKqyhtD",
+      "thumbnail": "https://ipfs.io/ipfs/QmNf46wGBt9jCKKjGTsuBVXqfpYBEsNY5bNVWYWQVWPpci"
+    },
+    {
+      "tokenId": "8",
+      "title": "Every Thing is Fine, Bruh",
+      "image": "https://ipfs.io/ipfs/QmUBRCqsb36bYDafUUohwZaK2YcgqqCoyttj98TtxyweGZ",
+      "thumbnail": "https://ipfs.io/ipfs/QmYCmCJoWkJ8eaeRVFyxeNHXBXrzqZ2p5ct1n6eXed8skU"
+    }
+  ],
+  "marketplaces": {
+    "objkt": "https://objkt.com/collection/KT1J3rtnjEr3Bv4F5iNPuSHck8FDGceGnb9P"
+  }
+}
