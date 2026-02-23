@@ -1,0 +1,329 @@
+[
+  {
+    "id": "renascent",
+    "title": "Renascent",
+    "chain": "ethereum",
+    "year": 2026,
+    "supply": 18,
+    "uniquePieces": 18,
+    "contract": "0x3a2c989bfdd3b315b78717e4a6f43932a8b5023d",
+    "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/81ed3c0669e61683cd3c465819502fc7",
+    "description": "Fully On-Chain Originals made with code",
+    "artistNote": "Renascent is an ongoing journey to unlock the possibilities of onchain art on ETH",
+    "onchain": true,
+    "marketplaces": {
+      "opensea": "https://opensea.io/assets/ethereum/0x3a2c989bfdd3b315b78717e4a6f43932a8b5023d"
+    }
+  },
+  {
+    "id": "the-acid-family",
+    "title": "The Acid Family",
+    "chain": "ordinals",
+    "year": 2025,
+    "supply": 34,
+    "uniquePieces": 3,
+    "heroImage": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
+    "artistNote": "Bitcoin first acid house family",
+    "onchain": true
+  },
+  {
+    "id": "block-party",
+    "title": "Block Party",
+    "chain": "ordinals",
+    "year": 2025,
+    "supply": 200,
+    "uniquePieces": 200,
+    "heroImage": "https://ordinals.com/content/b1b1e9fe8e1399c8e9e1e9dd2e8b1e9e8b1e9e8b1i0",
+    "onchain": true
+  },
+  {
+    "id": "blockclock-originals",
+    "title": "Blockclock Originals",
+    "chain": "ordinals",
+    "year": 2025,
+    "supply": 22,
+    "uniquePieces": 22,
+    "onchain": true
+  },
+  {
+    "id": "deliverance",
+    "title": "Deliverance",
+    "chain": "ordinals",
+    "year": 2024,
+    "supply": 19,
+    "uniquePieces": 19,
+    "artistNote": "19 Cursed warriors",
+    "onchain": true
+  },
+  {
+    "id": "doom",
+    "title": "DOOM",
+    "chain": "ordinals",
+    "year": 2024,
+    "supply": 105,
+    "uniquePieces": 105,
+    "onchain": true
+  },
+  {
+    "id": "fiat-mafia",
+    "title": "Fiat Mafia",
+    "chain": "ordinals",
+    "year": 2024,
+    "supply": 2693,
+    "uniquePieces": 2693,
+    "isCollab": true,
+    "onchain": true
+  },
+  {
+    "id": "a-solemn-rose",
+    "title": "A Solemn Rose",
+    "chain": "ordinals",
+    "year": 2024,
+    "supply": 21,
+    "uniquePieces": 1
+  },
+  {
+    "id": "glitch-pack",
+    "title": "Glitch Pack",
+    "chain": "ordinals",
+    "year": 2024,
+    "supply": 1028,
+    "uniquePieces": 12
+  },
+  {
+    "id": "btc-editions",
+    "title": "BTC Editions 23/26",
+    "chain": "ordinals",
+    "year": 2024,
+    "supply": 5893,
+    "uniquePieces": 14
+  },
+  {
+    "id": "gamma-prints",
+    "title": "Gamma Prints",
+    "chain": "ordinals",
+    "year": 2023,
+    "supply": 14,
+    "uniquePieces": 14
+  },
+  {
+    "id": "boutique",
+    "title": "Boutique",
+    "chain": "ordinals",
+    "year": 2023,
+    "supply": 25,
+    "uniquePieces": 25
+  },
+  {
+    "id": "gl1tch-c0des",
+    "title": "GL1TCH C0DES",
+    "chain": "ordinals",
+    "year": 2023,
+    "supply": 21,
+    "uniquePieces": 21
+  },
+  {
+    "id": "glitch-bomb",
+    "title": "Glitch Bomb",
+    "chain": "ethereum",
+    "year": 2023,
+    "supply": 7,
+    "uniquePieces": 7,
+    "isEditions": true,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/glitch-bomb"
+    }
+  },
+  {
+    "id": "reflections",
+    "title": "Reflections",
+    "chain": "ethereum",
+    "year": 2023,
+    "supply": 7,
+    "uniquePieces": 7,
+    "isEditions": true,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/reflections-by-stranger-solemn"
+    }
+  },
+  {
+    "id": "safari",
+    "title": "Safari",
+    "chain": "ethereum",
+    "year": 2023,
+    "supply": 4,
+    "uniquePieces": 4,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/safari-by-stranger-solemn"
+    }
+  },
+  {
+    "id": "fck-knows",
+    "title": "Fck Knows",
+    "chain": "tezos",
+    "year": 2024,
+    "supply": 6,
+    "uniquePieces": 8,
+    "marketplaces": {
+      "objkt": "https://objkt.com/profile/strangersolemn/created"
+    }
+  },
+  {
+    "id": "one-of-one-originals",
+    "title": "1/1 Originals 21/25",
+    "chain": "ethereum",
+    "year": 2024,
+    "supply": 46,
+    "uniquePieces": 46,
+    "marketplaces": {
+      "opensea": "https://opensea.io/strangersolemn"
+    }
+  },
+  {
+    "id": "editions-by-solemn",
+    "title": "Editions by Solemn",
+    "chain": "ethereum",
+    "year": 2022,
+    "supply": 25,
+    "uniquePieces": 25,
+    "isEditions": true,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/editions-by-solemn"
+    }
+  },
+  {
+    "id": "cc0-party",
+    "title": "CC0 Party",
+    "chain": "ethereum",
+    "year": 2022,
+    "supply": 12,
+    "uniquePieces": 12,
+    "isEditions": true,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/cc0party"
+    }
+  },
+  {
+    "id": "strange-punks",
+    "title": "Strange Punks",
+    "chain": "ethereum",
+    "year": 2022,
+    "supply": 11,
+    "uniquePieces": 11,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/strangepunks"
+    }
+  },
+  {
+    "id": "everyday-strange",
+    "title": "Everyday Strange",
+    "chain": "ethereum",
+    "year": 2022,
+    "supply": 365,
+    "uniquePieces": 365,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/everyday-strange"
+    }
+  },
+  {
+    "id": "the-creeps",
+    "title": "The Creeps",
+    "chain": "tezos",
+    "year": 2022,
+    "supply": 6,
+    "uniquePieces": 6,
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1FNJSGvf9TRKTznCJGMkFPxFqJpTsimn6e"
+    }
+  },
+  {
+    "id": "parrot-party",
+    "title": "Parrot Party",
+    "chain": "tezos",
+    "year": 2022,
+    "supply": 50,
+    "uniquePieces": 51,
+    "marketplaces": {
+      "objkt": "https://objkt.com/collection/KT1Fo4rGjKYNJJv6vDAGnDJpq8P7VLKSwWkG"
+    }
+  },
+  {
+    "id": "tez-misc",
+    "title": "Tez Misc",
+    "chain": "tezos",
+    "year": 2022,
+    "supply": 9,
+    "uniquePieces": 9
+  },
+  {
+    "id": "hic-et-nunc",
+    "title": "Hic Et Nunc",
+    "chain": "tezos",
+    "year": 2021,
+    "supply": 21,
+    "uniquePieces": 21
+  },
+  {
+    "id": "strange-occurances",
+    "title": "Strange Occurances",
+    "chain": "ethereum",
+    "year": 2021,
+    "supply": 6,
+    "uniquePieces": 6,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/strange-occurances"
+    }
+  },
+  {
+    "id": "strangersnft",
+    "title": "StrangersNFT",
+    "chain": "ethereum",
+    "year": 2021,
+    "supply": 300,
+    "uniquePieces": 1,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/strangersnft"
+    }
+  },
+  {
+    "id": "ether-creeps",
+    "title": "Ether Creeps",
+    "chain": "ethereum",
+    "year": 2021,
+    "supply": 2,
+    "uniquePieces": 2,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/ether-creeps"
+    }
+  },
+  {
+    "id": "strangers-pets",
+    "title": "Strangers Pets",
+    "chain": "ethereum",
+    "year": 2021,
+    "supply": 150,
+    "uniquePieces": 150,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/strangers-pets"
+    }
+  },
+  {
+    "id": "stranger-days",
+    "title": "Stranger Days",
+    "chain": "ethereum",
+    "year": 2021,
+    "supply": 100,
+    "uniquePieces": 100,
+    "marketplaces": {
+      "opensea": "https://opensea.io/collection/stranger-days"
+    }
+  },
+  {
+    "id": "stranger-danger",
+    "title": "Stranger Danger",
+    "chain": "tezos",
+    "year": 2021,
+    "supply": 22,
+    "uniquePieces": 28
+  }
+]
