@@ -1,0 +1,39 @@
+{
+  "id": "the-acid-family",
+  "title": "The Acid Family",
+  "chain": "ordinals",
+  "supply": 34,
+  "heroImage": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
+  "description": "",
+  "artistNote": "Bitcoin first acid house family",
+  "onchain": true,
+  "year": 2025,
+  "pieces": [
+    {
+      "tokenId": "37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
+      "title": "Mr 303 #1",
+      "image": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
+      "thumbnail": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
+      "animationUrl": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
+      "editionCount": 17
+    },
+    {
+      "tokenId": "e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
+      "title": "Mrs 303 #1",
+      "image": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
+      "thumbnail": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
+      "animationUrl": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
+      "editionCount": 8
+    },
+    {
+      "tokenId": "1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
+      "title": "Baby 303 #1",
+      "image": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
+      "thumbnail": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
+      "animationUrl": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
+      "editionCount": 9
+    }
+  ],
+  "marketplaces": {},
+  "uniquePieces": 3
+}
