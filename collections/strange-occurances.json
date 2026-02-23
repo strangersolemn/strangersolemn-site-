@@ -1,0 +1,60 @@
+{
+  "id": "strange-occurances",
+  "title": "Strange Occurances",
+  "chain": "ethereum",
+  "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+  "supply": 6,
+  "uniquePieces": 6,
+  "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/948ec733badb9ba67ec1e46b7a6457f1",
+  "description": "",
+  "artistNote": "Strangers offshoots",
+  "onchain": false,
+  "year": 2021,
+  "pieces": [
+    {
+      "tokenId": "90144564011191553255551171483351008933440029025118662744023831509213716152321",
+      "title": "#001 Feat Stranger #28",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/948ec733badb9ba67ec1e46b7a6457f1",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/948ec733badb9ba67ec1e46b7a6457f1",
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+    },
+    {
+      "tokenId": "90144564011191553255551171483351008933440029025118662744023831538900530102273",
+      "title": "#002 Feat Stranger #25",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/fc25ba03da69f3e80e2cd09a22251016",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/fc25ba03da69f3e80e2cd09a22251016",
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+    },
+    {
+      "tokenId": "90144564011191553255551171483351008933440029025118662744023831767598948679681",
+      "title": "#003 Feat Stranger #113",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/69804d109143592e23037b701a7b17b8",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/69804d109143592e23037b701a7b17b8",
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+    },
+    {
+      "tokenId": "90144564011191553255551171483351008933440029025118662744023831780793088212993",
+      "title": "#004",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/b7c6bdabe6962f0167d62a96aa6946a3",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/b7c6bdabe6962f0167d62a96aa6946a3",
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+    },
+    {
+      "tokenId": "90144564011191553255551171483351008933440029025118662744023831840166716112897",
+      "title": "#005 Feat Stranger #109",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/e95273da48d68e3a3b1807d8ffb6e8f4",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/e95273da48d68e3a3b1807d8ffb6e8f4",
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+    },
+    {
+      "tokenId": "90144564011191553255551171483351008933440029025118662744023831924829111451649",
+      "title": "#006 Bielzo Guard",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/f7f11e0cae5d77fd984b3f58b9eebd62",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/f7f11e0cae5d77fd984b3f58b9eebd62",
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+    }
+  ],
+  "marketplaces": {
+    "opensea": "https://opensea.io/collection/strangeoccurances"
+  }
+}
