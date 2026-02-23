@@ -1,0 +1,62 @@
+{
+  "id": "strangersnft",
+  "title": "StrangersNFT",
+  "chain": "ethereum",
+  "contract": "0x20727eb4191bfe6e15b9a2a34934d48f24e3b420",
+  "supply": 300,
+  "heroImage": "https://nft-cdn.alchemy.com/eth-mainnet/dbb2778f4dc6212168c4451e345d0ff8",
+  "description": "A 300 Piece PFP collection",
+  "artistNote": "Strangers is my OG collection, released in 2021 one by one over 8 months, this is where I made my bones.",
+  "onchain": false,
+  "isEditions": false,
+  "pieces": [
+    {
+      "tokenId": "1",
+      "title": "Stranger #001",
+      "image": "https://nft-cdn.alchemy.com/eth-mainnet/dbb2778f4dc6212168c4451e345d0ff8",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/dbb2778f4dc6212168c4451e345d0ff8",
+      "animationUrl": null,
+      "description": "1/300",
+      "attributes": [
+        {
+          "value": "Solemn Stranger",
+          "trait_type": "Artist"
+        },
+        {
+          "value": "????",
+          "trait_type": "Place of Origin"
+        },
+        {
+          "value": "Ecitonian",
+          "trait_type": "Species"
+        },
+        {
+          "value": "4 Tone",
+          "trait_type": "Background"
+        },
+        {
+          "value": "Distracted",
+          "trait_type": "Expression"
+        },
+        {
+          "value": "Wizard Hands",
+          "trait_type": "Gesture"
+        },
+        {
+          "value": "Yes",
+          "trait_type": "Animated"
+        },
+        {
+          "value": "Spies",
+          "trait_type": "Special"
+        }
+      ],
+      "editionCount": 100
+    }
+  ],
+  "marketplaces": {
+    "opensea": "https://opensea.io/assets/ethereum/0x20727eb4191bfe6e15b9a2a34934d48f24e3b420"
+  },
+  "uniquePieces": 1,
+  "year": 2021
+}
