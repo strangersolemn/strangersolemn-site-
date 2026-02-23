@@ -1,0 +1,24 @@
+{
+  "id": "a-solemn-rose",
+  "title": "A Solemn Rose",
+  "chain": "ordinals",
+  "supply": 21,
+  "heroImage": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
+  "description": "",
+  "artistNote": "21 Roses forever on chain",
+  "onchain": true,
+  "isEditions": false,
+  "year": 2024,
+  "pieces": [
+    {
+      "tokenId": "d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
+      "title": "A SOLEMN ROSE #1",
+      "image": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
+      "thumbnail": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
+      "animationUrl": "https://ordinals.com/content/d196b4eb8e1568126696bcba6610e2d31295c0f15bf91d4a70a497b363a72ff7i20",
+      "editionCount": 21
+    }
+  ],
+  "marketplaces": {},
+  "uniquePieces": 1
+}
