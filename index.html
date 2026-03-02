@@ -7,17 +7,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=21">
+    <link rel="stylesheet" href="styles.css?v=22">
   </head>
   <body>
     <div id="lightbox" class="lightbox">
       <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
       <img id="lightbox-img" src="" alt="" />
+      <video id="lightbox-video" src="" autoplay loop muted playsinline style="display:none;max-width:90vw;max-height:85vh;object-fit:contain;"></video>
       <div class="lightbox-info"><span id="lightbox-title"></span></div>
     </div>
     <div id="display-mode" class="display-mode">
       <img id="display-art" src="" alt="" />
       <iframe id="display-iframe" src="" title="Display artwork"></iframe>
+      <video id="display-video" src="" autoplay loop muted playsinline style="display:none;max-width:100vw;max-height:100vh;width:100%;height:100%;object-fit:contain;background:#000;"></video>
       <div class="display-controls">
         <button class="display-btn display-prev" aria-label="Previous artwork"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
         <button class="display-btn display-shuffle" aria-label="Random artwork"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></button>
@@ -37,6 +39,7 @@
           <div class="art-container">
             <img id="featured-art" src="" alt="Featured artwork" />
             <iframe id="featured-iframe" src="" title="Featured artwork"></iframe>
+            <video id="featured-video" src="" autoplay loop muted playsinline style="display:none;width:100%;aspect-ratio:1/1;max-height:80vh;object-fit:contain;background:var(--bg-tertiary);"></video>
             <div class="art-info">
               <h2 id="art-title" class="carousel-link"></h2>
               <p id="art-collection" class="carousel-link"></p>
@@ -100,6 +103,6 @@
         </footer>
       </aside>
     </div>
-    <script src="script.js?v=21"></script>
+    <script src="script.js?v=22"></script>
   </body>
 </html>
