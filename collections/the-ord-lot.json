@@ -2,11 +2,18 @@
   "id": "the-ord-lot",
   "title": "The Ord Lot",
   "chain": "ordinals",
-  "supply": 10,
+  "supply": 11,
   "heroImage": "https://ordinals.com/content/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
   "onchain": true,
   "year": 2026,
   "pieces": [
+    {
+      "tokenId": "126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
+      "title": "The Ord Lot",
+      "image": "https://ordinals.com/content/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
+      "thumbnail": "https://ordinals.com/content/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
+      "animationUrl": "https://ordinals.com/content/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0"
+    },
     {
       "tokenId": "8edfba618e0af54beb5d60b3b9c6c2ffbb792297674b3c27d3031d225d7c57e3i0",
       "title": "Satoshi",
