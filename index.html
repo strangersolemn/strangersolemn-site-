@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=27">
+    <link rel="stylesheet" href="styles.css?v=28">
   </head>
   <body>
     <div id="lightbox" class="lightbox">
@@ -39,7 +39,7 @@
           <div class="art-container">
             <img id="featured-art" src="" alt="Featured artwork" />
             <iframe id="featured-iframe" src="" title="Featured artwork"></iframe>
-            <video id="featured-video" src="" autoplay loop muted playsinline style="display:none;width:100%;aspect-ratio:1/1;max-height:80vh;object-fit:contain;background:var(--bg-tertiary);"></video>
+            <video id="featured-video" src="" autoplay loop muted playsinline style="display:none;width:min(100%,70vh);aspect-ratio:1/1;object-fit:contain;background:var(--bg-tertiary);"></video>
             <div class="art-info">
               <h2 id="art-title" class="carousel-link"></h2>
               <p id="art-collection" class="carousel-link"></p>
@@ -103,6 +103,6 @@
         </footer>
       </aside>
     </div>
-    <script src="script.js?v=27"></script>
+    <script src="script.js?v=28"></script>
   </body>
 </html>

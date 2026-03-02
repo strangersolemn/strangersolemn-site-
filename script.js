@@ -53,7 +53,7 @@ async function loadManifest() {
 
 async function loadCollection(id) {
   if (collectionCache[id]) return collectionCache[id];
-  const r = await fetch(COLLECTIONS_BASE + id + '.json');
+  const r = await fetch(COLLECTIONS_BASE + id + '.json?v=' + Date.now());
   const data = await r.json();
   collectionCache[id] = data;
   return data;
