@@ -16,6 +16,16 @@
     }
   },
   {
+    "id": "the-ord-lot",
+    "title": "The Ord Lot",
+    "chain": "ordinals",
+    "year": 2026,
+    "supply": 10,
+    "uniquePieces": 10,
+    "heroImage": "https://ordinals.com/content/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
+    "onchain": true
+  },
+  {
     "id": "the-acid-family",
     "title": "The Acid Family",
     "chain": "ordinals",
