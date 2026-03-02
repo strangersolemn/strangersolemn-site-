@@ -154,10 +154,6 @@ function buildTimeline() {
       count.textContent = col.uniquePieces || col.supply || '';
       item.appendChild(badge);
       item.appendChild(title);
-      const cc0 = document.createElement('span');
-      cc0.className = 'cc0-badge';
-      cc0.textContent = 'CC0';
-      item.appendChild(cc0);
       item.appendChild(count);
       item.addEventListener('click', () => showDetail(col.id));
       timeline.appendChild(item);
@@ -336,7 +332,7 @@ async function showDetail(collectionId) {
     detailChain.dataset.chain = collection.chain;
   }
   if (detailMetadata) {
-    let meta = '<span class="cc0-badge detail-cc0">CC0</span> ';
+    let meta = '';
     if (collection.supply) meta += '<span>' + collection.supply + ' pieces</span> ';
     if (collection.year) meta += '<span>' + collection.year + '</span>';
     if (collection.description) meta += '<p>' + collection.description + '</p>';

@@ -138,8 +138,6 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 .timeline-item:hover { background: var(--bg-tertiary); border-left-color: var(--text-muted); }
 .timeline-title { flex: 1; font-size: 0.75rem; color: var(--text-secondary); }
 .timeline-count { font-size: 0.65rem; color: var(--text-muted); min-width: 30px; text-align: right; margin-left: auto; padding-left: 8px; }
-.cc0-badge { font-size: 0.5rem; padding: 1px 4px; border: 1px solid rgba(0,204,0,0.4); color: rgba(0,204,0,0.6); letter-spacing: 0.05em; font-family: var(--font-mono); flex-shrink: 0; margin-left: 4px; }
-.detail-cc0 { font-size: 0.6rem; padding: 2px 6px; margin-bottom: 0.5rem; display: inline-block; }
 .panel-footer { padding: 1rem 1.5rem; border-top: 1px solid #222; }
 .chain-legend { display: flex; gap: 0.75rem; margin-bottom: 0.5rem; }
 .legend-item { font-size: 0.55rem; color: var(--text-muted); cursor: pointer; transition: opacity 0.2s, text-decoration 0.1s; user-select: none; }
