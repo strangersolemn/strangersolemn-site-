@@ -390,11 +390,21 @@ function buildPieceGrid(collection) {
     const btn = document.createElement('button');
     btn.className = 'piece-thumb';
     btn.setAttribute('aria-label', 'Display this piece');
-    const img = document.createElement('img');
-    img.src = getStaticImageUrl(piece);
-    img.alt = piece.title || '';
-    img.loading = 'lazy';
-    btn.appendChild(img);
+    if (pieceNeedsIframe(collection, piece)) {
+      const iframe = document.createElement('iframe');
+      iframe.src = getIframeUrl(piece);
+      iframe.title = piece.title || '';
+      iframe.loading = 'lazy';
+      iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+      iframe.style.cssText = 'width:400%;height:400%;border:none;pointer-events:none;transform:scale(0.25);transform-origin:top left;';
+      btn.appendChild(iframe);
+    } else {
+      const img = document.createElement('img');
+      img.src = getStaticImageUrl(piece);
+      img.alt = piece.title || '';
+      img.loading = 'lazy';
+      btn.appendChild(img);
+    }
     btn.addEventListener('click', () => {
       currentPieceIndex = idx;
       showPiece(collection, idx);
