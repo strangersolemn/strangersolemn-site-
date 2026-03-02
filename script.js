@@ -459,29 +459,14 @@ function downloadCurrentPiece() {
   if (!piece) return;
   const imageUrl = piece.image || piece.thumbnail || piece.animationUrl || '';
   if (!imageUrl) return;
-  // For on-chain / iframe pieces, open content in new tab
-  if (pieceNeedsIframe(currentCarouselCollection, piece)) {
-    window.open(imageUrl, '_blank');
-    return;
-  }
-  // For regular images, fetch as blob and trigger download
-  const filename = (piece.title || 'artwork').replace(/[^a-z0-9]/gi, '-').toLowerCase();
-  fetch(imageUrl, { mode: 'cors' })
-    .then(r => r.blob())
-    .then(blob => {
-      const ext = blob.type.includes('png') ? '.png' : blob.type.includes('gif') ? '.gif' : blob.type.includes('webp') ? '.webp' : '.jpg';
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = filename + ext;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(a.href);
-    })
-    .catch(() => {
-      // Fallback: open in new tab
-      window.open(imageUrl, '_blank');
-    });
+  // Open image in new tab — user can save from there
+  const a = document.createElement('a');
+  a.href = imageUrl;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
 let lastSlideshowColId = null;
