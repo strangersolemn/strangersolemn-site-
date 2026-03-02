@@ -116,6 +116,8 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 .piece-thumb:hover { border-color: var(--text-muted); }
 .piece-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .piece-thumb iframe { width: 400%; height: 400%; border: none; pointer-events: none; transform: scale(0.25); transform-origin: top left; }
+.piece-thumb-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 0.5rem; font-family: var(--font-mono); color: var(--text-muted); padding: 4px; word-break: break-word; line-height: 1.3; background: linear-gradient(135deg, var(--bg-tertiary) 0%, #222 100%); }
+.piece-thumb:hover .piece-thumb-placeholder { color: var(--text-secondary); }
 .piece-thumb-actions { position: absolute; bottom: 4px; right: 4px; display: flex; gap: 2px; opacity: 0; transition: opacity 0.2s ease; z-index: 2; }
 .piece-thumb:hover .piece-thumb-actions { opacity: 1; }
 .piece-display-btn { background: rgba(0,0,0,0.7); border: 1px solid var(--text-muted); color: var(--text-secondary); padding: 3px 5px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }

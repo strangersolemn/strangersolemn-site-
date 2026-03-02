@@ -112,6 +112,10 @@ async function init() {
     currentCarouselCollection = first;
     currentPieceIndex = 0;
   }
+  // Preload all collections in background so slideshow can pick randomly
+  collectionsManifest.forEach(c => loadCollection(c.id));
+  // Start home slideshow
+  startSlideshow();
 }
 
 function showView(viewName) {
@@ -121,6 +125,9 @@ function showView(viewName) {
   if (viewName === 'home') {
     timelinePanel.classList.remove('hidden');
     currentCollectionId = null;
+    startSlideshow();
+  } else {
+    stopSlideshow();
   }
 }
 
@@ -391,13 +398,11 @@ function buildPieceGrid(collection) {
     btn.className = 'piece-thumb';
     btn.setAttribute('aria-label', 'Display this piece');
     if (pieceNeedsIframe(collection, piece)) {
-      const iframe = document.createElement('iframe');
-      iframe.src = getIframeUrl(piece);
-      iframe.title = piece.title || '';
-      iframe.loading = 'lazy';
-      iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin');
-      iframe.style.cssText = 'width:400%;height:400%;border:none;pointer-events:none;transform:scale(0.25);transform-origin:top left;';
-      btn.appendChild(iframe);
+      // On-chain pieces: show static placeholder instead of iframe to avoid jank
+      const placeholder = document.createElement('div');
+      placeholder.className = 'piece-thumb-placeholder';
+      placeholder.textContent = piece.title || '#' + (piece.tokenId ? piece.tokenId.slice(-6) : idx);
+      btn.appendChild(placeholder);
     } else {
       const img = document.createElement('img');
       img.src = getStaticImageUrl(piece);
@@ -448,16 +453,25 @@ function showPieceByIndex(idx) {
   if (currentCarouselCollection?.pieces[idx]) showPiece(currentCarouselCollection, idx);
 }
 
+let lastSlideshowColId = null;
 async function showRandomArt() {
-  const randomManifest = collectionsManifest[Math.floor(Math.random() * collectionsManifest.length)];
+  // Pick a different collection than last time
+  let candidates = collectionsManifest.filter(c => c.id !== lastSlideshowColId);
+  if (candidates.length === 0) candidates = collectionsManifest;
+  const randomManifest = candidates[Math.floor(Math.random() * candidates.length)];
+  lastSlideshowColId = randomManifest.id;
   const col = await loadCollection(randomManifest.id);
+  if (!col.pieces || col.pieces.length === 0) return;
   const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
   showHeroMedia(col, piece);
   if (artTitle) artTitle.textContent = piece.title || '';
+  const artCollection = document.getElementById('art-collection');
+  if (artCollection) artCollection.textContent = col.title;
   if (artChain) {
     artChain.textContent = chainNames[col.chain] || col.chain;
     artChain.dataset.chain = col.chain;
   }
+  currentCollectionId = col.id;
   currentCarouselCollection = col;
   currentPieceIndex = col.pieces.indexOf(piece);
 }
