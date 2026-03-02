@@ -453,6 +453,37 @@ function showPieceByIndex(idx) {
   if (currentCarouselCollection?.pieces[idx]) showPiece(currentCarouselCollection, idx);
 }
 
+function downloadCurrentPiece() {
+  if (!currentCarouselCollection || currentPieceIndex == null) return;
+  const piece = currentCarouselCollection.pieces[currentPieceIndex];
+  if (!piece) return;
+  const imageUrl = piece.image || piece.thumbnail || piece.animationUrl || '';
+  if (!imageUrl) return;
+  // For on-chain / iframe pieces, open content in new tab
+  if (pieceNeedsIframe(currentCarouselCollection, piece)) {
+    window.open(imageUrl, '_blank');
+    return;
+  }
+  // For regular images, fetch as blob and trigger download
+  const filename = (piece.title || 'artwork').replace(/[^a-z0-9]/gi, '-').toLowerCase();
+  fetch(imageUrl, { mode: 'cors' })
+    .then(r => r.blob())
+    .then(blob => {
+      const ext = blob.type.includes('png') ? '.png' : blob.type.includes('gif') ? '.gif' : blob.type.includes('webp') ? '.webp' : '.jpg';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename + ext;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(a.href);
+    })
+    .catch(() => {
+      // Fallback: open in new tab
+      window.open(imageUrl, '_blank');
+    });
+}
+
 let lastSlideshowColId = null;
 const slideshowWeights = {
   'everyday-strange': 25,
@@ -620,6 +651,7 @@ function initDisplayMode() {
 document.addEventListener('DOMContentLoaded', async () => {
   await init();
   initDisplayMode();
+  document.querySelector('.download-btn')?.addEventListener('click', (e) => { e.stopPropagation(); downloadCurrentPiece(); });
   document.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
   document.querySelectorAll('[data-view="home"]').forEach(el => el.addEventListener('click', () => showView('home')));
   document.querySelector('.back-btn')?.addEventListener('click', () => showView('home'));
