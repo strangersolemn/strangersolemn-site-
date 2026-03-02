@@ -82,7 +82,7 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 .hidden { display: none !important; }
 .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s ease; }
 .play-overlay:hover { background: rgba(0,0,0,0.8); }
-.image-actions { position: absolute; bottom: 0.75rem; right: 0.75rem; display: flex; gap: 0.5rem; }
+.image-actions { position: absolute; bottom: 0.75rem; right: 0.75rem; display: flex; gap: 0.5rem; z-index: 10; }
 .download-btn { background: rgba(0,0,0,0.5); border: 1px solid var(--text-muted); color: var(--text-secondary); padding: 0.5rem; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; }
 .download-btn:hover { color: var(--text-primary); border-color: var(--text-primary); }
 .detail-info { width: 300px; flex-shrink: 0; }

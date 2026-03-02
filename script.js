@@ -636,7 +636,7 @@ function initDisplayMode() {
 document.addEventListener('DOMContentLoaded', async () => {
   await init();
   initDisplayMode();
-  document.querySelector('.download-btn')?.addEventListener('click', (e) => { e.stopPropagation(); downloadCurrentPiece(); });
+  document.querySelector('.download-btn')?.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); downloadCurrentPiece(); });
   document.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
   document.querySelectorAll('[data-view="home"]').forEach(el => el.addEventListener('click', () => showView('home')));
   document.querySelector('.back-btn')?.addEventListener('click', () => showView('home'));
