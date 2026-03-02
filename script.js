@@ -454,11 +454,55 @@ function showPieceByIndex(idx) {
 }
 
 let lastSlideshowColId = null;
-async function showRandomArt() {
-  // Pick a different collection than last time
-  let candidates = collectionsManifest.filter(c => c.id !== lastSlideshowColId);
+const slideshowWeights = {
+  'everyday-strange': 25,
+  'renascent': 8,
+  'the-ord-lot': 8,
+  'deliverance': 6,
+  'doom': 6,
+  'blockclock-originals': 5,
+  'one-of-one-originals': 5,
+  'block-party': 4,
+  'glitch-pack': 3,
+  'gl1tch-c0des': 3,
+  'boutique': 3,
+  'gamma-prints': 3,
+  'strange-punks': 2,
+  'stranger-days': 2,
+  'strangers-pets': 2,
+  'hic-et-nunc': 2,
+  'parrot-party': 2,
+  'cc0-party': 2,
+  'editions-by-solemn': 2,
+  'safari': 2,
+  'reflections': 2,
+  'glitch-bomb': 2,
+  'fck-knows': 2,
+  'strange-occurances': 2,
+  'the-creeps': 1,
+  'tez-misc': 1,
+  'ether-creeps': 1,
+  'stranger-danger': 1,
+  'fiat-mafia': 1,
+  'the-acid-family': 1,
+  'btc-editions': 1,
+  'a-solemn-rose': 1,
+  'strangersnft': 1
+};
+function weightedRandomCollection(exclude) {
+  let candidates = collectionsManifest.filter(c => c.id !== exclude);
   if (candidates.length === 0) candidates = collectionsManifest;
-  const randomManifest = candidates[Math.floor(Math.random() * candidates.length)];
+  const weights = candidates.map(c => slideshowWeights[c.id] || 2);
+  const total = weights.reduce((a, b) => a + b, 0);
+  let r = Math.random() * total;
+  for (let i = 0; i < candidates.length; i++) {
+    r -= weights[i];
+    if (r <= 0) return candidates[i];
+  }
+  return candidates[candidates.length - 1];
+}
+async function showRandomArt() {
+  const randomManifest = weightedRandomCollection(lastSlideshowColId);
   lastSlideshowColId = randomManifest.id;
   const col = await loadCollection(randomManifest.id);
   if (!col.pieces || col.pieces.length === 0) return;
@@ -478,7 +522,7 @@ async function showRandomArt() {
 
 function startSlideshow() {
   stopSlideshow();
-  slideshowTimer = setInterval(showRandomArt, 5000);
+  slideshowTimer = setInterval(showRandomArt, 10000);
 }
 
 function stopSlideshow() {
