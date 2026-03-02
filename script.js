@@ -80,7 +80,7 @@ function pieceNeedsIframe(collection, piece) {
 }
 
 function getStaticImageUrl(piece) {
-  return piece.thumbnail || piece.image || '';
+  return piece.image || piece.thumbnail || '';
 }
 
 function getIframeUrl(piece) {
