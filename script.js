@@ -101,7 +101,8 @@ async function init() {
   initChainFilters();
   initSearch();
   if (collectionsManifest.length > 0) {
-    const first = await loadCollection(collectionsManifest[0].id);
+    const startId = collectionsManifest.find(c => c.id === 'the-ord-lot')?.id || collectionsManifest[0].id;
+    const first = await loadCollection(startId);
     showHeroMedia(first, first.pieces[0]);
     if (artTitle) artTitle.textContent = first.pieces[0].title || '';
     if (document.getElementById('art-collection')) document.getElementById('art-collection').textContent = first.title;
@@ -398,11 +399,20 @@ function buildPieceGrid(collection) {
     btn.className = 'piece-thumb';
     btn.setAttribute('aria-label', 'Display this piece');
     if (pieceNeedsIframe(collection, piece)) {
-      // On-chain pieces: show static placeholder instead of iframe to avoid jank
-      const placeholder = document.createElement('div');
-      placeholder.className = 'piece-thumb-placeholder';
-      placeholder.textContent = piece.title || '#' + (piece.tokenId ? piece.tokenId.slice(-6) : idx);
-      btn.appendChild(placeholder);
+      const staticUrl = getStaticImageUrl(piece);
+      if (staticUrl) {
+        const img = document.createElement('img');
+        img.src = staticUrl;
+        img.alt = piece.title || '';
+        img.loading = 'lazy';
+        btn.appendChild(img);
+      } else {
+        // No static image available: show text placeholder
+        const placeholder = document.createElement('div');
+        placeholder.className = 'piece-thumb-placeholder';
+        placeholder.textContent = piece.title || '#' + (piece.tokenId ? piece.tokenId.slice(-6) : idx);
+        btn.appendChild(placeholder);
+      }
     } else {
       const img = document.createElement('img');
       img.src = getStaticImageUrl(piece);
@@ -538,7 +548,7 @@ async function showRandomArt() {
 
 function startSlideshow() {
   stopSlideshow();
-  slideshowTimer = setInterval(showRandomArt, 10000);
+  slideshowTimer = setInterval(showRandomArt, 20000);
 }
 
 function stopSlideshow() {
@@ -633,9 +643,19 @@ function initDisplayMode() {
   });
 }
 
+function initPanelCollapse() {
+  const btn = document.getElementById('panel-collapse');
+  const container = document.querySelector('.container');
+  if (!btn || !container) return;
+  btn.addEventListener('click', () => {
+    container.classList.toggle('panel-collapsed');
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   await init();
   initDisplayMode();
+  initPanelCollapse();
   document.querySelector('.download-btn')?.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); downloadCurrentPiece(); });
   document.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
   document.querySelectorAll('[data-view="home"]').forEach(el => el.addEventListener('click', () => showView('home')));
