@@ -480,21 +480,20 @@ function downloadCurrentPiece() {
 }
 
 let lastSlideshowColId = null;
+// Collections excluded from main slideshow (iframe-based, render left-aligned)
+const slideshowExclude = new Set([
+  'gl1tch-c0des', 'a-solemn-rose', 'doom', 'deliverance',
+  'blockclock-originals', 'glitch-pack', 'renascent', 'block-party'
+]);
+
 const slideshowWeights = {
-  'everyday-strange': 25,
-  'renascent': 8,
-  'the-ord-lot': 8,
-  'deliverance': 6,
-  'doom': 6,
-  'blockclock-originals': 5,
-  'one-of-one-originals': 5,
-  'block-party': 4,
-  'glitch-pack': 3,
-  'gl1tch-c0des': 3,
+  'everyday-strange': 40,
+  'stranger-days': 40,
+  'the-ord-lot': 4,
+  'one-of-one-originals': 3,
   'boutique': 3,
   'gamma-prints': 3,
   'strange-punks': 2,
-  'stranger-days': 2,
   'strangers-pets': 2,
   'hic-et-nunc': 2,
   'parrot-party': 2,
@@ -512,13 +511,13 @@ const slideshowWeights = {
   'fiat-mafia': 1,
   'the-acid-family': 1,
   'btc-editions': 1,
-  'a-solemn-rose': 1,
   'strangersnft': 1
 };
 function weightedRandomCollection(exclude) {
-  let candidates = collectionsManifest.filter(c => c.id !== exclude);
+  let candidates = collectionsManifest.filter(c => c.id !== exclude && !slideshowExclude.has(c.id));
+  if (candidates.length === 0) candidates = collectionsManifest.filter(c => !slideshowExclude.has(c.id));
   if (candidates.length === 0) candidates = collectionsManifest;
-  const weights = candidates.map(c => slideshowWeights[c.id] || 2);
+  const weights = candidates.map(c => slideshowWeights[c.id] || 1);
   const total = weights.reduce((a, b) => a + b, 0);
   let r = Math.random() * total;
   for (let i = 0; i < candidates.length; i++) {
@@ -622,25 +621,24 @@ function loadDisplayPiece() {
   }
 }
 
+async function displayModeRandomArt() {
+  const randomManifest = weightedRandomCollection(lastSlideshowColId);
+  lastSlideshowColId = randomManifest.id;
+  const col = await loadCollection(randomManifest.id);
+  if (!col.pieces || col.pieces.length === 0) return;
+  const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
+  currentCarouselCollection = col;
+  currentPieceIndex = col.pieces.indexOf(piece);
+  loadDisplayPiece();
+}
+
 function initDisplayMode() {
   document.getElementById('display-mode-btn')?.addEventListener('click', () => enterDisplayMode(currentCarouselCollection, currentPieceIndex));
   document.getElementById('collection-display-btn')?.addEventListener('click', () => enterDisplayMode(currentCarouselCollection, currentPieceIndex));
   document.querySelector('.display-close')?.addEventListener('click', exitDisplayMode);
-  document.querySelector('.display-prev')?.addEventListener('click', () => {
-    if (!currentCarouselCollection) return;
-    currentPieceIndex = (currentPieceIndex - 1 + currentCarouselCollection.pieces.length) % currentCarouselCollection.pieces.length;
-    loadDisplayPiece();
-  });
-  document.querySelector('.display-next')?.addEventListener('click', () => {
-    if (!currentCarouselCollection) return;
-    currentPieceIndex = (currentPieceIndex + 1) % currentCarouselCollection.pieces.length;
-    loadDisplayPiece();
-  });
-  document.querySelector('.display-shuffle')?.addEventListener('click', () => {
-    if (!currentCarouselCollection) return;
-    currentPieceIndex = Math.floor(Math.random() * currentCarouselCollection.pieces.length);
-    loadDisplayPiece();
-  });
+  document.querySelector('.display-prev')?.addEventListener('click', () => displayModeRandomArt());
+  document.querySelector('.display-next')?.addEventListener('click', () => displayModeRandomArt());
+  document.querySelector('.display-shuffle')?.addEventListener('click', () => displayModeRandomArt());
 }
 
 function initPanelCollapse() {
