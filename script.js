@@ -351,14 +351,15 @@ async function showDetail(collectionId) {
   currentPieceIndex = 0;
   if (detailTitle) detailTitle.textContent = collection.title;
   if (detailChain) {
-    detailChain.textContent = chainNames[collection.chain] || collection.chain;
+    let chainText = chainNames[collection.chain] || collection.chain;
+    const small = [];
+    if (collection.supply) small.push(collection.supply);
+    if (collection.year) small.push(collection.year);
+    detailChain.innerHTML = chainText + (small.length ? ' <span class="chain-meta">' + small.join(' · ') + '</span>' : '');
     detailChain.dataset.chain = collection.chain;
   }
   if (detailMetadata) {
     let meta = '';
-    if (collection.supply) meta += '<span>' + collection.supply + ' pieces</span> ';
-    if (collection.year) meta += '<span>' + collection.year + '</span>';
-    if (collection.description) meta += '<p>' + collection.description + '</p>';
     if (collection.artistNote) meta += '<p class="artist-note">' + collection.artistNote + '</p>';
     detailMetadata.innerHTML = meta;
   }
