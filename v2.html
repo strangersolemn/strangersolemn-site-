@@ -191,11 +191,23 @@ tailwind.config = {
             </div>
             <button onclick="openDrawer()" class="material-symbols-outlined text-muted text-lg hover:text-white" style="background:none;border:none;cursor:pointer;">grid_view</button>
           </div>
-          <div class="bg-surface-low border border-outline-v/20 p-3">
-            <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" style="aspect-ratio:1/1; height:calc(100vh - 80px); max-height:calc(100vh - 80px);">
-              <img id="home-art-img" class="w-full h-full object-contain hidden" src="" alt="" />
-              <iframe id="home-art-iframe" class="w-full h-full border-none hidden" src="" title="Featured artwork"></iframe>
-              <video id="home-art-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
+          <div class="w-fit">
+            <!-- HOME STATUS BAR -->
+            <div class="bg-surface-high flex items-center justify-between px-4 h-7 text-[10px] text-muted uppercase tracking-widest border border-outline-v/15 mb-0">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-green-500"></span>
+                <span id="home-status-piece">LOADING</span>
+              </div>
+              <div class="flex gap-4 ml-8">
+                <span id="home-status-time">UTC: --:--:--</span>
+              </div>
+            </div>
+            <div class="bg-surface-low border border-outline-v/20 border-t-0 p-3">
+              <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" style="aspect-ratio:1/1; height:calc(100vh - 120px); max-height:calc(100vh - 120px);">
+                <img id="home-art-img" class="w-full h-full object-contain hidden" src="" alt="" />
+                <iframe id="home-art-iframe" class="w-full h-full border-none hidden" src="" title="Featured artwork"></iframe>
+                <video id="home-art-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
+              </div>
             </div>
           </div>
         </div>
@@ -273,10 +285,13 @@ let currentCollection = null;
 let currentIndex = 0;
 let activeFilter = null;
 
-// Clock
+// Clock — updates both home and collection status bars
 setInterval(() => {
-  const d = new Date();
-  document.getElementById('status-time').textContent = 'UTC: ' + d.toISOString().slice(11, 19);
+  const t = 'UTC: ' + new Date().toISOString().slice(11, 19);
+  const st = document.getElementById('status-time');
+  const hst = document.getElementById('home-status-time');
+  if (st) st.textContent = t;
+  if (hst) hst.textContent = t;
 }, 1000);
 
 async function loadManifest() {
@@ -542,6 +557,8 @@ async function homeRandomArt() {
   }
   document.getElementById('home-art-title').textContent = piece.title || '';
   document.getElementById('home-art-collection').textContent = col.title || '';
+  const hsp = document.getElementById('home-status-piece');
+  if (hsp) hsp.textContent = piece.title || 'LOADING';
 }
 
 function startHomeSlideshow() {
