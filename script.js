@@ -431,18 +431,29 @@ function buildPieceGrid(collection) {
     btn.setAttribute('aria-label', 'Display this piece');
     if (pieceNeedsIframe(collection, piece)) {
       const staticUrl = getStaticImageUrl(piece);
-      if (staticUrl) {
+      // Check if the static URL is actually HTML content (ordinals on-chain)
+      const isOrdinals = staticUrl && staticUrl.includes('ordinals.com/content/');
+      const hasDataUri = piece.animationUrl && piece.animationUrl.startsWith('data:');
+      if (staticUrl && !isOrdinals && !hasDataUri) {
         const img = document.createElement('img');
         img.src = staticUrl;
         img.alt = piece.title || '';
         img.loading = 'lazy';
         btn.appendChild(img);
       } else {
-        // No static image available: show text placeholder
-        const placeholder = document.createElement('div');
-        placeholder.className = 'piece-thumb-placeholder';
-        placeholder.textContent = piece.title || '#' + (piece.tokenId ? piece.tokenId.slice(-6) : idx);
-        btn.appendChild(placeholder);
+        // Use iframe thumbnail for on-chain HTML pieces
+        const iframe = document.createElement('iframe');
+        iframe.src = piece.animationUrl || staticUrl;
+        iframe.loading = 'lazy';
+        iframe.sandbox = 'allow-scripts';
+        iframe.scrolling = 'no';
+        iframe.className = 'piece-thumb-iframe';
+        btn.appendChild(iframe);
+        // Add title overlay
+        const label = document.createElement('span');
+        label.className = 'piece-thumb-label';
+        label.textContent = piece.title || '';
+        btn.appendChild(label);
       }
     } else {
       const img = document.createElement('img');
