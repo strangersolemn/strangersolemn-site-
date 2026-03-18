@@ -37,7 +37,7 @@ tailwind.config = {
 </script>
 <style>
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-.bg-grid { background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 48px 48px; position: relative; }
+.bg-grid { background-color: #0a0a0a; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 48px 48px; position: relative; }
 @media (max-width: 768px) {
   #meta-sidebar { display: none !important; }
   .flex.min-h-screen { flex-direction: column; }
@@ -115,7 +115,7 @@ tailwind.config = {
   <div class="flex min-h-screen">
 
     <!-- LEFT: META SIDEBAR -->
-    <aside id="meta-sidebar" class="w-80 min-w-[320px] bg-surface-low p-8 flex flex-col gap-8 overflow-y-auto hidden md:flex">
+    <aside id="meta-sidebar" class="w-80 min-w-[320px] bg-surface-low p-8 flex flex-col gap-8 overflow-y-auto hidden md:flex fixed left-0 top-0 bottom-0 z-10">
       <div>
         <span id="meta-chain-badge" class="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider mb-3">BTC</span>
         <h1 id="meta-title" class="font-bold text-3xl tracking-tight text-white leading-none uppercase mb-2">LOADING...</h1>
@@ -143,12 +143,12 @@ tailwind.config = {
     </aside>
 
     <!-- RIGHT: CONTENT -->
-    <section class="flex-1 p-6 md:p-10 overflow-y-auto" style="max-height:100vh;">
+    <section class="flex-1 p-6 md:p-10 md:ml-80 overflow-y-auto" style="max-height:100vh;">
 
       <!-- HOME VIEW -->
       <div id="home-view" class="flex min-h-screen">
         <!-- HOME SIDEBAR -->
-        <div class="w-80 min-w-[320px] bg-surface-low p-8 flex flex-col justify-between hidden md:flex">
+        <div class="w-80 min-w-[320px] bg-surface-low p-8 flex flex-col justify-between hidden md:flex fixed left-0 top-0 bottom-0 z-10">
           <div>
             <h1 class="font-bold text-xl tracking-tight text-[#ccc] leading-none uppercase mb-1">Stranger Solemn</h1>
             <p class="text-[11px] text-muted uppercase tracking-[0.1em] mb-6">Glitch + Code</p>
@@ -187,7 +187,7 @@ tailwind.config = {
           </div>
         </div>
         <!-- HOME ART -->
-        <div class="flex-1 flex items-center justify-center p-4">
+        <div class="flex-1 flex items-center justify-center p-4 md:ml-80">
           <div class="w-fit">
             <!-- Mobile branding -->
             <div class="md:hidden mb-3 flex justify-between items-center">
