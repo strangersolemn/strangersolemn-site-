@@ -351,12 +351,21 @@ async function showDetail(collectionId) {
   currentPieceIndex = 0;
   if (detailTitle) detailTitle.textContent = collection.title;
   if (detailChain) {
-    let chainText = chainNames[collection.chain] || collection.chain;
+    detailChain.textContent = chainNames[collection.chain] || collection.chain;
+    detailChain.dataset.chain = collection.chain;
+    // Add meta (count · year) outside the badge
+    let existingMeta = document.getElementById('chain-meta-info');
+    if (!existingMeta) {
+      existingMeta = document.createElement('span');
+      existingMeta.id = 'chain-meta-info';
+      existingMeta.className = 'chain-meta';
+      detailChain.parentNode.insertBefore(existingMeta, detailChain.nextSibling);
+    }
     const small = [];
     if (collection.supply) small.push(collection.supply);
     if (collection.year) small.push(collection.year);
-    detailChain.innerHTML = chainText + (small.length ? ' <span class="chain-meta">' + small.join(' · ') + '</span>' : '');
-    detailChain.dataset.chain = collection.chain;
+    existingMeta.textContent = small.length ? small.join(' · ') : '';
+    existingMeta.style.display = small.length ? '' : 'none';
   }
   if (detailMetadata) {
     let meta = '';
