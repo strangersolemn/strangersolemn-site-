@@ -23,18 +23,28 @@
     "supply": 11,
     "uniquePieces": 11,
     "heroImage": "https://ordinals.com/content/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
-    "onchain": true
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0"
   },
   {
-    "id": "the-acid-family",
-    "title": "The Acid Family",
+    "id": "the-masters",
+    "title": "The Masters",
     "chain": "ordinals",
     "year": 2025,
-    "supply": 34,
-    "uniquePieces": 3,
-    "heroImage": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
-    "artistNote": "Bitcoin first acid house family",
-    "onchain": true
+    "supply": 0,
+    "uniquePieces": 0,
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/b5f53e5582cce8050defc3e230ded4ebfca1d2aa6fa13add63703b7d7e04b8c9i0"
+  },
+  {
+    "id": "leverage",
+    "title": "Leverage",
+    "chain": "ordinals",
+    "year": 2025,
+    "supply": 0,
+    "uniquePieces": 0,
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/6d1d545dfcf3b7c3b6bcbe0848765a1b6222d36c88725614a6821afd7ba6c751i0"
   },
   {
     "id": "block-party",
@@ -44,16 +54,38 @@
     "supply": 200,
     "uniquePieces": 200,
     "heroImage": "https://ordinals.com/content/b1b1e9fe8e1399c8e9e1e9dd2e8b1e9e8b1e9e8b1i0",
-    "onchain": true
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/f583f227f6ee0d9087038b5c417eecb1837455805f4f2fbebbdbc022b362fa0ai0"
   },
   {
-    "id": "blockclock-originals",
-    "title": "Blockclock Originals",
+    "id": "block-clocks",
+    "title": "Block Clocks",
     "chain": "ordinals",
     "year": 2025,
     "supply": 22,
     "uniquePieces": 22,
-    "onchain": true
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/f0ed8a150142d70f1014f3aba60e2030abf643ab54003aa76d7e24ef8644593ei0"
+  },
+  {
+    "id": "ordinal-party",
+    "title": "Ordinal Party",
+    "chain": "ordinals",
+    "year": 2025,
+    "supply": 0,
+    "uniquePieces": 0,
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/cfcbfbda136a9f36a650822da02d3d9a6e4e67d55d37ce1e6de5ae47bfdfcba2i0"
+  },
+  {
+    "id": "dronebtc",
+    "title": "DRONEBTC",
+    "chain": "ordinals",
+    "year": 2025,
+    "supply": 0,
+    "uniquePieces": 0,
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/1d2e184a1ed18af42a72bc933ee92bdf7b4b4497b06b32b487238ca3d75dd712i0"
   },
   {
     "id": "deliverance",
@@ -63,7 +95,8 @@
     "supply": 19,
     "uniquePieces": 19,
     "artistNote": "19 Cursed warriors",
-    "onchain": true
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/1aad00416b1838b92aed5914f9e6ac27210f152782dd825b795a8abe761e0349i0"
   },
   {
     "id": "doom",
@@ -72,7 +105,8 @@
     "year": 2024,
     "supply": 105,
     "uniquePieces": 105,
-    "onchain": true
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/ea365882ee7b587a3fe4115806b7147363da0d8d5bde8f985175c87f84010824i0"
   },
   {
     "id": "fiat-mafia",
@@ -82,7 +116,8 @@
     "supply": 2693,
     "uniquePieces": 2693,
     "isCollab": true,
-    "onchain": true
+    "onchain": true,
+    "galleryUrl": "https://ordinals.com/inscription/40d60aa458ccde183af9842eedb9cb29f1c527bf56a17eec56f66c7bfedae3efi0"
   },
   {
     "id": "a-solemn-rose",
@@ -90,15 +125,17 @@
     "chain": "ordinals",
     "year": 2024,
     "supply": 21,
-    "uniquePieces": 1
+    "uniquePieces": 1,
+    "galleryUrl": "https://ordinals.com/inscription/c03a78737a663c137a18f2ce6e256ef8e44db866fecfdfdf33d0eedf0a155ea1i0"
   },
   {
     "id": "glitch-pack",
-    "title": "Glitch Pack",
+    "title": "GL1TCH PACK",
     "chain": "ordinals",
     "year": 2024,
     "supply": 1028,
-    "uniquePieces": 12
+    "uniquePieces": 12,
+    "galleryUrl": "https://ordinals.com/inscription/121c2d8a84ab31ccad85581b784a27b3604d5cc957355acc7eddac9c9aeaae67i0"
   },
   {
     "id": "btc-editions",
@@ -106,23 +143,8 @@
     "chain": "ordinals",
     "year": 2024,
     "supply": 5893,
-    "uniquePieces": 14
-  },
-  {
-    "id": "gamma-prints",
-    "title": "Gamma Prints",
-    "chain": "ordinals",
-    "year": 2023,
-    "supply": 14,
-    "uniquePieces": 14
-  },
-  {
-    "id": "boutique",
-    "title": "Boutique",
-    "chain": "ordinals",
-    "year": 2023,
-    "supply": 25,
-    "uniquePieces": 25
+    "uniquePieces": 14,
+    "galleryUrl": "https://ordinals.com/inscription/f87aee3cf04bcc1e351a3daf924cd99fc163afaa99eadee5e3d45181c519a15ci0"
   },
   {
     "id": "gl1tch-c0des",
@@ -130,7 +152,8 @@
     "chain": "ordinals",
     "year": 2023,
     "supply": 21,
-    "uniquePieces": 21
+    "uniquePieces": 21,
+    "galleryUrl": "https://ordinals.com/inscription/33a549364da3dbcf3fe5b35ae006481081beee2d5ad0d7d09d164117b278a7eei0"
   },
   {
     "id": "glitch-bomb",
@@ -140,9 +163,7 @@
     "supply": 7,
     "uniquePieces": 7,
     "isEditions": true,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/glitch-bomb"
-    }
+    "galleryUrl": "https://opensea.io/collection/glitchbomb"
   },
   {
     "id": "reflections",
@@ -152,9 +173,7 @@
     "supply": 7,
     "uniquePieces": 7,
     "isEditions": true,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/reflections-by-stranger-solemn"
-    }
+    "galleryUrl": "https://opensea.io/collection/reflectionsbysolemn"
   },
   {
     "id": "safari",
@@ -163,9 +182,7 @@
     "year": 2023,
     "supply": 4,
     "uniquePieces": 4,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/safari-by-stranger-solemn"
-    }
+    "galleryUrl": "https://opensea.io/collection/safaribysolemn"
   },
   {
     "id": "fck-knows",
@@ -174,9 +191,7 @@
     "year": 2024,
     "supply": 6,
     "uniquePieces": 8,
-    "marketplaces": {
-      "objkt": "https://objkt.com/profile/strangersolemn/created"
-    }
+    "galleryUrl": "https://objkt.com/collections/KT1J3rtnjEr3Bv4F5iNPuSHck8FDGceGnb9P"
   },
   {
     "id": "one-of-one-originals",
@@ -197,9 +212,7 @@
     "supply": 25,
     "uniquePieces": 25,
     "isEditions": true,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/editions-by-solemn"
-    }
+    "galleryUrl": "https://opensea.io/collection/editionsbysolemn"
   },
   {
     "id": "cc0-party",
@@ -209,9 +222,7 @@
     "supply": 12,
     "uniquePieces": 12,
     "isEditions": true,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/cc0party"
-    }
+    "galleryUrl": "https://opensea.io/collection/cc0party"
   },
   {
     "id": "strange-punks",
@@ -220,9 +231,7 @@
     "year": 2022,
     "supply": 11,
     "uniquePieces": 11,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/strangepunks"
-    }
+    "galleryUrl": "https://opensea.io/collection/strangepunksbysolemnstranger"
   },
   {
     "id": "everyday-strange",
@@ -231,9 +240,7 @@
     "year": 2022,
     "supply": 365,
     "uniquePieces": 365,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/everyday-strange"
-    }
+    "galleryUrl": "https://opensea.io/collection/everyday-strange"
   },
   {
     "id": "the-creeps",
@@ -242,9 +249,7 @@
     "year": 2022,
     "supply": 6,
     "uniquePieces": 6,
-    "marketplaces": {
-      "objkt": "https://objkt.com/collection/KT1FNJSGvf9TRKTznCJGMkFPxFqJpTsimn6e"
-    }
+    "galleryUrl": "https://objkt.com/collections/KT1LmKkWCiAfiYsp68yQbaTYb5KaqQDEWNR7"
   },
   {
     "id": "parrot-party",
@@ -253,9 +258,7 @@
     "year": 2022,
     "supply": 50,
     "uniquePieces": 51,
-    "marketplaces": {
-      "objkt": "https://objkt.com/collection/KT1Fo4rGjKYNJJv6vDAGnDJpq8P7VLKSwWkG"
-    }
+    "galleryUrl": "https://objkt.com/collections/KT1X9gMA5epGcW25zf9rgxr7WNETkfu4WB69"
   },
   {
     "id": "tez-misc",
@@ -271,7 +274,8 @@
     "chain": "tezos",
     "year": 2021,
     "supply": 21,
-    "uniquePieces": 21
+    "uniquePieces": 21,
+    "galleryUrl": "https://objkt.com/users/tz1V3FzMekAcqftBXAxnY2P7B3LKuZJ4ueuX?fa_contract=KT1RJ6PbjHpwc3M5rw5s2Nbmefwbuwbdxton"
   },
   {
     "id": "strange-occurances",
@@ -280,9 +284,7 @@
     "year": 2021,
     "supply": 6,
     "uniquePieces": 6,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/strange-occurances"
-    }
+    "galleryUrl": "https://opensea.io/collection/strangeoccurances"
   },
   {
     "id": "strangersnft",
@@ -291,9 +293,7 @@
     "year": 2021,
     "supply": 300,
     "uniquePieces": 1,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/strangersnft"
-    }
+    "galleryUrl": "https://opensea.io/collection/strangersnftv2"
   },
   {
     "id": "ether-creeps",
@@ -302,9 +302,7 @@
     "year": 2021,
     "supply": 2,
     "uniquePieces": 2,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/ether-creeps"
-    }
+    "galleryUrl": "https://opensea.io/collection/ether-creeps"
   },
   {
     "id": "strangers-pets",
@@ -313,9 +311,7 @@
     "year": 2021,
     "supply": 150,
     "uniquePieces": 150,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/strangers-pets"
-    }
+    "galleryUrl": "https://opensea.io/collection/strangers-pets"
   },
   {
     "id": "stranger-days",
@@ -324,9 +320,7 @@
     "year": 2021,
     "supply": 100,
     "uniquePieces": 100,
-    "marketplaces": {
-      "opensea": "https://opensea.io/collection/stranger-days"
-    }
+    "galleryUrl": "https://opensea.io/collection/strangerdays"
   },
   {
     "id": "stranger-danger",
@@ -334,6 +328,7 @@
     "chain": "tezos",
     "year": 2021,
     "supply": 22,
-    "uniquePieces": 28
+    "uniquePieces": 28,
+    "galleryUrl": "https://objkt.com/collections/KT1LCxvXgtbyxNvHtZEBnLmNn44mEuLd6rtg?sort=current_price:asc"
   }
 ]

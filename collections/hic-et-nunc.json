@@ -25,14 +25,16 @@
       "tokenId": "257976",
       "image": "https://ipfs.io/ipfs/QmVh5sVzQ41bndDurne9Ha3XkmNq9xU1dYXYSzGoZLUHWF",
       "thumbnail": "https://ipfs.io/ipfs/QmVh5sVzQ41bndDurne9Ha3XkmNq9xU1dYXYSzGoZLUHWF",
-      "description": "1/1 Gif"
+      "description": "1/1 Gif",
+      "animationUrl": "https://ipfs.io/ipfs/QmVh5sVzQ41bndDurne9Ha3XkmNq9xU1dYXYSzGoZLUHWF"
     },
     {
       "title": "Blue Derango",
       "tokenId": "257988",
       "image": "https://ipfs.io/ipfs/QmfU4nZi7218iTpq9n7AhZnyDdPzR4iWbb89x78d6BsU8w",
       "thumbnail": "https://ipfs.io/ipfs/QmfU4nZi7218iTpq9n7AhZnyDdPzR4iWbb89x78d6BsU8w",
-      "description": "1/1 Gif"
+      "description": "1/1 Gif",
+      "animationUrl": "https://ipfs.io/ipfs/QmfU4nZi7218iTpq9n7AhZnyDdPzR4iWbb89x78d6BsU8w"
     },
     {
       "title": "The Invitation",
@@ -53,7 +55,8 @@
       "tokenId": "421890",
       "image": "https://ipfs.io/ipfs/QmYDzeUWzcSk1EupAQt77eKhR7xKazzuRUM5vLV2pK7Zmd",
       "thumbnail": "https://ipfs.io/ipfs/QmYDzeUWzcSk1EupAQt77eKhR7xKazzuRUM5vLV2pK7Zmd",
-      "description": "Meet the friendlies"
+      "description": "Meet the friendlies",
+      "animationUrl": "https://ipfs.io/ipfs/QmYDzeUWzcSk1EupAQt77eKhR7xKazzuRUM5vLV2pK7Zmd"
     },
     {
       "title": "Inbox",
@@ -67,98 +70,112 @@
       "tokenId": "423781",
       "image": "https://ipfs.io/ipfs/Qmc1exzj8WaLxBfS3LgFx8cQRUjwKK4zHemL7s3QT97cJ3",
       "thumbnail": "https://ipfs.io/ipfs/Qmc1exzj8WaLxBfS3LgFx8cQRUjwKK4zHemL7s3QT97cJ3",
-      "description": "Cant Sleep Wont Sleep"
+      "description": "Cant Sleep Wont Sleep",
+      "animationUrl": "https://ipfs.io/ipfs/Qmc1exzj8WaLxBfS3LgFx8cQRUjwKK4zHemL7s3QT97cJ3"
     },
     {
       "title": "Only the Vain",
       "tokenId": "460888",
       "image": "https://ipfs.io/ipfs/QmWg3GHe3nhiMDCEQTX22Ljz3WeJ9To33Q5uR4Fz865H81",
       "thumbnail": "https://ipfs.io/ipfs/QmWg3GHe3nhiMDCEQTX22Ljz3WeJ9To33Q5uR4Fz865H81",
-      "description": "1/1 Gif"
+      "description": "1/1 Gif",
+      "animationUrl": "https://ipfs.io/ipfs/QmWg3GHe3nhiMDCEQTX22Ljz3WeJ9To33Q5uR4Fz865H81"
     },
     {
       "title": "Kitchen Party",
       "tokenId": "472819",
       "image": "https://ipfs.io/ipfs/QmaHPRWRiqCP4oNVSRn3Qd3ZHMPHENQBYWGhCTndzT575J",
       "thumbnail": "https://ipfs.io/ipfs/QmaHPRWRiqCP4oNVSRn3Qd3ZHMPHENQBYWGhCTndzT575J",
-      "description": "You bring the treats ill bring the glitches"
+      "description": "You bring the treats ill bring the glitches",
+      "animationUrl": "https://ipfs.io/ipfs/QmaHPRWRiqCP4oNVSRn3Qd3ZHMPHENQBYWGhCTndzT575J"
     },
     {
       "title": "7 Year Glitch",
       "tokenId": "476082",
       "image": "https://ipfs.io/ipfs/QmR1vZMQ7y9fzAWF81vFZrEME8r4yu3AicNoNjq3s2W6qS",
       "thumbnail": "https://ipfs.io/ipfs/QmR1vZMQ7y9fzAWF81vFZrEME8r4yu3AicNoNjq3s2W6qS",
-      "description": "A glitch for that itch you just cant scratch"
+      "description": "A glitch for that itch you just cant scratch",
+      "animationUrl": "https://ipfs.io/ipfs/QmR1vZMQ7y9fzAWF81vFZrEME8r4yu3AicNoNjq3s2W6qS"
     },
     {
       "title": "Paranoia",
       "tokenId": "481059",
       "image": "https://ipfs.io/ipfs/QmVonFWpypv9BUz5VcXqTmLYxkmnPHcHC1AY5cQMKxF4Nv",
       "thumbnail": "https://ipfs.io/ipfs/QmVonFWpypv9BUz5VcXqTmLYxkmnPHcHC1AY5cQMKxF4Nv",
-      "description": "Just because your paranoid, dosen't mean they're not watching"
+      "description": "Just because your paranoid, dosen't mean they're not watching",
+      "animationUrl": "https://ipfs.io/ipfs/QmVonFWpypv9BUz5VcXqTmLYxkmnPHcHC1AY5cQMKxF4Nv"
     },
     {
       "title": "Burn Em",
       "tokenId": "481992",
       "image": "https://ipfs.io/ipfs/QmZsp5622qKQg4uNpyGSsKgnTdAa4L4r3Kcrj4XstMbWhr",
       "thumbnail": "https://ipfs.io/ipfs/QmZsp5622qKQg4uNpyGSsKgnTdAa4L4r3Kcrj4XstMbWhr",
-      "description": "Burn em, screams Mad king GM"
+      "description": "Burn em, screams Mad king GM",
+      "animationUrl": "https://ipfs.io/ipfs/QmZsp5622qKQg4uNpyGSsKgnTdAa4L4r3Kcrj4XstMbWhr"
     },
     {
       "title": "Shy Guy",
       "tokenId": "500156",
       "image": "https://ipfs.io/ipfs/QmYHmx65bJxycmLtiWw6hSP2X8LQjdGDwxc1iqQSGdK7bK",
       "thumbnail": "https://ipfs.io/ipfs/QmYHmx65bJxycmLtiWw6hSP2X8LQjdGDwxc1iqQSGdK7bK",
-      "description": "I don't want no fly guy, I just want a shy guy"
+      "description": "I don't want no fly guy, I just want a shy guy",
+      "animationUrl": "https://ipfs.io/ipfs/QmYHmx65bJxycmLtiWw6hSP2X8LQjdGDwxc1iqQSGdK7bK"
     },
     {
       "title": "Me and I",
       "tokenId": "587098",
       "image": "https://ipfs.io/ipfs/QmeQuFGwSUHLozRfyfP2iKY5utMV64be7cn4AqUxyAyfBW",
       "thumbnail": "https://ipfs.io/ipfs/QmeQuFGwSUHLozRfyfP2iKY5utMV64be7cn4AqUxyAyfBW",
-      "description": "Who controls who?"
+      "description": "Who controls who?",
+      "animationUrl": "https://ipfs.io/ipfs/QmeQuFGwSUHLozRfyfP2iKY5utMV64be7cn4AqUxyAyfBW"
     },
     {
       "title": "Burn Em All",
       "tokenId": "618517",
       "image": "https://ipfs.io/ipfs/QmYkqxYppQo9Pxys5r7Vev14jJ9Ww8ALKFQySMNG5X1JcB",
       "thumbnail": "https://ipfs.io/ipfs/QmYkqxYppQo9Pxys5r7Vev14jJ9Ww8ALKFQySMNG5X1JcB",
-      "description": "The furious townsfolk watch in glee as Mad King GM went up in flames"
+      "description": "The furious townsfolk watch in glee as Mad King GM went up in flames",
+      "animationUrl": "https://ipfs.io/ipfs/QmYkqxYppQo9Pxys5r7Vev14jJ9Ww8ALKFQySMNG5X1JcB"
     },
     {
       "title": "The Lone Stranger",
       "tokenId": "621061",
       "image": "https://ipfs.io/ipfs/QmRa9BpPZdGcZnGZXGLbVCKPLySZx1Vn8NaYP8mvQSGNAr",
       "thumbnail": "https://ipfs.io/ipfs/QmRa9BpPZdGcZnGZXGLbVCKPLySZx1Vn8NaYP8mvQSGNAr",
-      "description": "The king was content... all unsold jpegs have been burned from the kingdom of glitch"
+      "description": "The king was content... all unsold jpegs have been burned from the kingdom of glitch",
+      "animationUrl": "https://ipfs.io/ipfs/QmRa9BpPZdGcZnGZXGLbVCKPLySZx1Vn8NaYP8mvQSGNAr"
     },
     {
       "title": "Life Scan",
       "tokenId": "628966",
       "image": "https://ipfs.io/ipfs/QmQKsgtbhBXBqejKTfv3eq6t7gZwtckhmDdvsteYDdpZAP",
       "thumbnail": "https://ipfs.io/ipfs/QmQKsgtbhBXBqejKTfv3eq6t7gZwtckhmDdvsteYDdpZAP",
-      "description": "Dark shit"
+      "description": "Dark shit",
+      "animationUrl": "https://ipfs.io/ipfs/QmQKsgtbhBXBqejKTfv3eq6t7gZwtckhmDdvsteYDdpZAP"
     },
     {
       "title": "Death Watch",
       "tokenId": "638186",
       "image": "https://ipfs.io/ipfs/QmTGdzgV5v6rvt3dBo6zGihS2jLMfV7DpS5s9o2NXpqDov",
       "thumbnail": "https://ipfs.io/ipfs/QmTGdzgV5v6rvt3dBo6zGihS2jLMfV7DpS5s9o2NXpqDov",
-      "description": "Aint no fun allowed in hell"
+      "description": "Aint no fun allowed in hell",
+      "animationUrl": "https://ipfs.io/ipfs/QmTGdzgV5v6rvt3dBo6zGihS2jLMfV7DpS5s9o2NXpqDov"
     },
     {
       "title": "Birtday Boi",
       "tokenId": "646751",
       "image": "https://ipfs.io/ipfs/QmY7ayg1StSdsTZzp1Jhe7kkbGnFGXNkckx7rNnsJGjGNg",
       "thumbnail": "https://ipfs.io/ipfs/QmY7ayg1StSdsTZzp1Jhe7kkbGnFGXNkckx7rNnsJGjGNg",
-      "description": "Birthday giveaway drop. Thanks for the support - Solemn"
+      "description": "Birthday giveaway drop. Thanks for the support - Solemn",
+      "animationUrl": "https://ipfs.io/ipfs/QmY7ayg1StSdsTZzp1Jhe7kkbGnFGXNkckx7rNnsJGjGNg"
     },
     {
       "title": "Hustler",
       "tokenId": "711138",
       "image": "https://ipfs.io/ipfs/QmTC5sayxk84zAx4yH5Eu27w6AYPZno6KN1xuKECqXQxPp",
       "thumbnail": "https://ipfs.io/ipfs/QmTC5sayxk84zAx4yH5Eu27w6AYPZno6KN1xuKECqXQxPp",
-      "description": "Everyone needs a tezos hustle"
+      "description": "Everyone needs a tezos hustle",
+      "animationUrl": "https://ipfs.io/ipfs/QmTC5sayxk84zAx4yH5Eu27w6AYPZno6KN1xuKECqXQxPp"
     }
   ]
 }

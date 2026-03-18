@@ -83,6 +83,10 @@ function getStaticImageUrl(piece) {
   return piece.image || piece.thumbnail || '';
 }
 
+function getThumbnailUrl(piece) {
+  return piece.thumbnail || piece.image || '';
+}
+
 function getIframeUrl(piece) {
   if (piece.animationUrl && piece.animationUrl.startsWith('<')) {
     const blob = new Blob([piece.animationUrl], { type: 'text/html' });
@@ -332,6 +336,16 @@ function showHeroMedia(collection, piece) {
 async function showDetail(collectionId) {
   currentCollectionId = collectionId;
   const collection = await loadCollection(collectionId);
+  // Merge manifest-level fields (galleryUrl, marketplaces) into collection data
+  const manifestEntry = collectionsManifest.find(c => c.id === collectionId);
+  if (manifestEntry) {
+    if (manifestEntry.galleryUrl) {
+      collection.galleryUrl = manifestEntry.galleryUrl;
+      // galleryUrl supersedes old marketplace links from collection JSON
+      delete collection.marketplaces;
+    }
+    if (manifestEntry.marketplaces) collection.marketplaces = manifestEntry.marketplaces;
+  }
   currentCarouselCollection = collection;
   currentPieceIndex = 0;
   if (detailTitle) detailTitle.textContent = collection.title;
@@ -348,12 +362,19 @@ async function showDetail(collectionId) {
     detailMetadata.innerHTML = meta;
   }
   const mps = collection.marketplaces || {};
-  const me = document.getElementById('link-magiceden');
-  const gm = document.getElementById('link-gamma');
+  const gl = document.getElementById('link-gallery');
   const or = document.getElementById('link-ordinals');
-  if (me) { me.href = mps.magiceden || '#'; me.style.display = mps.magiceden ? '' : 'none'; }
-  if (gm) { gm.href = mps.gamma || '#'; gm.style.display = mps.gamma ? '' : 'none'; }
+  if (gl) {
+    gl.href = collection.galleryUrl || '#';
+    gl.style.display = collection.galleryUrl ? '' : 'none';
+    gl.classList.toggle('hidden', !collection.galleryUrl);
+  }
   if (or) { or.href = mps.ordinals || '#'; or.style.display = mps.ordinals ? '' : 'none'; }
+  // Hide any previously created marketplace links
+  const prevOs = document.getElementById('link-opensea');
+  if (prevOs) prevOs.style.display = 'none';
+  const prevOb = document.getElementById('link-objkt');
+  if (prevOb) prevOb.style.display = 'none';
   if (mps.opensea) {
     let os = document.getElementById('link-opensea');
     if (!os) {
@@ -385,6 +406,16 @@ async function showDetail(collectionId) {
   if (collection.pieces && collection.pieces.length > 0) {
     showPiece(collection, 0);
     buildPieceGrid(collection);
+  } else {
+    // Clear stale piece grid and artwork from previous collection
+    const grid = document.querySelector('.piece-grid') || document.getElementById('art-collection');
+    if (grid) grid.innerHTML = '';
+    const detImg = document.getElementById('detail-image');
+    const detIframe = document.getElementById('detail-iframe');
+    const detVideo = document.getElementById('detail-video');
+    if (detImg) { detImg.src = ''; detImg.style.display = 'none'; }
+    if (detIframe) { detIframe.src = ''; detIframe.style.display = 'none'; }
+    if (detVideo) { detVideo.src = ''; detVideo.classList.add('hidden'); }
   }
   showView('detail');
   timelinePanel.classList.remove('open');
@@ -483,7 +514,7 @@ let lastSlideshowColId = null;
 // Collections excluded from main slideshow (iframe-based, render left-aligned)
 const slideshowExclude = new Set([
   'gl1tch-c0des', 'a-solemn-rose', 'doom', 'deliverance',
-  'blockclock-originals', 'glitch-pack', 'renascent', 'block-party'
+  'block-clocks', 'glitch-pack', 'renascent', 'block-party'
 ]);
 
 const slideshowWeights = {
@@ -492,7 +523,7 @@ const slideshowWeights = {
   'the-ord-lot': 4,
   'one-of-one-originals': 3,
   'boutique': 3,
-  'gamma-prints': 3,
+  'btc-editions': 3,
   'strange-punks': 2,
   'strangers-pets': 2,
   'hic-et-nunc': 2,
@@ -509,8 +540,6 @@ const slideshowWeights = {
   'ether-creeps': 1,
   'stranger-danger': 1,
   'fiat-mafia': 1,
-  'the-acid-family': 1,
-  'btc-editions': 1,
   'strangersnft': 1
 };
 function weightedRandomCollection(exclude) {

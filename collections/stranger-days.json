@@ -16,7 +16,8 @@
       "title": "Day 1",
       "image": "https://nft-cdn.alchemy.com/eth-mainnet/0bb5d0a8abdb311aab39fb735be09a4e",
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/0bb5d0a8abdb311aab39fb735be09a4e",
-      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+      "animationUrl": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/087fd2a01c3921d7ce879452e20e94/58087fd2a01c3921d7ce879452e20e94.mp4"
     },
     {
       "tokenId": "90144564011191553255551171483351008933440029025118662744023831432247902208001",
@@ -37,21 +38,24 @@
       "title": "Day 4 - Seedy Gaze",
       "image": "https://nft-cdn.alchemy.com/eth-mainnet/bd45bc4fedb46e99714d9c6536df2456",
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/bd45bc4fedb46e99714d9c6536df2456",
-      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+      "animationUrl": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/56f1eabbed8b6073ee0320caf578b3/4a56f1eabbed8b6073ee0320caf578b3.mp4"
     },
     {
       "tokenId": "90144564011191553255551171483351008933440029025118662744023831435546437091329",
       "title": "Randall Flag",
       "image": "https://nft-cdn.alchemy.com/eth-mainnet/2e756727c6c9087e1933525a5729d481",
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/2e756727c6c9087e1933525a5729d481",
-      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+      "animationUrl": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/cb6d85d85808e4c77c1ec3ef692085/67cb6d85d85808e4c77c1ec3ef692085.mp4"
     },
     {
       "tokenId": "90144564011191553255551171483351008933440029025118662744023831436645948719105",
       "title": "Distraction",
       "image": "https://nft-cdn.alchemy.com/eth-mainnet/429151be285e13f7c21c97cd90f41f7e",
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/429151be285e13f7c21c97cd90f41f7e",
-      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+      "animationUrl": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/fb73f34e3ca3ded4373d74021a2ec2/0efb73f34e3ca3ded4373d74021a2ec2.mp4"
     },
     {
       "tokenId": "90144564011191553255551171483351008933440029025118662744023831437745460346881",
@@ -275,7 +279,8 @@
       "title": "Dr Strangelove",
       "image": "https://nft-cdn.alchemy.com/eth-mainnet/0a32934b98e1a7ccfce69c4b1a162a92",
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/0a32934b98e1a7ccfce69c4b1a162a92",
-      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+      "animationUrl": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/73b61f4b0a9b57eb57654696256928/e073b61f4b0a9b57eb57654696256928.mp4"
     },
     {
       "tokenId": "90144564011191553255551171483351008933440029025118662744023831536701506846721",
@@ -289,7 +294,8 @@
       "title": "The Offer",
       "image": "https://nft-cdn.alchemy.com/eth-mainnet/67198a1456cee4913f3d489080e127e9",
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/67198a1456cee4913f3d489080e127e9",
-      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+      "animationUrl": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/5b6b3c25375e23ab4d6a7f36900958/a85b6b3c25375e23ab4d6a7f36900958.mp4"
     },
     {
       "tokenId": "90144564011191553255551171483351008933440029025118662744023831541099553357825",
@@ -303,7 +309,8 @@
       "title": "The Redempted",
       "image": "https://nft-cdn.alchemy.com/eth-mainnet/d54cef53b0cd5b83262895e1f58e9118",
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/d54cef53b0cd5b83262895e1f58e9118",
-      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+      "animationUrl": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/c836b1ac0bd56f1641bce429718cc6/f8c836b1ac0bd56f1641bce429718cc6.mp4"
     },
     {
       "tokenId": "90144564011191553255551171483351008933440029025118662744023831545497599868929",
@@ -709,7 +716,8 @@
       "title": "Find your Feet",
       "image": "https://nft-cdn.alchemy.com/eth-mainnet/35d992b5542150a0ffdf437f6ff320be",
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/35d992b5542150a0ffdf437f6ff320be",
-      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e"
+      "contract": "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+      "animationUrl": "https://raw2.seadn.io/ethereum/0x495f947276749ce646f68ac8c248420045cb7b5e/edf29613da84491962c90d808b89a0/d5edf29613da84491962c90d808b89a0.mov"
     }
   ],
   "marketplaces": {

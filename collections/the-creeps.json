@@ -15,37 +15,43 @@
       "tokenId": "0",
       "title": "Avarice",
       "image": "https://ipfs.io/ipfs/QmSkDJpahRNeraZ57pA8Cen36NYfFcvNmDL3hyHktyNbd2",
-      "thumbnail": "https://ipfs.io/ipfs/QmXbtniFmX5EmE34KPfAd1emYqRepc62Coynok1he8iiMR"
+      "thumbnail": "https://ipfs.io/ipfs/QmXbtniFmX5EmE34KPfAd1emYqRepc62Coynok1he8iiMR",
+      "animationUrl": "https://ipfs.io/ipfs/QmfPEp9iEA1P9BQLw9cn6FDiJyqeD7q58ARr4qKKxPRsVd"
     },
     {
       "tokenId": "1",
       "title": "Mirror Mirror",
       "image": "https://ipfs.io/ipfs/QmPS8cGEKDMEAMWhUET6i6y4kAc2oTKMRPVycNEgHs7qb5",
-      "thumbnail": "https://ipfs.io/ipfs/QmPS8cGEKDMEAMWhUET6i6y4kAc2oTKMRPVycNEgHs7qb5"
+      "thumbnail": "https://ipfs.io/ipfs/QmPS8cGEKDMEAMWhUET6i6y4kAc2oTKMRPVycNEgHs7qb5",
+      "animationUrl": "https://ipfs.io/ipfs/QmPS8cGEKDMEAMWhUET6i6y4kAc2oTKMRPVycNEgHs7qb5"
     },
     {
       "tokenId": "2",
       "title": "F.O.M.O",
       "image": "https://ipfs.io/ipfs/QmPZeFjCywU5RP6gK64pYBpjDAV6dPm8dEcPuGHjS3zWcP",
-      "thumbnail": "https://ipfs.io/ipfs/QmPZeFjCywU5RP6gK64pYBpjDAV6dPm8dEcPuGHjS3zWcP"
+      "thumbnail": "https://ipfs.io/ipfs/QmPZeFjCywU5RP6gK64pYBpjDAV6dPm8dEcPuGHjS3zWcP",
+      "animationUrl": "https://ipfs.io/ipfs/QmdCirP3SEuvYqKRbqWDPKNVEjU67obSELgek2i59WgTyX"
     },
     {
       "tokenId": "3",
       "title": "Dread",
       "image": "https://ipfs.io/ipfs/QmbhDmmHuKKZsDHNebJwmeFNYHBXKJF9tQ7T2vJUgBf2fp",
-      "thumbnail": "https://ipfs.io/ipfs/QmbhDmmHuKKZsDHNebJwmeFNYHBXKJF9tQ7T2vJUgBf2fp"
+      "thumbnail": "https://ipfs.io/ipfs/QmbhDmmHuKKZsDHNebJwmeFNYHBXKJF9tQ7T2vJUgBf2fp",
+      "animationUrl": "https://ipfs.io/ipfs/QmXj4BNLpwUkEJDGaqszgqraS3ro8m6FgqN2u5tB9a5B51"
     },
     {
       "tokenId": "4",
       "title": "Static Distortion",
       "image": "https://ipfs.io/ipfs/QmNuSzqXKU35AZZfkzc5RBnL2Bab1YKQjzgqB3hUisnCYQ",
-      "thumbnail": "https://ipfs.io/ipfs/QmNuSzqXKU35AZZfkzc5RBnL2Bab1YKQjzgqB3hUisnCYQ"
+      "thumbnail": "https://ipfs.io/ipfs/QmNuSzqXKU35AZZfkzc5RBnL2Bab1YKQjzgqB3hUisnCYQ",
+      "animationUrl": "https://ipfs.io/ipfs/Qmah8w9hxgZVHaVmZC2PvESf7MvmHCSpbrvtTZcJYeZ7DN"
     },
     {
       "tokenId": "5",
       "title": "Static Distortion",
       "image": "https://ipfs.io/ipfs/QmNVKy1rkqFVKjMj5NZ5u3bVPRxgp9FcESwEZaK8A9sFvd",
-      "thumbnail": "https://ipfs.io/ipfs/QmNVKy1rkqFVKjMj5NZ5u3bVPRxgp9FcESwEZaK8A9sFvd"
+      "thumbnail": "https://ipfs.io/ipfs/QmNVKy1rkqFVKjMj5NZ5u3bVPRxgp9FcESwEZaK8A9sFvd",
+      "animationUrl": "https://ipfs.io/ipfs/QmcanUWCx23brtTNUZksVxj9rbrWiB93qamtPNwRaLBnvy"
     }
   ],
   "marketplaces": {

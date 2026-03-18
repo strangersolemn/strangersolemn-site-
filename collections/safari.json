@@ -16,28 +16,32 @@
       "title": "Bullish",
       "image": "https://ipfs.io/ipfs/QmRkX4xkoEMoE2kxWrv5To2DyzmxbzWxFvBYXJLSUjPsaE/nft.gif",
       "thumbnail": "https://ipfs.io/ipfs/QmRkX4xkoEMoE2kxWrv5To2DyzmxbzWxFvBYXJLSUjPsaE/nft.gif",
-      "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD"
+      "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD",
+      "animationUrl": "ipfs://QmRkX4xkoEMoE2kxWrv5To2DyzmxbzWxFvBYXJLSUjPsaE/nft.gif"
     },
     {
       "tokenId": "1",
       "title": "Bearish",
       "image": "https://ipfs.io/ipfs/QmeQoBNnMbk89xbEdu25zwCXueNJbNKkLpfEBzvcrRP5XK/nft.gif",
       "thumbnail": "https://ipfs.io/ipfs/QmeQoBNnMbk89xbEdu25zwCXueNJbNKkLpfEBzvcrRP5XK/nft.gif",
-      "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD"
+      "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD",
+      "animationUrl": "ipfs://QmeQoBNnMbk89xbEdu25zwCXueNJbNKkLpfEBzvcrRP5XK/nft.gif"
     },
     {
       "tokenId": "2",
       "title": "Nested",
       "image": "https://ipfs.io/ipfs/QmViYrP634Fho2tbM9QPqL7ehYVfXgT36AHAN8FxPEeVxn/nft.GIF",
       "thumbnail": "https://ipfs.io/ipfs/QmViYrP634Fho2tbM9QPqL7ehYVfXgT36AHAN8FxPEeVxn/nft.GIF",
-      "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD"
+      "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD",
+      "animationUrl": "ipfs://QmViYrP634Fho2tbM9QPqL7ehYVfXgT36AHAN8FxPEeVxn/nft.GIF"
     },
     {
       "tokenId": "3",
       "title": "Pride",
       "image": "https://ipfs.io/ipfs/QmS1sbwLy6sniyyYqG5d9Rs14ZjcryeyAGtZbPsmLNmQj8/nft.gif",
       "thumbnail": "https://ipfs.io/ipfs/QmS1sbwLy6sniyyYqG5d9Rs14ZjcryeyAGtZbPsmLNmQj8/nft.gif",
-      "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD"
+      "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD",
+      "animationUrl": "ipfs://QmS1sbwLy6sniyyYqG5d9Rs14ZjcryeyAGtZbPsmLNmQj8/nft.gif"
     }
   ],
   "marketplaces": {
