@@ -148,33 +148,26 @@ tailwind.config = {
       <!-- HOME VIEW -->
       <div id="home-view" class="flex min-h-screen">
         <!-- HOME SIDEBAR -->
-        <div class="w-80 min-w-[320px] bg-surface-low p-8 flex flex-col justify-between hidden md:flex fixed left-0 top-0 bottom-0 z-10">
-          <div>
+        <div class="w-80 min-w-[320px] bg-surface-low p-6 flex flex-col hidden md:flex fixed left-0 top-0 bottom-0 z-10 overflow-hidden">
+          <div class="mb-4">
             <h1 class="font-bold text-xl tracking-tight text-[#ccc] leading-none uppercase mb-1">Stranger Solemn</h1>
-            <p class="text-[11px] text-muted uppercase tracking-[0.1em] mb-6">Glitch + Code</p>
-            <nav class="space-y-2 mb-8">
-              <a href="about.html" class="block text-[11px] text-muted hover:text-white uppercase tracking-wider">About</a>
-              <a href="articles.html" class="block text-[11px] text-muted hover:text-white uppercase tracking-wider">Articles</a>
+            <p class="text-[11px] text-muted uppercase tracking-[0.1em] mb-4">Glitch + Code</p>
+            <nav class="flex gap-4 mb-4">
+              <a href="about.html" class="text-[11px] text-muted hover:text-white uppercase tracking-wider">About</a>
+              <a href="articles.html" class="text-[11px] text-muted hover:text-white uppercase tracking-wider">Articles</a>
             </nav>
-            <!-- Collections dropdown -->
-            <div class="relative">
-              <button onclick="toggleCollDropdown()" class="w-full flex items-center justify-between px-3 py-2 border border-outline-v/30 text-[11px] text-muted uppercase tracking-wider hover:text-white hover:border-outline-v/60">
-                <span>Collections</span>
-                <span class="material-symbols-outlined text-sm" id="coll-dropdown-arrow">expand_more</span>
-              </button>
-              <div id="coll-dropdown" class="hidden mt-1 max-h-[50vh] overflow-y-auto bg-surface-low border border-outline-v/20">
-                <div class="flex gap-1 p-2 border-b border-outline-v/10" id="home-chain-filters">
-                  <button onclick="filterHomeChain(null)" class="home-chain-filter px-2 py-0.5 text-[9px] uppercase text-white bg-surface-high border border-outline-v/30">ALL</button>
-                  <button onclick="filterHomeChain('ordinals')" class="home-chain-filter px-2 py-0.5 text-[9px] uppercase text-chain-btc border border-chain-btc/30">BTC</button>
-                  <button onclick="filterHomeChain('ethereum')" class="home-chain-filter px-2 py-0.5 text-[9px] uppercase text-chain-eth border border-chain-eth/30">ETH</button>
-                  <button onclick="filterHomeChain('tezos')" class="home-chain-filter px-2 py-0.5 text-[9px] uppercase text-chain-tez border border-chain-tez/30">TEZ</button>
-                </div>
-                <div id="home-coll-list"></div>
-              </div>
+            <!-- Chain filters -->
+            <div class="flex gap-1 mb-3" id="home-chain-filters">
+              <button onclick="filterHomeChain(null)" class="home-chain-filter px-2 py-0.5 text-[9px] uppercase text-white bg-surface-high border border-outline-v/30">ALL</button>
+              <button onclick="filterHomeChain('ordinals')" class="home-chain-filter px-2 py-0.5 text-[9px] uppercase text-chain-btc border border-chain-btc/30">BTC</button>
+              <button onclick="filterHomeChain('ethereum')" class="home-chain-filter px-2 py-0.5 text-[9px] uppercase text-chain-eth border border-chain-eth/30">ETH</button>
+              <button onclick="filterHomeChain('tezos')" class="home-chain-filter px-2 py-0.5 text-[9px] uppercase text-chain-tez border border-chain-tez/30">TEZ</button>
             </div>
           </div>
+          <!-- Collections list (always visible, scrollable) -->
+          <div class="flex-1 overflow-y-auto" id="home-coll-list"></div>
           <!-- Bottom info -->
-          <div class="pt-4 border-t border-outline-v/10">
+          <div class="pt-3 mt-3 border-t border-outline-v/10">
             <div class="flex justify-between items-center">
               <div>
                 <span id="home-art-title" class="text-xs text-white uppercase block"></span>
@@ -187,22 +180,22 @@ tailwind.config = {
           </div>
         </div>
         <!-- HOME ART -->
-        <div class="flex-1 flex items-center justify-center p-4 md:ml-80">
-          <div class="w-fit">
-            <!-- Mobile branding -->
-            <div class="md:hidden mb-3 flex justify-between items-center">
-              <div>
-                <h1 class="font-bold text-sm tracking-tight text-[#ccc] uppercase">Stranger Solemn</h1>
-                <p class="text-[10px] text-muted uppercase tracking-[0.1em]">Glitch + Code</p>
-              </div>
-              <button onclick="openDrawer()" class="material-symbols-outlined text-muted text-lg hover:text-white" style="background:none;border:none;cursor:pointer;">grid_view</button>
+        <!-- HOME ART -->
+        <!-- HOME ART (centered in remaining space) -->
+        <div class="fixed md:left-80 top-0 right-0 bottom-0 flex items-center justify-center p-8">
+          <!-- Mobile branding -->
+          <div class="md:hidden fixed top-4 left-4 right-4 flex justify-between items-center z-20">
+            <div>
+              <h1 class="font-bold text-sm tracking-tight text-[#ccc] uppercase">Stranger Solemn</h1>
+              <p class="text-[10px] text-muted uppercase tracking-[0.1em]">Glitch + Code</p>
             </div>
-            <div class="bg-surface-low border border-outline-v/20 p-3">
-              <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" style="aspect-ratio:1/1; height:calc(100vh - 60px); max-height:calc(100vh - 60px);">
-                <img id="home-art-img" class="w-full h-full object-contain hidden" src="" alt="" />
-                <iframe id="home-art-iframe" class="w-full h-full border-none hidden" src="" title="Featured artwork"></iframe>
-                <video id="home-art-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
-              </div>
+            <button onclick="openDrawer()" class="material-symbols-outlined text-muted text-lg hover:text-white" style="background:none;border:none;cursor:pointer;">grid_view</button>
+          </div>
+          <div class="bg-surface-low border border-outline-v/20 p-3">
+            <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" style="aspect-ratio:1/1; height:calc(100vh - 80px); max-height:calc(100vh - 80px);">
+              <img id="home-art-img" class="w-full h-full object-contain hidden" src="" alt="" />
+              <iframe id="home-art-iframe" class="w-full h-full border-none hidden" src="" title="Featured artwork"></iframe>
+              <video id="home-art-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
             </div>
           </div>
         </div>
