@@ -32,8 +32,8 @@
     "title": "The Masters",
     "chain": "ordinals",
     "year": 2025,
-    "supply": 0,
-    "uniquePieces": 0,
+    "supply": 31,
+    "uniquePieces": 31,
     "onchain": true,
     "galleryUrl": "https://ordinals.com/inscription/b5f53e5582cce8050defc3e230ded4ebfca1d2aa6fa13add63703b7d7e04b8c9i0"
   },

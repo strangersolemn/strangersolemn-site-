@@ -280,11 +280,13 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
   background: var(--bg-primary);
 }
 
-.about-hero-img {
+.about-hero-img, .about-hero-iframe {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border: none;
+  pointer-events: none;
 }
 
 .about-hero-feather {
