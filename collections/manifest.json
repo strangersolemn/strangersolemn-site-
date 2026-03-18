@@ -11,8 +11,8 @@
     "description": "Fully On-Chain Originals made with code",
     "artistNote": "Renascent is an ongoing journey to unlock the possibilities of onchain art on ETH",
     "onchain": true,
-    "galleryUrl": "https://superrare.com/collection/0x3a2c989bfdd3b315b78717e4a6f43932a8b5023d#collection",
     "marketplaces": {
+      "superrare": "https://superrare.com/collection/0x3a2c989bfdd3b315b78717e4a6f43932a8b5023d#collection",
       "opensea": "https://opensea.io/assets/ethereum/0x3a2c989bfdd3b315b78717e4a6f43932a8b5023d"
     }
   },

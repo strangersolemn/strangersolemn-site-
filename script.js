@@ -36,6 +36,7 @@ let currentCollectionId = null;
 let currentCarouselCollection = null;
 let currentPieceIndex = 0;
 let slideshowTimer = null;
+let displayModeCollection = null; // when set, display mode stays within this collection
 let activeChainFilter = null;
 
 const chainNames = {
@@ -375,6 +376,22 @@ async function showDetail(collectionId) {
   if (prevOs) prevOs.style.display = 'none';
   const prevOb = document.getElementById('link-objkt');
   if (prevOb) prevOb.style.display = 'none';
+  const prevSr = document.getElementById('link-superrare');
+  if (prevSr) prevSr.style.display = 'none';
+  if (mps.superrare) {
+    let sr = document.getElementById('link-superrare');
+    if (!sr) {
+      sr = document.createElement('a');
+      sr.id = 'link-superrare';
+      sr.className = 'detail-link';
+      sr.target = '_blank';
+      sr.rel = 'noopener';
+      sr.textContent = 'SuperRare';
+      document.querySelector('.marketplace-links')?.appendChild(sr);
+    }
+    sr.href = mps.superrare;
+    sr.style.display = '';
+  }
   if (mps.opensea) {
     let os = document.getElementById('link-opensea');
     if (!os) {
@@ -618,14 +635,16 @@ function closeLightbox() {
   if (lbVideo) { lbVideo.pause(); lbVideo.removeAttribute('src'); }
 }
 
-function enterDisplayMode(collection, pieceIndex) {
+function enterDisplayMode(collection, pieceIndex, lockToCollection) {
   if (!collection?.pieces) return;
+  displayModeCollection = lockToCollection ? collection : null;
   displayMode?.classList.add('active');
   loadDisplayPiece();
 }
 
 function exitDisplayMode() {
   displayMode?.classList.remove('active');
+  displayModeCollection = null;
   if (displayIframe) displayIframe.src = '';
   stopSlideshow();
 }
@@ -672,13 +691,49 @@ async function displayModeRandomArt() {
   loadDisplayPiece();
 }
 
+function displayModePrev() {
+  if (displayModeCollection) {
+    const pieces = displayModeCollection.pieces;
+    if (!pieces || pieces.length === 0) return;
+    currentCarouselCollection = displayModeCollection;
+    currentPieceIndex = (currentPieceIndex - 1 + pieces.length) % pieces.length;
+    loadDisplayPiece();
+  } else {
+    displayModeRandomArt();
+  }
+}
+
+function displayModeNext() {
+  if (displayModeCollection) {
+    const pieces = displayModeCollection.pieces;
+    if (!pieces || pieces.length === 0) return;
+    currentCarouselCollection = displayModeCollection;
+    currentPieceIndex = (currentPieceIndex + 1) % pieces.length;
+    loadDisplayPiece();
+  } else {
+    displayModeRandomArt();
+  }
+}
+
+function displayModeShuffle() {
+  if (displayModeCollection) {
+    const pieces = displayModeCollection.pieces;
+    if (!pieces || pieces.length === 0) return;
+    currentCarouselCollection = displayModeCollection;
+    currentPieceIndex = Math.floor(Math.random() * pieces.length);
+    loadDisplayPiece();
+  } else {
+    displayModeRandomArt();
+  }
+}
+
 function initDisplayMode() {
-  document.getElementById('display-mode-btn')?.addEventListener('click', () => enterDisplayMode(currentCarouselCollection, currentPieceIndex));
-  document.getElementById('collection-display-btn')?.addEventListener('click', () => enterDisplayMode(currentCarouselCollection, currentPieceIndex));
+  document.getElementById('display-mode-btn')?.addEventListener('click', () => enterDisplayMode(currentCarouselCollection, currentPieceIndex, false));
+  document.getElementById('collection-display-btn')?.addEventListener('click', () => enterDisplayMode(currentCarouselCollection, currentPieceIndex, true));
   document.querySelector('.display-close')?.addEventListener('click', exitDisplayMode);
-  document.querySelector('.display-prev')?.addEventListener('click', () => displayModeRandomArt());
-  document.querySelector('.display-next')?.addEventListener('click', () => displayModeRandomArt());
-  document.querySelector('.display-shuffle')?.addEventListener('click', () => displayModeRandomArt());
+  document.querySelector('.display-prev')?.addEventListener('click', displayModePrev);
+  document.querySelector('.display-next')?.addEventListener('click', displayModeNext);
+  document.querySelector('.display-shuffle')?.addEventListener('click', displayModeShuffle);
 }
 
 function initPanelCollapse() {
