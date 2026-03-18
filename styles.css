@@ -242,20 +242,33 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 
 .about-hero {
   flex: 1;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-}
-
-.about-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, transparent 60%, var(--bg-primary) 100%),
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-primary);
+  background-image:
     linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 48px 48px, 48px 48px;
+  background-size: 48px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 25%, var(--bg-primary) 78%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.about-hero-img {
+  max-width: 100%;
+  max-height: calc(100vh - 120px);
+  object-fit: contain;
+  position: relative;
+  z-index: 0;
 }
 
 .about-content {
@@ -332,12 +345,6 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 @media (max-width: 768px) {
   .about-page { flex-direction: column; }
   .about-hero { height: 45vh; flex: none; }
-  .about-hero-overlay {
-    background:
-      linear-gradient(to bottom, transparent 50%, var(--bg-primary) 100%),
-      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-    background-size: 100% 100%, 48px 48px, 48px 48px;
-  }
+  .about-hero-img { max-height: 45vh; }
   .about-content { width: 100%; min-width: 0; border-left: none; overflow-y: auto; }
 }
