@@ -4,7 +4,44 @@
   "chain": "ordinals",
   "onchain": true,
   "year": 2025,
-  "pieces": [],
-  "supply": 0,
-  "uniquePieces": 0
+  "pieces": [
+    {
+      "tokenId": "2c762a593dc60bcd92169b07de5a60d588a94819d165178ca317d45e4eeb2b11i0",
+      "title": "The Masters #1",
+      "image": "https://ordinals.com/content/2c762a593dc60bcd92169b07de5a60d588a94819d165178ca317d45e4eeb2b11i0",
+      "thumbnail": "https://ordinals.com/content/2c762a593dc60bcd92169b07de5a60d588a94819d165178ca317d45e4eeb2b11i0",
+      "animationUrl": "https://ordinals.com/content/2c762a593dc60bcd92169b07de5a60d588a94819d165178ca317d45e4eeb2b11i0"
+    },
+    {
+      "tokenId": "fa05832e55d1f5507fe619f99b9b1b1b8a983025837cc6a0d080714cbc2ac684i0",
+      "title": "The Masters #2",
+      "image": "https://ordinals.com/content/fa05832e55d1f5507fe619f99b9b1b1b8a983025837cc6a0d080714cbc2ac684i0",
+      "thumbnail": "https://ordinals.com/content/fa05832e55d1f5507fe619f99b9b1b1b8a983025837cc6a0d080714cbc2ac684i0",
+      "animationUrl": "https://ordinals.com/content/fa05832e55d1f5507fe619f99b9b1b1b8a983025837cc6a0d080714cbc2ac684i0"
+    },
+    {
+      "tokenId": "488bd869f90e19346fea241d2f862d3b81e94b85d019735d1630464179aa3bcai0",
+      "title": "The Masters #3",
+      "image": "https://ordinals.com/content/488bd869f90e19346fea241d2f862d3b81e94b85d019735d1630464179aa3bcai0",
+      "thumbnail": "https://ordinals.com/content/488bd869f90e19346fea241d2f862d3b81e94b85d019735d1630464179aa3bcai0",
+      "animationUrl": "https://ordinals.com/content/488bd869f90e19346fea241d2f862d3b81e94b85d019735d1630464179aa3bcai0"
+    },
+    {
+      "tokenId": "3ff701e8197231883785902d1076ffa747b28f951a0dbe2445ba2690df134575i0",
+      "title": "The Masters #4",
+      "image": "https://ordinals.com/content/3ff701e8197231883785902d1076ffa747b28f951a0dbe2445ba2690df134575i0",
+      "thumbnail": "https://ordinals.com/content/3ff701e8197231883785902d1076ffa747b28f951a0dbe2445ba2690df134575i0",
+      "animationUrl": "https://ordinals.com/content/3ff701e8197231883785902d1076ffa747b28f951a0dbe2445ba2690df134575i0"
+    },
+    {
+      "tokenId": "1e3eb8e98ef5e9a42abfba98ffa9d2be8431b41a32e4edd91edf1cc26e8799a6i0",
+      "title": "The Masters #5",
+      "image": "https://ordinals.com/content/1e3eb8e98ef5e9a42abfba98ffa9d2be8431b41a32e4edd91edf1cc26e8799a6i0",
+      "thumbnail": "https://ordinals.com/content/1e3eb8e98ef5e9a42abfba98ffa9d2be8431b41a32e4edd91edf1cc26e8799a6i0",
+      "animationUrl": "https://ordinals.com/content/1e3eb8e98ef5e9a42abfba98ffa9d2be8431b41a32e4edd91edf1cc26e8799a6i0"
+    }
+  ],
+  "supply": 5,
+  "uniquePieces": 5,
+  "heroImage": "https://ordinals.com/content/2c762a593dc60bcd92169b07de5a60d588a94819d165178ca317d45e4eeb2b11i0"
 }

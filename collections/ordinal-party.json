@@ -4,7 +4,37 @@
   "chain": "ordinals",
   "onchain": true,
   "year": 2025,
-  "pieces": [],
-  "supply": 0,
-  "uniquePieces": 0
+  "pieces": [
+    {
+      "tokenId": "7a4ba52f2d673c08308cad23e3c30af02d2f533d650c73c7ab4cc999675a22c7i0",
+      "title": "Ordinal Party #1",
+      "image": "https://ordinals.com/content/7a4ba52f2d673c08308cad23e3c30af02d2f533d650c73c7ab4cc999675a22c7i0",
+      "thumbnail": "https://ordinals.com/content/7a4ba52f2d673c08308cad23e3c30af02d2f533d650c73c7ab4cc999675a22c7i0",
+      "animationUrl": "https://ordinals.com/content/7a4ba52f2d673c08308cad23e3c30af02d2f533d650c73c7ab4cc999675a22c7i0"
+    },
+    {
+      "tokenId": "58018cc4c5a663103d65c2bab8dd4dbec5fbc97d6db5c0a12cb16587beab7d7ci0",
+      "title": "Ordinal Party #2",
+      "image": "https://ordinals.com/content/58018cc4c5a663103d65c2bab8dd4dbec5fbc97d6db5c0a12cb16587beab7d7ci0",
+      "thumbnail": "https://ordinals.com/content/58018cc4c5a663103d65c2bab8dd4dbec5fbc97d6db5c0a12cb16587beab7d7ci0",
+      "animationUrl": "https://ordinals.com/content/58018cc4c5a663103d65c2bab8dd4dbec5fbc97d6db5c0a12cb16587beab7d7ci0"
+    },
+    {
+      "tokenId": "fd65f80a65ae53a70eca7b40de7b5f4aa69929b092f51298c7d6db6c0fdd9c75i0",
+      "title": "Ordinal Party #3",
+      "image": "https://ordinals.com/content/fd65f80a65ae53a70eca7b40de7b5f4aa69929b092f51298c7d6db6c0fdd9c75i0",
+      "thumbnail": "https://ordinals.com/content/fd65f80a65ae53a70eca7b40de7b5f4aa69929b092f51298c7d6db6c0fdd9c75i0",
+      "animationUrl": "https://ordinals.com/content/fd65f80a65ae53a70eca7b40de7b5f4aa69929b092f51298c7d6db6c0fdd9c75i0"
+    },
+    {
+      "tokenId": "46a87a320688af4678c00644127e6b54f45f9fa14b7b3e69beb7f79c2792d43ei0",
+      "title": "Ordinal Party #4",
+      "image": "https://ordinals.com/content/46a87a320688af4678c00644127e6b54f45f9fa14b7b3e69beb7f79c2792d43ei0",
+      "thumbnail": "https://ordinals.com/content/46a87a320688af4678c00644127e6b54f45f9fa14b7b3e69beb7f79c2792d43ei0",
+      "animationUrl": "https://ordinals.com/content/46a87a320688af4678c00644127e6b54f45f9fa14b7b3e69beb7f79c2792d43ei0"
+    }
+  ],
+  "supply": 4,
+  "uniquePieces": 4,
+  "heroImage": "https://ordinals.com/content/7a4ba52f2d673c08308cad23e3c30af02d2f533d650c73c7ab4cc999675a22c7i0"
 }
