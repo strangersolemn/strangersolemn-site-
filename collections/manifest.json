@@ -21,8 +21,8 @@
     "title": "The Ord Lot",
     "chain": "ordinals",
     "year": 2026,
-    "supply": 11,
-    "uniquePieces": 11,
+    "supply": 30,
+    "uniquePieces": 30,
     "heroImage": "https://ordinals.com/content/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
     "onchain": true,
     "galleryUrl": "https://ordinals.com/inscription/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0"
