@@ -37,7 +37,9 @@ tailwind.config = {
 </script>
 <style>
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-.bg-grid { background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 48px 48px; }
+.bg-grid { background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 48px 48px; position: relative; }
+.bg-grid::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 20%, #131313 75%); pointer-events: none; z-index: 0; }
+.bg-grid > * { position: relative; z-index: 1; }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #131313; }
 ::-webkit-scrollbar-thumb { background: #474747; }
@@ -49,11 +51,45 @@ tailwind.config = {
 </head>
 <body class="bg-surface text-on-surface font-mono">
 
+<!-- DISPLAY MODE -->
+<div id="display-mode" class="fixed inset-0 z-[60] bg-grid hidden" style="background-color:#0a0a0a;">
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse at center, transparent 20%, #0a0a0a 75%); pointer-events:none; z-index:0;"></div>
+  <div class="relative z-10 w-full h-full flex flex-col items-center justify-center p-8">
+    <!-- Display status bar -->
+    <div class="w-fit mb-2">
+      <div class="bg-surface-high h-7 flex items-center justify-between px-4 text-[10px] text-muted uppercase tracking-widest border border-outline-v/15" style="min-width:300px;">
+        <div class="flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-green-500"></span>
+          <span id="disp-piece-title">—</span>
+        </div>
+        <div class="flex gap-4 ml-6">
+          <span id="disp-collection-name">—</span>
+        </div>
+      </div>
+    </div>
+    <!-- Display frame -->
+    <div class="bg-surface-low border border-outline-v/20 p-3 w-fit">
+      <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" style="aspect-ratio:1/1; height:calc(100vh - 180px); max-height:calc(100vh - 180px);">
+        <img id="disp-img" class="w-full h-full object-contain hidden" src="" alt="" />
+        <iframe id="disp-iframe" class="w-full h-full border-none hidden" src="" title="Display artwork"></iframe>
+        <video id="disp-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
+      </div>
+    </div>
+    <!-- Display controls -->
+    <div class="flex items-center gap-3 mt-4 opacity-0 hover:opacity-100 transition-opacity" id="disp-controls" style="opacity:0;" onmouseenter="this.style.opacity=1" onmouseleave="this.style.opacity=0">
+      <button onclick="dispPrev()" class="px-3 py-1.5 border border-outline-v/40 text-muted text-[11px] uppercase hover:text-white hover:border-white/40"><span class="material-symbols-outlined text-sm">arrow_back</span></button>
+      <button onclick="dispShuffle()" class="px-3 py-1.5 border border-outline-v/40 text-muted text-[11px] uppercase hover:text-white hover:border-white/40"><span class="material-symbols-outlined text-sm">shuffle</span></button>
+      <button onclick="dispNext()" class="px-3 py-1.5 border border-outline-v/40 text-muted text-[11px] uppercase hover:text-white hover:border-white/40"><span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+      <button onclick="exitDisplay()" class="px-3 py-1.5 border border-outline-v/40 text-muted text-[11px] uppercase hover:text-white hover:border-white/40"><span class="material-symbols-outlined text-sm">close</span></button>
+    </div>
+  </div>
+</div>
+
 <!-- TOP BAR -->
 <header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-12 bg-surface-low border-b border-outline-v/20">
   <div class="flex items-center gap-3">
     <button onclick="openDrawer()" class="material-symbols-outlined text-white text-lg hover:text-muted">grid_view</button>
-    <span class="font-bold text-white tracking-[0.15em] uppercase text-xs">STRANGER_SOLEMN_ART</span>
+    <button onclick="goHome()" class="font-bold text-white tracking-[0.15em] uppercase text-xs hover:text-muted">STRANGER_SOLEMN_ART</button>
   </div>
   <div class="flex items-center gap-6 text-[10px] uppercase tracking-widest text-muted">
     <span id="top-view-label" class="text-white">HOME</span>
@@ -114,7 +150,31 @@ tailwind.config = {
 
     <!-- RIGHT: CONTENT -->
     <section class="flex-1 p-6 md:p-10 overflow-y-auto" style="max-height:calc(100vh - 68px);">
-      <div class="max-w-5xl mx-auto space-y-8">
+
+      <!-- HOME VIEW -->
+      <div id="home-view" class="max-w-5xl mx-auto flex flex-col items-center justify-center" style="min-height:calc(100vh - 160px);">
+        <div class="w-fit">
+          <div class="bg-surface-low border border-outline-v/20 p-3">
+            <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" style="aspect-ratio:1/1; height:calc(100vh - 200px); max-height:calc(100vh - 200px);">
+              <img id="home-art-img" class="w-full h-full object-contain hidden" src="" alt="" />
+              <iframe id="home-art-iframe" class="w-full h-full border-none hidden" src="" title="Featured artwork"></iframe>
+              <video id="home-art-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
+            </div>
+          </div>
+          <div class="flex justify-between items-center mt-3">
+            <div>
+              <span id="home-art-title" class="text-xs text-white uppercase"></span>
+              <span id="home-art-collection" class="text-[10px] text-muted uppercase ml-2"></span>
+            </div>
+            <button onclick="enterDisplay(false)" class="px-3 py-1.5 border border-outline-v/40 text-muted text-[11px] uppercase hover:text-white hover:border-white/40">
+              <span class="material-symbols-outlined text-sm align-middle">tv</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLLECTION VIEW -->
+      <div id="collection-view" class="max-w-5xl mx-auto space-y-8 hidden">
 
         <!-- ARTWORK DISPLAY -->
         <div class="flex flex-col items-center">
@@ -153,6 +213,9 @@ tailwind.config = {
             <button onclick="shufflePiece()" class="px-4 py-2 border border-outline-v text-muted text-[11px] uppercase tracking-wider hover:bg-surface-highest hover:text-white">
               <span class="material-symbols-outlined text-sm align-middle">shuffle</span>
             </button>
+            <button onclick="enterDisplay(true)" class="px-4 py-2 border border-outline-v text-muted text-[11px] uppercase tracking-wider hover:bg-surface-highest hover:text-white">
+              <span class="material-symbols-outlined text-sm align-middle">tv</span> DISPLAY
+            </button>
           </div>
           <div class="text-[10px] text-muted uppercase tracking-wider">
             <span id="action-piece-title">—</span>
@@ -167,7 +230,7 @@ tailwind.config = {
           <div id="piece-grid" class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-1.5"></div>
         </div>
 
-      </div>
+      </div><!-- /collection-view -->
     </section>
   </div>
 </main>
@@ -200,8 +263,6 @@ async function loadManifest() {
   manifest = await r.json();
   buildDrawer();
   buildTicker();
-  // Load first collection
-  if (manifest.length) await showCollection(manifest[0].id);
 }
 
 async function loadCol(id) {
@@ -348,6 +409,10 @@ function prevPiece() { if (!currentCollection?.pieces) return; showPiece((curren
 function nextPiece() { if (!currentCollection?.pieces) return; showPiece((currentIndex + 1) % currentCollection.pieces.length); }
 function shufflePiece() { if (!currentCollection?.pieces) return; showPiece(Math.floor(Math.random() * currentCollection.pieces.length)); }
 
+let displayLocked = null; // locked to collection, or null for global
+let homeSlideshowTimer = null;
+let currentView = 'home'; // 'home' or 'collection'
+
 function openDrawer() { document.getElementById('drawer').classList.remove('drawer-closed'); document.getElementById('drawer').classList.add('drawer-open'); document.getElementById('drawer-overlay').classList.remove('hidden'); }
 function closeDrawer() { document.getElementById('drawer').classList.add('drawer-closed'); document.getElementById('drawer').classList.remove('drawer-open'); document.getElementById('drawer-overlay').classList.add('hidden'); }
 
@@ -358,7 +423,180 @@ function filterChain(chain) {
   });
 }
 
-loadManifest();
+// VIEW SWITCHING
+function goHome() {
+  currentView = 'home';
+  document.getElementById('home-view').classList.remove('hidden');
+  document.getElementById('collection-view').classList.add('hidden');
+  document.getElementById('meta-sidebar').classList.add('hidden');
+  document.getElementById('meta-sidebar').classList.remove('md:flex');
+  document.getElementById('top-view-label').textContent = 'HOME';
+  startHomeSlideshow();
+}
+
+function goCollection() {
+  currentView = 'collection';
+  stopHomeSlideshow();
+  document.getElementById('home-view').classList.add('hidden');
+  document.getElementById('collection-view').classList.remove('hidden');
+  document.getElementById('meta-sidebar').classList.remove('hidden');
+  document.getElementById('meta-sidebar').classList.add('md:flex');
+}
+
+// HOME SLIDESHOW
+const slideshowWeights = [
+  { id: 'everyday-strange', w: 30 }, { id: 'stranger-days', w: 30 },
+  { id: 'the-masters', w: 15 }, { id: 'reflections', w: 10 },
+  { id: 'the-ord-lot', w: 10 }, { id: 'renascent', w: 10 },
+  { id: 'safari', w: 8 }, { id: 'one-of-one-originals', w: 8 },
+  { id: 'editions-by-solemn', w: 5 }, { id: 'fiat-mafia', w: 5 },
+  { id: 'deliverance', w: 5 }, { id: 'leverage', w: 4 },
+];
+let lastHomeColId = null;
+
+function weightedRandom(exclude) {
+  const pool = slideshowWeights.filter(w => w.id !== exclude && manifest.find(m => m.id === w.id));
+  const total = pool.reduce((s, w) => s + w.w, 0);
+  let r = Math.random() * total;
+  for (const w of pool) { r -= w.w; if (r <= 0) return w.id; }
+  return pool[pool.length - 1]?.id || manifest[0]?.id;
+}
+
+async function homeRandomArt() {
+  const id = weightedRandom(lastHomeColId);
+  lastHomeColId = id;
+  const col = await loadCol(id);
+  if (!col.pieces?.length) return;
+  const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
+
+  const img = document.getElementById('home-art-img');
+  const iframe = document.getElementById('home-art-iframe');
+  const video = document.getElementById('home-art-video');
+  img.classList.add('hidden'); iframe.classList.add('hidden'); video.classList.add('hidden');
+  iframe.src = '';
+
+  // Temp set current for display mode
+  currentCollection = col;
+  currentIndex = col.pieces.indexOf(piece);
+
+  if (needsVideo(piece)) {
+    video.src = piece.animationUrl; video.classList.remove('hidden'); video.play().catch(()=>{});
+  } else if (needsIframe(piece)) {
+    iframe.src = getIframeSrc(piece); iframe.classList.remove('hidden');
+  } else {
+    img.src = piece.image || piece.thumbnail || ''; img.classList.remove('hidden');
+  }
+  document.getElementById('home-art-title').textContent = piece.title || '';
+  document.getElementById('home-art-collection').textContent = col.title || '';
+}
+
+function startHomeSlideshow() {
+  homeRandomArt();
+  homeSlideshowTimer = setInterval(homeRandomArt, 20000);
+}
+function stopHomeSlideshow() {
+  if (homeSlideshowTimer) { clearInterval(homeSlideshowTimer); homeSlideshowTimer = null; }
+}
+
+// DISPLAY MODE
+function enterDisplay(locked) {
+  displayLocked = locked ? currentCollection : null;
+  const dm = document.getElementById('display-mode');
+  dm.classList.remove('hidden');
+  stopHomeSlideshow();
+  loadDisplayPiece();
+}
+
+function exitDisplay() {
+  const dm = document.getElementById('display-mode');
+  dm.classList.add('hidden');
+  const iframe = document.getElementById('disp-iframe');
+  if (iframe) iframe.src = '';
+  displayLocked = null;
+  if (currentView === 'home') startHomeSlideshow();
+}
+
+function loadDisplayPiece() {
+  if (!currentCollection?.pieces?.length) return;
+  const piece = currentCollection.pieces[currentIndex];
+  const img = document.getElementById('disp-img');
+  const iframe = document.getElementById('disp-iframe');
+  const video = document.getElementById('disp-video');
+  img.classList.add('hidden'); iframe.classList.add('hidden'); video.classList.add('hidden');
+  iframe.src = '';
+
+  if (needsVideo(piece)) {
+    video.src = piece.animationUrl; video.classList.remove('hidden'); video.play().catch(()=>{});
+  } else if (needsIframe(piece)) {
+    iframe.src = getIframeSrc(piece); iframe.classList.remove('hidden');
+  } else {
+    img.src = piece.image || piece.thumbnail || ''; img.classList.remove('hidden');
+  }
+  document.getElementById('disp-piece-title').textContent = (piece.title || 'UNTITLED').toUpperCase();
+  document.getElementById('disp-collection-name').textContent = (currentCollection.title || '').toUpperCase();
+}
+
+function dispPrev() {
+  if (displayLocked) {
+    currentCollection = displayLocked;
+    currentIndex = (currentIndex - 1 + currentCollection.pieces.length) % currentCollection.pieces.length;
+    loadDisplayPiece();
+  } else { dispGlobalRandom(); }
+}
+function dispNext() {
+  if (displayLocked) {
+    currentCollection = displayLocked;
+    currentIndex = (currentIndex + 1) % currentCollection.pieces.length;
+    loadDisplayPiece();
+  } else { dispGlobalRandom(); }
+}
+function dispShuffle() {
+  if (displayLocked) {
+    currentCollection = displayLocked;
+    currentIndex = Math.floor(Math.random() * currentCollection.pieces.length);
+    loadDisplayPiece();
+  } else { dispGlobalRandom(); }
+}
+async function dispGlobalRandom() {
+  const id = weightedRandom(lastHomeColId);
+  lastHomeColId = id;
+  const col = await loadCol(id);
+  if (!col.pieces?.length) return;
+  currentCollection = col;
+  currentIndex = Math.floor(Math.random() * col.pieces.length);
+  loadDisplayPiece();
+}
+
+// Keyboard
+document.addEventListener('keydown', (e) => {
+  if (!document.getElementById('display-mode').classList.contains('hidden')) {
+    if (e.key === 'Escape') exitDisplay();
+    if (e.key === 'ArrowLeft') dispPrev();
+    if (e.key === 'ArrowRight') dispNext();
+    if (e.key === ' ') { e.preventDefault(); dispShuffle(); }
+  }
+});
+
+// Show display controls on mouse move
+document.getElementById('display-mode').addEventListener('mousemove', () => {
+  const c = document.getElementById('disp-controls');
+  c.style.opacity = '1';
+  clearTimeout(c._hideTimer);
+  c._hideTimer = setTimeout(() => c.style.opacity = '0', 3000);
+});
+
+// Wrap showCollection to switch view
+const _origShowCol = showCollection;
+showCollection = async function(id) {
+  goCollection();
+  await _origShowCol(id);
+};
+
+// Init
+(async () => {
+  await loadManifest();
+  goHome();
+})();
 </script>
 </body>
 </html>
