@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stranger Solemn Art</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        surface: "#131313",
+        "surface-low": "#0e0e0e",
+        "surface-mid": "#1c1b1b",
+        "surface-high": "#2a2a2a",
+        "surface-highest": "#353534",
+        "on-surface": "#e5e2e1",
+        muted: "#888888",
+        dimmed: "#555555",
+        "outline-v": "#474747",
+        "chain-btc": "#f7931a",
+        "chain-eth": "#627eea",
+        "chain-tez": "#2c7df7",
+        "chain-sol": "#9945ff",
+      },
+      fontFamily: { mono: ["Space Mono", "monospace"] },
+      borderRadius: { DEFAULT: "0px" },
+    },
+  },
+}
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+.bg-grid { background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 48px 48px; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #131313; }
+::-webkit-scrollbar-thumb { background: #474747; }
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 40s linear infinite; }
+.drawer-closed { transform: translateX(-100%); }
+.drawer-open { transform: translateX(0); }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-mono">
+
+<!-- TOP BAR -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-12 bg-surface-low border-b border-outline-v/20">
+  <div class="flex items-center gap-3">
+    <button onclick="openDrawer()" class="material-symbols-outlined text-white text-lg hover:text-muted">grid_view</button>
+    <span class="font-bold text-white tracking-[0.15em] uppercase text-xs">STRANGER_SOLEMN_ART</span>
+  </div>
+  <div class="flex items-center gap-6 text-[10px] uppercase tracking-widest text-muted">
+    <span id="top-view-label" class="text-white">HOME</span>
+    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-green-500 inline-block"></span> LIVE</span>
+  </div>
+</header>
+
+<!-- COLLECTION DRAWER -->
+<div id="drawer-overlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="closeDrawer()"></div>
+<aside id="drawer" class="fixed left-0 top-12 bottom-5 w-80 bg-surface-low z-40 overflow-y-auto transition-transform duration-200 drawer-closed border-r border-outline-v/20">
+  <div class="p-6">
+    <div class="flex items-center justify-between mb-6">
+      <span class="text-[10px] uppercase tracking-[0.2em] text-muted">COLLECTIONS</span>
+      <button onclick="closeDrawer()" class="text-muted hover:text-white"><span class="material-symbols-outlined text-lg">close</span></button>
+    </div>
+    <!-- Chain Filters -->
+    <div class="flex gap-2 mb-6" id="chain-filters">
+      <button onclick="filterChain(null)" class="chain-filter px-2 py-1 text-[10px] uppercase tracking-wider text-white bg-surface-high border border-outline-v/30">ALL</button>
+      <button onclick="filterChain('ordinals')" class="chain-filter px-2 py-1 text-[10px] uppercase tracking-wider text-chain-btc border border-chain-btc/30">BTC</button>
+      <button onclick="filterChain('ethereum')" class="chain-filter px-2 py-1 text-[10px] uppercase tracking-wider text-chain-eth border border-chain-eth/30">ETH</button>
+      <button onclick="filterChain('tezos')" class="chain-filter px-2 py-1 text-[10px] uppercase tracking-wider text-chain-tez border border-chain-tez/30">TEZ</button>
+    </div>
+    <div id="drawer-timeline"></div>
+  </div>
+</aside>
+
+<!-- MAIN LAYOUT -->
+<main class="pt-12 pb-5 min-h-screen bg-grid">
+  <div class="flex min-h-[calc(100vh-68px)]">
+
+    <!-- LEFT: META SIDEBAR -->
+    <aside id="meta-sidebar" class="w-80 min-w-[320px] bg-surface-low p-8 flex flex-col gap-8 overflow-y-auto hidden md:flex">
+      <div>
+        <span id="meta-chain-badge" class="inline-block px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider mb-3">BTC</span>
+        <h1 id="meta-title" class="font-bold text-3xl tracking-tight text-white leading-none uppercase mb-2">LOADING...</h1>
+        <p id="meta-note" class="text-muted text-xs leading-relaxed"></p>
+      </div>
+      <div class="space-y-4">
+        <div>
+          <label class="text-[10px] text-muted uppercase tracking-[0.2em]">ARTIFACTS</label>
+          <div id="meta-count" class="font-bold text-xl text-white mt-1">—</div>
+        </div>
+        <div>
+          <label class="text-[10px] text-muted uppercase tracking-[0.2em]">YEAR</label>
+          <div id="meta-year" class="font-bold text-xl text-white mt-1">—</div>
+        </div>
+        <div>
+          <label class="text-[10px] text-muted uppercase tracking-[0.2em]">STATUS</label>
+          <div id="meta-status" class="text-xs text-white mt-1">—</div>
+        </div>
+      </div>
+      <nav id="meta-links" class="flex flex-col border-l border-outline-v/30 pl-4 gap-3"></nav>
+      <div class="mt-auto pt-4 border-t border-outline-v/10 space-y-2">
+        <a href="about.html" class="block text-[11px] text-muted hover:text-white uppercase tracking-wider">ABOUT</a>
+        <a href="articles.html" class="block text-[11px] text-muted hover:text-white uppercase tracking-wider">ARTICLES</a>
+      </div>
+    </aside>
+
+    <!-- RIGHT: CONTENT -->
+    <section class="flex-1 p-6 md:p-10 overflow-y-auto" style="max-height:calc(100vh - 68px);">
+      <div class="max-w-5xl mx-auto space-y-8">
+
+        <!-- ARTWORK DISPLAY -->
+        <div class="flex flex-col items-center">
+          <div class="w-fit">
+            <!-- STATUS BAR -->
+            <div class="bg-surface-high h-8 flex items-center justify-between px-4 text-[10px] text-muted uppercase tracking-widest border border-outline-v/15 mb-2">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-green-500"></span>
+                <span id="status-piece">LOADING</span>
+              </div>
+              <div class="flex gap-4 ml-8">
+                <span id="status-time">UTC: --:--:--</span>
+                <span id="status-index">001 / 001</span>
+              </div>
+            </div>
+            <!-- FRAME -->
+            <div class="bg-surface-low border border-outline-v/20 p-3">
+              <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" id="artwork-frame" style="aspect-ratio:1/1; height:calc(100vh - 250px); max-height:calc(100vh - 250px);">
+                <img id="v2-art-img" class="w-full h-full object-contain hidden" src="" alt="" />
+                <iframe id="v2-art-iframe" class="w-full h-full border-none hidden" src="" title="Artwork"></iframe>
+                <video id="v2-art-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="flex justify-between items-center">
+          <div class="flex gap-2">
+            <button onclick="prevPiece()" class="px-4 py-2 border border-outline-v text-white text-[11px] uppercase tracking-wider hover:bg-surface-highest">
+              <span class="material-symbols-outlined text-sm align-middle">arrow_back</span> PREV
+            </button>
+            <button onclick="nextPiece()" class="px-4 py-2 border border-outline-v text-white text-[11px] uppercase tracking-wider hover:bg-surface-highest">
+              NEXT <span class="material-symbols-outlined text-sm align-middle">arrow_forward</span>
+            </button>
+            <button onclick="shufflePiece()" class="px-4 py-2 border border-outline-v text-muted text-[11px] uppercase tracking-wider hover:bg-surface-highest hover:text-white">
+              <span class="material-symbols-outlined text-sm align-middle">shuffle</span>
+            </button>
+          </div>
+          <div class="text-[10px] text-muted uppercase tracking-wider">
+            <span id="action-piece-title">—</span>
+          </div>
+        </div>
+
+        <!-- PIECE GRID -->
+        <div class="border-t border-outline-v/10 pt-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] text-muted uppercase tracking-[0.2em]">COLLECTION_ARTIFACTS</span>
+          </div>
+          <div id="piece-grid" class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-1.5"></div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- TICKER -->
+<div class="fixed bottom-0 w-full bg-surface-low h-5 border-t border-outline-v/10 overflow-hidden z-40">
+  <div class="flex items-center h-full whitespace-nowrap animate-marquee">
+    <span id="ticker-1" class="text-[9px] text-muted px-8">LOADING COLLECTION DATA...</span>
+    <span id="ticker-2" class="text-[9px] text-muted px-8">LOADING COLLECTION DATA...</span>
+  </div>
+</div>
+
+<script>
+const chainNames = { ordinals: 'BTC', ethereum: 'ETH', tezos: 'TEZ', solana: 'SOL' };
+const chainColors = { ordinals: '#f7931a', ethereum: '#627eea', tezos: '#2c7df7', solana: '#9945ff' };
+let manifest = [];
+let collectionCache = {};
+let currentCollection = null;
+let currentIndex = 0;
+let activeFilter = null;
+
+// Clock
+setInterval(() => {
+  const d = new Date();
+  document.getElementById('status-time').textContent = 'UTC: ' + d.toISOString().slice(11, 19);
+}, 1000);
+
+async function loadManifest() {
+  const r = await fetch('collections/manifest.json');
+  manifest = await r.json();
+  buildDrawer();
+  buildTicker();
+  // Load first collection
+  if (manifest.length) await showCollection(manifest[0].id);
+}
+
+async function loadCol(id) {
+  if (collectionCache[id]) return collectionCache[id];
+  const r = await fetch(`collections/${id}.json`);
+  const d = await r.json();
+  const m = manifest.find(c => c.id === id);
+  if (m) {
+    if (m.galleryUrl) d.galleryUrl = m.galleryUrl;
+    if (m.marketplaces) d.marketplaces = { ...(d.marketplaces || {}), ...m.marketplaces };
+  }
+  collectionCache[id] = d;
+  return d;
+}
+
+function buildDrawer() {
+  const el = document.getElementById('drawer-timeline');
+  const years = {};
+  manifest.forEach(c => { (years[c.year] = years[c.year] || []).push(c); });
+  let html = '';
+  Object.keys(years).sort((a, b) => b - a).forEach(yr => {
+    html += `<div class="mb-4"><div class="text-xs font-bold text-white mb-2 uppercase tracking-wider">${yr}</div>`;
+    years[yr].forEach(c => {
+      const color = chainColors[c.chain] || '#888';
+      const cn = chainNames[c.chain] || c.chain;
+      html += `<button data-chain="${c.chain}" onclick="showCollection('${c.id}');closeDrawer()" class="timeline-entry w-full flex items-center gap-2 px-2 py-1.5 text-left hover:bg-surface-high group">
+        <span class="text-[9px] px-1.5 py-0.5 border font-bold uppercase" style="color:${color};border-color:${color}40">${cn}</span>
+        <span class="text-xs text-muted group-hover:text-white flex-1 truncate">${c.title}</span>
+        ${c.uniquePieces ? `<span class="text-[10px] text-dimmed">${c.uniquePieces}</span>` : ''}
+      </button>`;
+    });
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+function buildTicker() {
+  const parts = manifest.map(c => `${c.title.toUpperCase()}: ${c.uniquePieces || '?'} PCS`);
+  const txt = parts.join(' | ') + ' | NETWORK: STABLE | STATUS: LIVE';
+  document.getElementById('ticker-1').textContent = txt;
+  document.getElementById('ticker-2').textContent = txt;
+}
+
+async function showCollection(id) {
+  const col = await loadCol(id);
+  currentCollection = col;
+  currentIndex = 0;
+  const m = manifest.find(c => c.id === id) || {};
+
+  // Meta sidebar
+  const badge = document.getElementById('meta-chain-badge');
+  const chain = col.chain || m.chain || 'ordinals';
+  const color = chainColors[chain] || '#888';
+  badge.textContent = (chainNames[chain] || chain) + '_NETWORK';
+  badge.style.backgroundColor = color;
+  badge.style.color = '#000';
+
+  document.getElementById('meta-title').textContent = col.title || m.title;
+  document.getElementById('meta-note').textContent = col.artistNote || col.description || '';
+  document.getElementById('meta-count').textContent = (col.pieces?.length || m.uniquePieces || 0).toLocaleString();
+  document.getElementById('meta-year').textContent = col.year || m.year || '—';
+  document.getElementById('meta-status').textContent = col.onchain || m.onchain ? 'ON-CHAIN' : 'OFF-CHAIN';
+  document.getElementById('top-view-label').textContent = (col.title || '').toUpperCase();
+
+  // Marketplace links
+  const linksEl = document.getElementById('meta-links');
+  let linksHtml = '';
+  if (col.galleryUrl) linksHtml += mkLink('GALLERY', col.galleryUrl);
+  const mps = col.marketplaces || {};
+  if (mps.superrare) linksHtml += mkLink('SUPERRARE', mps.superrare);
+  if (mps.opensea) linksHtml += mkLink('OPENSEA', mps.opensea);
+  if (mps.ordinals) linksHtml += mkLink('ORDINALS', mps.ordinals);
+  if (mps.objkt) linksHtml += mkLink('OBJKT', mps.objkt);
+  linksEl.innerHTML = linksHtml;
+
+  // Piece grid
+  buildGrid(col);
+  showPiece(0);
+}
+
+function mkLink(label, url) {
+  return `<a href="${url}" target="_blank" rel="noopener" class="text-[11px] text-muted hover:text-white flex justify-between items-center">
+    ${label} <span class="material-symbols-outlined text-[14px]">open_in_new</span></a>`;
+}
+
+function buildGrid(col) {
+  const el = document.getElementById('piece-grid');
+  if (!col.pieces?.length) { el.innerHTML = '<p class="text-muted text-xs col-span-full">No pieces loaded</p>'; return; }
+  el.innerHTML = col.pieces.map((p, i) => {
+    const thumb = p.thumbnail || p.image || '';
+    const isCode = !p.image || (p.animationUrl && (p.animationUrl.startsWith('<') || p.animationUrl.startsWith('data:')));
+    return `<button onclick="showPiece(${i})" class="aspect-square bg-surface-high border border-outline-v/10 overflow-hidden relative group hover:border-white/30">
+      ${thumb ? `<img src="${thumb}" class="w-full h-full object-cover opacity-70 group-hover:opacity-100" loading="lazy" alt="${p.title || ''}" />` : '<div class="w-full h-full flex items-center justify-center text-dimmed text-[10px]">CODE</div>'}
+      <div class="absolute bottom-0 left-0 right-0 bg-black/70 px-1 py-0.5 text-[8px] text-muted truncate opacity-0 group-hover:opacity-100">${p.title || ''}</div>
+    </button>`;
+  }).join('');
+}
+
+function showPiece(idx) {
+  if (!currentCollection?.pieces?.length) return;
+  currentIndex = idx;
+  const piece = currentCollection.pieces[idx];
+  const img = document.getElementById('v2-art-img');
+  const iframe = document.getElementById('v2-art-iframe');
+  const video = document.getElementById('v2-art-video');
+  img.classList.add('hidden'); iframe.classList.add('hidden'); video.classList.add('hidden');
+  iframe.src = '';
+
+  if (needsVideo(piece)) {
+    video.src = piece.animationUrl;
+    video.classList.remove('hidden');
+    video.play().catch(() => {});
+  } else if (needsIframe(piece)) {
+    iframe.src = getIframeSrc(piece);
+    iframe.classList.remove('hidden');
+  } else {
+    img.src = piece.image || piece.thumbnail || '';
+    img.classList.remove('hidden');
+  }
+
+  document.getElementById('status-piece').textContent = (piece.title || 'UNTITLED').toUpperCase();
+  document.getElementById('status-index').textContent = String(idx + 1).padStart(3, '0') + ' / ' + String(currentCollection.pieces.length).padStart(3, '0');
+  document.getElementById('action-piece-title').textContent = piece.title || '';
+}
+
+function needsVideo(p) {
+  if (!p.animationUrl) return false;
+  const u = p.animationUrl.toLowerCase();
+  return u.endsWith('.mp4') || u.endsWith('.webm') || u.endsWith('.mov');
+}
+
+function needsIframe(p) {
+  if (!p.animationUrl) return false;
+  const a = p.animationUrl;
+  return a.startsWith('<') || a.startsWith('data:') || (currentCollection?.onchain && a.includes('ordinals.com/content/'));
+}
+
+function getIframeSrc(p) {
+  if (p.animationUrl.startsWith('<')) return URL.createObjectURL(new Blob([p.animationUrl], { type: 'text/html' }));
+  return p.animationUrl;
+}
+
+function prevPiece() { if (!currentCollection?.pieces) return; showPiece((currentIndex - 1 + currentCollection.pieces.length) % currentCollection.pieces.length); }
+function nextPiece() { if (!currentCollection?.pieces) return; showPiece((currentIndex + 1) % currentCollection.pieces.length); }
+function shufflePiece() { if (!currentCollection?.pieces) return; showPiece(Math.floor(Math.random() * currentCollection.pieces.length)); }
+
+function openDrawer() { document.getElementById('drawer').classList.remove('drawer-closed'); document.getElementById('drawer').classList.add('drawer-open'); document.getElementById('drawer-overlay').classList.remove('hidden'); }
+function closeDrawer() { document.getElementById('drawer').classList.add('drawer-closed'); document.getElementById('drawer').classList.remove('drawer-open'); document.getElementById('drawer-overlay').classList.add('hidden'); }
+
+function filterChain(chain) {
+  activeFilter = chain;
+  document.querySelectorAll('.timeline-entry').forEach(el => {
+    el.style.display = (!chain || el.dataset.chain === chain) ? '' : 'none';
+  });
+}
+
+loadManifest();
+</script>
+</body>
+</html>
