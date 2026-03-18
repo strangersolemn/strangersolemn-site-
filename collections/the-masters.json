@@ -4,5 +4,7 @@
   "chain": "ordinals",
   "onchain": true,
   "year": 2025,
-  "pieces": []
+  "pieces": [],
+  "supply": 0,
+  "uniquePieces": 0
 }
