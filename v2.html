@@ -37,7 +37,12 @@ tailwind.config = {
 </script>
 <style>
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
-.bg-grid { background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 48px 48px; position: relative; }
+.bg-grid { background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 48px 48px; position: relative; }
+@media (max-width: 768px) {
+  #meta-sidebar { display: none !important; }
+  .flex.min-h-screen { flex-direction: column; }
+  #artwork-frame, #home-view div[style*="aspect-ratio"] { height: calc(100vw - 40px) !important; max-height: calc(100vh - 140px) !important; }
+}
 .bg-grid::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 20%, #131313 75%); pointer-events: none; z-index: 0; }
 .bg-grid > * { position: relative; z-index: 1; }
 ::-webkit-scrollbar { width: 4px; }
@@ -85,21 +90,15 @@ tailwind.config = {
   </div>
 </div>
 
-<!-- TOP BAR -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-12 bg-surface-low border-b border-outline-v/20">
-  <div class="flex items-center gap-3">
-    <button onclick="openDrawer()" class="material-symbols-outlined text-white text-lg hover:text-muted">grid_view</button>
-    <button onclick="goHome()" class="font-bold text-white tracking-[0.15em] uppercase text-xs hover:text-muted">STRANGER_SOLEMN_ART</button>
-  </div>
-  <div class="flex items-center gap-6 text-[10px] uppercase tracking-widest text-muted">
-    <span id="top-view-label" class="text-white">HOME</span>
-    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 bg-green-500 inline-block"></span> LIVE</span>
-  </div>
-</header>
+<!-- NAV BUTTONS (floating) -->
+<div class="fixed top-4 left-4 z-50 flex items-center gap-3">
+  <button onclick="openDrawer()" class="material-symbols-outlined text-muted text-lg hover:text-white" style="background:none;border:none;cursor:pointer;">grid_view</button>
+  <button onclick="goHome()" class="text-muted hover:text-white text-[10px] uppercase tracking-[0.15em]" style="background:none;border:none;cursor:pointer;">HOME</button>
+</div>
 
 <!-- COLLECTION DRAWER -->
 <div id="drawer-overlay" class="fixed inset-0 bg-black/60 z-40 hidden" onclick="closeDrawer()"></div>
-<aside id="drawer" class="fixed left-0 top-12 bottom-5 w-80 bg-surface-low z-40 overflow-y-auto transition-transform duration-200 drawer-closed border-r border-outline-v/20">
+<aside id="drawer" class="fixed left-0 top-0 bottom-0 w-80 bg-surface-low z-40 overflow-y-auto transition-transform duration-200 drawer-closed border-r border-outline-v/20">
   <div class="p-6">
     <div class="flex items-center justify-between mb-6">
       <span class="text-[10px] uppercase tracking-[0.2em] text-muted">COLLECTIONS</span>
@@ -117,8 +116,8 @@ tailwind.config = {
 </aside>
 
 <!-- MAIN LAYOUT -->
-<main class="pt-12 pb-5 min-h-screen bg-grid">
-  <div class="flex min-h-[calc(100vh-68px)]">
+<main class="min-h-screen bg-grid">
+  <div class="flex min-h-screen">
 
     <!-- LEFT: META SIDEBAR -->
     <aside id="meta-sidebar" class="w-80 min-w-[320px] bg-surface-low p-8 flex flex-col gap-8 overflow-y-auto hidden md:flex">
@@ -149,13 +148,13 @@ tailwind.config = {
     </aside>
 
     <!-- RIGHT: CONTENT -->
-    <section class="flex-1 p-6 md:p-10 overflow-y-auto" style="max-height:calc(100vh - 68px);">
+    <section class="flex-1 p-6 md:p-10 overflow-y-auto" style="max-height:100vh;">
 
       <!-- HOME VIEW -->
-      <div id="home-view" class="max-w-5xl mx-auto flex flex-col items-center justify-center" style="min-height:calc(100vh - 160px);">
+      <div id="home-view" class="max-w-5xl mx-auto flex flex-col items-center justify-center" style="min-height:calc(100vh - 80px);">
         <div class="w-fit">
           <div class="bg-surface-low border border-outline-v/20 p-3">
-            <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" style="aspect-ratio:1/1; height:calc(100vh - 200px); max-height:calc(100vh - 200px);">
+            <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" style="aspect-ratio:1/1; height:calc(100vh - 120px); max-height:calc(100vh - 120px);">
               <img id="home-art-img" class="w-full h-full object-contain hidden" src="" alt="" />
               <iframe id="home-art-iframe" class="w-full h-full border-none hidden" src="" title="Featured artwork"></iframe>
               <video id="home-art-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
@@ -192,7 +191,7 @@ tailwind.config = {
             </div>
             <!-- FRAME -->
             <div class="bg-surface-low border border-outline-v/20 p-3">
-              <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" id="artwork-frame" style="aspect-ratio:1/1; height:calc(100vh - 250px); max-height:calc(100vh - 250px);">
+              <div class="relative overflow-hidden bg-black border border-[#1a1a1a]" id="artwork-frame" style="aspect-ratio:1/1; height:calc(100vh - 170px); max-height:calc(100vh - 170px);">
                 <img id="v2-art-img" class="w-full h-full object-contain hidden" src="" alt="" />
                 <iframe id="v2-art-iframe" class="w-full h-full border-none hidden" src="" title="Artwork"></iframe>
                 <video id="v2-art-video" class="w-full h-full object-contain hidden" autoplay loop muted playsinline></video>
@@ -235,13 +234,6 @@ tailwind.config = {
   </div>
 </main>
 
-<!-- TICKER -->
-<div class="fixed bottom-0 w-full bg-surface-low h-5 border-t border-outline-v/10 overflow-hidden z-40">
-  <div class="flex items-center h-full whitespace-nowrap animate-marquee">
-    <span id="ticker-1" class="text-[9px] text-muted px-8">LOADING COLLECTION DATA...</span>
-    <span id="ticker-2" class="text-[9px] text-muted px-8">LOADING COLLECTION DATA...</span>
-  </div>
-</div>
 
 <script>
 const chainNames = { ordinals: 'BTC', ethereum: 'ETH', tezos: 'TEZ', solana: 'SOL' };
@@ -262,7 +254,6 @@ async function loadManifest() {
   const r = await fetch('collections/manifest.json');
   manifest = await r.json();
   buildDrawer();
-  buildTicker();
 }
 
 async function loadCol(id) {
@@ -325,7 +316,7 @@ async function showCollection(id) {
   document.getElementById('meta-count').textContent = (col.pieces?.length || m.uniquePieces || 0).toLocaleString();
   document.getElementById('meta-year').textContent = col.year || m.year || '—';
   document.getElementById('meta-status').textContent = col.onchain || m.onchain ? 'ON-CHAIN' : 'OFF-CHAIN';
-  document.getElementById('top-view-label').textContent = (col.title || '').toUpperCase();
+  void 0 // top-view-label removed = (col.title || '').toUpperCase();
 
   // Marketplace links
   const linksEl = document.getElementById('meta-links');
@@ -430,7 +421,7 @@ function goHome() {
   document.getElementById('collection-view').classList.add('hidden');
   document.getElementById('meta-sidebar').classList.add('hidden');
   document.getElementById('meta-sidebar').classList.remove('md:flex');
-  document.getElementById('top-view-label').textContent = 'HOME';
+  void 0 // top-view-label removed = 'HOME';
   startHomeSlideshow();
 }
 
