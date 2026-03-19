@@ -370,7 +370,8 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 }
 
 /* ARTICLES PAGE */
-body:has(.articles-page) { overflow: auto; height: auto; }
+html:has(.articles-page), body:has(.articles-page) { overflow: auto; height: auto; }
+html:has(.about-page), body:has(.about-page) { overflow: auto; height: auto; }
 .articles-page {
   min-height: 100vh;
   background-color: var(--bg-primary);
@@ -438,6 +439,7 @@ body:has(.articles-page) { overflow: auto; height: auto; }
 .article-body {
   padding: 1.5rem 1.5rem 2rem;
   border-top: 1px solid rgba(255,255,255,0.04);
+  background: rgba(10, 10, 10, 0.85);
 }
 
 .article-subtitle {
