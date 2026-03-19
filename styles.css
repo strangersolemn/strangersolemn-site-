@@ -52,11 +52,12 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 .lightbox-info { margin-top: 1rem; font-size: 0.75rem; color: var(--text-secondary); }
 
 /* DISPLAY MODE */
-.display-mode { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 3000; align-items: center; justify-content: center; flex-direction: column; cursor: none; }
+.display-mode { display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: var(--bg-primary); background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 48px 48px; z-index: 3000; align-items: center; justify-content: center; flex-direction: column; cursor: none; }
 .display-mode.active { display: flex; }
 .display-mode:hover { cursor: default; }
-#display-art { max-width: 100vw; max-height: 100vh; width: 100%; height: 100%; object-fit: contain; display: none; background: #000; }
-#display-iframe { width: 100vw; height: 100vh; border: none; display: none; pointer-events: none; background: #000; }
+.display-frame { background: #0e0e0e; border: 1px solid rgba(255,255,255,0.08); padding: 12px; display: flex; align-items: center; justify-content: center; max-width: calc(100vw - 40px); max-height: calc(100vh - 100px); }
+#display-art { max-width: 100%; max-height: calc(100vh - 140px); object-fit: contain; display: none; background: #000; border: 1px solid #1a1a1a; }
+#display-iframe { width: min(calc(100vw - 80px), calc(100vh - 140px)); aspect-ratio: 1/1; max-height: calc(100vh - 140px); border: 1px solid #1a1a1a; display: none; pointer-events: none; background: #000; }
 .display-controls { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.75rem; opacity: 0; transition: opacity 0.3s ease; z-index: 3001; }
 .display-mode:hover .display-controls { opacity: 1; }
 .display-btn { background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 0.5rem 0.75rem; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); }
@@ -94,9 +95,10 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 .back-btn { display: flex; align-items: center; gap: 0.5rem; background: transparent; border: none; color: var(--text-secondary); font-family: var(--font-mono); font-size: 0.75rem; cursor: pointer; }
 .back-btn:hover { color: var(--text-primary); }
 .detail-content { display: flex; gap: 3rem; flex: 1; align-items: flex-start; width: 100%; }
-.detail-image-container { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 300px; max-height: calc(100vh - 120px); position: relative; background: var(--bg-primary); overflow: hidden; }
-#detail-image { max-width: 100%; max-height: calc(100vh - 120px); border: none; background: var(--bg-primary); object-fit: contain; }
-#detail-iframe { width: min(100%, calc(100vh - 120px)); aspect-ratio: 1 / 1; max-height: calc(100vh - 120px); border: none; background: var(--bg-primary); }
+.detail-image-container { flex: 1; display: flex; align-items: center; justify-content: center; min-height: 300px; max-height: calc(100vh - 120px); position: relative; background: #0e0e0e; border: 1px solid rgba(255,255,255,0.08); padding: 12px; overflow: hidden; }
+#detail-image { max-width: 100%; max-height: calc(100vh - 150px); border: 1px solid #1a1a1a; background: #000; object-fit: contain; }
+#detail-iframe { width: min(100%, calc(100vh - 150px)); aspect-ratio: 1 / 1; max-height: calc(100vh - 150px); border: 1px solid #1a1a1a; background: #000; }
+#detail-video { border: 1px solid #1a1a1a; background: #000; }
 #detail-video { max-width: 100%; max-height: calc(100vh - 120px); border: none; background: var(--bg-primary); object-fit: contain; }
 .hidden { display: none !important; }
 .play-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); border: none; border-radius: 50%; width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s ease; }
