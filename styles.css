@@ -272,10 +272,7 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
   95% { opacity: 0.9; transform: translateX(0); }
 }
 
-/* Breathing grid background */
-.main-content {
-  animation: subtlePulse 8s ease-in-out infinite;
-}
+/* Breathing grid background — disabled (was dropping whole art area to 4-7% opacity) */
 
 /* Home slideshow crossfade */
 .art-container {
