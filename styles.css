@@ -69,9 +69,9 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 
 /* HOME VIEW */
 #view-home { padding: 2rem; }
-.art-container { width: 100%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; cursor: pointer; position: relative; }
-#featured-art { width: 100%; aspect-ratio: 1 / 1; max-height: 70vh; border: none; background: var(--bg-primary); object-fit: contain; }
-#featured-iframe { display: none; width: min(100%, 70vh); aspect-ratio: 1 / 1; border: none; background: var(--bg-primary); }
+.art-container { width: 100%; max-width: 1000px; display: flex; flex-direction: column; align-items: center; cursor: pointer; position: relative; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); padding: 14px; box-shadow: 0 4px 30px rgba(0,0,0,0.5); }
+#featured-art { width: 100%; aspect-ratio: 1 / 1; max-height: 70vh; border: none; background: #0e0e0e; object-fit: contain; }
+#featured-iframe { display: none; width: min(100%, 70vh); aspect-ratio: 1 / 1; border: none; background: #0e0e0e; }
 #featured-iframe.active { display: block; }
 .art-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.2rem 1rem; background: linear-gradient(transparent 0%, rgba(0,0,0,0.85) 60%); opacity: 1; pointer-events: auto; z-index: 2; overflow: hidden; box-sizing: border-box; }
 .art-info #art-collection { text-decoration: none; color: rgba(255,255,255,0.7); display: block; font-size: 0.65rem; }
