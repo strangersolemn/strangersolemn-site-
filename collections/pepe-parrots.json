@@ -1,0 +1,78 @@
+{
+  "id": "pepe-parrots",
+  "title": "Pepe Parrots",
+  "chain": "ethereum",
+  "contract": "0x3b66ba576253a8d3a0b98afe6bc625a24f5c3629",
+  "supply": 10,
+  "uniquePieces": 10,
+  "heroImage": "collections/pepe-parrots/pepe-parrot-1.avif",
+  "description": "",
+  "artistNote": "Fully on-chain parrots. Dance Dance I Said Dance.",
+  "onchain": true,
+  "year": 2025,
+  "pieces": [
+    {
+      "tokenId": "1",
+      "title": "Pepe Parrot #1",
+      "image": "collections/pepe-parrots/pepe-parrot-1.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-1.avif"
+    },
+    {
+      "tokenId": "2",
+      "title": "Pepe Parrot #2",
+      "image": "collections/pepe-parrots/pepe-parrot-2.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-2.avif"
+    },
+    {
+      "tokenId": "3",
+      "title": "Pepe Parrot #3",
+      "image": "collections/pepe-parrots/pepe-parrot-3.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-3.avif"
+    },
+    {
+      "tokenId": "4",
+      "title": "Pepe Parrot #4",
+      "image": "collections/pepe-parrots/pepe-parrot-4.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-4.avif"
+    },
+    {
+      "tokenId": "5",
+      "title": "Pepe Parrot #5",
+      "image": "collections/pepe-parrots/pepe-parrot-5.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-5.avif"
+    },
+    {
+      "tokenId": "6",
+      "title": "Pepe Parrot #6",
+      "image": "collections/pepe-parrots/pepe-parrot-6.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-6.avif"
+    },
+    {
+      "tokenId": "7",
+      "title": "Pepe Parrot #7",
+      "image": "collections/pepe-parrots/pepe-parrot-7.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-7.avif"
+    },
+    {
+      "tokenId": "8",
+      "title": "Pepe Parrot #8",
+      "image": "collections/pepe-parrots/pepe-parrot-8.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-8.avif"
+    },
+    {
+      "tokenId": "9",
+      "title": "Pepe Parrot #9",
+      "image": "collections/pepe-parrots/pepe-parrot-9.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-9.avif"
+    },
+    {
+      "tokenId": "10",
+      "title": "Pepe Parrot #10",
+      "image": "collections/pepe-parrots/pepe-parrot-10.avif",
+      "thumbnail": "collections/pepe-parrots/pepe-parrot-10.avif"
+    }
+  ],
+  "marketplaces": {
+    "opensea": "https://opensea.io/collection/pepe-parrots"
+  }
+}

@@ -105,21 +105,12 @@ async function init() {
   buildTimeline();
   initChainFilters();
   initSearch();
-  if (collectionsManifest.length > 0) {
-    const startId = collectionsManifest.find(c => c.id === 'the-ord-lot')?.id || collectionsManifest[0].id;
-    const first = await loadCollection(startId);
-    showHeroMedia(first, first.pieces[0]);
-    if (artTitle) artTitle.textContent = first.pieces[0].title || '';
-    if (document.getElementById('art-collection')) document.getElementById('art-collection').textContent = first.title;
-    if (artChain) {
-      artChain.textContent = chainNames[first.chain] || first.chain;
-      artChain.dataset.chain = first.chain;
-    }
-    currentCarouselCollection = first;
-    currentPieceIndex = 0;
-  }
   // Preload all collections in background so slideshow can pick randomly
   collectionsManifest.forEach(c => loadCollection(c.id));
+  // Start with a random piece immediately
+  if (collectionsManifest.length > 0) {
+    await showRandomArt();
+  }
   // Start home slideshow
   startSlideshow();
 }
@@ -340,12 +331,9 @@ async function showDetail(collectionId) {
   // Merge manifest-level fields (galleryUrl, marketplaces) into collection data
   const manifestEntry = collectionsManifest.find(c => c.id === collectionId);
   if (manifestEntry) {
-    if (manifestEntry.galleryUrl) {
-      collection.galleryUrl = manifestEntry.galleryUrl;
-      // galleryUrl supersedes old marketplace links from collection JSON
-      delete collection.marketplaces;
-    }
-    if (manifestEntry.marketplaces) collection.marketplaces = manifestEntry.marketplaces;
+    if (manifestEntry.galleryUrl) collection.galleryUrl = manifestEntry.galleryUrl;
+    if (manifestEntry.marketplaces) collection.marketplaces = { ...collection.marketplaces, ...manifestEntry.marketplaces };
+    if (manifestEntry.xArticles) collection.xArticles = manifestEntry.xArticles;
   }
   currentCarouselCollection = collection;
   currentPieceIndex = 0;
@@ -381,58 +369,44 @@ async function showDetail(collectionId) {
     gl.classList.toggle('hidden', !collection.galleryUrl);
   }
   if (or) { or.href = mps.ordinals || '#'; or.style.display = mps.ordinals ? '' : 'none'; }
-  // Hide any previously created marketplace links
-  const prevOs = document.getElementById('link-opensea');
-  if (prevOs) prevOs.style.display = 'none';
-  const prevOb = document.getElementById('link-objkt');
-  if (prevOb) prevOb.style.display = 'none';
-  const prevSr = document.getElementById('link-superrare');
-  if (prevSr) prevSr.style.display = 'none';
-  if (mps.superrare) {
-    let sr = document.getElementById('link-superrare');
-    if (!sr) {
-      sr = document.createElement('a');
-      sr.id = 'link-superrare';
-      sr.className = 'detail-link';
-      sr.target = '_blank';
-      sr.rel = 'noopener';
-      sr.textContent = 'SuperRare';
-      document.querySelector('.marketplace-links')?.appendChild(sr);
-    }
-    sr.href = mps.superrare;
-    sr.style.display = '';
+  // Single "Marketplace" link — picks the first available marketplace URL
+  const marketplaceUrl = mps['ord-dropz'] || mps.opensea || mps.objkt || mps.superrare || mps['exchange-art'] || null;
+  let mp = document.getElementById('link-marketplace');
+  if (!mp) {
+    mp = document.createElement('a');
+    mp.id = 'link-marketplace';
+    mp.className = 'detail-link';
+    mp.target = '_blank';
+    mp.rel = 'noopener';
+    mp.textContent = 'Marketplace';
+    document.querySelector('.marketplace-links')?.appendChild(mp);
   }
-  if (mps.opensea) {
-    let os = document.getElementById('link-opensea');
-    if (!os) {
-      os = document.createElement('a');
-      os.id = 'link-opensea';
-      os.className = 'detail-link';
-      os.target = '_blank';
-      os.rel = 'noopener';
-      os.textContent = 'OpenSea';
-      document.querySelector('.marketplace-links')?.appendChild(os);
-    }
-    os.href = mps.opensea;
-    os.style.display = '';
+  if (marketplaceUrl) {
+    mp.href = marketplaceUrl;
+    mp.style.display = '';
+  } else {
+    mp.style.display = 'none';
   }
-  if (mps.objkt) {
-    let ob = document.getElementById('link-objkt');
-    if (!ob) {
-      ob = document.createElement('a');
-      ob.id = 'link-objkt';
-      ob.className = 'detail-link';
-      ob.target = '_blank';
-      ob.rel = 'noopener';
-      ob.textContent = 'objkt';
-      document.querySelector('.marketplace-links')?.appendChild(ob);
-    }
-    ob.href = mps.objkt;
-    ob.style.display = '';
+  // X Articles links
+  const prevXLinks = document.querySelectorAll('.x-article-detail-link');
+  prevXLinks.forEach(el => el.remove());
+  if (collection.xArticles && collection.xArticles.length > 0) {
+    const container = document.querySelector('.marketplace-links');
+    collection.xArticles.forEach((xa, i) => {
+      const a = document.createElement('a');
+      a.className = 'detail-link x-article-detail-link';
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.href = xa.url;
+      a.textContent = '𝕏 ' + xa.title;
+      container?.appendChild(a);
+    });
   }
   if (collection.pieces && collection.pieces.length > 0) {
     showPiece(collection, 0);
     buildPieceGrid(collection);
+    staggerPieceGrid();
+    applyDetailReveals();
   } else {
     // Clear stale piece grid and artwork from previous collection
     const grid = document.querySelector('.piece-grid') || document.getElementById('art-collection');
@@ -452,36 +426,86 @@ function buildPieceGrid(collection) {
   const grid = document.querySelector('.piece-grid') || document.getElementById('art-collection');
   if (!grid) return;
   grid.innerHTML = '';
-  collection.pieces.forEach((piece, idx) => {
+  // Deduplicate editions: if uniquePieces < total, only show first occurrence of each image
+  let piecesToShow = collection.pieces;
+  if (collection.uniquePieces && collection.uniquePieces < collection.pieces.length) {
+    const seen = new Set();
+    piecesToShow = collection.pieces.filter(p => {
+      const key = p.image || p.thumbnail || p.animationUrl || '';
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+  piecesToShow.forEach((piece, idx) => {
     const btn = document.createElement('button');
     btn.className = 'piece-thumb';
     btn.setAttribute('aria-label', 'Display this piece');
+    const thumbUrl = getThumbnailUrl(piece);
+    const isOrdinalsThumb = thumbUrl && thumbUrl.includes('ordinals.com/content/');
     if (pieceNeedsIframe(collection, piece)) {
       const staticUrl = getStaticImageUrl(piece);
-      // Check if the static URL is actually HTML content (ordinals on-chain)
-      const isOrdinals = staticUrl && staticUrl.includes('ordinals.com/content/');
       const hasDataUri = piece.animationUrl && piece.animationUrl.startsWith('data:');
-      if (staticUrl && !isOrdinals && !hasDataUri) {
+      if (hasDataUri) {
+        // Data-URI pieces (e.g. Renascent): NFT CDN thumbnails dedupe to a single placeholder,
+        // so render the artwork itself as the thumbnail.
+        const iframe = document.createElement('iframe');
+        iframe.src = piece.animationUrl;
+        iframe.loading = 'lazy';
+        iframe.sandbox = 'allow-scripts';
+        iframe.scrolling = 'no';
+        iframe.className = 'piece-thumb-iframe';
+        btn.appendChild(iframe);
+      } else if (piece.thumbnail && !isOrdinalsThumb) {
+        const img = document.createElement('img');
+        img.src = piece.thumbnail;
+        img.alt = piece.title || '';
+        img.loading = 'lazy';
+        btn.appendChild(img);
+      } else if (staticUrl && !staticUrl.includes('ordinals.com/content/')) {
         const img = document.createElement('img');
         img.src = staticUrl;
         img.alt = piece.title || '';
         img.loading = 'lazy';
         btn.appendChild(img);
       } else {
-        // Use iframe thumbnail for on-chain HTML pieces
+        // Ordinals on-chain: try img first, fallback to iframe, then placeholder
+        const imgUrl = piece.thumbnail || staticUrl;
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        img.alt = piece.title || '';
+        img.loading = 'lazy';
+        img.onerror = function() {
+          this.remove();
+          const iframe = document.createElement('iframe');
+          iframe.src = piece.animationUrl || imgUrl;
+          iframe.loading = 'lazy';
+          iframe.sandbox = 'allow-scripts';
+          iframe.scrolling = 'no';
+          iframe.className = 'piece-thumb-iframe';
+          iframe.onerror = function() { this.remove(); btn.classList.add('piece-thumb-placeholder'); };
+          btn.insertBefore(iframe, btn.firstChild);
+        };
+        btn.appendChild(img);
+      }
+    } else if (isOrdinalsThumb) {
+      // Ordinals content without animationUrl: try img, fallback to iframe, then placeholder
+      const img = document.createElement('img');
+      img.src = thumbUrl;
+      img.alt = piece.title || '';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        this.remove();
         const iframe = document.createElement('iframe');
-        iframe.src = piece.animationUrl || staticUrl;
+        iframe.src = thumbUrl;
         iframe.loading = 'lazy';
         iframe.sandbox = 'allow-scripts';
         iframe.scrolling = 'no';
         iframe.className = 'piece-thumb-iframe';
-        btn.appendChild(iframe);
-        // Add title overlay
-        const label = document.createElement('span');
-        label.className = 'piece-thumb-label';
-        label.textContent = piece.title || '';
-        btn.appendChild(label);
-      }
+        iframe.onerror = function() { this.remove(); btn.classList.add('piece-thumb-placeholder'); };
+        btn.insertBefore(iframe, btn.firstChild);
+      };
+      btn.appendChild(img);
     } else {
       const img = document.createElement('img');
       img.src = getStaticImageUrl(piece);
@@ -489,9 +513,17 @@ function buildPieceGrid(collection) {
       img.loading = 'lazy';
       btn.appendChild(img);
     }
+    // Add label for all thumbnails that don't already have one
+    if (!btn.querySelector('.piece-thumb-label') && piece.title) {
+      const label = document.createElement('span');
+      label.className = 'piece-thumb-label';
+      label.textContent = piece.title;
+      btn.appendChild(label);
+    }
+    const originalIdx = collection.pieces.indexOf(piece);
     btn.addEventListener('click', () => {
-      currentPieceIndex = idx;
-      showPiece(collection, idx);
+      currentPieceIndex = originalIdx;
+      showPiece(collection, originalIdx);
     });
     grid.appendChild(btn);
   });
@@ -552,7 +584,8 @@ let lastSlideshowColId = null;
 // Collections excluded from main slideshow (iframe-based, render left-aligned)
 const slideshowExclude = new Set([
   'gl1tch-c0des', 'a-solemn-rose', 'doom', 'deliverance',
-  'block-clocks', 'glitch-pack', 'renascent', 'block-party'
+  'block-clocks', 'glitch-pack', 'renascent', 'block-party',
+  'leverage'
 ]);
 
 const slideshowWeights = {
@@ -593,28 +626,62 @@ function weightedRandomCollection(exclude) {
   }
   return candidates[candidates.length - 1];
 }
-async function showRandomArt() {
+let nextSlide = null; // preloaded next slide
+
+function preloadNextSlide() {
   const randomManifest = weightedRandomCollection(lastSlideshowColId);
-  lastSlideshowColId = randomManifest.id;
-  const col = await loadCollection(randomManifest.id);
-  if (!col.pieces || col.pieces.length === 0) return;
-  const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
-  showHeroMedia(col, piece);
-  if (artTitle) artTitle.textContent = piece.title || '';
-  const artCollection = document.getElementById('art-collection');
-  if (artCollection) artCollection.textContent = col.title;
-  if (artChain) {
-    artChain.textContent = chainNames[col.chain] || col.chain;
-    artChain.dataset.chain = col.chain;
+  loadCollection(randomManifest.id).then(col => {
+    if (!col.pieces || col.pieces.length === 0) return;
+    const piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
+    const imgUrl = getStaticImageUrl(piece);
+    if (imgUrl && !imgUrl.includes('ordinals.com/content/') && !imgUrl.startsWith('data:')) {
+      const img = new Image();
+      img.src = imgUrl;
+    }
+    nextSlide = { manifest: randomManifest, col, piece };
+  });
+}
+
+async function showRandomArt() {
+  let randomManifest, col, piece;
+  if (nextSlide) {
+    randomManifest = nextSlide.manifest;
+    col = nextSlide.col;
+    piece = nextSlide.piece;
+    nextSlide = null;
+  } else {
+    randomManifest = weightedRandomCollection(lastSlideshowColId);
+    col = await loadCollection(randomManifest.id);
+    if (!col.pieces || col.pieces.length === 0) return;
+    piece = col.pieces[Math.floor(Math.random() * col.pieces.length)];
   }
-  currentCollectionId = col.id;
-  currentCarouselCollection = col;
-  currentPieceIndex = col.pieces.indexOf(piece);
+  lastSlideshowColId = randomManifest.id;
+  const updateSlide = () => {
+    showHeroMedia(col, piece);
+    if (artTitle) artTitle.textContent = piece.title || '';
+    const artCollection = document.getElementById('art-collection');
+    if (artCollection) {
+      artCollection.textContent = col.title;
+      artCollection.href = '#';
+      artCollection.onclick = (e) => { e.preventDefault(); e.stopPropagation(); showDetail(col.id); };
+    }
+    if (artChain) {
+      artChain.textContent = chainNames[col.chain] || col.chain;
+      artChain.dataset.chain = col.chain;
+    }
+    currentCollectionId = col.id;
+    currentCarouselCollection = col;
+    currentPieceIndex = col.pieces.indexOf(piece);
+  };
+  // Crossfade transition between slides
+  crossfadeHero(updateSlide);
+  // Preload the next slide while this one is showing
+  preloadNextSlide();
 }
 
 function startSlideshow() {
   stopSlideshow();
-  slideshowTimer = setInterval(showRandomArt, 20000);
+  slideshowTimer = setInterval(showRandomArt, 10000);
 }
 
 function stopSlideshow() {
@@ -755,10 +822,77 @@ function initPanelCollapse() {
   });
 }
 
+/* ===== MOTION / ANIMATION HELPERS ===== */
+
+// Stagger animation delays on child elements
+function staggerChildren(parent, selector, baseDelay, increment) {
+  if (!parent) return;
+  const items = parent.querySelectorAll(selector);
+  items.forEach((el, i) => {
+    el.style.animationDelay = (baseDelay + i * increment) + 's';
+  });
+}
+
+// IntersectionObserver for scroll-triggered reveals
+function initScrollReveals() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// Apply reveal class to detail view elements
+function applyDetailReveals() {
+  const revealTargets = [
+    '.detail-metadata',
+    '.marketplace-links',
+    '.piece-grid'
+  ];
+  revealTargets.forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el) {
+      el.classList.remove('visible');
+      el.classList.add('reveal');
+    }
+  });
+  // Re-init observer for new elements
+  setTimeout(initScrollReveals, 50);
+}
+
+// Crossfade transition for slideshow
+function crossfadeHero(callback) {
+  const container = document.querySelector('.art-container');
+  if (!container) { callback(); return; }
+  container.style.transition = 'opacity 0.4s ease-out';
+  container.style.opacity = '0';
+  setTimeout(() => {
+    callback();
+    container.style.opacity = '1';
+  }, 400);
+}
+
+// Stagger piece grid thumbnails on build
+function staggerPieceGrid() {
+  const grid = document.querySelector('.piece-grid') || document.getElementById('art-collection');
+  if (grid) staggerChildren(grid, '.piece-thumb', 0, 0.04);
+}
+
+// Stagger timeline items
+function staggerTimeline() {
+  staggerChildren(timeline, '.timeline-item', 0.05, 0.03);
+  staggerChildren(timeline, '.timeline-year', 0, 0.05);
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   await init();
   initDisplayMode();
   initPanelCollapse();
+  staggerTimeline();
   document.querySelector('.download-btn')?.addEventListener('click', (e) => { e.stopPropagation(); e.preventDefault(); downloadCurrentPiece(); });
   document.querySelector('.lightbox-close')?.addEventListener('click', closeLightbox);
   document.querySelectorAll('[data-view="home"]').forEach(el => el.addEventListener('click', () => showView('home')));
