@@ -26,9 +26,6 @@
     "heroImage": "https://ordinals.com/content/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
     "onchain": true,
     "galleryUrl": "https://ordinals.com/inscription/126ff468c9afb8ddacc88eb65e4f63874d4cdd7dfa8ecb61912c259973cb241ei0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/the-ord-lot"
-    },
     "xArticles": [
       {
         "title": "The Ord Lot — Article",
@@ -47,10 +44,7 @@
     "year": 2026,
     "supply": 5893,
     "uniquePieces": 32,
-    "galleryUrl": "https://ordinals.com/inscription/f87aee3cf04bcc1e351a3daf924cd99fc163afaa99eadee5e3d45181c519a15ci0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/btc-editions-by-solemn"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/f87aee3cf04bcc1e351a3daf924cd99fc163afaa99eadee5e3d45181c519a15ci0"
   },
   {
     "id": "the-masters",
@@ -60,10 +54,7 @@
     "supply": 31,
     "uniquePieces": 31,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/b5f53e5582cce8050defc3e230ded4ebfca1d2aa6fa13add63703b7d7e04b8c9i0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/the-masters-by-solemn"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/b5f53e5582cce8050defc3e230ded4ebfca1d2aa6fa13add63703b7d7e04b8c9i0"
   },
   {
     "id": "pepe-parrots",
@@ -85,10 +76,7 @@
     "supply": 0,
     "uniquePieces": 0,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/6d1d545dfcf3b7c3b6bcbe0848765a1b6222d36c88725614a6821afd7ba6c751i0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/leverage"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/6d1d545dfcf3b7c3b6bcbe0848765a1b6222d36c88725614a6821afd7ba6c751i0"
   },
   {
     "id": "block-party",
@@ -99,10 +87,7 @@
     "uniquePieces": 200,
     "heroImage": "https://ordinals.com/content/b1b1e9fe8e1399c8e9e1e9dd2e8b1e9e8b1e9e8b1i0",
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/f583f227f6ee0d9087038b5c417eecb1837455805f4f2fbebbdbc022b362fa0ai0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/blockparty"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/f583f227f6ee0d9087038b5c417eecb1837455805f4f2fbebbdbc022b362fa0ai0"
   },
   {
     "id": "block-clocks",
@@ -112,10 +97,7 @@
     "supply": 22,
     "uniquePieces": 22,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/f0ed8a150142d70f1014f3aba60e2030abf643ab54003aa76d7e24ef8644593ei0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/blockclocks"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/f0ed8a150142d70f1014f3aba60e2030abf643ab54003aa76d7e24ef8644593ei0"
   },
   {
     "id": "ordinal-party",
@@ -125,10 +107,7 @@
     "supply": 0,
     "uniquePieces": 0,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/cfcbfbda136a9f36a650822da02d3d9a6e4e67d55d37ce1e6de5ae47bfdfcba2i0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/ordinal-party-by-solemn"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/cfcbfbda136a9f36a650822da02d3d9a6e4e67d55d37ce1e6de5ae47bfdfcba2i0"
   },
   {
     "id": "dronebtc",
@@ -138,10 +117,7 @@
     "supply": 0,
     "uniquePieces": 0,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/1d2e184a1ed18af42a72bc933ee92bdf7b4b4497b06b32b487238ca3d75dd712i0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/drone-by-solemn"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/1d2e184a1ed18af42a72bc933ee92bdf7b4b4497b06b32b487238ca3d75dd712i0"
   },
   {
     "id": "deliverance",
@@ -152,10 +128,7 @@
     "uniquePieces": 19,
     "artistNote": "19 Cursed warriors",
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/1aad00416b1838b92aed5914f9e6ac27210f152782dd825b795a8abe761e0349i0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/deliverance"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/1aad00416b1838b92aed5914f9e6ac27210f152782dd825b795a8abe761e0349i0"
   },
   {
     "id": "doom",
@@ -165,10 +138,7 @@
     "supply": 105,
     "uniquePieces": 105,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/ea365882ee7b587a3fe4115806b7147363da0d8d5bde8f985175c87f84010824i0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/doom"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/ea365882ee7b587a3fe4115806b7147363da0d8d5bde8f985175c87f84010824i0"
   },
   {
     "id": "fiat-mafia",
@@ -179,10 +149,7 @@
     "uniquePieces": 2693,
     "isCollab": true,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/40d60aa458ccde183af9842eedb9cb29f1c527bf56a17eec56f66c7bfedae3efi0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/fiat-mafia"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/40d60aa458ccde183af9842eedb9cb29f1c527bf56a17eec56f66c7bfedae3efi0"
   },
   {
     "id": "a-solemn-rose",
@@ -191,10 +158,7 @@
     "year": 2024,
     "supply": 21,
     "uniquePieces": 21,
-    "galleryUrl": "https://ordinals.com/inscription/c03a78737a663c137a18f2ce6e256ef8e44db866fecfdfdf33d0eedf0a155ea1i0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/a-solemn-rose"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/c03a78737a663c137a18f2ce6e256ef8e44db866fecfdfdf33d0eedf0a155ea1i0"
   },
   {
     "id": "glitch-pack",
@@ -203,10 +167,7 @@
     "year": 2024,
     "supply": 1028,
     "uniquePieces": 12,
-    "galleryUrl": "https://ordinals.com/inscription/121c2d8a84ab31ccad85581b784a27b3604d5cc957355acc7eddac9c9aeaae67i0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/gl1tch-pack"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/121c2d8a84ab31ccad85581b784a27b3604d5cc957355acc7eddac9c9aeaae67i0"
   },
   {
     "id": "gl1tch-c0des",
@@ -215,10 +176,7 @@
     "year": 2023,
     "supply": 21,
     "uniquePieces": 21,
-    "galleryUrl": "https://ordinals.com/inscription/33a549364da3dbcf3fe5b35ae006481081beee2d5ad0d7d09d164117b278a7eei0",
-    "marketplaces": {
-      "ord-dropz": "https://ord-dropz.xyz/secondary/collections/gl1tch-c0de5"
-    }
+    "galleryUrl": "https://ordinals.com/inscription/33a549364da3dbcf3fe5b35ae006481081beee2d5ad0d7d09d164117b278a7eei0"
   },
   {
     "id": "glitch-bomb",
