@@ -370,7 +370,7 @@ async function showDetail(collectionId) {
   }
   if (or) { or.href = mps.ordinals || '#'; or.style.display = mps.ordinals ? '' : 'none'; }
   // Single "Marketplace" link — picks the first available marketplace URL
-  const marketplaceUrl = mps.opensea || mps.objkt || mps.superrare || mps['exchange-art'] || null;
+  const marketplaceUrl = mps['ord-net'] || mps.opensea || mps.objkt || mps.superrare || mps['exchange-art'] || null;
   let mp = document.getElementById('link-marketplace');
   if (!mp) {
     mp = document.createElement('a');

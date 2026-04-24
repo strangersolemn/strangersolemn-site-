@@ -35,7 +35,10 @@
         "title": "The Ord Lot",
         "url": "https://x.com/strangersolemn/status/2026384125037523192"
       }
-    ]
+    ],
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/the_ord_lot"
+    }
   },
   {
     "id": "btc-editions",
@@ -76,7 +79,10 @@
     "supply": 0,
     "uniquePieces": 0,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/6d1d545dfcf3b7c3b6bcbe0848765a1b6222d36c88725614a6821afd7ba6c751i0"
+    "galleryUrl": "https://ordinals.com/inscription/6d1d545dfcf3b7c3b6bcbe0848765a1b6222d36c88725614a6821afd7ba6c751i0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/leverage"
+    }
   },
   {
     "id": "block-party",
@@ -87,7 +93,10 @@
     "uniquePieces": 200,
     "heroImage": "https://ordinals.com/content/b1b1e9fe8e1399c8e9e1e9dd2e8b1e9e8b1e9e8b1i0",
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/f583f227f6ee0d9087038b5c417eecb1837455805f4f2fbebbdbc022b362fa0ai0"
+    "galleryUrl": "https://ordinals.com/inscription/f583f227f6ee0d9087038b5c417eecb1837455805f4f2fbebbdbc022b362fa0ai0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/block_party_by_solemn"
+    }
   },
   {
     "id": "block-clocks",
@@ -97,7 +106,10 @@
     "supply": 22,
     "uniquePieces": 22,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/f0ed8a150142d70f1014f3aba60e2030abf643ab54003aa76d7e24ef8644593ei0"
+    "galleryUrl": "https://ordinals.com/inscription/f0ed8a150142d70f1014f3aba60e2030abf643ab54003aa76d7e24ef8644593ei0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/block_clocks_by_solemn"
+    }
   },
   {
     "id": "ordinal-party",
@@ -107,7 +119,10 @@
     "supply": 0,
     "uniquePieces": 0,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/cfcbfbda136a9f36a650822da02d3d9a6e4e67d55d37ce1e6de5ae47bfdfcba2i0"
+    "galleryUrl": "https://ordinals.com/inscription/cfcbfbda136a9f36a650822da02d3d9a6e4e67d55d37ce1e6de5ae47bfdfcba2i0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/ordinalparty"
+    }
   },
   {
     "id": "dronebtc",
@@ -117,7 +132,10 @@
     "supply": 0,
     "uniquePieces": 0,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/1d2e184a1ed18af42a72bc933ee92bdf7b4b4497b06b32b487238ca3d75dd712i0"
+    "galleryUrl": "https://ordinals.com/inscription/1d2e184a1ed18af42a72bc933ee92bdf7b4b4497b06b32b487238ca3d75dd712i0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/dronebysolemn"
+    }
   },
   {
     "id": "deliverance",
@@ -128,7 +146,10 @@
     "uniquePieces": 19,
     "artistNote": "19 Cursed warriors",
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/1aad00416b1838b92aed5914f9e6ac27210f152782dd825b795a8abe761e0349i0"
+    "galleryUrl": "https://ordinals.com/inscription/1aad00416b1838b92aed5914f9e6ac27210f152782dd825b795a8abe761e0349i0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/deliverance"
+    }
   },
   {
     "id": "doom",
@@ -149,7 +170,10 @@
     "uniquePieces": 2693,
     "isCollab": true,
     "onchain": true,
-    "galleryUrl": "https://ordinals.com/inscription/40d60aa458ccde183af9842eedb9cb29f1c527bf56a17eec56f66c7bfedae3efi0"
+    "galleryUrl": "https://ordinals.com/inscription/40d60aa458ccde183af9842eedb9cb29f1c527bf56a17eec56f66c7bfedae3efi0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/fiatmafia"
+    }
   },
   {
     "id": "a-solemn-rose",
@@ -167,7 +191,10 @@
     "year": 2024,
     "supply": 1028,
     "uniquePieces": 12,
-    "galleryUrl": "https://ordinals.com/inscription/121c2d8a84ab31ccad85581b784a27b3604d5cc957355acc7eddac9c9aeaae67i0"
+    "galleryUrl": "https://ordinals.com/inscription/121c2d8a84ab31ccad85581b784a27b3604d5cc957355acc7eddac9c9aeaae67i0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/glitchpack"
+    }
   },
   {
     "id": "gl1tch-c0des",
@@ -176,7 +203,10 @@
     "year": 2023,
     "supply": 21,
     "uniquePieces": 21,
-    "galleryUrl": "https://ordinals.com/inscription/33a549364da3dbcf3fe5b35ae006481081beee2d5ad0d7d09d164117b278a7eei0"
+    "galleryUrl": "https://ordinals.com/inscription/33a549364da3dbcf3fe5b35ae006481081beee2d5ad0d7d09d164117b278a7eei0",
+    "marketplaces": {
+      "ord-net": "https://ord.net/collection/glitchcodescc0"
+    }
   },
   {
     "id": "glitch-bomb",
