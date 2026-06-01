@@ -560,6 +560,8 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
   margin: 2rem 0;
 }
 
+.about-explore { margin-bottom: 2rem; }
+
 .about-interview { margin-bottom: 2rem; }
 
 .about-interview-link {
