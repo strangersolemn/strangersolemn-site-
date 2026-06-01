@@ -12,8 +12,8 @@
   <body>
     <div class="about-page">
       <div class="about-hero">
-        <iframe class="about-hero-iframe" id="aboutHeroFrame" title="Featured work" loading="lazy" scrolling="no"></iframe>
-        <img class="about-hero-img" id="aboutHeroImg" alt="Featured work" loading="lazy">
+        <iframe class="about-hero-iframe" id="aboutHeroA" title="Featured work" loading="lazy" scrolling="no"></iframe>
+        <iframe class="about-hero-iframe" id="aboutHeroB" title="Featured work" loading="lazy" scrolling="no"></iframe>
         <div class="about-hero-feather"></div>
       </div>
       <div class="about-content">
@@ -43,29 +43,28 @@
     </div>
     <script>
     (function(){
-      var frame=document.getElementById('aboutHeroFrame');
-      var img=document.getElementById('aboutHeroImg');
-      if(!frame||!img) return;
-      var renascent=["https://nft-cdn.alchemy.com/eth-mainnet/81ed3c0669e61683cd3c465819502fc7","https://nft-cdn.alchemy.com/eth-mainnet/3884dd2da7ca340cf4939e4cff8bd42d","https://nft-cdn.alchemy.com/eth-mainnet/57c843cf1810b8d04dfdfec3e85b0038","https://nft-cdn.alchemy.com/eth-mainnet/68173c187308896c043baa26b5677e6d","https://nft-cdn.alchemy.com/eth-mainnet/1bb252251492625435fc6057c29e71ba","https://nft-cdn.alchemy.com/eth-mainnet/0044dfe4ad1db52d608197a1e4f650a9","https://nft-cdn.alchemy.com/eth-mainnet/d7b7f834fa65384f626434e51a91e026","https://nft-cdn.alchemy.com/eth-mainnet/d62cc15ef531213ee162a0e6e4a2a0b0","https://nft-cdn.alchemy.com/eth-mainnet/7c480792b822422dac2c6e72da4f2d4e","https://nft-cdn.alchemy.com/eth-mainnet/582230b0e34f9cf92c509f0a540233bd","https://nft-cdn.alchemy.com/eth-mainnet/ab613f10327117f150d53be1b7af5ccd","https://nft-cdn.alchemy.com/eth-mainnet/60b42f888acec077411314a2cb3e78ef","https://nft-cdn.alchemy.com/eth-mainnet/c4910568d8b0c65a0ddd92b60f1d60ac","https://nft-cdn.alchemy.com/eth-mainnet/179c6d35dbca93f4a6bd36ea8e81ab5b","https://nft-cdn.alchemy.com/eth-mainnet/c5af1ea247d829cf9a2e32c9cee35323","https://nft-cdn.alchemy.com/eth-mainnet/2ee9cf1d0efb0f4f4c972a3b823d9aba","https://nft-cdn.alchemy.com/eth-mainnet/5d075951bd7c4a6f6076a9468c6cb344","https://nft-cdn.alchemy.com/eth-mainnet/de381371794390ae061355d2ffa520db"];
+      var frames=[document.getElementById('aboutHeroA'), document.getElementById('aboutHeroB')];
+      if(!frames[0]||!frames[1]) return;
+      var cur=0, pool=[], idx=0, timer=null;
       function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
-      function start(btc){
-        var pool=[];
-        btc.forEach(function(u){pool.push({k:'f',u:u});});
-        renascent.forEach(function(u){pool.push({k:'i',u:u});});
-        pool=shuffle(pool);
+      function tick(){
         if(!pool.length) return;
-        var idx=0;
-        function tick(){
-          var item=pool[idx % pool.length]; idx++;
-          if(item.k==='f'){ frame.src=item.u; frame.classList.add('is-visible'); img.classList.remove('is-visible'); }
-          else { img.src=item.u; img.classList.add('is-visible'); frame.classList.remove('is-visible'); }
-        }
-        tick(); setInterval(tick, 8000);
+        var url=pool[idx % pool.length]; idx++;
+        var next=frames[1-cur];
+        next.onload=function(){ next.classList.add('is-visible'); frames[cur].classList.remove('is-visible'); cur=1-cur; };
+        next.src=url;
       }
-      fetch('collections/btc-editions.json?v='+Date.now())
-        .then(function(r){return r.json();})
-        .then(function(d){ start((d.pieces||[]).map(function(p){return p.animationUrl||p.image;}).filter(Boolean)); })
-        .catch(function(){ start([]); });
+      function ensure(){ if(!timer && pool.length){ tick(); timer=setInterval(tick, 8000); } }
+      function load(file){
+        return fetch('collections/'+file+'?v='+Date.now())
+          .then(function(r){return r.json();})
+          .then(function(d){ return (d.pieces||[]).map(function(p){return p.animationUrl||p.image;}).filter(Boolean); })
+          .catch(function(){ return []; });
+      }
+      // BTC Editions are light (ordinals URLs) — start rotating asap.
+      load('btc-editions.json').then(function(b){ pool=shuffle(pool.concat(b)); ensure(); });
+      // Renascent JSON is heavy (base64); load in background and fold in once ready.
+      load('renascent.json').then(function(r){ pool=shuffle(pool.concat(r)); ensure(); });
     })();
     </script>
   </body>
