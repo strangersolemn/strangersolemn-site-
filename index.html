@@ -60,7 +60,7 @@
           if(item.k==='f'){ frame.src=item.u; frame.classList.add('is-visible'); img.classList.remove('is-visible'); }
           else { img.src=item.u; img.classList.add('is-visible'); frame.classList.remove('is-visible'); }
         }
-        tick(); setInterval(tick, 7000);
+        tick(); setInterval(tick, 8000);
       }
       fetch('collections/btc-editions.json?v='+Date.now())
         .then(function(r){return r.json();})
