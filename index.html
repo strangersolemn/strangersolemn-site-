@@ -81,7 +81,8 @@
       // BTC Editions are light (ordinals URLs) — start rotating asap.
       load('btc-editions.json','BTC Editions').then(function(b){ pool=shuffle(pool.concat(b)); ensure(); });
       // Renascent JSON is heavy (base64); load in background and fold in once ready.
-      load('renascent.json','Renascent').then(function(r){ pool=shuffle(pool.concat(r)); ensure(); });
+      // Weighted to play more often than BTC Editions (folded in 3x).
+      load('renascent.json','Renascent').then(function(r){ pool=shuffle(pool.concat(r,r,r)); ensure(); });
     })();
     </script>
   </body>
