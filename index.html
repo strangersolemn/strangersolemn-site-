@@ -7,13 +7,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=44">
+    <link rel="stylesheet" href="styles.css?v=45">
   </head>
   <body>
     <div class="about-page">
       <div class="about-hero">
         <iframe class="about-hero-iframe" id="aboutHeroA" title="Featured work" loading="lazy" scrolling="no"></iframe>
         <iframe class="about-hero-iframe" id="aboutHeroB" title="Featured work" loading="lazy" scrolling="no"></iframe>
+        <div class="about-hero-caption" id="aboutHeroCap">
+          <span class="hero-art-title" id="aboutHeroTitle"></span>
+          <span class="hero-art-collection" id="aboutHeroColl"></span>
+        </div>
         <div class="about-hero-feather"></div>
       </div>
       <div class="about-content">
@@ -44,27 +48,40 @@
     <script>
     (function(){
       var frames=[document.getElementById('aboutHeroA'), document.getElementById('aboutHeroB')];
+      var cap=document.getElementById('aboutHeroCap');
+      var capT=document.getElementById('aboutHeroTitle');
+      var capC=document.getElementById('aboutHeroColl');
       if(!frames[0]||!frames[1]) return;
       var cur=0, pool=[], idx=0, timer=null;
       function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
       function tick(){
         if(!pool.length) return;
-        var url=pool[idx % pool.length]; idx++;
+        var item=pool[idx % pool.length]; idx++;
         var next=frames[1-cur];
-        next.onload=function(){ next.classList.add('is-visible'); frames[cur].classList.remove('is-visible'); cur=1-cur; };
-        next.src=url;
+        next.onload=function(){
+          next.classList.add('is-visible');
+          frames[cur].classList.remove('is-visible');
+          cur=1-cur;
+          if(capT) capT.textContent=item.t||'Untitled';
+          if(capC) capC.textContent=item.c||'';
+          if(cap) cap.classList.add('is-visible');
+        };
+        next.src=item.u;
       }
       function ensure(){ if(!timer && pool.length){ tick(); timer=setInterval(tick, 8000); } }
-      function load(file){
+      function load(file, collection){
         return fetch('collections/'+file+'?v='+Date.now())
           .then(function(r){return r.json();})
-          .then(function(d){ return (d.pieces||[]).map(function(p){return p.animationUrl||p.image;}).filter(Boolean); })
+          .then(function(d){ return (d.pieces||[]).map(function(p){
+            var u=p.animationUrl||p.image; if(!u) return null;
+            return {u:u, t:(p.title||'').trim(), c:collection};
+          }).filter(Boolean); })
           .catch(function(){ return []; });
       }
       // BTC Editions are light (ordinals URLs) — start rotating asap.
-      load('btc-editions.json').then(function(b){ pool=shuffle(pool.concat(b)); ensure(); });
+      load('btc-editions.json','BTC Editions').then(function(b){ pool=shuffle(pool.concat(b)); ensure(); });
       // Renascent JSON is heavy (base64); load in background and fold in once ready.
-      load('renascent.json').then(function(r){ pool=shuffle(pool.concat(r)); ensure(); });
+      load('renascent.json','Renascent').then(function(r){ pool=shuffle(pool.concat(r)); ensure(); });
     })();
     </script>
   </body>

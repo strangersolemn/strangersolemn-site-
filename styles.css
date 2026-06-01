@@ -486,15 +486,17 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
   position: relative;
   overflow: hidden;
   background: var(--bg-primary);
+  container-type: size;
 }
 
 .about-hero-img, .about-hero-iframe {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
+  object-fit: contain;
   border: none;
   pointer-events: none;
   opacity: 0;
@@ -502,6 +504,27 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
 }
 
 .about-hero-img.is-visible, .about-hero-iframe.is-visible { opacity: 1; }
+
+.about-hero-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.5rem 1.75rem;
+  font-family: var(--font-mono);
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.about-hero-caption.is-visible { opacity: 1; }
+.hero-art-title { font-size: 0.82rem; font-weight: 700; color: #ffffff; letter-spacing: 0.02em; }
+.hero-art-collection { font-size: 0.68rem; color: #9b59b6; text-transform: uppercase; letter-spacing: 0.1em; }
 
 .about-hero-feather { display: none; }
 
