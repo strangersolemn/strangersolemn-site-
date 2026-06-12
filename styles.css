@@ -581,7 +581,15 @@ html, body { height: 100%; background: var(--bg-primary); color: var(--text-prim
   text-align: left;
 }
 
-.about-statement p:last-child { margin-bottom: 0; color: var(--text-primary); font-weight: 700; }
+.about-statement p:last-child { margin-bottom: 0; }
+
+.about-tagline {
+  margin-top: 1.8rem !important;
+  color: #9b59b6 !important;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
 
 .about-divider {
   border: none;
