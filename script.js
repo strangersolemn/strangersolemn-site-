@@ -107,6 +107,14 @@ async function init() {
   initSearch();
   // Preload all collections in background so slideshow can pick randomly
   collectionsManifest.forEach(c => loadCollection(c.id));
+  // Deep-link on load: if the URL points at a real collection, open it instead of the slideshow.
+  window.addEventListener('hashchange', handleHashRoute);
+  const hm = location.hash.match(/^#c\/(.+)$/);
+  const hashId = hm ? decodeURIComponent(hm[1]) : null;
+  if (hashId && collectionsManifest.find(c => c.id === hashId)) {
+    await showDetail(hashId);
+    return;
+  }
   // Start with a random piece immediately
   if (collectionsManifest.length > 0) {
     await showRandomArt();
@@ -122,10 +130,23 @@ function showView(viewName) {
   if (viewName === 'home') {
     timelinePanel.classList.remove('hidden');
     currentCollectionId = null;
+    // Drop the collection hash from the URL without triggering a route change.
+    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
     startSlideshow();
   } else {
     stopSlideshow();
   }
+}
+
+// Deep-link routing: open the collection named in #c/<id>, or fall back home.
+function handleHashRoute() {
+  const m = location.hash.match(/^#c\/(.+)$/);
+  if (m) {
+    const id = decodeURIComponent(m[1]);
+    if (currentCollectionId === id && views.detail?.classList.contains('active')) return;
+    if (collectionsManifest.find(c => c.id === id)) { showDetail(id); return; }
+  }
+  if (views.detail?.classList.contains('active')) showView('home');
 }
 
 function buildTimeline() {
@@ -334,6 +355,10 @@ async function showDetail(collectionId) {
     if (manifestEntry.galleryUrl) collection.galleryUrl = manifestEntry.galleryUrl;
     if (manifestEntry.marketplaces) collection.marketplaces = { ...collection.marketplaces, ...manifestEntry.marketplaces };
     if (manifestEntry.xArticles) collection.xArticles = manifestEntry.xArticles;
+    // Fill any scalar info fields the per-collection JSON is missing from the manifest.
+    ['chain','year','supply','uniquePieces','contract','description','artistNote','minted','onchain','isCollab','isEditions'].forEach(k => {
+      if (collection[k] == null && manifestEntry[k] != null) collection[k] = manifestEntry[k];
+    });
   }
   currentCarouselCollection = collection;
   currentPieceIndex = 0;
@@ -357,7 +382,31 @@ async function showDetail(collectionId) {
   }
   if (detailMetadata) {
     let meta = '';
+    if (collection.description) meta += '<p class="collection-desc">' + collection.description + '</p>';
     if (collection.artistNote) meta += '<p class="artist-note">' + collection.artistNote + '</p>';
+    // Structured info table — reads whatever fields exist; extra fields (minted, etc.) drop in automatically.
+    const rows = [];
+    const chainFull = { ordinals: 'Bitcoin Ordinals', ethereum: 'Ethereum', tezos: 'Tezos', solana: 'Solana' };
+    if (collection.chain) rows.push(['Chain', chainFull[collection.chain] || collection.chain]);
+    if (collection.year) rows.push(['Year', collection.year]);
+    if (collection.minted) rows.push(['Minted', collection.minted]);
+    if (collection.supply) rows.push(['Supply', collection.supply]);
+    if (collection.uniquePieces && collection.uniquePieces !== collection.supply) rows.push(['Unique pieces', collection.uniquePieces]);
+    if (collection.isEditions) rows.push(['Format', 'Editions']);
+    if (collection.isCollab) rows.push(['Type', 'Collaboration']);
+    if (collection.onchain) rows.push(['Storage', 'Fully on-chain']);
+    if (collection.contract) {
+      const c = collection.contract;
+      const short = c.length > 14 ? c.slice(0, 6) + '…' + c.slice(-4) : c;
+      let url = null;
+      if (collection.chain === 'ethereum') url = 'https://etherscan.io/address/' + c;
+      rows.push(['Contract', url ? '<a href="' + url + '" target="_blank" rel="noopener" class="meta-link">' + short + '</a>' : short]);
+    }
+    if (rows.length) {
+      meta += '<div class="collection-info">';
+      rows.forEach(r => { meta += '<div class="meta-row"><span class="meta-label">' + r[0] + '</span><span class="meta-value">' + r[1] + '</span></div>'; });
+      meta += '</div>';
+    }
     detailMetadata.innerHTML = meta;
   }
   const mps = collection.marketplaces || {};
@@ -420,6 +469,9 @@ async function showDetail(collectionId) {
   }
   showView('detail');
   timelinePanel.classList.remove('open');
+  // Deep-link: reflect the open collection in the URL so it can be shared / bookmarked.
+  const targetHash = '#c/' + collectionId;
+  if (location.hash !== targetHash) location.hash = targetHash;
 }
 
 function buildPieceGrid(collection) {
