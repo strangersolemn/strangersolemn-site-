@@ -666,16 +666,16 @@ body { display: flex; flex-direction: column; }
 
 .about-footer { padding-top: 1rem; margin-top: auto; border-top: 1px solid rgba(255,255,255,0.06); }
 
-/* Mobile about */
+/* Mobile about — page scrolls as one document; hero gets a fixed height */
 @media (max-width: 768px) {
-  .about-page { flex-direction: column; height: auto; min-height: calc(100vh - var(--banner-h)); overflow-y: auto; }
+  html:has(.about-page), body:has(.about-page) { overflow: auto; height: auto; }
+  .about-page { flex-direction: column; height: auto; min-height: 100vh; overflow-y: auto; }
   .about-hero { height: 50vh; flex: none; }
   .about-content { width: 100%; min-width: 0; border-left: none; padding: 2rem 1.5rem 3rem; }
 }
 
 /* ARTICLES PAGE */
 html:has(.articles-page), body:has(.articles-page) { overflow: auto; height: auto; }
-html:has(.about-page), body:has(.about-page) { overflow: auto; height: auto; }
 .articles-page {
   min-height: calc(100vh - var(--banner-h));
   background-color: var(--bg-primary);
