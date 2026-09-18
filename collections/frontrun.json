@@ -5,7 +5,7 @@
   "year": 2026,
   "supply": 666,
   "uniquePieces": 666,
-  "contract": "0xb6f0c485EBB46727a4364bE0F36D81c7fD33e9AB",
+  "contract": "0xf8c20abd9c233a9de999c2ac6f1628df3f64efb0",
   "onchain": true,
   "heroImage": "art/frontrun/frontrun-03.jpg",
   "description": "666 fully on-chain generative pieces on Ethereum. The wallet that holds a piece writes how it looks, so no two resolve the same. Send it to a new wallet and it repaints for the new holder.",

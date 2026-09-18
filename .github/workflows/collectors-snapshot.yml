@@ -1,0 +1,26 @@
+name: Collectors snapshot
+on:
+  schedule:
+    - cron: '17 3 * * *'   # nightly, 03:17 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/snapshot-collectors.mjs
+        env:
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+          OPENSEA_API_KEY: ${{ secrets.OPENSEA_API_KEY }}
+      - name: Commit if changed
+        run: |
+          git config user.name "collectors-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add collectors.json
+          git diff --cached --quiet || (git commit -m "Collectors snapshot" && git push)

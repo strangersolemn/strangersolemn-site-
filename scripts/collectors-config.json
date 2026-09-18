@@ -1,0 +1,11 @@
+{
+  "_note": "Wallets listed in 'exclude' never appear on the collectors board. Add your own wallets and any marketplace escrow addresses here.",
+  "frontrunContract": "0xf8c20abd9c233a9de999c2ac6f1628df3f64efb0",
+  "exclude": [
+    "0x0000000000000000000000000000000000000000",
+    "0x000000000000000000000000000000000000dead",
+    "tz1burnburnburnburnburnburnburjAYjjX",
+    "tz1V3FzMekAcqftBXAxnY2P7B3LKuZJ4ueuX",
+    "0xef682b1d0835df1f971d5d1f4565e9f6c121f706"
+  ]
+}
