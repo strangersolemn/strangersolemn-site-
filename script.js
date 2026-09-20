@@ -869,8 +869,19 @@ function initPanelCollapse() {
   const btn = document.getElementById('panel-collapse');
   const container = document.querySelector('.container');
   if (!btn || !container) return;
+  const KEY = 'ss-panel-collapsed';
+  const apply = (on) => {
+    container.classList.toggle('panel-collapsed', on);
+    btn.setAttribute('aria-expanded', String(!on));
+    btn.title = on ? 'Show collections panel' : 'Hide collections panel';
+  };
+  let saved = false;
+  try { saved = localStorage.getItem(KEY) === '1'; } catch (e) {}
+  apply(saved);
   btn.addEventListener('click', () => {
-    container.classList.toggle('panel-collapsed');
+    const on = !container.classList.contains('panel-collapsed');
+    apply(on);
+    try { localStorage.setItem(KEY, on ? '1' : '0'); } catch (e) {}
   });
 }
 
