@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=58">
+    <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=60">
   </head>
   <body>
     <a class="site-banner" href="https://frontrun.strangersolemn.art" target="_blank" rel="noopener">
@@ -27,13 +28,13 @@
       <a class="site-nav-link" href="articles.html">Articles</a>
       <span class="site-nav-link is-soon" title="Opening soon">Discord &middot; soon</span>
     </nav>
-    <div class="board-page">
+    <div class="board-page is-frontrun">
       <div class="board-wrap">
         <div class="fr-hero">
-          <div class="fr-frame"><img id="fr-poster" src="art/frontrun/frontrun-03.jpg" alt="FRONTRUN — Crimson Standard"><iframe id="fr-live" title="FRONTRUN live render" scrolling="no" hidden></iframe><button class="board-btn fr-play" id="fr-play" hidden>&#9654; Live render</button></div>
+          <div class="fr-frame"><img id="fr-poster" src="art/frontrun/frontrun-03.jpg" alt="FRONTRUN — Crimson Standard"><iframe id="fr-live" title="FRONTRUN live render" scrolling="no" hidden></iframe><button class="board-btn fr-play" id="fr-play" hidden>&#9654; Live render</button><a class="board-btn fr-play" id="fr-open" href="https://frontrun.strangersolemn.art/sketch-v4-glitch-lab.html?preview=1" target="_blank" rel="noopener" hidden>Open full screen &#8599;</a></div>
           <div>
-            <span class="chain-badge" data-chain="ethereum">ETH &middot; 2026 &middot; fully on-chain</span>
-            <h1 class="fr-title">FRONTRUN</h1>
+            <div class="fr-eyebrow">Generative &middot; On-chain &middot; Ethereum</div>
+            <h1 class="fr-title">FRONT<span>RUN</span></h1>
             <p class="fr-note" id="fr-note"></p>
             <p class="fr-desc" id="fr-desc"></p>
             <div class="fr-stats">
@@ -47,9 +48,11 @@
               <a class="board-btn" href="https://opensea.io/collection/frontrun" target="_blank" rel="noopener">OpenSea</a>
               <a class="board-btn" href="collections.html#c/frontrun">View pieces</a>
             </div>
+            <div class="fr-live"><i></i>Sold out &middot; the race is live &middot; 100% on-chain</div>
           </div>
         </div>
         <h2 class="fr-section">Holders</h2>
+        <div class="fr-top" id="fr-top" hidden><div class="fr-top-crown">&#128081;</div><div><small>Top holder</small><b id="fr-top-name"></b><span id="fr-top-meta"></span></div></div>
         <div id="board" data-collection="frontrun" data-limit="25" data-cotd="0"></div>
         <footer class="articles-footer"><p class="copyright">&copy; Stranger Solemn 2026</p></footer>
       </div>
@@ -64,6 +67,7 @@
           btn.onclick = function () {
             var f = document.getElementById('fr-live'); f.src = live.animationUrl; f.hidden = false;
             document.getElementById('fr-poster').hidden = true; btn.hidden = true;
+            document.getElementById('fr-open').hidden = false;
           };
         }
       });
@@ -71,6 +75,12 @@
         var h = e.detail.collectors.filter(function (c) { return c.cols.frontrun; });
         document.getElementById('fr-holders').textContent = h.length;
         document.getElementById('fr-held').textContent = h.reduce(function (s, c) { return s + c.cols.frontrun; }, 0);
+        var top = h.slice().sort(function (a, b) { return b.cols.frontrun - a.cols.frontrun; })[0];
+        if (top) {
+          document.getElementById('fr-top-name').textContent = top.name || top.a;
+          document.getElementById('fr-top-meta').textContent = top.cols.frontrun + ' runners held';
+          document.getElementById('fr-top').hidden = false;
+        }
       });
     </script>
     <script src="collectors.js?v=1"></script>
