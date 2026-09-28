@@ -7,10 +7,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=57">
+    <link rel="stylesheet" href="styles.css?v=58">
   </head>
   <body>
-    <a class="site-banner" href="https://frontrun.strangersolemn.art" target="_blank" rel="noopener">
+    <a class="site-banner" href="frontrun.html">
       <span class="site-banner-tag">New</span>
       <span class="site-banner-text">FRONTRUN &mdash; fully on-chain Ethereum collection</span>
       <span class="site-banner-arrow">&rarr;</span>
@@ -25,13 +25,25 @@
     </nav>
     <div class="about-page">
       <div class="about-hero">
-        <iframe class="about-hero-iframe" id="aboutHeroA" title="Featured work" loading="lazy" scrolling="no"></iframe>
-        <iframe class="about-hero-iframe" id="aboutHeroB" title="Featured work" loading="lazy" scrolling="no"></iframe>
-        <div class="about-hero-caption" id="aboutHeroCap">
-          <span class="hero-art-title" id="aboutHeroTitle"></span>
-          <span class="hero-art-collection" id="aboutHeroColl"></span>
+        <div class="hero-stage">
+          <div class="hero-frame is-loading" id="heroFrame">
+            <img id="heroImg" alt="" hidden>
+            <video id="heroVideo" autoplay loop muted playsinline hidden></video>
+            <iframe id="heroIframe" title="Featured work" scrolling="no" hidden></iframe>
+          </div>
         </div>
-        <div class="about-hero-feather"></div>
+        <div class="hero-bar">
+          <div class="hero-meta">
+            <span class="hero-art-title" id="heroTitle"></span>
+            <a class="hero-art-collection" id="heroColl" href="collections.html"></a>
+          </div>
+          <div class="hero-controls">
+            <button class="hero-btn" id="heroPrev" aria-label="Previous artwork"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+            <button class="hero-btn" id="heroPlay" aria-label="Pause slideshow"></button>
+            <button class="hero-btn" id="heroShuffle" aria-label="Shuffle"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></button>
+            <button class="hero-btn" id="heroNext" aria-label="Next artwork"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+          </div>
+        </div>
       </div>
       <div class="about-content">
         <header class="about-header">
@@ -41,9 +53,8 @@
         <div class="about-statement">
           <h2 class="about-statement-title">About</h2>
           <p>My creative journey is an ever-evolving exploration of computer-made art &mdash; visual, audio, animation, and code.</p>
-          <p>Before NFTs came along, my background was in the underground electronic music scene, wearing many creative hats: producer/DJ, graphic designer, videographer, and more. Music is my first love, and I try to include it in everything I do.</p>
-          <p>My NFT journey began in 2021, running from the dark-vibe Tezos scene through a year-long Everydays in 2022 &mdash; mostly high-fidelity GIFs and video at first. Arriving at Bitcoin at the advent of Ordinals changed that: the restraints of the network pushed me into creative coding and recursion.</p>
-          <p>My skills and tools keep evolving, and so does the work. My latest pieces on Ethereum and Bitcoin are built with code, music, and whatever the medium will allow &mdash; composed and arranged the way I'd produce a track, so it feels like I'm producing the art rather than just making it. I'm driven as much by innovation as by the craft itself, always reaching for something that hasn't been done before.</p>
+          <p>I came up through the underground electronic music scene. Music is my first love, and I try to include it in everything I do.</p>
+          <p>Built with code, music, and whatever the medium will allow, on Bitcoin, Ethereum and beyond.</p>
           <p class="about-tagline">The journey continues&hellip;</p>
         </div>
         <div class="about-explore">
@@ -59,45 +70,6 @@
         </footer>
       </div>
     </div>
-    <script>
-    (function(){
-      var frames=[document.getElementById('aboutHeroA'), document.getElementById('aboutHeroB')];
-      var cap=document.getElementById('aboutHeroCap');
-      var capT=document.getElementById('aboutHeroTitle');
-      var capC=document.getElementById('aboutHeroColl');
-      if(!frames[0]||!frames[1]) return;
-      var cur=0, pool=[], idx=0, timer=null;
-      function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
-      function tick(){
-        if(!pool.length) return;
-        var item=pool[idx % pool.length]; idx++;
-        var next=frames[1-cur];
-        next.onload=function(){
-          next.classList.add('is-visible');
-          frames[cur].classList.remove('is-visible');
-          cur=1-cur;
-          if(capT) capT.textContent=item.t||'Untitled';
-          if(capC) capC.textContent=item.c||'';
-          if(cap) cap.classList.add('is-visible');
-        };
-        next.src=item.u;
-      }
-      function ensure(){ if(!timer && pool.length){ tick(); timer=setInterval(tick, 8000); } }
-      function load(file, collection){
-        return fetch('collections/'+file+'?v='+Date.now())
-          .then(function(r){return r.json();})
-          .then(function(d){ return (d.pieces||[]).map(function(p){
-            var u=p.animationUrl||p.image; if(!u) return null;
-            return {u:u, t:(p.title||'').trim(), c:collection};
-          }).filter(Boolean); })
-          .catch(function(){ return []; });
-      }
-      // BTC Editions are light (ordinals URLs) — start rotating asap.
-      load('btc-editions.json','BTC Editions').then(function(b){ pool=shuffle(pool.concat(b)); ensure(); });
-      // Renascent JSON is heavy (base64); load in background and fold in once ready.
-      // Weighted to play more often than BTC Editions (folded in 3x).
-      load('renascent.json','Renascent').then(function(r){ pool=shuffle(pool.concat(r,r,r)); ensure(); });
-    })();
-    </script>
+    <script src="hero.js?v=1"></script>
   </body>
 </html>

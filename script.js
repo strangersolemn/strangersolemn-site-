@@ -771,7 +771,21 @@ function enterDisplayMode(collection, pieceIndex, lockToCollection) {
   loadDisplayPiece();
 }
 
+let displayPlayTimer = null;
+const PLAY_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="7,4 20,12 7,20"/></svg>';
+const PAUSE_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>';
+function setDisplayPlaying(on) {
+  clearInterval(displayPlayTimer);
+  displayPlayTimer = on ? setInterval(displayModeNext, 10000) : null;
+  const btn = document.querySelector('.display-play');
+  if (!btn) return;
+  btn.classList.toggle('is-on', on);
+  btn.innerHTML = on ? PAUSE_ICON : PLAY_ICON;
+  btn.setAttribute('aria-label', on ? 'Pause slideshow' : 'Play slideshow');
+}
+
 function exitDisplayMode() {
+  setDisplayPlaying(false);
   displayMode?.classList.remove('active');
   displayModeCollection = null;
   if (displayIframe) displayIframe.src = '';
@@ -863,6 +877,7 @@ function initDisplayMode() {
   document.querySelector('.display-prev')?.addEventListener('click', displayModePrev);
   document.querySelector('.display-next')?.addEventListener('click', displayModeNext);
   document.querySelector('.display-shuffle')?.addEventListener('click', displayModeShuffle);
+  document.querySelector('.display-play')?.addEventListener('click', () => setDisplayPlaying(!displayPlayTimer));
 }
 
 function initPanelCollapse() {
