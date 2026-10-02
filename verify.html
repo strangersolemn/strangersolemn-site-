@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify — Stranger Solemn</title>
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=61">
+  </head>
+  <body>
+    <a class="site-banner" href="frontrun.html">
+      <span class="site-banner-tag">New</span>
+      <span class="site-banner-text">FRONTRUN &mdash; fully on-chain Ethereum collection</span>
+      <span class="site-banner-arrow">&rarr;</span>
+    </a>
+    <nav class="site-nav" aria-label="Site">
+      <a class="site-nav-link" href="index.html">About</a>
+      <a class="site-nav-link" href="collections.html">Collections</a>
+      <a class="site-nav-link" href="collectors.html">Collectors</a>
+      <a class="site-nav-link is-frontrun" href="frontrun.html">FRONTRUN</a>
+      <a class="site-nav-link" href="articles.html">Articles</a>
+      <span class="site-nav-link is-soon" title="Opening soon">Discord &middot; soon</span>
+    </nav>
+    <div class="board-page">
+      <div class="board-wrap verify-wrap">
+        <h1 class="board-title">Verify your Ordinals</h1>
+        <p class="board-sub">Prove a Bitcoin wallet holds the work and get the <b>Ordinals</b> role in the Discord. You sign a message. Nothing is sent, nothing is spent, no transaction is ever asked for.</p>
+
+        <div class="verify-step" id="step-link">
+          <div class="cotd-label">Step 1 &middot; Discord</div>
+          <p class="verify-text" id="link-status">Type <code>/verify</code> in the Discord and open the link it gives you. The link is what connects this page to your Discord account.</p>
+        </div>
+
+        <div class="verify-step" id="step-wallet" hidden>
+          <div class="cotd-label">Step 2 &middot; Wallet</div>
+          <p class="verify-text">Connect the wallet that holds the work. Use the <b>Ordinals</b> address (the one starting <code>bc1p</code>).</p>
+          <div class="verify-wallets">
+            <button class="board-btn" data-wallet="unisat">Unisat</button>
+            <button class="board-btn" data-wallet="xverse">Xverse</button>
+            <button class="board-btn" data-wallet="leather">Leather</button>
+            <button class="board-btn" data-wallet="magiceden">Magic Eden</button>
+            <button class="board-btn" data-wallet="manual">Other wallet</button>
+          </div>
+          <div class="verify-manual" id="manual" hidden>
+            <p class="verify-text">Sign this exact message in your wallet (Sparrow, Xverse, Unisat all have "sign message"), then paste the address and the signature.</p>
+            <pre class="verify-msg" id="manual-msg"></pre>
+            <input class="board-search" id="manual-addr" placeholder="Your Ordinals address (bc1p…)" autocomplete="off" spellcheck="false">
+            <input class="board-search" id="manual-sig" placeholder="Signature (base64)" autocomplete="off" spellcheck="false">
+            <button class="board-btn" id="manual-go">Verify</button>
+          </div>
+        </div>
+
+        <div class="verify-step" id="step-result" hidden>
+          <div class="cotd-label" id="result-label">Result</div>
+          <p class="verify-text" id="result-text"></p>
+          <div class="verify-holdings" id="result-holdings"></div>
+          <div class="cotd-actions"><button class="board-btn" id="again" hidden>Verify another wallet</button></div>
+        </div>
+
+        <p class="board-sub verify-foot">Holdings are read from the chain. If you bought something today and it does not show, wait a few minutes and try again. Problems: open a ticket in the Discord.</p>
+        <footer class="articles-footer"><p class="copyright">&copy; Stranger Solemn 2026</p></footer>
+      </div>
+    </div>
+    <script>
+    (function () {
+      var API = (location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://frontrun-discord-bot.vercel.app') + '/api/ord-verify';
+      var $ = function (id) { return document.getElementById(id); };
+      var token = (location.hash.match(/t=([^&]+)/) || [])[1] || '';
+      var nonce = '', ts = 0, busy = false;
+      function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); }
+      function message() {
+        nonce = Array.from(crypto.getRandomValues(new Uint8Array(8)), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+        ts = Math.floor(Date.now() / 1000);
+        // Must match verifyMessage() in the bot, byte for byte. Only the Discord user id is unknown here, so the server fills it in from the token.
+        return function (uid) { return 'strangersolemn.art\nVerify Ordinals for Discord\nuser: ' + uid + '\nnonce: ' + nonce + '\ntime: ' + ts; };
+      }
+      var userId = '';
+      try { userId = atob(token.split('.')[0].replace(/-/g, '+').replace(/_/g, '/')).split('.')[0]; } catch (e) {}
+      if (!token || !/^\d{5,25}$/.test(userId)) {
+        $('link-status').innerHTML = 'No Discord link found. Type <code>/verify</code> in the Discord and open the link it gives you.';
+      } else {
+        $('link-status').innerHTML = 'Linked to your Discord account. Now connect a wallet.';
+        $('step-wallet').hidden = false;
+      }
+      function show(ok, text, holdings) {
+        $('step-result').hidden = false;
+        $('result-label').textContent = ok ? 'Verified' : 'Not verified';
+        $('result-label').style.background = ok ? '#2bff92' : '#fff';
+        $('result-text').textContent = text;
+        $('result-holdings').innerHTML = holdings && holdings.collections && holdings.collections.length
+          ? holdings.collections.map(function (c) { return '<span class="verify-chip">' + esc(c.title) + ' &times;' + c.count + '</span>'; }).join('') : '';
+        $('again').hidden = !ok;
+        $('step-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      async function submit(address, signature) {
+        if (busy) return; busy = true;
+        show(false, 'Checking…');
+        $('result-label').textContent = 'Checking';
+        try {
+          var r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: token, address: address, nonce: nonce, ts: ts, signature: signature }) });
+          var d = await r.json();
+          if (d.ok) show(true, 'You have the ' + d.role + ' role. ' + d.holdings.total + ' piece' + (d.holdings.total === 1 ? '' : 's') + ' found on ' + address.slice(0, 8) + '…' + address.slice(-6) + '.', d.holdings);
+          else show(false, d.error || 'Something went wrong.', d.holdings);
+        } catch (e) { show(false, 'Could not reach the verifier. Try again in a minute.'); }
+        busy = false;
+      }
+      var wallets = {
+        unisat: async function (msg) {
+          if (!window.unisat) throw new Error('Unisat is not installed in this browser.');
+          var accts = await window.unisat.requestAccounts();
+          var sig = await window.unisat.signMessage(msg, 'bip322-simple');
+          return { address: accts[0], signature: sig };
+        },
+        xverse: async function (msg) {
+          var p = window.XverseProviders && window.XverseProviders.BitcoinProvider;
+          if (!p) throw new Error('Xverse is not installed in this browser.');
+          var a = await p.request('getAddresses', { purposes: ['ordinals'], message: 'Verify your Ordinals for the Stranger Solemn Discord' });
+          var list = (a.result && a.result.addresses) || a.result || [];
+          var ord = list.find(function (x) { return x.purpose === 'ordinals'; }) || list[0];
+          if (!ord) throw new Error(a.error && a.error.message || 'No address returned.');
+          var s = await p.request('signMessage', { address: ord.address, message: msg, protocol: 'BIP322' });
+          if (!s.result) throw new Error(s.error && s.error.message || 'Signing was cancelled.');
+          return { address: ord.address, signature: s.result.signature };
+        },
+        leather: async function (msg) {
+          var p = window.LeatherProvider;
+          if (!p) throw new Error('Leather is not installed in this browser.');
+          var a = await p.request('getAddresses');
+          var ord = (a.result.addresses || []).find(function (x) { return x.symbol === 'BTC' && x.type === 'p2tr'; });
+          if (!ord) throw new Error('No Taproot address returned.');
+          var s = await p.request('signMessage', { message: msg, paymentType: 'p2tr' });
+          return { address: ord.address, signature: s.result.signature };
+        },
+        magiceden: async function (msg) {
+          var p = window.magicEden && window.magicEden.bitcoin;
+          if (!p) throw new Error('Magic Eden wallet is not installed in this browser.');
+          var a = await p.request('getAddresses', { purposes: ['ordinals'] });
+          var list = (a.result && a.result.addresses) || a.result || [];
+          var ord = list.find(function (x) { return x.purpose === 'ordinals'; }) || list[0];
+          if (!ord) throw new Error('No address returned.');
+          var s = await p.request('signMessage', { address: ord.address, message: msg, protocol: 'BIP322' });
+          return { address: ord.address, signature: s.result.signature };
+        }
+      };
+      document.querySelector('.verify-wallets').addEventListener('click', async function (e) {
+        var b = e.target.closest('[data-wallet]'); if (!b) return;
+        var kind = b.dataset.wallet;
+        var msg = message()(userId);
+        if (kind === 'manual') { $('manual').hidden = false; $('manual-msg').textContent = msg; return; }
+        $('manual').hidden = true;
+        try {
+          var out = await wallets[kind](msg);
+          await submit(out.address, out.signature);
+        } catch (err) { show(false, (err && err.message) || String(err)); }
+      });
+      $('manual-go').onclick = function () { submit($('manual-addr').value.trim(), $('manual-sig').value.trim()); };
+      $('again').onclick = function () { $('step-result').hidden = true; $('manual').hidden = true; window.scrollTo({ top: 0, behavior: 'smooth' }); };
+    })();
+    </script>
+  </body>
+</html>

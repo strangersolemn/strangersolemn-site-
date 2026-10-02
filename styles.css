@@ -1027,3 +1027,16 @@ html:has(.articles-page), body:has(.articles-page) { overflow: auto; height: aut
 
 .is-frontrun .fr-play { color: #fff; border-color: rgba(255,255,255,0.35); text-decoration: none; }
 .is-frontrun .fr-play:hover { border-color: #fff; }
+
+/* VERIFY PAGE */
+.verify-wrap { max-width: 640px; }
+.verify-step { margin-top: 1.6rem; padding: 1.2rem 1.3rem; background: var(--panel-grey); border: 1px solid var(--panel-line); }
+.verify-text { margin-top: 0.7rem; font-size: 0.65rem; line-height: 1.8; color: #c4c4c4; }
+.verify-text code, .board-sub code { background: #000; padding: 0.1rem 0.35rem; color: #fff; }
+.verify-wallets { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.verify-manual { margin-top: 1rem; display: grid; gap: 0.5rem; }
+.verify-manual[hidden], .verify-step[hidden], .verify-wrap [hidden] { display: none !important; }
+.verify-msg { font-family: var(--font-mono); font-size: 0.6rem; line-height: 1.7; color: #fff; background: #000; padding: 0.8rem; white-space: pre-wrap; word-break: break-all; border: 1px solid var(--panel-line); user-select: all; }
+.verify-holdings { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+.verify-chip { font-size: 0.55rem; letter-spacing: 0.08em; padding: 0.3rem 0.55rem; border: 1px solid var(--chain-ordinals); color: var(--chain-ordinals); }
+.verify-foot { margin-top: 1.6rem; }

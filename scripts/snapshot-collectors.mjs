@@ -150,4 +150,9 @@ const out = {
   failed, collectors,
 };
 fs.writeFileSync(path.join(ROOT, 'collectors.json'), JSON.stringify(out));
+// Every Ordinals inscription id we own → collection id. Read by the Discord bot's /api/ord-verify.
+const ordIds = {};
+for (const c of cols) if (c.chain === 'ordinals')
+  for (const p of c.pieces) if (/^[0-9a-f]{64}i\d+$/.test(p.tokenId || '')) ordIds[p.tokenId] = c.id;
+fs.writeFileSync(path.join(ROOT, 'ordinals-ids.json'), JSON.stringify({ updated: out.updated, titles: Object.fromEntries(cols.filter(c => c.chain === 'ordinals').map(c => [c.id, c.title])), ids: ordIds }));
 console.log(`Done: ${collectors.length} collectors, ${out.totals.pieces} pieces`, byChain, 'failed lookups:', failed);
