@@ -60,7 +60,16 @@ async function loadCollection(id) {
   return data;
 }
 
+// the playable video for a piece: its animation, or an image field that is really a video
+function videoUrl(piece) {
+  if (piece?.animType === 'video' || (!piece?.animType && piece?.animationUrl && !piece.animationUrl.startsWith('data:'))) return piece.animationUrl;
+  if (piece?.imageType === 'video') return piece.image;
+  return piece?.animationUrl || '';
+}
+
 function pieceNeedsVideo(piece) {
+  if (piece?.imageType === 'video' && (!piece.animationUrl || piece.animType === 'video')) return true;
+  if (piece?.animType) return piece.animType === 'video';
   const anim = piece?.animationUrl || '';
   if (!anim || anim.startsWith('data:') || anim.startsWith('<')) return false;
   if (anim.includes('ordinals.com/content/')) return false;
@@ -70,6 +79,69 @@ function pieceNeedsVideo(piece) {
   if ((anim.includes('ipfs.io/ipfs/') || anim.includes('arweave.net/')) &&
       !lower.includes('.gif') && !lower.includes('.jpg') && !lower.includes('.jpeg') && !lower.includes('.png') && !lower.includes('.svg')) return true;
   return false;
+}
+
+/* ===== PLAYBACK: every piece moves, wherever it appears =====
+   Best moving version of a piece for small/ambient spots (grid, rotations, display mode):
+   1. a recorded preview loop (art/previews/…, made by scripts/render-previews.mjs) — smooth, tiny
+   2. its own video or animated GIF (types checked by scripts/media-types.mjs)
+   3. the live code itself, in an iframe — only while it is on screen
+   4. a still, only when the piece genuinely is one */
+function movingMedia(collection, piece) {
+  if (piece.preview) return { type: 'video', src: piece.preview, gif: piece.previewGif };
+  if (piece.loop) return { type: 'video', src: piece.loop };   // light loop of a heavy GIF/video (original plays when opened)
+  if (pieceNeedsVideo(piece)) return { type: 'video', src: videoUrl(piece) };
+  if (piece.animType === 'gif') return { type: 'img', src: piece.animationUrl };
+  if (piece.imageType === 'gif') return { type: 'img', src: piece.image };
+  if (pieceNeedsIframe(collection, piece)) return { type: 'iframe', src: getIframeUrl(piece) };
+  const still = getThumbnailUrl(piece);
+  if (still && still.includes('ordinals.com/content/')) return { type: 'img-or-iframe', src: still };
+  return { type: 'img', src: piece.imageType === 'still' ? (piece.thumbnail || piece.image) : (piece.image || piece.thumbnail) };
+}
+
+// Plays what is on screen, stops what is not. Live iframes are capped so a big grid never chokes.
+const MAX_LIVE = window.innerWidth < 768 ? 6 : 16;   // live code pieces running at once
+let liveCount = 0;
+const playObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    const el = e.target;
+    if (e.isIntersecting) {
+      if (el.tagName === 'VIDEO') { if (!el.src) el.src = el.dataset.src; el.play().catch(() => {}); }
+      else if (el.tagName === 'IFRAME' && !el.dataset.live && liveCount < MAX_LIVE) { el.src = el.dataset.src; el.dataset.live = '1'; liveCount++; }
+    } else {
+      if (el.tagName === 'VIDEO') el.pause();
+      else if (el.tagName === 'IFRAME' && el.dataset.live) { el.removeAttribute('src'); delete el.dataset.live; liveCount = Math.max(0, liveCount - 1); }
+    }
+  });
+}, { rootMargin: '150px' }) : null;
+
+function makeThumbMedia(media, title, onFail) {
+  if (media.type === 'video') {
+    const v = document.createElement('video');
+    v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'none';
+    v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+    v.dataset.src = media.src;
+    v.onerror = onFail;
+    if (!playObserver) { v.src = media.src; v.autoplay = true; }
+    return v;
+  }
+  if (media.type === 'iframe') {
+    const f = document.createElement('iframe');
+    f.dataset.src = media.src; f.sandbox = 'allow-scripts'; f.scrolling = 'no';
+    f.className = 'piece-thumb-iframe'; f.title = title || '';
+    if (!playObserver) f.src = media.src;
+    return f;
+  }
+  const img = document.createElement('img');
+  img.src = media.src; img.alt = title || ''; img.loading = 'lazy'; img.decoding = 'async';
+  img.onerror = onFail;
+  return img;
+}
+
+// Start watching players once they are in the page (Chrome ignores ones registered while detached)
+function watchPlayers(root) {
+  if (!playObserver || !root) return;
+  (root.matches && root.matches('video, iframe') ? [root] : root.querySelectorAll('video[data-src], iframe[data-src]')).forEach(el => playObserver.observe(el));
 }
 
 function pieceNeedsIframe(collection, piece) {
@@ -326,10 +398,10 @@ function showHeroMedia(collection, piece) {
   if (featuredArt) featuredArt.style.display = 'none';
   if (featuredIframe) featuredIframe.style.display = 'none';
   if (featuredVideo) { featuredVideo.style.display = 'none'; featuredVideo.pause(); featuredVideo.removeAttribute('src'); }
-  if (pieceNeedsVideo(piece)) {
+  if (piece.preview || pieceNeedsVideo(piece)) {
     if (featuredVideo) {
       featuredVideo.style.display = 'block';
-      featuredVideo.src = piece.animationUrl;
+      featuredVideo.src = piece.preview || videoUrl(piece);
       featuredVideo.load();
       featuredVideo.play().catch(() => {});
     }
@@ -477,6 +549,8 @@ async function showDetail(collectionId) {
 function buildPieceGrid(collection) {
   const grid = document.querySelector('.piece-grid') || document.getElementById('art-collection');
   if (!grid) return;
+  grid.querySelectorAll('video, iframe').forEach(el => { if (playObserver) playObserver.unobserve(el); });
+  liveCount = 0;
   grid.innerHTML = '';
   // Deduplicate editions: if uniquePieces < total, only show first occurrence of each image
   let piecesToShow = collection.pieces;
@@ -489,84 +563,33 @@ function buildPieceGrid(collection) {
       return true;
     });
   }
-  piecesToShow.forEach((piece, idx) => {
+  const PAGE = 48;
+  let shown = 0;
+  function makeThumb(piece) {
     const btn = document.createElement('button');
     btn.className = 'piece-thumb';
     btn.setAttribute('aria-label', 'Display this piece');
-    const thumbUrl = getThumbnailUrl(piece);
-    const isOrdinalsThumb = thumbUrl && thumbUrl.includes('ordinals.com/content/');
-    if (pieceNeedsIframe(collection, piece)) {
-      const staticUrl = getStaticImageUrl(piece);
-      const hasDataUri = piece.animationUrl && piece.animationUrl.startsWith('data:');
-      if (hasDataUri) {
-        // Data-URI pieces (e.g. Renascent): NFT CDN thumbnails dedupe to a single placeholder,
-        // so render the artwork itself as the thumbnail.
-        const iframe = document.createElement('iframe');
-        iframe.src = piece.animationUrl;
-        iframe.loading = 'lazy';
-        iframe.sandbox = 'allow-scripts';
-        iframe.scrolling = 'no';
-        iframe.className = 'piece-thumb-iframe';
-        btn.appendChild(iframe);
-      } else if (piece.thumbnail && !isOrdinalsThumb) {
-        const img = document.createElement('img');
-        img.src = piece.thumbnail;
-        img.alt = piece.title || '';
-        img.loading = 'lazy';
-        btn.appendChild(img);
-      } else if (staticUrl && !staticUrl.includes('ordinals.com/content/')) {
-        const img = document.createElement('img');
-        img.src = staticUrl;
-        img.alt = piece.title || '';
-        img.loading = 'lazy';
-        btn.appendChild(img);
-      } else {
-        // Ordinals on-chain: try img first, fallback to iframe, then placeholder
-        const imgUrl = piece.thumbnail || staticUrl;
-        const img = document.createElement('img');
-        img.src = imgUrl;
-        img.alt = piece.title || '';
-        img.loading = 'lazy';
-        img.onerror = function() {
-          this.remove();
-          const iframe = document.createElement('iframe');
-          iframe.src = piece.animationUrl || imgUrl;
-          iframe.loading = 'lazy';
-          iframe.sandbox = 'allow-scripts';
-          iframe.scrolling = 'no';
-          iframe.className = 'piece-thumb-iframe';
-          iframe.onerror = function() { this.remove(); btn.classList.add('piece-thumb-placeholder'); };
-          btn.insertBefore(iframe, btn.firstChild);
-        };
-        btn.appendChild(img);
-      }
-    } else if (isOrdinalsThumb) {
-      // Ordinals content without animationUrl: try img, fallback to iframe, then placeholder
-      const img = document.createElement('img');
-      img.src = thumbUrl;
-      img.alt = piece.title || '';
-      img.loading = 'lazy';
-      img.onerror = function() {
+    const media = movingMedia(collection, piece);
+    const placeholder = () => btn.classList.add('piece-thumb-placeholder');
+    if (media.type === 'img-or-iframe') {
+      // Ordinals content of unknown type: an <img> works for image inscriptions, else run it live
+      const img = makeThumbMedia({ type: 'img', src: media.src }, piece.title, function () {
         this.remove();
-        const iframe = document.createElement('iframe');
-        iframe.src = thumbUrl;
-        iframe.loading = 'lazy';
-        iframe.sandbox = 'allow-scripts';
-        iframe.scrolling = 'no';
-        iframe.className = 'piece-thumb-iframe';
-        iframe.onerror = function() { this.remove(); btn.classList.add('piece-thumb-placeholder'); };
-        btn.insertBefore(iframe, btn.firstChild);
-      };
+        const live = makeThumbMedia({ type: 'iframe', src: piece.animationUrl || media.src }, piece.title);
+        btn.insertBefore(live, btn.firstChild); watchPlayers(live);
+      });
       btn.appendChild(img);
     } else {
-      const img = document.createElement('img');
-      img.src = getStaticImageUrl(piece);
-      img.alt = piece.title || '';
-      img.loading = 'lazy';
-      btn.appendChild(img);
+      btn.appendChild(makeThumbMedia(media, piece.title, function () {
+        // a broken video/gif falls back to the still, then to a labelled placeholder
+        const still = piece.thumbnail || piece.image;
+        if (this.tagName !== 'IMG' && still && !still.includes('ordinals.com/content/')) {
+          const img = makeThumbMedia({ type: 'img', src: still }, piece.title, function () { this.remove(); placeholder(); });
+          this.replaceWith(img);
+        } else { this.remove(); placeholder(); }
+      }));
     }
-    // Add label for all thumbnails that don't already have one
-    if (!btn.querySelector('.piece-thumb-label') && piece.title) {
+    if (piece.title) {
       const label = document.createElement('span');
       label.className = 'piece-thumb-label';
       label.textContent = piece.title;
@@ -577,8 +600,26 @@ function buildPieceGrid(collection) {
       currentPieceIndex = originalIdx;
       showPiece(collection, originalIdx);
     });
-    grid.appendChild(btn);
-  });
+    return btn;
+  }
+  // Big collections (Fiat Mafia has 2,693) load a page at a time as you scroll
+  const sentinel = document.createElement('div');
+  sentinel.className = 'piece-grid-more';
+  function addPage() {
+    const frag = document.createDocumentFragment();
+    const made = piecesToShow.slice(shown, shown + PAGE).map(makeThumb);
+    made.forEach(b => frag.appendChild(b));
+    shown = Math.min(piecesToShow.length, shown + PAGE);
+    grid.insertBefore(frag, sentinel);
+    made.forEach(watchPlayers);
+    sentinel.textContent = shown < piecesToShow.length ? `${shown} / ${piecesToShow.length}` : '';
+    if (shown >= piecesToShow.length && moreObserver) moreObserver.disconnect();
+  }
+  grid.appendChild(sentinel);
+  const moreObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) addPage(); }, { root: null, rootMargin: '400px' }) : null;
+  addPage();
+  if (moreObserver) moreObserver.observe(sentinel);
+  else while (shown < piecesToShow.length) addPage();
 }
 
 function hideDetailMedia() {
@@ -595,7 +636,7 @@ function showPiece(collection, index) {
   if (pieceNeedsVideo(piece)) {
     if (detailVideo) {
       detailVideo.style.display = 'block';
-      detailVideo.src = piece.animationUrl;
+      detailVideo.src = videoUrl(piece);
       detailVideo.load();
       detailVideo.play().catch(() => {});
     }
@@ -607,7 +648,7 @@ function showPiece(collection, index) {
   } else {
     if (detailImage) {
       detailImage.style.display = 'block';
-      detailImage.src = getStaticImageUrl(piece);
+      detailImage.src = piece.animType === 'gif' ? piece.animationUrl : getStaticImageUrl(piece);
     }
   }
 }
@@ -803,10 +844,10 @@ function loadDisplayPiece() {
   if (displayArt) displayArt.style.display = 'none';
   if (displayIframe) displayIframe.style.display = 'none';
   if (displayVideo) { displayVideo.style.display = 'none'; displayVideo.pause(); displayVideo.removeAttribute('src'); }
-  if (pieceNeedsVideo(piece)) {
+  if (piece.preview || pieceNeedsVideo(piece)) {
     if (displayVideo) {
       displayVideo.style.display = 'block';
-      displayVideo.src = piece.animationUrl;
+      displayVideo.src = piece.preview || videoUrl(piece);
       displayVideo.load();
       displayVideo.play().catch(() => {});
     }

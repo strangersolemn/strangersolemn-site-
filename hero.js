@@ -16,7 +16,12 @@
   }
   function toItem(col, p) {
     var base = { t: (p.title || '').trim() || 'Untitled', c: col.title || '', id: col.id };
-    if (isVideo(p)) return Object.assign(base, { k: 'video', u: p.animationUrl });
+    // recorded preview loops (BTC Editions etc.) play instantly and smoothly; live code is the fallback
+    if (p.preview) return Object.assign(base, { k: 'video', u: p.preview });
+    if (p.animType === 'video' || (!p.animType && isVideo(p))) return Object.assign(base, { k: 'video', u: p.animationUrl });
+    if (p.imageType === 'video') return Object.assign(base, { k: 'video', u: p.image });
+    if (p.animType === 'gif') return Object.assign(base, { k: 'img', u: p.animationUrl });
+    if (p.imageType === 'gif') return Object.assign(base, { k: 'img', u: p.image });
     var a = p.animationUrl || '';
     if (a.charAt(0) === '<') return Object.assign(base, { k: 'iframe', html: a });
     if ((col.onchain && a) || p.isImage === false || col.id === 'btc-editions' || col.id === 'renascent')

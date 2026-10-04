@@ -896,7 +896,7 @@ html:has(.articles-page), body:has(.articles-page) { overflow: auto; height: aut
 .cotd-name { margin-top: 0.6rem; font-size: 1rem; font-weight: 700; color: var(--text-primary); word-break: break-all; }
 .cotd-meta { margin-top: 0.3rem; font-size: 0.62rem; color: var(--text-secondary); line-height: 1.7; }
 .cotd-thumbs, .row-thumbs { display: flex; gap: 6px; margin-top: 0.9rem; flex-wrap: wrap; }
-.cotd-thumbs img, .row-thumbs img { width: 64px; height: 64px; object-fit: cover; background: #000; border: 1px solid rgba(255,255,255,0.08); }
+.cotd-thumbs video, .row-thumbs video, .cotd-thumbs img, .row-thumbs img { width: 64px; height: 64px; object-fit: cover; background: #000; border: 1px solid rgba(255,255,255,0.08); }
 .cotd-actions { display: flex; gap: 0.6rem; margin-top: 1rem; }
 .board-btn { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-secondary); background: none; border: 1px solid rgba(255,255,255,0.15); padding: 0.5rem 0.8rem; cursor: pointer; text-decoration: none; transition: color 0.2s ease, border-color 0.2s ease; }
 .board-btn:hover, .board-btn.is-on { color: var(--text-primary); border-color: var(--text-primary); }
@@ -1040,3 +1040,8 @@ html:has(.articles-page), body:has(.articles-page) { overflow: auto; height: aut
 .verify-holdings { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
 .verify-chip { font-size: 0.55rem; letter-spacing: 0.08em; padding: 0.3rem 0.55rem; border: 1px solid var(--chain-ordinals); color: var(--chain-ordinals); }
 .verify-foot { margin-top: 1.6rem; }
+
+/* moving thumbnails */
+.piece-thumb video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
+.piece-grid-more { grid-column: 1 / -1; text-align: center; font-size: 0.55rem; letter-spacing: 0.12em; color: var(--text-muted); padding: 0.6rem 0; min-height: 1px; }
+.board-sub a { color: #fff; }

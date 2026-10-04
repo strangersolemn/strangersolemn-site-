@@ -26,8 +26,16 @@
     (c.refs || []).forEach(function (ref) {
       loadCol(ref[0]).then(function (col) {
         var p = col.pieces[ref[1]]; if (!p) return;
-        var src = p.thumbnail || p.image; if (!src || src.indexOf('data:') === 0) return;
-        var img = new Image(); img.loading = 'lazy'; img.alt = p.title || ''; img.title = (p.title || '') + ' · ' + (col.title || '');
+        var label = (p.title || '') + ' · ' + (col.title || '');
+        // moving version first: recorded GIF/loop, the piece's own GIF, else its still
+        if (!p.previewGif && (p.preview || p.loop)) {
+          var v = document.createElement('video'); v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+          v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.title = label; v.src = p.preview || p.loop;
+          v.onerror = function () { v.remove(); }; el.appendChild(v); return;
+        }
+        var src = p.previewGif || (p.animType === 'gif' && p.animationUrl) || (p.imageType === 'gif' && p.image) || p.thumbnail || p.image;
+        if (!src || src.indexOf('data:') === 0 || (!p.previewGif && /ordinals\.com\/content\//.test(src))) return;
+        var img = new Image(); img.loading = 'lazy'; img.alt = p.title || ''; img.title = label;
         img.onerror = function () { img.remove(); }; img.src = src; el.appendChild(img);
       });
     });
