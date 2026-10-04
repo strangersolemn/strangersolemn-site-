@@ -105,10 +105,8 @@ let liveCount = 0;
 const playObserver = ('IntersectionObserver' in window) ? new IntersectionObserver(entries => {
   entries.forEach(e => {
     const el = e.target;
-    if (e.isIntersecting) {
-      if (el.tagName === 'VIDEO') { if (!el.src) el.src = el.dataset.src; el.play().catch(() => {}); }
-      else if (el.tagName === 'IFRAME' && !el.dataset.live && liveCount < MAX_LIVE) { el.src = el.dataset.src; el.dataset.live = '1'; liveCount++; }
-    } else {
+    if (e.isIntersecting) startPlayer(el);
+    else {
       if (el.tagName === 'VIDEO') el.pause();
       else if (el.tagName === 'IFRAME' && el.dataset.live) { el.removeAttribute('src'); delete el.dataset.live; liveCount = Math.max(0, liveCount - 1); }
     }
@@ -140,9 +138,29 @@ function makeThumbMedia(media, title, onFail) {
 
 // Start watching players once they are in the page (Chrome ignores ones registered while detached)
 function watchPlayers(root) {
-  if (!playObserver || !root) return;
-  (root.matches && root.matches('video, iframe') ? [root] : root.querySelectorAll('video[data-src], iframe[data-src]')).forEach(el => playObserver.observe(el));
+  if (!root) return;
+  const els = root.matches && root.matches('video, iframe') ? [root] : [...root.querySelectorAll('video[data-src], iframe[data-src]')];
+  if (playObserver) els.forEach(el => playObserver.observe(el));
+  setTimeout(kickVisiblePlayers, 50); setTimeout(kickVisiblePlayers, 600);
 }
+// Some browsers/tabs never deliver the first "on screen" signal, so also start anything that
+// is on screen by geometry: after each page of thumbnails, on scroll, resize and tab focus.
+function startPlayer(el) {
+  if (el.tagName === 'VIDEO') { if (!el.getAttribute('src')) el.src = el.dataset.src; if (el.paused) el.play().catch(() => {}); }
+  else if (el.tagName === 'IFRAME' && !el.dataset.live && liveCount < MAX_LIVE) { el.src = el.dataset.src; el.dataset.live = '1'; liveCount++; }
+}
+function kickVisiblePlayers() {
+  const h = window.innerHeight + 150, w = window.innerWidth + 150;
+  document.querySelectorAll('.piece-grid video[data-src], .piece-grid iframe[data-src]').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.width && r.bottom > -150 && r.top < h && r.right > -150 && r.left < w) startPlayer(el);
+  });
+}
+let kickTimer = null;
+function kickSoon() { clearTimeout(kickTimer); kickTimer = setTimeout(kickVisiblePlayers, 120); }
+document.addEventListener('scroll', kickSoon, true);
+window.addEventListener('resize', kickSoon);
+document.addEventListener('visibilitychange', () => { if (!document.hidden) kickVisiblePlayers(); });
 
 function pieceNeedsIframe(collection, piece) {
   if (pieceNeedsVideo(piece)) return false;
@@ -662,12 +680,13 @@ function updateShareButtons(piece) {
     wrap = document.createElement('span');
     wrap.id = 'share-links'; wrap.className = 'share-links';
     wrap.innerHTML = '<button class="detail-link share-btn" id="share-gif" title="Save as a square GIF">&darr; GIF</button>' +
-      '<button class="detail-link share-btn" id="share-story" title="Save as a 9:16 video for stories">&darr; Story 9:16</button>';
+      '<button class="detail-link share-btn" id="share-story" title="Save as a 9:16 video for stories">&darr; Story 9:16</button>' +
+      '<button class="detail-link" id="share-live" title="Run the real on-chain code" hidden>&#9654; Live</button>';
     box.insertBefore(wrap, box.firstChild);
   }
   const g = document.getElementById('share-gif'), st = document.getElementById('share-story');
   g.hidden = !piece.previewGif; st.hidden = !piece.story;
-  wrap.hidden = !piece.previewGif && !piece.story;
+  wrap.hidden = !piece.previewGif && !piece.story && !piece.preview;
   g.onclick = () => shareFile(g, piece.previewGif, shareName(piece, 'gif'), 'image/gif', piece);
   st.onclick = () => shareFile(st, piece.story, shareName(piece, 'mp4'), 'video/mp4', piece);
 }
@@ -678,8 +697,25 @@ function showPiece(collection, index) {
   currentPieceIndex = index;
   updateShareButtons(piece);
   hideDetailMedia();
+  const liveBtn = document.getElementById('share-live');
+  if (piece.preview && !piece._showLive) {
+    // recorded loop plays instantly and smoothly; the "Live" button runs the real on-chain code
+    if (detailVideo) {
+      detailVideo.classList.remove('hidden'); detailVideo.controls = false;
+      detailVideo.style.display = 'block'; detailVideo.muted = true; detailVideo.loop = true;
+      detailVideo.src = piece.preview; detailVideo.load(); detailVideo.play().catch(() => {});
+    }
+    if (liveBtn) { liveBtn.hidden = !pieceNeedsIframe(collection, piece); liveBtn.textContent = '▶ Live'; liveBtn.onclick = () => { piece._showLive = true; showPiece(collection, index); }; }
+    return;
+  }
+  if (liveBtn) {
+    liveBtn.hidden = !piece.preview;
+    liveBtn.textContent = '◼ Loop';
+    liveBtn.onclick = () => { piece._showLive = false; showPiece(collection, index); };
+  }
   if (pieceNeedsVideo(piece)) {
     if (detailVideo) {
+      detailVideo.classList.remove('hidden'); detailVideo.controls = true;
       detailVideo.style.display = 'block';
       detailVideo.src = videoUrl(piece);
       detailVideo.load();
