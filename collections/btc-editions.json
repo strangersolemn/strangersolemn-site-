@@ -17,7 +17,8 @@
       "animationUrl": "https://ordinals.com/content/0ec7d889c5ce06ab0c8677ec4008c14b8dfb5e0a989b2b94e36ef229baf38641i0",
       "editionCount": 41,
       "preview": "art/previews/btc-editions/1.mp4",
-      "previewGif": "art/previews/btc-editions/1.gif"
+      "previewGif": "art/previews/btc-editions/1.gif",
+      "story": "art/previews/btc-editions/1.story.mp4"
     },
     {
       "tokenId": "53bf65d077d4b3c1c6bda7b60729ac5ab90770db64b4ddd7f757b420021a8873i0",
@@ -27,7 +28,8 @@
       "animationUrl": "https://ordinals.com/content/53bf65d077d4b3c1c6bda7b60729ac5ab90770db64b4ddd7f757b420021a8873i0",
       "editionCount": 21,
       "preview": "art/previews/btc-editions/2.mp4",
-      "previewGif": "art/previews/btc-editions/2.gif"
+      "previewGif": "art/previews/btc-editions/2.gif",
+      "story": "art/previews/btc-editions/2.story.mp4"
     },
     {
       "tokenId": "5211460090e5b86c3c5e961bf33483b2e70b7c9653d91d5752aa0345b1f8147ci0",
@@ -37,7 +39,8 @@
       "animationUrl": "https://ordinals.com/content/5211460090e5b86c3c5e961bf33483b2e70b7c9653d91d5752aa0345b1f8147ci0",
       "editionCount": 348,
       "preview": "art/previews/btc-editions/3.mp4",
-      "previewGif": "art/previews/btc-editions/3.gif"
+      "previewGif": "art/previews/btc-editions/3.gif",
+      "story": "art/previews/btc-editions/3.story.mp4"
     },
     {
       "tokenId": "8ffb2b5171538c257ebd2e6b780da908e1966307531979ce1df2ca3c5cbda634i0",
@@ -47,7 +50,8 @@
       "animationUrl": "https://ordinals.com/content/8ffb2b5171538c257ebd2e6b780da908e1966307531979ce1df2ca3c5cbda634i0",
       "editionCount": 306,
       "preview": "art/previews/btc-editions/4.mp4",
-      "previewGif": "art/previews/btc-editions/4.gif"
+      "previewGif": "art/previews/btc-editions/4.gif",
+      "story": "art/previews/btc-editions/4.story.mp4"
     },
     {
       "tokenId": "e0456990c4da5d7428adb16559779f37fa0a29eeaa10f5742afd91812c722388i0",
@@ -57,7 +61,8 @@
       "animationUrl": "https://ordinals.com/content/e0456990c4da5d7428adb16559779f37fa0a29eeaa10f5742afd91812c722388i0",
       "editionCount": 97,
       "preview": "art/previews/btc-editions/5.mp4",
-      "previewGif": "art/previews/btc-editions/5.gif"
+      "previewGif": "art/previews/btc-editions/5.gif",
+      "story": "art/previews/btc-editions/5.story.mp4"
     },
     {
       "tokenId": "cfb7ed0bfb7ed82a4b00156ffe6fdfa273ed5c2f078e89b0f6e281c435c14993i0",
@@ -67,7 +72,8 @@
       "animationUrl": "https://ordinals.com/content/cfb7ed0bfb7ed82a4b00156ffe6fdfa273ed5c2f078e89b0f6e281c435c14993i0",
       "editionCount": 92,
       "preview": "art/previews/btc-editions/6.mp4",
-      "previewGif": "art/previews/btc-editions/6.gif"
+      "previewGif": "art/previews/btc-editions/6.gif",
+      "story": "art/previews/btc-editions/6.story.mp4"
     },
     {
       "tokenId": "f846b23c03df3aa8fbe835fe6e530aa15b74558299078f15c6d23f8fbf6ccd16i1",
@@ -77,7 +83,8 @@
       "animationUrl": "https://ordinals.com/content/f846b23c03df3aa8fbe835fe6e530aa15b74558299078f15c6d23f8fbf6ccd16i1",
       "editionCount": 105,
       "preview": "art/previews/btc-editions/7.mp4",
-      "previewGif": "art/previews/btc-editions/7.gif"
+      "previewGif": "art/previews/btc-editions/7.gif",
+      "story": "art/previews/btc-editions/7.story.mp4"
     },
     {
       "tokenId": "7b00805c5f1b79f0e8f9657b8ee4023ba7c1f857e852982237e409756d8f2584i0",
@@ -87,7 +94,8 @@
       "animationUrl": "https://ordinals.com/content/7b00805c5f1b79f0e8f9657b8ee4023ba7c1f857e852982237e409756d8f2584i0",
       "editionCount": 121,
       "preview": "art/previews/btc-editions/8.mp4",
-      "previewGif": "art/previews/btc-editions/8.gif"
+      "previewGif": "art/previews/btc-editions/8.gif",
+      "story": "art/previews/btc-editions/8.story.mp4"
     },
     {
       "tokenId": "c4a3870539cfb69dd96811f73793b82cc705ab84d2f35157ddaba8b343788f11i0",
@@ -97,7 +105,8 @@
       "animationUrl": "https://ordinals.com/content/c4a3870539cfb69dd96811f73793b82cc705ab84d2f35157ddaba8b343788f11i0",
       "editionCount": 22,
       "preview": "art/previews/btc-editions/9.mp4",
-      "previewGif": "art/previews/btc-editions/9.gif"
+      "previewGif": "art/previews/btc-editions/9.gif",
+      "story": "art/previews/btc-editions/9.story.mp4"
     },
     {
       "tokenId": "cfb4e9a2fa03e0be25183e6565d455703aaa69cb0c671b8003c4086e610d043di0",
@@ -107,7 +116,8 @@
       "animationUrl": "https://ordinals.com/content/cfb4e9a2fa03e0be25183e6565d455703aaa69cb0c671b8003c4086e610d043di0",
       "editionCount": 24,
       "preview": "art/previews/btc-editions/10.mp4",
-      "previewGif": "art/previews/btc-editions/10.gif"
+      "previewGif": "art/previews/btc-editions/10.gif",
+      "story": "art/previews/btc-editions/10.story.mp4"
     },
     {
       "tokenId": "317822cad186d8ae043a7667f02dfb9079312edcd4e4338f0e769de62ea3471bi0",
@@ -117,7 +127,8 @@
       "animationUrl": "https://ordinals.com/content/317822cad186d8ae043a7667f02dfb9079312edcd4e4338f0e769de62ea3471bi0",
       "editionCount": 25,
       "preview": "art/previews/btc-editions/11.mp4",
-      "previewGif": "art/previews/btc-editions/11.gif"
+      "previewGif": "art/previews/btc-editions/11.gif",
+      "story": "art/previews/btc-editions/11.story.mp4"
     },
     {
       "tokenId": "c3a522c317525230daaa6ce3e5d9d572fa5ba5f06851207e3bf29cbecacea706i0",
@@ -127,7 +138,8 @@
       "animationUrl": "https://ordinals.com/content/c3a522c317525230daaa6ce3e5d9d572fa5ba5f06851207e3bf29cbecacea706i0",
       "editionCount": 29,
       "preview": "art/previews/btc-editions/12.mp4",
-      "previewGif": "art/previews/btc-editions/12.gif"
+      "previewGif": "art/previews/btc-editions/12.gif",
+      "story": "art/previews/btc-editions/12.story.mp4"
     },
     {
       "tokenId": "3133ec253494d81c57e04e49e8daaa540f203f0668d3eac59830949adbf74039i0",
@@ -137,7 +149,8 @@
       "animationUrl": "https://ordinals.com/content/3133ec253494d81c57e04e49e8daaa540f203f0668d3eac59830949adbf74039i0",
       "editionCount": 21,
       "preview": "art/previews/btc-editions/13.mp4",
-      "previewGif": "art/previews/btc-editions/13.gif"
+      "previewGif": "art/previews/btc-editions/13.gif",
+      "story": "art/previews/btc-editions/13.story.mp4"
     },
     {
       "tokenId": "6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
@@ -147,7 +160,8 @@
       "animationUrl": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
       "editionCount": 4066,
       "preview": "art/previews/btc-editions/14.mp4",
-      "previewGif": "art/previews/btc-editions/14.gif"
+      "previewGif": "art/previews/btc-editions/14.gif",
+      "story": "art/previews/btc-editions/14.story.mp4"
     },
     {
       "tokenId": "ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
@@ -157,7 +171,8 @@
       "animationUrl": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
       "editionCount": 69,
       "preview": "art/previews/btc-editions/15.mp4",
-      "previewGif": "art/previews/btc-editions/15.gif"
+      "previewGif": "art/previews/btc-editions/15.gif",
+      "story": "art/previews/btc-editions/15.story.mp4"
     },
     {
       "tokenId": "a3198dffc591b52414c3f845375544a10837a65584baaafade88c7feed220905i0",
@@ -167,7 +182,8 @@
       "animationUrl": "https://ordinals.com/content/a3198dffc591b52414c3f845375544a10837a65584baaafade88c7feed220905i0",
       "editionCount": 69,
       "preview": "art/previews/btc-editions/16.mp4",
-      "previewGif": "art/previews/btc-editions/16.gif"
+      "previewGif": "art/previews/btc-editions/16.gif",
+      "story": "art/previews/btc-editions/16.story.mp4"
     },
     {
       "tokenId": "05561d8bf77be584d25b55dfabd17977c09ea8a3a06513e92ce684c286e2d65bi0",
@@ -177,7 +193,8 @@
       "animationUrl": "https://ordinals.com/content/05561d8bf77be584d25b55dfabd17977c09ea8a3a06513e92ce684c286e2d65bi0",
       "editionCount": 69,
       "preview": "art/previews/btc-editions/17.mp4",
-      "previewGif": "art/previews/btc-editions/17.gif"
+      "previewGif": "art/previews/btc-editions/17.gif",
+      "story": "art/previews/btc-editions/17.story.mp4"
     },
     {
       "tokenId": "d5376ddca8a903569fc99c35ec8d0d00807cf09352e8f40bc1af008c37274716i0",
@@ -187,7 +204,8 @@
       "animationUrl": "https://ordinals.com/content/d5376ddca8a903569fc99c35ec8d0d00807cf09352e8f40bc1af008c37274716i0",
       "editionCount": 68,
       "preview": "art/previews/btc-editions/18.mp4",
-      "previewGif": "art/previews/btc-editions/18.gif"
+      "previewGif": "art/previews/btc-editions/18.gif",
+      "story": "art/previews/btc-editions/18.story.mp4"
     },
     {
       "tokenId": "91e22bcce32a02d4fce9ae2f229ec643c2a35004e927addf8135485540559067i0",
@@ -197,7 +215,8 @@
       "animationUrl": "https://ordinals.com/content/91e22bcce32a02d4fce9ae2f229ec643c2a35004e927addf8135485540559067i0",
       "editionCount": 64,
       "preview": "art/previews/btc-editions/19.mp4",
-      "previewGif": "art/previews/btc-editions/19.gif"
+      "previewGif": "art/previews/btc-editions/19.gif",
+      "story": "art/previews/btc-editions/19.story.mp4"
     },
     {
       "tokenId": "a0926d4ca3b36848d2c24e6f138b09f05c8766bd64e9b212452308df2ee9538ei0",
@@ -207,7 +226,8 @@
       "animationUrl": "https://ordinals.com/content/a0926d4ca3b36848d2c24e6f138b09f05c8766bd64e9b212452308df2ee9538ei0",
       "editionCount": 69,
       "preview": "art/previews/btc-editions/20.mp4",
-      "previewGif": "art/previews/btc-editions/20.gif"
+      "previewGif": "art/previews/btc-editions/20.gif",
+      "story": "art/previews/btc-editions/20.story.mp4"
     },
     {
       "tokenId": "26e9d13664dfa22b9edbb19aa330f0a2481a85ca5c0402112f8fc39ec2808e98i0",
@@ -217,7 +237,8 @@
       "animationUrl": "https://ordinals.com/content/26e9d13664dfa22b9edbb19aa330f0a2481a85ca5c0402112f8fc39ec2808e98i0",
       "editionCount": 69,
       "preview": "art/previews/btc-editions/21.mp4",
-      "previewGif": "art/previews/btc-editions/21.gif"
+      "previewGif": "art/previews/btc-editions/21.gif",
+      "story": "art/previews/btc-editions/21.story.mp4"
     },
     {
       "tokenId": "30780ee42beca64079430fad54004fe12e57e8ae4875ff0d87552429b23a2153i0",
@@ -227,7 +248,8 @@
       "animationUrl": "https://ordinals.com/content/30780ee42beca64079430fad54004fe12e57e8ae4875ff0d87552429b23a2153i0",
       "editionCount": 6,
       "preview": "art/previews/btc-editions/22.mp4",
-      "previewGif": "art/previews/btc-editions/22.gif"
+      "previewGif": "art/previews/btc-editions/22.gif",
+      "story": "art/previews/btc-editions/22.story.mp4"
     },
     {
       "tokenId": "096728ca2ce8276bd367322e3c4b791a075a71f6c8adb1053a5276ba96f85044i0",
@@ -237,7 +259,8 @@
       "animationUrl": "https://ordinals.com/content/096728ca2ce8276bd367322e3c4b791a075a71f6c8adb1053a5276ba96f85044i0",
       "editionCount": 22,
       "preview": "art/previews/btc-editions/23.mp4",
-      "previewGif": "art/previews/btc-editions/23.gif"
+      "previewGif": "art/previews/btc-editions/23.gif",
+      "story": "art/previews/btc-editions/23.story.mp4"
     },
     {
       "tokenId": "0da4c9cb0dcd30205b75cb994d68a49938fb65406796a4adf29ef0fe266bc657i0",
@@ -247,7 +270,8 @@
       "animationUrl": "https://ordinals.com/content/0da4c9cb0dcd30205b75cb994d68a49938fb65406796a4adf29ef0fe266bc657i0",
       "editionCount": 20,
       "preview": "art/previews/btc-editions/24.mp4",
-      "previewGif": "art/previews/btc-editions/24.gif"
+      "previewGif": "art/previews/btc-editions/24.gif",
+      "story": "art/previews/btc-editions/24.story.mp4"
     },
     {
       "tokenId": "1246422bc1666133b0543c29d92380394222aeea061cf5598deb0577caba9546i0",
@@ -257,7 +281,8 @@
       "animationUrl": "https://ordinals.com/content/1246422bc1666133b0543c29d92380394222aeea061cf5598deb0577caba9546i0",
       "editionCount": 22,
       "preview": "art/previews/btc-editions/25.mp4",
-      "previewGif": "art/previews/btc-editions/25.gif"
+      "previewGif": "art/previews/btc-editions/25.gif",
+      "story": "art/previews/btc-editions/25.story.mp4"
     },
     {
       "tokenId": "12deea5f4770321e9dd05607a8fc025bade2390cfc157448148c2e6ee8ff6bdfi0",
@@ -267,7 +292,8 @@
       "animationUrl": "https://ordinals.com/content/12deea5f4770321e9dd05607a8fc025bade2390cfc157448148c2e6ee8ff6bdfi0",
       "editionCount": 13,
       "preview": "art/previews/btc-editions/26.mp4",
-      "previewGif": "art/previews/btc-editions/26.gif"
+      "previewGif": "art/previews/btc-editions/26.gif",
+      "story": "art/previews/btc-editions/26.story.mp4"
     },
     {
       "tokenId": "1a123c0f358062e7d9ce49a9fed1bc31d638c17db07e8cb1d30d51a049c26e0fi0",
@@ -277,7 +303,8 @@
       "animationUrl": "https://ordinals.com/content/1a123c0f358062e7d9ce49a9fed1bc31d638c17db07e8cb1d30d51a049c26e0fi0",
       "editionCount": 15,
       "preview": "art/previews/btc-editions/27.mp4",
-      "previewGif": "art/previews/btc-editions/27.gif"
+      "previewGif": "art/previews/btc-editions/27.gif",
+      "story": "art/previews/btc-editions/27.story.mp4"
     },
     {
       "tokenId": "fcfbd122e6e370904f9b381623b5a234f717334ca9b583172b115072f37d0fedi0",
@@ -287,7 +314,8 @@
       "animationUrl": "https://ordinals.com/content/fcfbd122e6e370904f9b381623b5a234f717334ca9b583172b115072f37d0fedi0",
       "editionCount": 1,
       "preview": "art/previews/btc-editions/28.mp4",
-      "previewGif": "art/previews/btc-editions/28.gif"
+      "previewGif": "art/previews/btc-editions/28.gif",
+      "story": "art/previews/btc-editions/28.story.mp4"
     },
     {
       "tokenId": "37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
@@ -297,7 +325,8 @@
       "animationUrl": "https://ordinals.com/content/37deceaf45623e1d5c02c5dbb65fd28b0f92ddae9979254aa465fef1b608f637i0",
       "editionCount": 17,
       "preview": "art/previews/btc-editions/29.mp4",
-      "previewGif": "art/previews/btc-editions/29.gif"
+      "previewGif": "art/previews/btc-editions/29.gif",
+      "story": "art/previews/btc-editions/29.story.mp4"
     },
     {
       "tokenId": "e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
@@ -307,7 +336,8 @@
       "animationUrl": "https://ordinals.com/content/e1fbbe09e46c599f0ffb61f64002532e3cc3ddb457f5324ea244dd6044710819i0",
       "editionCount": 8,
       "preview": "art/previews/btc-editions/30.mp4",
-      "previewGif": "art/previews/btc-editions/30.gif"
+      "previewGif": "art/previews/btc-editions/30.gif",
+      "story": "art/previews/btc-editions/30.story.mp4"
     },
     {
       "tokenId": "1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
@@ -317,7 +347,8 @@
       "animationUrl": "https://ordinals.com/content/1a9dbd6c2a4578624645b2905b1b9f18314886426d65f0558fc942cc6bd22a5ei0",
       "editionCount": 9,
       "preview": "art/previews/btc-editions/31.mp4",
-      "previewGif": "art/previews/btc-editions/31.gif"
+      "previewGif": "art/previews/btc-editions/31.gif",
+      "story": "art/previews/btc-editions/31.story.mp4"
     },
     {
       "tokenId": "b237318079e03dca415d4b9da17757a23f3ca0b3b086da8c6f99bf57f9fcd36ai0",
@@ -326,7 +357,8 @@
       "thumbnail": "https://ordinals.com/content/b237318079e03dca415d4b9da17757a23f3ca0b3b086da8c6f99bf57f9fcd36ai0",
       "animationUrl": "https://ordinals.com/content/b237318079e03dca415d4b9da17757a23f3ca0b3b086da8c6f99bf57f9fcd36ai0",
       "preview": "art/previews/btc-editions/32.mp4",
-      "previewGif": "art/previews/btc-editions/32.gif"
+      "previewGif": "art/previews/btc-editions/32.gif",
+      "story": "art/previews/btc-editions/32.story.mp4"
     }
   ],
   "marketplaces": {},

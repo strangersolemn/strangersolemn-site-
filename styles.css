@@ -1046,3 +1046,8 @@ html:has(.articles-page), body:has(.articles-page) { overflow: auto; height: aut
 .piece-grid-more { grid-column: 1 / -1; text-align: center; font-size: 0.55rem; letter-spacing: 0.12em; color: var(--text-muted); padding: 0.6rem 0; min-height: 1px; }
 .board-sub a { color: #fff; }
 .fr-frame .fr-poster-video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
+.share-links { display: contents; }
+.share-links[hidden], .share-btn[hidden] { display: none !important; }
+.share-btn { cursor: pointer; background: #fff; color: #111; border-color: #fff; font-weight: 700; }
+.share-btn:hover { background: #ddd; color: #111; border-color: #ddd; }
+.share-btn:disabled { opacity: 0.6; cursor: wait; }

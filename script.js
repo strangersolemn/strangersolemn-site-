@@ -628,10 +628,55 @@ function hideDetailMedia() {
   if (detailVideo) { detailVideo.style.display = 'none'; detailVideo.pause(); detailVideo.removeAttribute('src'); }
 }
 
+/* ===== SHARE: collectors can save the piece as a GIF or a 9:16 story, no screen recording =====
+   Files come from scripts/make-share.py (previewGif = square GIF, story = 720x1280 mp4).
+   On phones the share sheet opens (Save to Photos, post to X / Instagram); on laptops it downloads. */
+function shareName(piece, ext) {
+  const t = (piece.title || 'strangersolemn').trim().toLowerCase().replace(/[^a-z0-9#]+/g, '-').replace(/#/g, '').replace(/^-+|-+$/g, '');
+  return `${t || 'piece'}-strangersolemn.${ext}`;
+}
+async function shareFile(btn, url, name, type, piece) {
+  const label = btn.textContent;
+  btn.textContent = 'Preparing…'; btn.disabled = true;
+  try {
+    const blob = await (await fetch(url)).blob();
+    const file = new File([blob], name, { type });
+    const touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if (touch && navigator.canShare && navigator.canShare({ files: [file] })) {
+      try { await navigator.share({ files: [file], text: `${(piece.title || '').trim()} by @strangersolemn · strangersolemn.art` }); return; }
+      catch (e) { if (e && e.name === 'AbortError') return; }
+    }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 30000);
+  } catch (e) {
+    window.open(url, '_blank', 'noopener');   // last resort: open it, the browser can save it
+  } finally { btn.textContent = label; btn.disabled = false; }
+}
+function updateShareButtons(piece) {
+  const box = document.querySelector('.marketplace-links');
+  if (!box) return;
+  let wrap = document.getElementById('share-links');
+  if (!wrap) {
+    wrap = document.createElement('span');
+    wrap.id = 'share-links'; wrap.className = 'share-links';
+    wrap.innerHTML = '<button class="detail-link share-btn" id="share-gif" title="Save as a square GIF">&darr; GIF</button>' +
+      '<button class="detail-link share-btn" id="share-story" title="Save as a 9:16 video for stories">&darr; Story 9:16</button>';
+    box.insertBefore(wrap, box.firstChild);
+  }
+  const g = document.getElementById('share-gif'), st = document.getElementById('share-story');
+  g.hidden = !piece.previewGif; st.hidden = !piece.story;
+  wrap.hidden = !piece.previewGif && !piece.story;
+  g.onclick = () => shareFile(g, piece.previewGif, shareName(piece, 'gif'), 'image/gif', piece);
+  st.onclick = () => shareFile(st, piece.story, shareName(piece, 'mp4'), 'video/mp4', piece);
+}
+
 function showPiece(collection, index) {
   const piece = collection.pieces[index];
   if (!piece) return;
   currentPieceIndex = index;
+  updateShareButtons(piece);
   hideDetailMedia();
   if (pieceNeedsVideo(piece)) {
     if (detailVideo) {
@@ -661,6 +706,7 @@ function downloadCurrentPiece() {
   if (!currentCarouselCollection || currentPieceIndex == null) return;
   const piece = currentCarouselCollection.pieces[currentPieceIndex];
   if (!piece) return;
+  if (piece.previewGif) { const b = document.querySelector('.download-btn'); if (b) return shareFile(b, piece.previewGif, shareName(piece, 'gif'), 'image/gif', piece); }
   const imageUrl = piece.image || piece.thumbnail || piece.animationUrl || '';
   if (!imageUrl) return;
   // Open image in new tab — user can save from there
@@ -675,11 +721,8 @@ function downloadCurrentPiece() {
 
 let lastSlideshowColId = null;
 // Collections excluded from main slideshow (iframe-based, render left-aligned)
-const slideshowExclude = new Set([
-  'gl1tch-c0des', 'a-solemn-rose', 'doom', 'deliverance',
-  'block-clocks', 'glitch-pack', 'renascent', 'block-party',
-  'leverage'
-]);
+// (the others used to be here too; they now have recorded previews that play cleanly)
+const slideshowExclude = new Set(['glitch-pack']);
 
 const slideshowWeights = {
   'everyday-strange': 40,
