@@ -14,34 +14,38 @@
     {
       "tokenId": "0",
       "title": "Bullish",
-      "image": "https://ipfs.io/ipfs/QmRkX4xkoEMoE2kxWrv5To2DyzmxbzWxFvBYXJLSUjPsaE/nft.gif",
-      "thumbnail": "https://ipfs.io/ipfs/QmRkX4xkoEMoE2kxWrv5To2DyzmxbzWxFvBYXJLSUjPsaE/nft.gif",
+      "image": "https://nft2-cdn.alchemy.com/eth-mainnet/70b58d4dbedda50f574a55efde13f433",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/70b58d4dbedda50f574a55efde13f433",
       "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD",
-      "animationUrl": "ipfs://QmRkX4xkoEMoE2kxWrv5To2DyzmxbzWxFvBYXJLSUjPsaE/nft.gif"
+      "imageType": "gif",
+      "loop": "art/previews/safari/1.loop.mp4"
     },
     {
       "tokenId": "1",
       "title": "Bearish",
-      "image": "https://ipfs.io/ipfs/QmeQoBNnMbk89xbEdu25zwCXueNJbNKkLpfEBzvcrRP5XK/nft.gif",
-      "thumbnail": "https://ipfs.io/ipfs/QmeQoBNnMbk89xbEdu25zwCXueNJbNKkLpfEBzvcrRP5XK/nft.gif",
+      "image": "https://nft2-cdn.alchemy.com/eth-mainnet/d4a1d629d1875c8c7b6fcaac2b59577d",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/d4a1d629d1875c8c7b6fcaac2b59577d",
       "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD",
-      "animationUrl": "ipfs://QmeQoBNnMbk89xbEdu25zwCXueNJbNKkLpfEBzvcrRP5XK/nft.gif"
+      "imageType": "gif",
+      "loop": "art/previews/safari/2.loop.mp4"
     },
     {
       "tokenId": "2",
       "title": "Nested",
-      "image": "https://ipfs.io/ipfs/QmViYrP634Fho2tbM9QPqL7ehYVfXgT36AHAN8FxPEeVxn/nft.GIF",
-      "thumbnail": "https://ipfs.io/ipfs/QmViYrP634Fho2tbM9QPqL7ehYVfXgT36AHAN8FxPEeVxn/nft.GIF",
+      "image": "https://nft2-cdn.alchemy.com/eth-mainnet/8365bc3474f1bf390fc1e9adcc950015",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/8365bc3474f1bf390fc1e9adcc950015",
       "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD",
-      "animationUrl": "ipfs://QmViYrP634Fho2tbM9QPqL7ehYVfXgT36AHAN8FxPEeVxn/nft.GIF"
+      "imageType": "gif",
+      "loop": "art/previews/safari/3.loop.mp4"
     },
     {
       "tokenId": "3",
       "title": "Pride",
-      "image": "https://ipfs.io/ipfs/QmS1sbwLy6sniyyYqG5d9Rs14ZjcryeyAGtZbPsmLNmQj8/nft.gif",
-      "thumbnail": "https://ipfs.io/ipfs/QmS1sbwLy6sniyyYqG5d9Rs14ZjcryeyAGtZbPsmLNmQj8/nft.gif",
+      "image": "https://nft2-cdn.alchemy.com/eth-mainnet/cfbaceb2c038d6154c24bd1732ee4ab9",
+      "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/cfbaceb2c038d6154c24bd1732ee4ab9",
       "contract": "0x31C55a2253dEdA1224B471d590A36f4b03094BcD",
-      "animationUrl": "ipfs://QmS1sbwLy6sniyyYqG5d9Rs14ZjcryeyAGtZbPsmLNmQj8/nft.gif"
+      "imageType": "gif",
+      "loop": "art/previews/safari/4.loop.mp4"
     }
   ],
   "marketplaces": {

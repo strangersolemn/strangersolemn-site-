@@ -14,358 +14,509 @@
     {
       "tokenId": "0",
       "title": "It's a Parrot Thing",
-      "image": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
-      "thumbnail": "https://ipfs.io/ipfs/QmeYA3Y6HbVTyNoZngj9m4jQdsgynuJaYsAQHGoa3BXypV",
-      "animationUrl": "https://ipfs.io/ipfs/QmfNdQ9YsFPCS9uLvTqUBQMT4Hucod2o2A2zHpdQtkipDt"
+      "image": "https://assets.objkt.media/file/assets-003/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmeYA3Y6HbVTyNoZngj9m4jQdsgynuJaYsAQHGoa3BXypV/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmfNdQ9YsFPCS9uLvTqUBQMT4Hucod2o2A2zHpdQtkipDt/artifact",
+      "imageType": "still",
+      "animType": "video",
+      "loop": "art/previews/parrot-party/1.loop.mp4"
     },
     {
       "tokenId": "1",
       "title": "Parrot #001",
-      "image": "https://ipfs.io/ipfs/QmaSw2FVPzj6c3ZVoZ5TixnyinvtoWmckokhxwvvHZggt3",
-      "thumbnail": "https://ipfs.io/ipfs/QmPV1Btr9LnhuURvcSmFxp81BpsdCT4DqNrN1VhShoNvaL",
-      "animationUrl": "https://ipfs.io/ipfs/QmNPwftDVnBjp3qxiEmpPFHVzrQ56Wfc3T2Rf3NBVMmsEF"
+      "image": "https://assets.objkt.media/file/assets-003/QmaSw2FVPzj6c3ZVoZ5TixnyinvtoWmckokhxwvvHZggt3/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmPV1Btr9LnhuURvcSmFxp81BpsdCT4DqNrN1VhShoNvaL/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmNPwftDVnBjp3qxiEmpPFHVzrQ56Wfc3T2Rf3NBVMmsEF/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/2.loop.mp4"
     },
     {
       "tokenId": "2",
       "title": "Parrot #002",
-      "image": "https://ipfs.io/ipfs/QmSV4Lpf4NrwfychFh1P2sNh2tcznqTHafrfS8USMy7WW4",
-      "thumbnail": "https://ipfs.io/ipfs/QmeEy3wUgwMANyjD13umHeSsnoeCTKzVNe1HdUzjrT3VMD",
-      "animationUrl": "https://ipfs.io/ipfs/QmQVbFD2Un2Jo2hQz8vfsLFbtgGvfNVxrnP78KNXJrNvDd"
+      "image": "https://assets.objkt.media/file/assets-003/QmSV4Lpf4NrwfychFh1P2sNh2tcznqTHafrfS8USMy7WW4/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmeEy3wUgwMANyjD13umHeSsnoeCTKzVNe1HdUzjrT3VMD/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmQVbFD2Un2Jo2hQz8vfsLFbtgGvfNVxrnP78KNXJrNvDd/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/3.loop.mp4"
     },
     {
       "tokenId": "3",
       "title": "Parrot #003",
-      "image": "https://ipfs.io/ipfs/QmYak6twLFKnoKAdMYCVya2rR8Mi1wKbp8u3cZoG1roHS5",
-      "thumbnail": "https://ipfs.io/ipfs/QmUw5RYxh1vcuDGLGaqV6dhNrkaAB6ws2nwFbmt39vWAFE",
-      "animationUrl": "https://ipfs.io/ipfs/QmV81vZirPo9GBzAHeXxQMmVVfxKXm5iVyT9H7hNgAmsjf"
+      "image": "https://assets.objkt.media/file/assets-003/QmYak6twLFKnoKAdMYCVya2rR8Mi1wKbp8u3cZoG1roHS5/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmUw5RYxh1vcuDGLGaqV6dhNrkaAB6ws2nwFbmt39vWAFE/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmV81vZirPo9GBzAHeXxQMmVVfxKXm5iVyT9H7hNgAmsjf/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/4.loop.mp4"
     },
     {
       "tokenId": "4",
       "title": "Parrot #004",
-      "image": "https://ipfs.io/ipfs/Qmb5ubuCZtXkKYV5YTBb5sKTPVF24ZfWikfyy475UMos9y",
-      "thumbnail": "https://ipfs.io/ipfs/QmakLhPRXbyHvRqHCZsbJGhF6rcinaD9LpJAQ8DJN5DoYW",
-      "animationUrl": "https://ipfs.io/ipfs/QmUEWaCymKArWA8xjQmjDXkX3R3BfGp6ybQprPDVo7kfwU"
+      "image": "https://assets.objkt.media/file/assets-003/Qmb5ubuCZtXkKYV5YTBb5sKTPVF24ZfWikfyy475UMos9y/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmakLhPRXbyHvRqHCZsbJGhF6rcinaD9LpJAQ8DJN5DoYW/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmUEWaCymKArWA8xjQmjDXkX3R3BfGp6ybQprPDVo7kfwU/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/5.loop.mp4"
     },
     {
       "tokenId": "5",
       "title": "Parrot #005",
-      "image": "https://ipfs.io/ipfs/QmNQQRSrJproBwi2es6NJDwh3sPBHP3qdwyDTnTN35ZLqp",
-      "thumbnail": "https://ipfs.io/ipfs/Qma69CMw7NuqSk5fhxAYVYid2ZoVrjr9h25u3tyxXhAS6m",
-      "animationUrl": "https://ipfs.io/ipfs/QmduCJu57XEe1myo74AVh3PmoNjBzFwCJc8mrsJisgCzAY"
+      "image": "https://assets.objkt.media/file/assets-003/QmNQQRSrJproBwi2es6NJDwh3sPBHP3qdwyDTnTN35ZLqp/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/Qma69CMw7NuqSk5fhxAYVYid2ZoVrjr9h25u3tyxXhAS6m/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmduCJu57XEe1myo74AVh3PmoNjBzFwCJc8mrsJisgCzAY/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/6.loop.mp4"
     },
     {
       "tokenId": "6",
       "title": "Parrot #006",
-      "image": "https://ipfs.io/ipfs/QmRjcqitAGTQ5uXk6Z1qEDZVhsVyT1E76iTbT3Zs1CQqTr",
-      "thumbnail": "https://ipfs.io/ipfs/QmRjcqitAGTQ5uXk6Z1qEDZVhsVyT1E76iTbT3Zs1CQqTr",
-      "animationUrl": "https://ipfs.io/ipfs/QmRjcqitAGTQ5uXk6Z1qEDZVhsVyT1E76iTbT3Zs1CQqTr"
+      "image": "https://assets.objkt.media/file/assets-003/QmRjcqitAGTQ5uXk6Z1qEDZVhsVyT1E76iTbT3Zs1CQqTr/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmRjcqitAGTQ5uXk6Z1qEDZVhsVyT1E76iTbT3Zs1CQqTr/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmRjcqitAGTQ5uXk6Z1qEDZVhsVyT1E76iTbT3Zs1CQqTr/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/7.loop.mp4"
     },
     {
       "tokenId": "7",
       "title": "Parrot #007",
-      "image": "https://ipfs.io/ipfs/QmeGPkg6B3W4gRM6Gpvx7KETM6rSY72EtNFUeCVPMY1raV",
-      "thumbnail": "https://ipfs.io/ipfs/QmeGPkg6B3W4gRM6Gpvx7KETM6rSY72EtNFUeCVPMY1raV",
-      "animationUrl": "https://ipfs.io/ipfs/QmeGPkg6B3W4gRM6Gpvx7KETM6rSY72EtNFUeCVPMY1raV"
+      "image": "https://assets.objkt.media/file/assets-003/QmeGPkg6B3W4gRM6Gpvx7KETM6rSY72EtNFUeCVPMY1raV/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmeGPkg6B3W4gRM6Gpvx7KETM6rSY72EtNFUeCVPMY1raV/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmeGPkg6B3W4gRM6Gpvx7KETM6rSY72EtNFUeCVPMY1raV/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/8.loop.mp4"
     },
     {
       "tokenId": "8",
       "title": "Parrot #008",
-      "image": "https://ipfs.io/ipfs/QmTZ3ncfqPqPhxtmZp61YBybpFXdorqv19q4Y8nzPCytAv",
-      "thumbnail": "https://ipfs.io/ipfs/QmTZ3ncfqPqPhxtmZp61YBybpFXdorqv19q4Y8nzPCytAv",
-      "animationUrl": "https://ipfs.io/ipfs/QmTZ3ncfqPqPhxtmZp61YBybpFXdorqv19q4Y8nzPCytAv"
+      "image": "https://assets.objkt.media/file/assets-003/QmTZ3ncfqPqPhxtmZp61YBybpFXdorqv19q4Y8nzPCytAv/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmTZ3ncfqPqPhxtmZp61YBybpFXdorqv19q4Y8nzPCytAv/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmTZ3ncfqPqPhxtmZp61YBybpFXdorqv19q4Y8nzPCytAv/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/9.loop.mp4"
     },
     {
       "tokenId": "9",
       "title": "Parrot #09",
-      "image": "https://ipfs.io/ipfs/QmYeVsaQrhfGbAmFarzt8qUzqPH1bsK6WTq8df2NsS5pW2",
-      "thumbnail": "https://ipfs.io/ipfs/QmYeVsaQrhfGbAmFarzt8qUzqPH1bsK6WTq8df2NsS5pW2",
-      "animationUrl": "https://ipfs.io/ipfs/QmYeVsaQrhfGbAmFarzt8qUzqPH1bsK6WTq8df2NsS5pW2"
+      "image": "https://assets.objkt.media/file/assets-003/QmYeVsaQrhfGbAmFarzt8qUzqPH1bsK6WTq8df2NsS5pW2/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmYeVsaQrhfGbAmFarzt8qUzqPH1bsK6WTq8df2NsS5pW2/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmYeVsaQrhfGbAmFarzt8qUzqPH1bsK6WTq8df2NsS5pW2/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/10.loop.mp4"
     },
     {
       "tokenId": "10",
       "title": "Parrot #009",
-      "image": "https://ipfs.io/ipfs/QmQ3hBrFiiB5h4TMeT7VY6883RycCnT8SY59CJyVgeXm2t",
-      "thumbnail": "https://ipfs.io/ipfs/Qmdz9EwD3tAWbtJucfqu9YjP1DiA3WvLQN2euCE7onU9k1",
-      "animationUrl": "https://ipfs.io/ipfs/QmU6h2te941jvFXxAajrm5XuU1Rv83Ujp2bALampBfA4d6"
+      "image": "https://assets.objkt.media/file/assets-003/QmQ3hBrFiiB5h4TMeT7VY6883RycCnT8SY59CJyVgeXm2t/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/Qmdz9EwD3tAWbtJucfqu9YjP1DiA3WvLQN2euCE7onU9k1/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmU6h2te941jvFXxAajrm5XuU1Rv83Ujp2bALampBfA4d6/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/11.loop.mp4"
     },
     {
       "tokenId": "11",
       "title": "Parrot #010",
-      "image": "https://ipfs.io/ipfs/QmQ3hBrFiiB5h4TMeT7VY6883RycCnT8SY59CJyVgeXm2t",
-      "thumbnail": "https://ipfs.io/ipfs/Qmdz9EwD3tAWbtJucfqu9YjP1DiA3WvLQN2euCE7onU9k1",
-      "animationUrl": "https://ipfs.io/ipfs/QmU6h2te941jvFXxAajrm5XuU1Rv83Ujp2bALampBfA4d6"
+      "image": "https://assets.objkt.media/file/assets-003/QmQ3hBrFiiB5h4TMeT7VY6883RycCnT8SY59CJyVgeXm2t/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/Qmdz9EwD3tAWbtJucfqu9YjP1DiA3WvLQN2euCE7onU9k1/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmU6h2te941jvFXxAajrm5XuU1Rv83Ujp2bALampBfA4d6/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/12.loop.mp4"
     },
     {
       "tokenId": "12",
       "title": "Parrot #011",
-      "image": "https://ipfs.io/ipfs/QmPP2pbcyisTrRJVUqatxvJKJ72ZguKLehjjyuuXb7MZuV",
-      "thumbnail": "https://ipfs.io/ipfs/QmPP2pbcyisTrRJVUqatxvJKJ72ZguKLehjjyuuXb7MZuV",
-      "animationUrl": "https://ipfs.io/ipfs/QmPP2pbcyisTrRJVUqatxvJKJ72ZguKLehjjyuuXb7MZuV"
+      "image": "https://assets.objkt.media/file/assets-003/QmPP2pbcyisTrRJVUqatxvJKJ72ZguKLehjjyuuXb7MZuV/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmPP2pbcyisTrRJVUqatxvJKJ72ZguKLehjjyuuXb7MZuV/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmPP2pbcyisTrRJVUqatxvJKJ72ZguKLehjjyuuXb7MZuV/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/13.loop.mp4"
     },
     {
       "tokenId": "13",
       "title": "Parrot #012",
-      "image": "https://ipfs.io/ipfs/QmRRk31jDPQjyVhja1hyQ6sgwdSfnCENHtBcNb4g2KF77q",
-      "thumbnail": "https://ipfs.io/ipfs/QmP8WJ2N7FbMAnPxNSUuzUToVqo5dpGZ8c7pDutaZWWYdp",
-      "animationUrl": "https://ipfs.io/ipfs/QmTVuFZqmRZsfCJncRD15uLGmKzmgf1UtKYtFS6kYKgSUs"
+      "image": "https://assets.objkt.media/file/assets-003/QmRRk31jDPQjyVhja1hyQ6sgwdSfnCENHtBcNb4g2KF77q/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmP8WJ2N7FbMAnPxNSUuzUToVqo5dpGZ8c7pDutaZWWYdp/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmTVuFZqmRZsfCJncRD15uLGmKzmgf1UtKYtFS6kYKgSUs/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/14.loop.mp4"
     },
     {
       "tokenId": "14",
       "title": "Parrot #013",
-      "image": "https://ipfs.io/ipfs/QmehCU4mi1mGKVwrrhggjBPAr76vL1Ue7qKUXnNJ44M9kk",
-      "thumbnail": "https://ipfs.io/ipfs/QmcTwJYPQmnkXqTvsPPqcc9CCAG6gS9Z7eMGSGL3sW8RpP",
-      "animationUrl": "https://ipfs.io/ipfs/QmSusbdeEJz68KdNHajV6PKSdPPUuSN96J3pH7bFCm3Nz2"
+      "image": "https://assets.objkt.media/file/assets-003/QmehCU4mi1mGKVwrrhggjBPAr76vL1Ue7qKUXnNJ44M9kk/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmcTwJYPQmnkXqTvsPPqcc9CCAG6gS9Z7eMGSGL3sW8RpP/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmSusbdeEJz68KdNHajV6PKSdPPUuSN96J3pH7bFCm3Nz2/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/15.loop.mp4"
     },
     {
       "tokenId": "15",
       "title": "Parrot #014",
-      "image": "https://ipfs.io/ipfs/QmZSrjw71PD3uwN2LL1j8KdMsXvmd64PcZ8DTpJovyUCdM",
-      "thumbnail": "https://ipfs.io/ipfs/QmfUfmQegeEhFUZWig83CFkqDZH6Q3ohrTbUL4XXzJgAnT",
-      "animationUrl": "https://ipfs.io/ipfs/QmNRzvaMwnLiVyomqmSF9DqJ2T7WSkJ2rvqhRrqFH73vLK"
+      "image": "https://assets.objkt.media/file/assets-003/QmZSrjw71PD3uwN2LL1j8KdMsXvmd64PcZ8DTpJovyUCdM/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmfUfmQegeEhFUZWig83CFkqDZH6Q3ohrTbUL4XXzJgAnT/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmNRzvaMwnLiVyomqmSF9DqJ2T7WSkJ2rvqhRrqFH73vLK/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/16.loop.mp4"
     },
     {
       "tokenId": "16",
       "title": "Parrot #015",
-      "image": "https://ipfs.io/ipfs/QmUSfvdvnf2neVJabQMDugDNvnWgkxA2WKHHXBik29Rnrw",
-      "thumbnail": "https://ipfs.io/ipfs/QmcPbyssVGnYYkRJLL3B9YMw2gh3tuB7gSPxiG2w62LdTz",
-      "animationUrl": "https://ipfs.io/ipfs/QmRfD1CmKvYeKc5fdws2j5FXjkgzUxUutp2snFZX2ktXW8"
+      "image": "https://assets.objkt.media/file/assets-003/QmUSfvdvnf2neVJabQMDugDNvnWgkxA2WKHHXBik29Rnrw/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmcPbyssVGnYYkRJLL3B9YMw2gh3tuB7gSPxiG2w62LdTz/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmRfD1CmKvYeKc5fdws2j5FXjkgzUxUutp2snFZX2ktXW8/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/17.loop.mp4"
     },
     {
       "tokenId": "17",
       "title": "Parrot #016",
-      "image": "https://ipfs.io/ipfs/QmVZLCJisaXqnYPrcLz1jag9Ety1CDYyN6TvN2FcVT5ubb",
-      "thumbnail": "https://ipfs.io/ipfs/QmW8SA79EH4bJFdZ4EP3Hp6W2MDuMgEFKgwpfUqKWm6Anc",
-      "animationUrl": "https://ipfs.io/ipfs/QmRmJknSiSbDzgxXMd49sQJf1vdtBxGbcrQAkHcbWp4d9t"
+      "image": "https://assets.objkt.media/file/assets-003/QmVZLCJisaXqnYPrcLz1jag9Ety1CDYyN6TvN2FcVT5ubb/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmW8SA79EH4bJFdZ4EP3Hp6W2MDuMgEFKgwpfUqKWm6Anc/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmRmJknSiSbDzgxXMd49sQJf1vdtBxGbcrQAkHcbWp4d9t/artifact",
+      "imageType": "still",
+      "animType": "video",
+      "loop": "art/previews/parrot-party/18.loop.mp4"
     },
     {
       "tokenId": "18",
       "title": "Parrot #17",
-      "image": "https://ipfs.io/ipfs/QmYQczRCAxuZEYFd57DM3Q5q3z47vd2cNshQfSkoyYAAYy",
-      "thumbnail": "https://ipfs.io/ipfs/QmRFMd2jUyJH4MUrgoEm8iiPQVf6TxW7GqmpNzPYJRaNjt",
-      "animationUrl": "https://ipfs.io/ipfs/QmPBiSUFLABuir4xQUmshR2o3X6P7ojrhP8vkKwUyX1Wfc"
+      "image": "https://assets.objkt.media/file/assets-003/QmYQczRCAxuZEYFd57DM3Q5q3z47vd2cNshQfSkoyYAAYy/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmRFMd2jUyJH4MUrgoEm8iiPQVf6TxW7GqmpNzPYJRaNjt/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmPBiSUFLABuir4xQUmshR2o3X6P7ojrhP8vkKwUyX1Wfc/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/19.loop.mp4"
     },
     {
       "tokenId": "19",
       "title": "Parrot #18",
-      "image": "https://ipfs.io/ipfs/QmYNKAQasLyo2b34vfanJaSHRUADhzRCZA45CqmgA3rf63",
-      "thumbnail": "https://ipfs.io/ipfs/Qmc9CSxVVwhqtCtGK9eYQE7mjogjg7tpADfKmat2rVmo15",
-      "animationUrl": "https://ipfs.io/ipfs/QmWExuhLKMWwxFEAFRtxQzonafGJMB4DscwGR7QRK6Sid9"
+      "image": "https://assets.objkt.media/file/assets-003/QmYNKAQasLyo2b34vfanJaSHRUADhzRCZA45CqmgA3rf63/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/Qmc9CSxVVwhqtCtGK9eYQE7mjogjg7tpADfKmat2rVmo15/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmWExuhLKMWwxFEAFRtxQzonafGJMB4DscwGR7QRK6Sid9/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/20.loop.mp4"
     },
     {
       "tokenId": "20",
       "title": "Parrot #19",
-      "image": "https://ipfs.io/ipfs/QmVTp6XmWB15srKhYQCHkresanYz8F4gSPMo7TZrwSzFWu",
-      "thumbnail": "https://ipfs.io/ipfs/QmVvFaVoYZqJwtH6WjsK6yyKixmnmozrcdn8gtYQ6jksE3",
-      "animationUrl": "https://ipfs.io/ipfs/QmUhRxpRFr3AXeAcNEWMaJbDsvWR8UCBF1EKQHc1Z2RW4C"
+      "image": "https://assets.objkt.media/file/assets-003/QmVTp6XmWB15srKhYQCHkresanYz8F4gSPMo7TZrwSzFWu/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmVvFaVoYZqJwtH6WjsK6yyKixmnmozrcdn8gtYQ6jksE3/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmUhRxpRFr3AXeAcNEWMaJbDsvWR8UCBF1EKQHc1Z2RW4C/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/21.loop.mp4"
     },
     {
       "tokenId": "21",
       "title": "Parrot #20",
-      "image": "https://ipfs.io/ipfs/QmUFRN5jvvmUnBSbDpUBq5t59hZjLoYvHysDuGjUtgLktK",
-      "thumbnail": "https://ipfs.io/ipfs/QmXngZDFnVoxwJWknaUmDyEgzMtmD7eQeTnSfVMo1UaSo3",
-      "animationUrl": "https://ipfs.io/ipfs/QmWFNuCxwqAzkmFZCa5NKWY7TrR9WtcAj2A2EkpBZU3jEB"
+      "image": "https://assets.objkt.media/file/assets-003/QmUFRN5jvvmUnBSbDpUBq5t59hZjLoYvHysDuGjUtgLktK/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmXngZDFnVoxwJWknaUmDyEgzMtmD7eQeTnSfVMo1UaSo3/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmWFNuCxwqAzkmFZCa5NKWY7TrR9WtcAj2A2EkpBZU3jEB/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/22.loop.mp4"
     },
     {
       "tokenId": "22",
       "title": "Parrot #21",
-      "image": "https://ipfs.io/ipfs/QmfKHBVb2LjgstFiikpNg5HZeHHwHJ6d8NNSGPSr9rjJv7",
-      "thumbnail": "https://ipfs.io/ipfs/QmbqpuiLQjD1fBjC6fZjVJJ5Nyj3jNhFv5BMh4CUEA3oQs",
-      "animationUrl": "https://ipfs.io/ipfs/QmPaYFRPw62Up58Yw7fZRe2F2tn5nXYGZ8oYB28GwxBjSe"
+      "image": "https://assets.objkt.media/file/assets-003/QmfKHBVb2LjgstFiikpNg5HZeHHwHJ6d8NNSGPSr9rjJv7/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmbqpuiLQjD1fBjC6fZjVJJ5Nyj3jNhFv5BMh4CUEA3oQs/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmPaYFRPw62Up58Yw7fZRe2F2tn5nXYGZ8oYB28GwxBjSe/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/23.loop.mp4"
     },
     {
       "tokenId": "23",
       "title": "Parrot #22",
-      "image": "https://ipfs.io/ipfs/QmYvdhxrmcHN3f79Tdbh5DLWnXh8N3UZGC7WGSwbR5362b",
-      "thumbnail": "https://ipfs.io/ipfs/QmTymC6MY8woViHCyNTctfyNt8EfdFUzQ6MziwAFz9ezKx",
-      "animationUrl": "https://ipfs.io/ipfs/QmVHpAZTUdoCbijuJDbCdLaSgVXvSViA7KrVvKj18CJkXs"
+      "image": "https://assets.objkt.media/file/assets-003/QmYvdhxrmcHN3f79Tdbh5DLWnXh8N3UZGC7WGSwbR5362b/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmTymC6MY8woViHCyNTctfyNt8EfdFUzQ6MziwAFz9ezKx/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmVHpAZTUdoCbijuJDbCdLaSgVXvSViA7KrVvKj18CJkXs/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/24.loop.mp4"
     },
     {
       "tokenId": "24",
       "title": "Parrot #23",
-      "image": "https://ipfs.io/ipfs/QmVg1QNPsS9fd9Vtdw4ducYyFTQ1FvFj3UZuJoxg5QRmxw",
-      "thumbnail": "https://ipfs.io/ipfs/QmewNFYi6mFL3zEewi9YyNRVWpNbfAnYgpABNxbUZ9fuBv",
-      "animationUrl": "https://ipfs.io/ipfs/Qmb2egQ7eDtwzaBYaZjE8uTHPuxtZ5FAbYD8B3ytGMvJUF"
+      "image": "https://assets.objkt.media/file/assets-003/QmVg1QNPsS9fd9Vtdw4ducYyFTQ1FvFj3UZuJoxg5QRmxw/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmewNFYi6mFL3zEewi9YyNRVWpNbfAnYgpABNxbUZ9fuBv/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/Qmb2egQ7eDtwzaBYaZjE8uTHPuxtZ5FAbYD8B3ytGMvJUF/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/25.loop.mp4"
     },
     {
       "tokenId": "26",
       "title": "Parrot #24",
-      "image": "https://ipfs.io/ipfs/QmTeMQoUCM1CwmArmvK29RAihd9BRkF2bjnKjP4bbwJ9n2",
-      "thumbnail": "https://ipfs.io/ipfs/QmXRCQ6PEeU26AiVYXV813BQsTEBJNABYEke7PtJDUft8u",
-      "animationUrl": "https://ipfs.io/ipfs/QmQ9THdAt5wH7JaSsKESkwZGhxfZHCSLjqXjBhoRcmmDvD"
+      "image": "https://assets.objkt.media/file/assets-003/QmTeMQoUCM1CwmArmvK29RAihd9BRkF2bjnKjP4bbwJ9n2/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmXRCQ6PEeU26AiVYXV813BQsTEBJNABYEke7PtJDUft8u/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmQ9THdAt5wH7JaSsKESkwZGhxfZHCSLjqXjBhoRcmmDvD/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/26.loop.mp4"
     },
     {
       "tokenId": "27",
       "title": "Parrot #25",
-      "image": "https://ipfs.io/ipfs/QmXzfvN9g28QtiN7XvmSeHdFSGSvXe61wUi3SdVPF8QDf9",
-      "thumbnail": "https://ipfs.io/ipfs/QmSBYR2vJxM9p6FYmn1dv5WYRiv6x3mn955R6Fk65CPdmp",
-      "animationUrl": "https://ipfs.io/ipfs/QmWkQThoSTPekkTYKk8ScP8MXFN9pWskiu5jM2AEW2jRGT"
+      "image": "https://assets.objkt.media/file/assets-003/QmXzfvN9g28QtiN7XvmSeHdFSGSvXe61wUi3SdVPF8QDf9/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmSBYR2vJxM9p6FYmn1dv5WYRiv6x3mn955R6Fk65CPdmp/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmWkQThoSTPekkTYKk8ScP8MXFN9pWskiu5jM2AEW2jRGT/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/27.loop.mp4"
     },
     {
       "tokenId": "28",
       "title": "Parrot #26",
-      "image": "https://ipfs.io/ipfs/Qmf6DCiyU9pXdT9PM941ioin3vZRxituX2NAvnx8KnEnCd",
-      "thumbnail": "https://ipfs.io/ipfs/QmajG4VacTEcsQy9sdUKta1Bcz6xry8TJSQQD941iJbojC",
-      "animationUrl": "https://ipfs.io/ipfs/QmRzbaB7tjacjQMpzVjJbHnykAt6hauQAXxhTMsCk2qeht"
+      "image": "https://assets.objkt.media/file/assets-003/Qmf6DCiyU9pXdT9PM941ioin3vZRxituX2NAvnx8KnEnCd/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmajG4VacTEcsQy9sdUKta1Bcz6xry8TJSQQD941iJbojC/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmRzbaB7tjacjQMpzVjJbHnykAt6hauQAXxhTMsCk2qeht/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/28.loop.mp4"
     },
     {
       "tokenId": "29",
       "title": "Parrot #27",
-      "image": "https://ipfs.io/ipfs/QmQUgjHvYF4PBkGcidKUMD1NLpfeGZ73voYP5KXnJbV3kA",
-      "thumbnail": "https://ipfs.io/ipfs/QmSgJeZd2MpDPNsPN5PSLrHi5NDwVbBgaJKjpncjteFvpQ",
-      "animationUrl": "https://ipfs.io/ipfs/QmTBuK4giPof4YbYFPt5SsK5zBmFJFV8zuGEyr4btErJCp"
+      "image": "https://assets.objkt.media/file/assets-003/QmQUgjHvYF4PBkGcidKUMD1NLpfeGZ73voYP5KXnJbV3kA/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmSgJeZd2MpDPNsPN5PSLrHi5NDwVbBgaJKjpncjteFvpQ/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmTBuK4giPof4YbYFPt5SsK5zBmFJFV8zuGEyr4btErJCp/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/29.loop.mp4"
     },
     {
       "tokenId": "30",
       "title": "Parrot #28",
-      "image": "https://ipfs.io/ipfs/QmUzvPY9LKThNGcNGAxpcjjtVFgVnejidgjPhcvSiL9ypv",
-      "thumbnail": "https://ipfs.io/ipfs/QmPhi69S4dxNNFGEQyi37wJyXtJEkmjb3zAJH7fki34mXD",
-      "animationUrl": "https://ipfs.io/ipfs/Qme3rFd98D9LktEt4wkYo3oLZxr1c1MYMRyjoZkmbwinYL"
+      "image": "https://assets.objkt.media/file/assets-003/QmUzvPY9LKThNGcNGAxpcjjtVFgVnejidgjPhcvSiL9ypv/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmPhi69S4dxNNFGEQyi37wJyXtJEkmjb3zAJH7fki34mXD/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/Qme3rFd98D9LktEt4wkYo3oLZxr1c1MYMRyjoZkmbwinYL/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/30.loop.mp4"
     },
     {
       "tokenId": "31",
       "title": "Parrot #29",
-      "image": "https://ipfs.io/ipfs/QmPFpXzD684CFTrTLYW3X24bpUAWwgQjdr5fEiCRs51LDU",
-      "thumbnail": "https://ipfs.io/ipfs/Qmd9RnKML96oooSg24HXAg26hbrJrrpWoSGiZTFdHvXn5n"
+      "image": "https://assets.objkt.media/file/assets-003/QmPFpXzD684CFTrTLYW3X24bpUAWwgQjdr5fEiCRs51LDU/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/Qmd9RnKML96oooSg24HXAg26hbrJrrpWoSGiZTFdHvXn5n/artifact",
+      "imageType": "still"
     },
     {
       "tokenId": "33",
       "title": "Parrot #30",
-      "image": "https://ipfs.io/ipfs/QmazakprWTXZqnmmygje7ZaDgA8DthaoMnNxGHxnyKrApz",
-      "thumbnail": "https://ipfs.io/ipfs/QmbkGmJ2y5dKCBCT4XuU37o9RC62zYCzGQNr1ZtSdWQsqN",
-      "animationUrl": "https://ipfs.io/ipfs/QmP46dujoTWpKSyt4vnJNGiSwSuq7rQz1AXttPWUqxazE6"
+      "image": "https://assets.objkt.media/file/assets-003/QmazakprWTXZqnmmygje7ZaDgA8DthaoMnNxGHxnyKrApz/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmbkGmJ2y5dKCBCT4XuU37o9RC62zYCzGQNr1ZtSdWQsqN/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmP46dujoTWpKSyt4vnJNGiSwSuq7rQz1AXttPWUqxazE6/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/32.loop.mp4"
     },
     {
       "tokenId": "34",
       "title": "Parrot #31",
-      "image": "https://ipfs.io/ipfs/QmesqmuqxM2iN21hss7JMSP1otTKfHNCxkMevWyhisRmNb",
-      "thumbnail": "https://ipfs.io/ipfs/QmTjugdHuFtk5Gc52nfBTbY1qDtaaiNbmtAPtCHRxGgJVG",
-      "animationUrl": "https://ipfs.io/ipfs/Qmasw653qqbkwQ5t3Hf8NWMtTTZRM4g7Pvoqv82B2Qr64D"
+      "image": "https://assets.objkt.media/file/assets-003/QmesqmuqxM2iN21hss7JMSP1otTKfHNCxkMevWyhisRmNb/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmTjugdHuFtk5Gc52nfBTbY1qDtaaiNbmtAPtCHRxGgJVG/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/Qmasw653qqbkwQ5t3Hf8NWMtTTZRM4g7Pvoqv82B2Qr64D/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/33.loop.mp4"
     },
     {
       "tokenId": "35",
       "title": "Parrot #32",
-      "image": "https://ipfs.io/ipfs/QmYbQp7EBcZxRUTZJJr9hUecq3NFb53eL2MmwgU8LkMEFX",
-      "thumbnail": "https://ipfs.io/ipfs/QmZ5UcFvhDj9oYBiJH8iG5BSS7CmJ1nY6aJsfdUE1H945J",
-      "animationUrl": "https://ipfs.io/ipfs/QmWBCpMJ82qYbvWsnVomv7VePTZWRxbsLGiBXnPz4PRmr6"
+      "image": "https://assets.objkt.media/file/assets-003/QmYbQp7EBcZxRUTZJJr9hUecq3NFb53eL2MmwgU8LkMEFX/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmZ5UcFvhDj9oYBiJH8iG5BSS7CmJ1nY6aJsfdUE1H945J/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmWBCpMJ82qYbvWsnVomv7VePTZWRxbsLGiBXnPz4PRmr6/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/34.loop.mp4"
     },
     {
       "tokenId": "36",
       "title": "Parrot #33",
-      "image": "https://ipfs.io/ipfs/QmfSYbWm6UwRyGNFLVJsHnjMDKWUXTA1mV9zFa7jE9vsq9",
-      "thumbnail": "https://ipfs.io/ipfs/QmPAYA8K9jXi2q4xUC4Znv9WEgxsLhUKZSLT13w8jzhMCB",
-      "animationUrl": "https://ipfs.io/ipfs/QmWZ9hfiB22NctsUcTud5yiNg3oX3tkWkYHXeWLmj9UxWL"
+      "image": "https://assets.objkt.media/file/assets-003/QmfSYbWm6UwRyGNFLVJsHnjMDKWUXTA1mV9zFa7jE9vsq9/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmPAYA8K9jXi2q4xUC4Znv9WEgxsLhUKZSLT13w8jzhMCB/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmWZ9hfiB22NctsUcTud5yiNg3oX3tkWkYHXeWLmj9UxWL/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/35.loop.mp4"
     },
     {
       "tokenId": "37",
       "title": "Parrot #34",
-      "image": "https://ipfs.io/ipfs/QmebEmdHN25ceQj7kcPp2KxYqfUhpQuenT5Ge2pYMP8zGK",
-      "thumbnail": "https://ipfs.io/ipfs/QmYrTWRo7cCA2nYNaCkwyXXBDewV6KHHuQe7BwBzVAqLMC",
-      "animationUrl": "https://ipfs.io/ipfs/QmYkeASXXHCC2PDc1Uxc3rrTVAg7XMgYJ1eihvdBCTxbPv"
+      "image": "https://assets.objkt.media/file/assets-003/QmebEmdHN25ceQj7kcPp2KxYqfUhpQuenT5Ge2pYMP8zGK/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmYrTWRo7cCA2nYNaCkwyXXBDewV6KHHuQe7BwBzVAqLMC/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmYkeASXXHCC2PDc1Uxc3rrTVAg7XMgYJ1eihvdBCTxbPv/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/36.loop.mp4"
     },
     {
       "tokenId": "38",
       "title": "Parrot #35",
-      "image": "https://ipfs.io/ipfs/QmQk6y93iq4muUvFfXcoQAyHdvPpapDLyHyvBgL8WiwU2M",
-      "thumbnail": "https://ipfs.io/ipfs/QmYNQZ7uW9mxVjFVXWn7kd7MSCUJSHkM9kHGVKYrJNsiLf",
-      "animationUrl": "https://ipfs.io/ipfs/QmPX5VGAbmd3fiuF6FAPaq9c4ssoW5ZrfmhVQQAqWrD1jU"
+      "image": "https://assets.objkt.media/file/assets-003/QmQk6y93iq4muUvFfXcoQAyHdvPpapDLyHyvBgL8WiwU2M/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmYNQZ7uW9mxVjFVXWn7kd7MSCUJSHkM9kHGVKYrJNsiLf/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmPX5VGAbmd3fiuF6FAPaq9c4ssoW5ZrfmhVQQAqWrD1jU/artifact",
+      "imageType": "still",
+      "animType": "video",
+      "loop": "art/previews/parrot-party/37.loop.mp4"
     },
     {
       "tokenId": "39",
       "title": "Parrot #36",
-      "image": "https://ipfs.io/ipfs/QmcKNTgi8c2ma7F1SG4CJ92uvwEo3DBSTk8UMu9gNDvPxs",
-      "thumbnail": "https://ipfs.io/ipfs/QmPF28M9cNxRHmbkipuZu9gDWCSdW6PNYRKVAxFeCDuGCx",
-      "animationUrl": "https://ipfs.io/ipfs/QmQJwv5CBfo5Rxd7i3Te6W7BG7iR1gowkPjxTUtdr6cH5s"
+      "image": "https://assets.objkt.media/file/assets-003/QmcKNTgi8c2ma7F1SG4CJ92uvwEo3DBSTk8UMu9gNDvPxs/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmPF28M9cNxRHmbkipuZu9gDWCSdW6PNYRKVAxFeCDuGCx/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmQJwv5CBfo5Rxd7i3Te6W7BG7iR1gowkPjxTUtdr6cH5s/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/38.loop.mp4"
     },
     {
       "tokenId": "40",
       "title": "Parrot #37",
-      "image": "https://ipfs.io/ipfs/QmYoaT2q8mLoPngsnEENih2RkHtbrtuNaWkYyEATt5ynv3",
-      "thumbnail": "https://ipfs.io/ipfs/QmfPvgJUnVbJgZEQGh9UZE9NrYPU978QYWK3yjE3zoYoys",
-      "animationUrl": "https://ipfs.io/ipfs/Qmd5heb3s9TbKiZCAWBSWdkcHxaBFsog5T71eTBA9ygTqc"
+      "image": "https://assets.objkt.media/file/assets-003/QmYoaT2q8mLoPngsnEENih2RkHtbrtuNaWkYyEATt5ynv3/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmfPvgJUnVbJgZEQGh9UZE9NrYPU978QYWK3yjE3zoYoys/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/Qmd5heb3s9TbKiZCAWBSWdkcHxaBFsog5T71eTBA9ygTqc/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/39.loop.mp4"
     },
     {
       "tokenId": "41",
       "title": "Parrot #38",
-      "image": "https://ipfs.io/ipfs/Qmdg1FRBpDW7k5CWt7eftHG7hmESzLkvF2Gi9t96PB3e2y",
-      "thumbnail": "https://ipfs.io/ipfs/QmYUhGJYudnz9cSNdfdEncSqaRdZ3SYVV278UEp9WAdGAb",
-      "animationUrl": "https://ipfs.io/ipfs/QmfKfRoQ1X7Na9vVXa3Y6eRsyLBqgy1w43v9KaJEW7Ezj2"
+      "image": "https://assets.objkt.media/file/assets-003/Qmdg1FRBpDW7k5CWt7eftHG7hmESzLkvF2Gi9t96PB3e2y/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmYUhGJYudnz9cSNdfdEncSqaRdZ3SYVV278UEp9WAdGAb/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmfKfRoQ1X7Na9vVXa3Y6eRsyLBqgy1w43v9KaJEW7Ezj2/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/40.loop.mp4"
     },
     {
       "tokenId": "42",
       "title": "Parrot #39",
-      "image": "https://ipfs.io/ipfs/QmccTFTYC474YfTipaYn3NEGHdwB4tUvovCKpw31cRzTrA",
-      "thumbnail": "https://ipfs.io/ipfs/QmaHrjQ95SKNozBJHhEQQvBaXvngdDtqQf3GaDfwHDhMnx",
-      "animationUrl": "https://ipfs.io/ipfs/QmZp8VxcTDw8gAryP62DuWdgu7qVpYX3wN6GkvxyRZ3uk4"
+      "image": "https://assets.objkt.media/file/assets-003/QmccTFTYC474YfTipaYn3NEGHdwB4tUvovCKpw31cRzTrA/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmaHrjQ95SKNozBJHhEQQvBaXvngdDtqQf3GaDfwHDhMnx/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmZp8VxcTDw8gAryP62DuWdgu7qVpYX3wN6GkvxyRZ3uk4/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/41.loop.mp4"
     },
     {
       "tokenId": "43",
       "title": "Parrot #40",
-      "image": "https://ipfs.io/ipfs/QmcvDvrrD1TTg3rqtMVUUd5xVTc5ApgRrZ5Qcibh8bt8tz",
-      "thumbnail": "https://ipfs.io/ipfs/QmbDqnL59rhhEbdubnMkrWRgr28rApcVR8m8vs6XQhMHBt",
-      "animationUrl": "https://ipfs.io/ipfs/Qme1zpMDRgfiavHU3jtfVJnWMWdCcRzvk5SYNKSLsYt2q5"
+      "image": "https://assets.objkt.media/file/assets-003/QmcvDvrrD1TTg3rqtMVUUd5xVTc5ApgRrZ5Qcibh8bt8tz/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmbDqnL59rhhEbdubnMkrWRgr28rApcVR8m8vs6XQhMHBt/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/Qme1zpMDRgfiavHU3jtfVJnWMWdCcRzvk5SYNKSLsYt2q5/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/42.loop.mp4"
     },
     {
       "tokenId": "44",
       "title": "Parrot #41",
-      "image": "https://ipfs.io/ipfs/QmRDVJQL8PtCiGGJSaRLfzsc88jDLJYXdNPcpHSGTzypMq",
-      "thumbnail": "https://ipfs.io/ipfs/QmYHU9DF9xQXd9D5W1RbUQssc9Y6QxrbFxd9pbYRGXWpjR",
-      "animationUrl": "https://ipfs.io/ipfs/QmZ1mB1spwYoNRdUKkoJiThhZcyD66DqNfzbHu968tGAX1"
+      "image": "https://assets.objkt.media/file/assets-003/QmRDVJQL8PtCiGGJSaRLfzsc88jDLJYXdNPcpHSGTzypMq/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmYHU9DF9xQXd9D5W1RbUQssc9Y6QxrbFxd9pbYRGXWpjR/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmZ1mB1spwYoNRdUKkoJiThhZcyD66DqNfzbHu968tGAX1/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/43.loop.mp4"
     },
     {
       "tokenId": "46",
       "title": "Parrot #42",
-      "image": "https://ipfs.io/ipfs/Qmei3Sgfkfy2E3LCRKJRjciDLuSQipDm9sVVPDNKuJKj8K",
-      "thumbnail": "https://ipfs.io/ipfs/QmUkPwfnbTz3doANPMCsSH9Em6BcqRuFNPMMjn3agH67vG",
-      "animationUrl": "https://ipfs.io/ipfs/QmSoofkdk9vH2kTjPUsZzPRDzJaZw4MRn8azPYwoEMipJL"
+      "image": "https://assets.objkt.media/file/assets-003/Qmei3Sgfkfy2E3LCRKJRjciDLuSQipDm9sVVPDNKuJKj8K/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmUkPwfnbTz3doANPMCsSH9Em6BcqRuFNPMMjn3agH67vG/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmSoofkdk9vH2kTjPUsZzPRDzJaZw4MRn8azPYwoEMipJL/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/44.loop.mp4"
     },
     {
       "tokenId": "47",
       "title": "Parrot #43",
-      "image": "https://ipfs.io/ipfs/QmNo5Gv7cizZ8ydDMXT47jaapfVbRFDb9hKf3HsQa4EvHX",
-      "thumbnail": "https://ipfs.io/ipfs/QmSgscPbyyACgvbyZoJGbBYnEcA9zkHvNzobHA2rbcT7Rh",
-      "animationUrl": "https://ipfs.io/ipfs/QmYrnxajAR3wLG8s6weyEBKKe5xCP4FwFjFSAH1rhhUr1Q"
+      "image": "https://assets.objkt.media/file/assets-003/QmNo5Gv7cizZ8ydDMXT47jaapfVbRFDb9hKf3HsQa4EvHX/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmSgscPbyyACgvbyZoJGbBYnEcA9zkHvNzobHA2rbcT7Rh/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmYrnxajAR3wLG8s6weyEBKKe5xCP4FwFjFSAH1rhhUr1Q/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/45.loop.mp4"
     },
     {
       "tokenId": "48",
       "title": "Parrot #44",
-      "image": "https://ipfs.io/ipfs/QmRQs3UBhxyoaisA64VuBZFxkDeUhYf7qkAuoxpRDrFFDs",
-      "thumbnail": "https://ipfs.io/ipfs/QmNh1U8oeqX8E2F8XSGfwfTCrvWiqXDRG5ERtEotNaf6P7",
-      "animationUrl": "https://ipfs.io/ipfs/QmYTZTqkhT3TPYKjULq3dyiazjhU4pQWvA1vgvYQwVLfN8"
+      "image": "https://assets.objkt.media/file/assets-003/QmRQs3UBhxyoaisA64VuBZFxkDeUhYf7qkAuoxpRDrFFDs/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmNh1U8oeqX8E2F8XSGfwfTCrvWiqXDRG5ERtEotNaf6P7/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmYTZTqkhT3TPYKjULq3dyiazjhU4pQWvA1vgvYQwVLfN8/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/46.loop.mp4"
     },
     {
       "tokenId": "49",
       "title": "Parrot #45",
-      "image": "https://ipfs.io/ipfs/QmcMsgL2YSXwXKFnYfUzXhueSq65jzAHsj6BCbiJL4HNpi",
-      "thumbnail": "https://ipfs.io/ipfs/QmZXMwpS6yeTpCA3bo3T9u7gYcJLxVT18mmCG2W6YGWxSi",
-      "animationUrl": "https://ipfs.io/ipfs/QmUC4m1UeS89UUpfAwnZmGimMWqBqNbJyQubCgX4PtKByn"
+      "image": "https://assets.objkt.media/file/assets-003/QmcMsgL2YSXwXKFnYfUzXhueSq65jzAHsj6BCbiJL4HNpi/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmZXMwpS6yeTpCA3bo3T9u7gYcJLxVT18mmCG2W6YGWxSi/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmUC4m1UeS89UUpfAwnZmGimMWqBqNbJyQubCgX4PtKByn/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/47.loop.mp4"
     },
     {
       "tokenId": "50",
       "title": "Parrot #46",
-      "image": "https://ipfs.io/ipfs/QmS298wXBd5UEh6AkiSkHwUVPby9LTjfXKPEg8d2BbNtp8",
-      "thumbnail": "https://ipfs.io/ipfs/QmcG2jrs1yxPagQ6gSmVKSrRpJPPrcUQW2SbNsE1oAUcoK",
-      "animationUrl": "https://ipfs.io/ipfs/QmVKujxAHKWrzoC3uUsZjAcuGoCS1sTYUXqTRD8iPn9rVP"
+      "image": "https://assets.objkt.media/file/assets-003/QmS298wXBd5UEh6AkiSkHwUVPby9LTjfXKPEg8d2BbNtp8/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmcG2jrs1yxPagQ6gSmVKSrRpJPPrcUQW2SbNsE1oAUcoK/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmVKujxAHKWrzoC3uUsZjAcuGoCS1sTYUXqTRD8iPn9rVP/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/48.loop.mp4"
     },
     {
       "tokenId": "51",
       "title": "Parrot #47",
-      "image": "https://ipfs.io/ipfs/QmaqJeGULVFGhVHJi9F7iVn73VtEQHFtVi2datMRM7nbkd",
-      "thumbnail": "https://ipfs.io/ipfs/QmSKDKE28EuvqpwtCru1ovQQXB6KLZYs5ZdjBDvfA52SyN",
-      "animationUrl": "https://ipfs.io/ipfs/Qme42GANX4Jh3txo5n6vrr8iEuekRtZbE129MErxBZh8J7"
+      "image": "https://assets.objkt.media/file/assets-003/QmaqJeGULVFGhVHJi9F7iVn73VtEQHFtVi2datMRM7nbkd/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmSKDKE28EuvqpwtCru1ovQQXB6KLZYs5ZdjBDvfA52SyN/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/Qme42GANX4Jh3txo5n6vrr8iEuekRtZbE129MErxBZh8J7/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/49.loop.mp4"
     },
     {
       "tokenId": "52",
       "title": "Parrot #48",
-      "image": "https://ipfs.io/ipfs/QmZ7LQzUu3HqxmWZqecpin3HXDHpjXfswz4pegHJemvgsM",
-      "thumbnail": "https://ipfs.io/ipfs/QmP42uttWk853Z7b5MdHVNvDuA5AANQdX6as9QGmCDYLKJ",
-      "animationUrl": "https://ipfs.io/ipfs/QmYxYXJf9VonpEe4Zm1tz1XaEgxMagnzo6Q2CrJW358wys"
+      "image": "https://assets.objkt.media/file/assets-003/QmZ7LQzUu3HqxmWZqecpin3HXDHpjXfswz4pegHJemvgsM/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmP42uttWk853Z7b5MdHVNvDuA5AANQdX6as9QGmCDYLKJ/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmYxYXJf9VonpEe4Zm1tz1XaEgxMagnzo6Q2CrJW358wys/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/50.loop.mp4"
     },
     {
       "tokenId": "53",
       "title": "Parrot #49",
-      "image": "https://ipfs.io/ipfs/QmQFmhbnKVH5ndt6W3CztVexXEyPqYZZPSLBJbRgUWY6JG",
-      "thumbnail": "https://ipfs.io/ipfs/QmWHHG6ZuvG8tQqapT53Z1xGkR6trbH7zCRingwBHMeH5z",
-      "animationUrl": "https://ipfs.io/ipfs/QmdADCNzjwevxoAEoPinbUy9aQh1aZT2tAV9U8kWJsnSMw"
+      "image": "https://assets.objkt.media/file/assets-003/QmQFmhbnKVH5ndt6W3CztVexXEyPqYZZPSLBJbRgUWY6JG/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmWHHG6ZuvG8tQqapT53Z1xGkR6trbH7zCRingwBHMeH5z/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmdADCNzjwevxoAEoPinbUy9aQh1aZT2tAV9U8kWJsnSMw/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/parrot-party/51.loop.mp4"
     }
   ],
   "marketplaces": {

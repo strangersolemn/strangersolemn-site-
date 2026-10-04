@@ -21,7 +21,9 @@
           "value": "Solemn",
           "trait_type": "Artist"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/glitch-bomb/1.loop.mp4"
     },
     {
       "tokenId": "2",
@@ -35,7 +37,9 @@
           "value": "Solemn",
           "trait_type": "Artist"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/glitch-bomb/2.loop.mp4"
     },
     {
       "tokenId": "3",
@@ -53,7 +57,9 @@
           "value": "Fractured",
           "trait_type": "GLITCH"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/glitch-bomb/3.loop.mp4"
     },
     {
       "tokenId": "4",
@@ -71,7 +77,9 @@
           "value": "Fractured",
           "trait_type": "GLITCH"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/glitch-bomb/4.loop.mp4"
     },
     {
       "tokenId": "5",
@@ -85,7 +93,9 @@
           "value": "Solemn",
           "trait_type": "Artist"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/glitch-bomb/5.loop.mp4"
     },
     {
       "tokenId": "6",
@@ -103,7 +113,9 @@
           "value": "Static",
           "trait_type": "Glitch"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/glitch-bomb/6.loop.mp4"
     },
     {
       "tokenId": "7",
@@ -121,7 +133,9 @@
           "value": "Motion",
           "trait_type": "Glitch"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/glitch-bomb/7.loop.mp4"
     }
   ],
   "marketplaces": {

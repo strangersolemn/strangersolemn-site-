@@ -14,58 +14,82 @@
     {
       "tokenId": "0",
       "title": "It a Parrot Thing",
-      "image": "https://ipfs.io/ipfs/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8",
-      "thumbnail": "https://ipfs.io/ipfs/QmeYA3Y6HbVTyNoZngj9m4jQdsgynuJaYsAQHGoa3BXypV",
-      "animationUrl": "https://ipfs.io/ipfs/QmfNdQ9YsFPCS9uLvTqUBQMT4Hucod2o2A2zHpdQtkipDt"
+      "image": "https://assets.objkt.media/file/assets-003/Qmbk4t3Y1LmAxUG6CvH6Tcw99DLTHiyztwqYT2Lcfgs7Z8/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmeYA3Y6HbVTyNoZngj9m4jQdsgynuJaYsAQHGoa3BXypV/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmfNdQ9YsFPCS9uLvTqUBQMT4Hucod2o2A2zHpdQtkipDt/artifact",
+      "imageType": "still",
+      "animType": "video",
+      "loop": "art/previews/fck-knows/1.loop.mp4"
     },
     {
       "tokenId": "1",
       "title": "Parrot #001",
-      "image": "https://ipfs.io/ipfs/QmaSw2FVPzj6c3ZVoZ5TixnyinvtoWmckokhxwvvHZggt3",
-      "thumbnail": "https://ipfs.io/ipfs/QmPV1Btr9LnhuURvcSmFxp81BpsdCT4DqNrN1VhShoNvaL",
-      "animationUrl": "https://ipfs.io/ipfs/QmNPwftDVnBjp3qxiEmpPFHVzrQ56Wfc3T2Rf3NBVMmsEF"
+      "image": "https://assets.objkt.media/file/assets-003/QmaSw2FVPzj6c3ZVoZ5TixnyinvtoWmckokhxwvvHZggt3/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmPV1Btr9LnhuURvcSmFxp81BpsdCT4DqNrN1VhShoNvaL/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmNPwftDVnBjp3qxiEmpPFHVzrQ56Wfc3T2Rf3NBVMmsEF/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/fck-knows/2.loop.mp4"
     },
     {
       "tokenId": "2",
       "title": "qi ji",
-      "image": "https://ipfs.io/ipfs/QmcnYvrHqhLSGGztfYPtLUTjt5QzZpx5r5vpDN4xbfUPRM",
-      "thumbnail": "https://ipfs.io/ipfs/QmawHfmxBmDksiQULk9emaHtKMVLzGgwB2BbkbrNVpncQw",
-      "animationUrl": "https://ipfs.io/ipfs/QmWNRfGvU85JbVaCKEBdhwRqbgC3DhAo6SEVfQAEuxnPfn"
+      "image": "https://assets.objkt.media/file/assets-003/QmcnYvrHqhLSGGztfYPtLUTjt5QzZpx5r5vpDN4xbfUPRM/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmawHfmxBmDksiQULk9emaHtKMVLzGgwB2BbkbrNVpncQw/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmWNRfGvU85JbVaCKEBdhwRqbgC3DhAo6SEVfQAEuxnPfn/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/fck-knows/3.loop.mp4"
     },
     {
       "tokenId": "3",
       "title": "They/Them",
-      "image": "https://ipfs.io/ipfs/QmQAdiqnGuVXaQE45Uivop91Wp1rkhFy8mi6ZXDpxfzLZa",
-      "thumbnail": "https://ipfs.io/ipfs/Qmb2dPU4u25MPuBk1VmQXL2u9j2ZWsy83E1CxVChZ1EEYR",
-      "animationUrl": "https://ipfs.io/ipfs/QmeyTJctyVZfR1FkJDwdK6a3NodvPxXWKts5U6GG8Hn9fD"
+      "image": "https://assets.objkt.media/file/assets-003/QmQAdiqnGuVXaQE45Uivop91Wp1rkhFy8mi6ZXDpxfzLZa/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/Qmb2dPU4u25MPuBk1VmQXL2u9j2ZWsy83E1CxVChZ1EEYR/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmeyTJctyVZfR1FkJDwdK6a3NodvPxXWKts5U6GG8Hn9fD/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/fck-knows/4.loop.mp4"
     },
     {
       "tokenId": "5",
       "title": "Why do you build me up ?",
-      "image": "https://ipfs.io/ipfs/QmaW6sHuTcEYFS9YVb8wxetN75QaimuMXU6sUqXANmR2nS",
-      "thumbnail": "https://ipfs.io/ipfs/QmXqdUY7h8ew669nHb8KrcxHanZUAsT7hQiDvfKFFPMSFY",
-      "animationUrl": "https://ipfs.io/ipfs/QmQtKWRXj6WPVULq17DpG7pqhDhmh1HY1ZgvnpUmkPcN3Y"
+      "image": "https://assets.objkt.media/file/assets-003/QmaW6sHuTcEYFS9YVb8wxetN75QaimuMXU6sUqXANmR2nS/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmXqdUY7h8ew669nHb8KrcxHanZUAsT7hQiDvfKFFPMSFY/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmQtKWRXj6WPVULq17DpG7pqhDhmh1HY1ZgvnpUmkPcN3Y/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/fck-knows/5.loop.mp4"
     },
     {
       "tokenId": "6",
       "title": "Rhythmic Grind",
-      "image": "https://ipfs.io/ipfs/QmegnUZQBVG1x5ywthtpJ5s4Ur2NTpikMoM925zoNPVcCk",
-      "thumbnail": "https://ipfs.io/ipfs/QmVaGF2ZGeoBZSVb6FvHywgoUXTFVCXzsic9p3kj5Loc56",
-      "animationUrl": "https://ipfs.io/ipfs/QmWXuKysDbpQxdDhL6PRNZW2Zr2Xm1uf7ZJCGLshCUXJP3"
+      "image": "https://assets.objkt.media/file/assets-003/QmegnUZQBVG1x5ywthtpJ5s4Ur2NTpikMoM925zoNPVcCk/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmVaGF2ZGeoBZSVb6FvHywgoUXTFVCXzsic9p3kj5Loc56/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmWXuKysDbpQxdDhL6PRNZW2Zr2Xm1uf7ZJCGLshCUXJP3/artifact",
+      "imageType": "still",
+      "animType": "video",
+      "loop": "art/previews/fck-knows/6.loop.mp4"
     },
     {
       "tokenId": "7",
       "title": "Dread",
-      "image": "https://ipfs.io/ipfs/QmaMJcQ3eHuEZJ2tKeRrqpeEYgtcjmMVS17EMuFoKqyhtD",
-      "thumbnail": "https://ipfs.io/ipfs/QmNf46wGBt9jCKKjGTsuBVXqfpYBEsNY5bNVWYWQVWPpci",
-      "animationUrl": "https://ipfs.io/ipfs/QmUKnNw4CG7BhqXXm6ej2tZq7MbPBGwEEqzimuR7uMxG3x"
+      "image": "https://assets.objkt.media/file/assets-003/QmaMJcQ3eHuEZJ2tKeRrqpeEYgtcjmMVS17EMuFoKqyhtD/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmNf46wGBt9jCKKjGTsuBVXqfpYBEsNY5bNVWYWQVWPpci/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmUKnNw4CG7BhqXXm6ej2tZq7MbPBGwEEqzimuR7uMxG3x/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/fck-knows/7.loop.mp4"
     },
     {
       "tokenId": "8",
       "title": "Every Thing is Fine, Bruh",
-      "image": "https://ipfs.io/ipfs/QmUBRCqsb36bYDafUUohwZaK2YcgqqCoyttj98TtxyweGZ",
-      "thumbnail": "https://ipfs.io/ipfs/QmYCmCJoWkJ8eaeRVFyxeNHXBXrzqZ2p5ct1n6eXed8skU",
-      "animationUrl": "https://ipfs.io/ipfs/QmRL2FujX2FMh13An9hqdVkDeN1GQq98rQRyQAPpwRddpj"
+      "image": "https://assets.objkt.media/file/assets-003/QmUBRCqsb36bYDafUUohwZaK2YcgqqCoyttj98TtxyweGZ/artifact",
+      "thumbnail": "https://assets.objkt.media/file/assets-003/QmYCmCJoWkJ8eaeRVFyxeNHXBXrzqZ2p5ct1n6eXed8skU/artifact",
+      "animationUrl": "https://assets.objkt.media/file/assets-003/QmRL2FujX2FMh13An9hqdVkDeN1GQq98rQRyQAPpwRddpj/artifact",
+      "imageType": "gif",
+      "animType": "gif",
+      "loop": "art/previews/fck-knows/8.loop.mp4"
     }
   ],
   "marketplaces": {

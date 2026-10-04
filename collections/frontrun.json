@@ -15,26 +15,88 @@
     "opensea": "https://opensea.io/collection/frontrun"
   },
   "pieces": [
-    { "title": "Crimson Standard",  "image": "art/frontrun/frontrun-03.jpg", "thumbnail": "art/frontrun/frontrun-03.jpg" },
     {
-      "title": "FRONTRUN — Live Render",
+      "title": "Crimson Standard",
+      "image": "art/frontrun/frontrun-03.jpg",
+      "thumbnail": "art/frontrun/frontrun-03.jpg"
+    },
+    {
+      "title": "FRONTRUN \u2014 Live Render",
       "image": "art/frontrun/frontrun-08.jpg",
       "thumbnail": "art/frontrun/frontrun-08.jpg",
-      "animationUrl": "https://frontrun.strangersolemn.art/sketch-v4-glitch-lab.html?preview=1&embed=1"
+      "animationUrl": "https://frontrun.strangersolemn.art/sketch-v4-glitch-lab.html?preview=1&embed=1",
+      "animType": "html",
+      "preview": "art/previews/frontrun/2.mp4"
     },
-    { "title": "Amber Towers",      "image": "art/frontrun/frontrun-01.jpg", "thumbnail": "art/frontrun/frontrun-01.jpg" },
-    { "title": "Cyan Octagon",      "image": "art/frontrun/frontrun-02.jpg", "thumbnail": "art/frontrun/frontrun-02.jpg" },
-    { "title": "Scarlet Pyramid",   "image": "art/frontrun/frontrun-04.jpg", "thumbnail": "art/frontrun/frontrun-04.jpg" },
-    { "title": "Blue Datacity",     "image": "art/frontrun/frontrun-05.jpg", "thumbnail": "art/frontrun/frontrun-05.jpg" },
-    { "title": "Magenta Ticker",    "image": "art/frontrun/frontrun-06.jpg", "thumbnail": "art/frontrun/frontrun-06.jpg" },
-    { "title": "Emerald Whirlwind", "image": "art/frontrun/frontrun-07.jpg", "thumbnail": "art/frontrun/frontrun-07.jpg" },
-    { "title": "Datastream",        "image": "art/frontrun/frontrun-08.jpg", "thumbnail": "art/frontrun/frontrun-08.jpg" },
-    { "title": "Crimson Text",      "image": "art/frontrun/frontrun-09.jpg", "thumbnail": "art/frontrun/frontrun-09.jpg" },
-    { "title": "Verdant Rain",      "image": "art/frontrun/frontrun-10.jpg", "thumbnail": "art/frontrun/frontrun-10.jpg" },
-    { "title": "Manifesto",         "image": "art/frontrun/frontrun-11.jpg", "thumbnail": "art/frontrun/frontrun-11.jpg" },
-    { "title": "Amber Sunburst",    "image": "art/frontrun/frontrun-12.jpg", "thumbnail": "art/frontrun/frontrun-12.jpg" },
-    { "title": "Violet Sunburst",   "image": "art/frontrun/frontrun-13.jpg", "thumbnail": "art/frontrun/frontrun-13.jpg" },
-    { "title": "Gold Ticker",       "image": "art/frontrun/frontrun-14.jpg", "thumbnail": "art/frontrun/frontrun-14.jpg" },
-    { "title": "Neon Barcode",      "image": "art/frontrun/frontrun-15.jpg", "thumbnail": "art/frontrun/frontrun-15.jpg" }
+    {
+      "title": "Amber Towers",
+      "image": "art/frontrun/frontrun-01.jpg",
+      "thumbnail": "art/frontrun/frontrun-01.jpg"
+    },
+    {
+      "title": "Cyan Octagon",
+      "image": "art/frontrun/frontrun-02.jpg",
+      "thumbnail": "art/frontrun/frontrun-02.jpg"
+    },
+    {
+      "title": "Scarlet Pyramid",
+      "image": "art/frontrun/frontrun-04.jpg",
+      "thumbnail": "art/frontrun/frontrun-04.jpg"
+    },
+    {
+      "title": "Blue Datacity",
+      "image": "art/frontrun/frontrun-05.jpg",
+      "thumbnail": "art/frontrun/frontrun-05.jpg"
+    },
+    {
+      "title": "Magenta Ticker",
+      "image": "art/frontrun/frontrun-06.jpg",
+      "thumbnail": "art/frontrun/frontrun-06.jpg"
+    },
+    {
+      "title": "Emerald Whirlwind",
+      "image": "art/frontrun/frontrun-07.jpg",
+      "thumbnail": "art/frontrun/frontrun-07.jpg"
+    },
+    {
+      "title": "Datastream",
+      "image": "art/frontrun/frontrun-08.jpg",
+      "thumbnail": "art/frontrun/frontrun-08.jpg"
+    },
+    {
+      "title": "Crimson Text",
+      "image": "art/frontrun/frontrun-09.jpg",
+      "thumbnail": "art/frontrun/frontrun-09.jpg"
+    },
+    {
+      "title": "Verdant Rain",
+      "image": "art/frontrun/frontrun-10.jpg",
+      "thumbnail": "art/frontrun/frontrun-10.jpg"
+    },
+    {
+      "title": "Manifesto",
+      "image": "art/frontrun/frontrun-11.jpg",
+      "thumbnail": "art/frontrun/frontrun-11.jpg"
+    },
+    {
+      "title": "Amber Sunburst",
+      "image": "art/frontrun/frontrun-12.jpg",
+      "thumbnail": "art/frontrun/frontrun-12.jpg"
+    },
+    {
+      "title": "Violet Sunburst",
+      "image": "art/frontrun/frontrun-13.jpg",
+      "thumbnail": "art/frontrun/frontrun-13.jpg"
+    },
+    {
+      "title": "Gold Ticker",
+      "image": "art/frontrun/frontrun-14.jpg",
+      "thumbnail": "art/frontrun/frontrun-14.jpg"
+    },
+    {
+      "title": "Neon Barcode",
+      "image": "art/frontrun/frontrun-15.jpg",
+      "thumbnail": "art/frontrun/frontrun-15.jpg"
+    }
   ]
 }

@@ -62,11 +62,20 @@
         document.getElementById('fr-desc').textContent = d.description || '';
         document.getElementById('fr-note').textContent = d.artistNote || '';
         var live = (d.pieces || []).filter(function (p) { return p.animationUrl; })[0];
+        if (live && live.preview) {
+          // open on a moving loop of the live render instead of a still
+          var poster = document.getElementById('fr-poster');
+          var v = document.createElement('video');
+          v.id = 'fr-poster'; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true;
+          v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.poster = poster.src; v.src = live.preview;
+          v.className = 'fr-poster-video';
+          poster.replaceWith(v); v.play().catch(function () {});
+        }
         if (live) {
           var btn = document.getElementById('fr-play'); btn.hidden = false;
           btn.onclick = function () {
             var f = document.getElementById('fr-live'); f.src = live.animationUrl; f.hidden = false;
-            document.getElementById('fr-poster').hidden = true; btn.hidden = true;
+            var pv = document.getElementById('fr-poster'); pv.hidden = true; if (pv.pause) pv.pause(); btn.hidden = true;
             document.getElementById('fr-open').hidden = false;
           };
         }

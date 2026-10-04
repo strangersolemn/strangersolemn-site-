@@ -30,9 +30,20 @@ for (const f of files) {
   await pool(jobs, 6, async ({ p, src, n }) => {
     const rel = `art/previews/${col.id}/${n}.loop.mp4`, out = path.join(ROOT, rel);
     if (!fs.existsSync(out) || fs.statSync(out).size < 1000) {
-      const ok = await run(['-v', 'error', '-y', '-user_agent', 'Mozilla/5.0 (strangersolemn.art loops)', '-rw_timeout', '30000000', '-t', '4', '-i', src, '-t', '4', '-an',
+      const net = (input) => /^https?:/.test(input) ? ['-user_agent', 'Mozilla/5.0 (strangersolemn.art loops)', '-rw_timeout', '30000000'] : [];
+      const enc = (input) => run(['-v', 'error', '-y', ...net(input), '-i', input, '-an', '-frames:v', '80',
         '-vf', "fps=20,scale='if(gt(iw,ih),320,-2)':'if(gt(iw,ih),-2,320)':flags=lanczos,pad=ceil(iw/2)*2:ceil(ih/2)*2",
         '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-crf', '30', '-preset', 'veryslow', '-movflags', '+faststart', out]);
+      let ok = await enc(src);
+      if (!ok || !fs.existsSync(out) || fs.statSync(out).size < 1000) {
+        // some hosts stream video badly (non-interleaved files): download the original, then encode locally
+        const tmp = out + '.src';
+        try {
+          const r = await fetch(src, { headers: { 'User-Agent': 'Mozilla/5.0 (strangersolemn.art loops)' }, signal: AbortSignal.timeout(300000) });
+          if (r.ok) { fs.writeFileSync(tmp, Buffer.from(await r.arrayBuffer())); ok = await enc(tmp); }
+        } catch {}
+        fs.rmSync(tmp, { force: true });
+      }
       if (!ok || !fs.existsSync(out) || fs.statSync(out).size < 1000) { failed++; fs.rmSync(out, { force: true }); return; }
     }
     p.loop = rel; made++;

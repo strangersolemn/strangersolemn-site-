@@ -33,7 +33,9 @@
           "value": "Rekt by OSF",
           "trait_type": "Featuring"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/reflections/1.loop.mp4"
     },
     {
       "tokenId": "2",
@@ -42,7 +44,9 @@
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/96068430674beea7e4c327e9a589ceb7",
       "animationUrl": null,
       "description": "I cant go back in time - Ali Love",
-      "attributes": []
+      "attributes": [],
+      "imageType": "gif",
+      "loop": "art/previews/reflections/2.loop.mp4"
     },
     {
       "tokenId": "3",
@@ -56,7 +60,10 @@
           "value": "Solemn",
           "trait_type": "Artist"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "animType": "video",
+      "loop": "art/previews/reflections/3.loop.mp4"
     },
     {
       "tokenId": "4",
@@ -65,7 +72,9 @@
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/bce74fda26866d277c0c2cd2c467355a",
       "animationUrl": null,
       "description": "Keep it moving!!",
-      "attributes": []
+      "attributes": [],
+      "imageType": "gif",
+      "loop": "art/previews/reflections/4.loop.mp4"
     },
     {
       "tokenId": "5",
@@ -74,7 +83,9 @@
       "thumbnail": "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/eth-mainnet/05a9e04dbcccbf770b5442e1080876f7",
       "animationUrl": null,
       "description": "Rattle your cage..",
-      "attributes": []
+      "attributes": [],
+      "imageType": "gif",
+      "loop": "art/previews/reflections/5.loop.mp4"
     },
     {
       "tokenId": "6",
@@ -92,7 +103,9 @@
           "value": "opepen",
           "trait_type": "Tribute"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/reflections/6.loop.mp4"
     },
     {
       "tokenId": "7",
@@ -110,7 +123,9 @@
           "value": "The Goose",
           "trait_type": "Tribute"
         }
-      ]
+      ],
+      "imageType": "gif",
+      "loop": "art/previews/reflections/7.loop.mp4"
     }
   ],
   "marketplaces": {

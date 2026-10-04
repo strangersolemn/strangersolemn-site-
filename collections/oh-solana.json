@@ -13,8 +13,10 @@
     {
       "tokenId": "HZhMpaSxWpVjVvwJECD9TB3XGwZAWuEZkSSv26iLyYnq",
       "title": "Solace",
-      "image": "https://nftstorage.link/ipfs/bafybeie4gnljqiz76njpc2n5bfab2h2yovqb4tpxfiwfjiawifidaoroju",
-      "thumbnail": "https://nftstorage.link/ipfs/bafybeie4gnljqiz76njpc2n5bfab2h2yovqb4tpxfiwfjiawifidaoroju"
+      "image": "https://ipfs.filebase.io/ipfs/bafybeie4gnljqiz76njpc2n5bfab2h2yovqb4tpxfiwfjiawifidaoroju",
+      "thumbnail": "https://ipfs.filebase.io/ipfs/bafybeie4gnljqiz76njpc2n5bfab2h2yovqb4tpxfiwfjiawifidaoroju",
+      "imageType": "gif",
+      "loop": "art/previews/oh-solana/1.loop.mp4"
     }
   ],
   "marketplaces": {
