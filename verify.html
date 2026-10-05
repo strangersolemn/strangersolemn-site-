@@ -26,16 +26,24 @@
     </nav>
     <div class="board-page">
       <div class="board-wrap verify-wrap">
-        <h1 class="board-title">Verify your Ordinals</h1>
-        <p class="board-sub">Prove a Bitcoin wallet holds the work and get the <b>Ordinals</b> role in the Discord. You sign a message. Nothing is sent, nothing is spent, no transaction is ever asked for.</p>
+        <h1 class="board-title">Verify your wallet</h1>
+        <p class="board-sub">Prove a wallet holds the work and get your holder roles in Strange Labs: your collections, your FRONTRUN tier, and Ordinals. You sign a message. Nothing is sent, nothing is spent, no transaction is ever asked for.</p>
 
         <div class="verify-step" id="step-link">
           <div class="cotd-label">Step 1 &middot; Discord</div>
           <p class="verify-text" id="link-status">Type <code>/verify</code> in the Discord and open the link it gives you. The link is what connects this page to your Discord account.</p>
         </div>
 
+        <div class="verify-step" id="step-eth" hidden>
+          <div class="cotd-label">Step 2 &middot; Ethereum</div>
+          <p class="verify-text">Holding FRONTRUN, Renascent, HONOURS or any Ethereum collection? Connect the wallet that holds them. On a phone, open this page inside your wallet's browser (MetaMask, Rabby, Coinbase Wallet).</p>
+          <div class="verify-wallets">
+            <button class="board-btn" id="eth-connect">Connect Ethereum wallet</button>
+          </div>
+        </div>
+
         <div class="verify-step" id="step-wallet" hidden>
-          <div class="cotd-label">Step 2 &middot; Wallet</div>
+          <div class="cotd-label">Step 2 &middot; Bitcoin Ordinals</div>
           <p class="verify-text">Connect the wallet that holds the work. Use the <b>Ordinals</b> address (the one starting <code>bc1p</code>).</p>
           <div class="verify-wallets">
             <button class="board-btn" data-wallet="unisat">Unisat</button>
@@ -83,7 +91,7 @@
         $('link-status').innerHTML = 'No Discord link found. Type <code>/verify</code> in the Discord and open the link it gives you.';
       } else {
         $('link-status').innerHTML = 'Linked to your Discord account. Now connect a wallet.';
-        $('step-wallet').hidden = false;
+        $('step-wallet').hidden = false; $('step-eth').hidden = false;
       }
       function show(ok, text, holdings) {
         $('step-result').hidden = false;
@@ -163,6 +171,26 @@
         } catch (err) { show(false, (err && err.message) || String(err)); }
       });
       $('manual-go').onclick = function () { submit($('manual-addr').value.trim(), $('manual-sig').value.trim()); };
+
+      // ---- Ethereum: personal_sign with any injected wallet ----
+      var ETH_API = API.replace('/api/ord-verify', '/api/eth-verify');
+      $('eth-connect').onclick = async function () {
+        if (!window.ethereum) { show(false, 'No Ethereum wallet found in this browser. Install MetaMask or Rabby, or open this page in your wallet app\'s browser.'); return; }
+        try {
+          var accts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          var address = (accts[0] || '').toLowerCase();
+          nonce = Array.from(crypto.getRandomValues(new Uint8Array(8)), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+          ts = Math.floor(Date.now() / 1000);
+          var msg = 'strangersolemn.art\nVerify Ethereum for Discord\nuser: ' + userId + '\nnonce: ' + nonce + '\ntime: ' + ts;
+          var hexMsg = '0x' + Array.from(new TextEncoder().encode(msg), function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+          var signature = await window.ethereum.request({ method: 'personal_sign', params: [hexMsg, address] });
+          show(false, 'Checking…'); $('result-label').textContent = 'Checking';
+          var r = await fetch(ETH_API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: token, address: address, nonce: nonce, ts: ts, signature: signature }) });
+          var d = await r.json();
+          if (d.ok) show(true, 'You now have: ' + d.roles.join(', ') + '. Wallet ' + address.slice(0, 6) + '…' + address.slice(-4) + '.');
+          else show(false, d.error || 'Something went wrong.');
+        } catch (e) { show(false, (e && e.message) || String(e)); }
+      };
       $('again').onclick = function () { $('step-result').hidden = true; $('manual').hidden = true; window.scrollTo({ top: 0, behavior: 'smooth' }); };
     })();
     </script>
