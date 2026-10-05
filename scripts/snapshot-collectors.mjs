@@ -52,7 +52,7 @@ const cols = fs.readdirSync(path.join(ROOT, 'collections'))
 const HEAVY = new Set(['renascent']); // base64 art: don't use as thumbnails
 
 async function ethereum() {
-  if (!ALCHEMY) { console.log('!! ALCHEMY_API_KEY not set, skipping Ethereum'); return; }
+  if (!ALCHEMY) { console.error('ALCHEMY_API_KEY not set: refusing to publish a board without Ethereum collectors'); process.exit(1); }
   const base = `https://eth-mainnet.g.alchemy.com/nft/v3/${ALCHEMY}`;
   // FRONTRUN: whole contract, 666 sequential tokens.
   let pageKey = '';
@@ -149,6 +149,17 @@ const out = {
   titles: Object.fromEntries(cols.map(c => [c.id, c.title])),
   failed, collectors,
 };
+// Safety: never publish a board that suddenly lost a big share of collectors (an API outage looks like that)
+try {
+  const prev = JSON.parse(fs.readFileSync(path.join(ROOT, 'collectors.json'), 'utf8'));
+  for (const [chain, n] of Object.entries(prev.totals?.byChain || {})) {
+    const now = byChain[chain] || 0;
+    if (n >= 50 && now < n * 0.75 && !process.env.FORCE_SNAPSHOT) {
+      console.error(`Refusing to publish: ${chain} collectors fell from ${n} to ${now}. Set FORCE_SNAPSHOT=1 if that is real.`);
+      process.exit(1);
+    }
+  }
+} catch (e) { if (e && e.code !== 'ENOENT' && !(e instanceof SyntaxError)) throw e; }
 fs.writeFileSync(path.join(ROOT, 'collectors.json'), JSON.stringify(out));
 // Every Ordinals inscription id we own → collection id. Read by the Discord bot's /api/ord-verify.
 const ordIds = {};
