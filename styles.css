@@ -1051,3 +1051,10 @@ html:has(.articles-page), body:has(.articles-page) { overflow: auto; height: aut
 .share-btn { cursor: pointer; background: #fff; color: #111; border-color: #fff; font-weight: 700; }
 .share-btn:hover { background: #ddd; color: #111; border-color: #ddd; }
 .share-btn:disabled { opacity: 0.6; cursor: wait; }
+
+/* Keep the artwork in view while the info column and grid scroll (desktop) */
+@media (min-width: 769px) {
+  .detail-image-container { position: sticky; top: 0; align-self: flex-start; }
+  .marketplace-links .detail-link { padding: 0.6rem 0.8rem; font-size: 0.7rem; }
+}
+#detail-video.is-loop { width: min(100%, calc(100vh - 150px), 720px); aspect-ratio: 1 / 1; height: auto; object-fit: contain; background: #000; }

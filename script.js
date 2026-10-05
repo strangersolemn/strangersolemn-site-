@@ -701,7 +701,7 @@ function showPiece(collection, index) {
   if (piece.preview && !piece._showLive) {
     // recorded loop plays instantly and smoothly; the "Live" button runs the real on-chain code
     if (detailVideo) {
-      detailVideo.classList.remove('hidden'); detailVideo.controls = false;
+      detailVideo.classList.remove('hidden'); detailVideo.classList.add('is-loop'); detailVideo.controls = false;
       detailVideo.style.display = 'block'; detailVideo.muted = true; detailVideo.loop = true;
       detailVideo.src = piece.preview; detailVideo.load(); detailVideo.play().catch(() => {});
     }
@@ -715,7 +715,7 @@ function showPiece(collection, index) {
   }
   if (pieceNeedsVideo(piece)) {
     if (detailVideo) {
-      detailVideo.classList.remove('hidden'); detailVideo.controls = true;
+      detailVideo.classList.remove('hidden', 'is-loop'); detailVideo.controls = true;
       detailVideo.style.display = 'block';
       detailVideo.src = videoUrl(piece);
       detailVideo.load();
