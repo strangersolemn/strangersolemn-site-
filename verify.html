@@ -107,6 +107,18 @@
         } catch (e) { show(false, 'Could not reach the verifier. Try again in a minute.'); }
         busy = false;
       }
+      // sats-connect style wallets (Xverse, Magic Eden) must be connected before getAddresses answers:
+      // current Xverse returns "Access denied" with no popup otherwise. wallet_connect asks the user once,
+      // then getAddresses works. Older wallets without wallet_connect fall back to getAddresses directly.
+      async function connectOrdinals(p, why) {
+        var a = await p.request('wallet_connect', { addresses: ['ordinals'], message: why });
+        if (a.error && a.error.code === -32601) a = await p.request('getAddresses', { purposes: ['ordinals'], message: why });
+        if (a.error) throw new Error(a.error.message || 'The wallet refused the connection.');
+        var list = (a.result && a.result.addresses) || a.result || [];
+        var ord = list.find(function (x) { return x.purpose === 'ordinals'; }) || list[0];
+        if (!ord) throw new Error('No Ordinals address returned.');
+        return ord;
+      }
       var wallets = {
         unisat: async function (msg) {
           if (!window.unisat) throw new Error('Unisat is not installed in this browser.');
@@ -117,10 +129,7 @@
         xverse: async function (msg) {
           var p = window.XverseProviders && window.XverseProviders.BitcoinProvider;
           if (!p) throw new Error('Xverse is not installed in this browser.');
-          var a = await p.request('getAddresses', { purposes: ['ordinals'], message: 'Verify your Ordinals for the Stranger Solemn Discord' });
-          var list = (a.result && a.result.addresses) || a.result || [];
-          var ord = list.find(function (x) { return x.purpose === 'ordinals'; }) || list[0];
-          if (!ord) throw new Error(a.error && a.error.message || 'No address returned.');
+          var ord = await connectOrdinals(p, 'Verify your Ordinals for the Stranger Solemn Discord');
           var s = await p.request('signMessage', { address: ord.address, message: msg, protocol: 'BIP322' });
           if (!s.result) throw new Error(s.error && s.error.message || 'Signing was cancelled.');
           return { address: ord.address, signature: s.result.signature };
@@ -137,10 +146,7 @@
         magiceden: async function (msg) {
           var p = window.magicEden && window.magicEden.bitcoin;
           if (!p) throw new Error('Magic Eden wallet is not installed in this browser.');
-          var a = await p.request('getAddresses', { purposes: ['ordinals'] });
-          var list = (a.result && a.result.addresses) || a.result || [];
-          var ord = list.find(function (x) { return x.purpose === 'ordinals'; }) || list[0];
-          if (!ord) throw new Error('No address returned.');
+          var ord = await connectOrdinals(p, 'Verify your Ordinals for the Stranger Solemn Discord');
           var s = await p.request('signMessage', { address: ord.address, message: msg, protocol: 'BIP322' });
           return { address: ord.address, signature: s.result.signature };
         }
