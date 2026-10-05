@@ -23,7 +23,7 @@ const fs = require('fs');
 
 const CONFIG = {
   // Alchemy API key
-  ALCHEMY_API_KEY: process.env.ALCHEMY_API_KEY || 'TEA_S5N5ZDv2-ARmljr-c',
+  ALCHEMY_API_KEY: process.env.ALCHEMY_API_KEY || '',
 
   // Output file
   OUTPUT_FILE: '../artworks-generated.js',
@@ -294,8 +294,8 @@ async function main() {
   console.log('NFT Collection Fetcher');
   console.log('======================\n');
 
-  if (CONFIG.ALCHEMY_API_KEY === 'YOUR_ALCHEMY_KEY_HERE') {
-    console.log('WARNING: No Alchemy API key set. Ethereum fetching may fail.');
+  if (!CONFIG.ALCHEMY_API_KEY) {
+    console.log('WARNING: ALCHEMY_API_KEY is not set (run: ALCHEMY_API_KEY=... node scripts/fetch-nfts.js). Ethereum fetching will fail.');
     console.log('Get a free key at: https://alchemy.com\n');
   }
 
