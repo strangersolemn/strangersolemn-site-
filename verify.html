@@ -159,7 +159,8 @@
           return { address: ord.address, signature: s.result.signature };
         }
       };
-      document.querySelector('.verify-wallets').addEventListener('click', async function (e) {
+      // The Ethereum step has its own .verify-wallets block above this one; scope to the Bitcoin step.
+      document.querySelector('#step-wallet .verify-wallets').addEventListener('click', async function (e) {
         var b = e.target.closest('[data-wallet]'); if (!b) return;
         var kind = b.dataset.wallet;
         var msg = message()(userId);
