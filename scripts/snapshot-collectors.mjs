@@ -167,7 +167,10 @@ fs.writeFileSync(path.join(ROOT, 'collectors.json'), JSON.stringify(out));
 //   2. membersFile — the Wizards of Ord export (editions: BTC Editions, Leverage, Fiat Mafia…)
 const ordIds = {};
 const claim = (id, cid) => { if (/^[0-9a-f]{64}i\d+$/.test(id || '') && !ordIds[id]) ordIds[id] = cid; };
-for (const c of cols) if (c.chain === 'ordinals') {
+// Manifest collections claim first, in manifest order; unlisted collection files (boutique, gamma-prints…) only get what is left.
+const manifestOrder = JSON.parse(fs.readFileSync(path.join(ROOT, 'collections/manifest.json'), 'utf8')).map(m => m.id);
+const ordCols = [...cols].filter(c => c.chain === 'ordinals').sort((a, b) => (manifestOrder.indexOf(a.id) + 1 || 1e6) - (manifestOrder.indexOf(b.id) + 1 || 1e6));
+for (const c of ordCols) {
   for (const p of c.pieces) claim(p.tokenId, c.id);
   if (c.parentInscription) {
     for (let page = 0; page < 200; page++) {
@@ -178,7 +181,7 @@ for (const c of cols) if (c.chain === 'ordinals') {
     }
   }
 }
-for (const c of cols) if (c.chain === 'ordinals' && c.membersFile) {
+for (const c of ordCols) if (c.membersFile) {
   try { for (const i of JSON.parse(fs.readFileSync(path.join(ROOT, 'collections', c.membersFile), 'utf8')).inscriptions) claim(i.inscription_id, c.id); }
   catch (e) { miss(`${c.id} membersFile: ${e.message}`); }
 }
