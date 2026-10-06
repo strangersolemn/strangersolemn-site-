@@ -48,5 +48,6 @@
   ],
   "supply": 5,
   "uniquePieces": 5,
-  "heroImage": "https://ordinals.com/content/0610813e3becd78bef54818f47fc7d1200080bcc62249d1e911732f4cf5f3463i0"
+  "heroImage": "https://ordinals.com/content/0610813e3becd78bef54818f47fc7d1200080bcc62249d1e911732f4cf5f3463i0",
+  "membersFile": "members/dronebysolemn.json"
 }

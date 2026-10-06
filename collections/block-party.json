@@ -1611,5 +1611,6 @@
     }
   ],
   "marketplaces": {},
-  "uniquePieces": 200
+  "uniquePieces": 200,
+  "membersFile": "members/block_party_by_solemn.json"
 }

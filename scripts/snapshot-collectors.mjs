@@ -162,8 +162,25 @@ try {
 } catch (e) { if (e && e.code !== 'ENOENT' && !(e instanceof SyntaxError)) throw e; }
 fs.writeFileSync(path.join(ROOT, 'collectors.json'), JSON.stringify(out));
 // Every Ordinals inscription id we own → collection id. Read by the Discord bot's /api/ord-verify.
+// Sources, in priority order (an id belongs to exactly one collection; first writer wins, manifest order):
+//   1. pieces[].tokenId and the on-chain children of parentInscription (The Ord Lot grows by itself)
+//   2. membersFile — the Wizards of Ord export (editions: BTC Editions, Leverage, Fiat Mafia…)
 const ordIds = {};
-for (const c of cols) if (c.chain === 'ordinals')
-  for (const p of c.pieces) if (/^[0-9a-f]{64}i\d+$/.test(p.tokenId || '')) ordIds[p.tokenId] = c.id;
+const claim = (id, cid) => { if (/^[0-9a-f]{64}i\d+$/.test(id || '') && !ordIds[id]) ordIds[id] = cid; };
+for (const c of cols) if (c.chain === 'ordinals') {
+  for (const p of c.pieces) claim(p.tokenId, c.id);
+  if (c.parentInscription) {
+    for (let page = 0; page < 200; page++) {
+      const d = await getJSON(`https://ordinals.com/r/children/${c.parentInscription}/${page}`, { headers: { accept: 'application/json' } });
+      if (!d) { miss(`${c.id} children page ${page}`); break; }
+      for (const id of d.ids) claim(id, c.id);
+      if (!d.more) break;
+    }
+  }
+}
+for (const c of cols) if (c.chain === 'ordinals' && c.membersFile) {
+  try { for (const i of JSON.parse(fs.readFileSync(path.join(ROOT, 'collections', c.membersFile), 'utf8')).inscriptions) claim(i.inscription_id, c.id); }
+  catch (e) { miss(`${c.id} membersFile: ${e.message}`); }
+}
 fs.writeFileSync(path.join(ROOT, 'ordinals-ids.json'), JSON.stringify({ updated: out.updated, titles: Object.fromEntries(cols.filter(c => c.chain === 'ordinals').map(c => [c.id, c.title])), ids: ordIds }));
 console.log(`Done: ${collectors.length} collectors, ${out.totals.pieces} pieces`, byChain, 'failed lookups:', failed);

@@ -18,5 +18,6 @@
   "supply": 4066,
   "uniquePieces": 1,
   "heroImage": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-  "isEditions": true
+  "isEditions": true,
+  "membersFile": "members/leverage.json"
 }

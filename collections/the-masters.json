@@ -244,5 +244,6 @@
   ],
   "supply": 31,
   "uniquePieces": 31,
-  "heroImage": "https://ordinals.com/content/2c762a593dc60bcd92169b07de5a60d588a94819d165178ca317d45e4eeb2b11i0"
+  "heroImage": "https://ordinals.com/content/2c762a593dc60bcd92169b07de5a60d588a94819d165178ca317d45e4eeb2b11i0",
+  "membersFile": "members/themastersbysolemn.json"
 }

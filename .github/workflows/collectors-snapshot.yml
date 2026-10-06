@@ -22,5 +22,5 @@ jobs:
         run: |
           git config user.name "collectors-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add collectors.json
+          git add collectors.json ordinals-ids.json
           git diff --cached --quiet || (git commit -m "Collectors snapshot" && git push)

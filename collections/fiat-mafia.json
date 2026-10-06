@@ -18863,5 +18863,6 @@
   ],
   "marketplaces": {},
   "uniquePieces": 2693,
-  "isCollab": true
+  "isCollab": true,
+  "membersFile": "members/fiatmafia.json"
 }

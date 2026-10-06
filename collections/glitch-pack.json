@@ -7207,5 +7207,6 @@
     }
   ],
   "marketplaces": {},
-  "uniquePieces": 1028
+  "uniquePieces": 1028,
+  "membersFile": "members/glitchpack.json"
 }

@@ -851,5 +851,6 @@
     }
   ],
   "marketplaces": {},
-  "uniquePieces": 105
+  "uniquePieces": 105,
+  "membersFile": "members/doom_by_glitch_studio.json"
 }

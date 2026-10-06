@@ -180,5 +180,6 @@
     }
   ],
   "marketplaces": {},
-  "uniquePieces": 21
+  "uniquePieces": 21,
+  "membersFile": "members/a_solemn_rose.json"
 }

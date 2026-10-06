@@ -187,5 +187,6 @@
     }
   ],
   "marketplaces": {},
-  "uniquePieces": 22
+  "uniquePieces": 22,
+  "membersFile": "members/block_clocks_by_solemn.json"
 }

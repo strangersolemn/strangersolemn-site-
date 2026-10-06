@@ -153,17 +153,6 @@
       "story": "art/previews/btc-editions/13.story.mp4"
     },
     {
-      "tokenId": "6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-      "title": "LEVERAGE #01",
-      "image": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-      "thumbnail": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-      "animationUrl": "https://ordinals.com/content/6b7acd542176318c71c8e028161965ec2cdd2150452e6f6e8269c29ef8bedee1i0",
-      "editionCount": 4066,
-      "preview": "art/previews/btc-editions/14.mp4",
-      "previewGif": "art/previews/btc-editions/14.gif",
-      "story": "art/previews/btc-editions/14.story.mp4"
-    },
-    {
       "tokenId": "ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
       "title": "CYPHERPUNK",
       "image": "https://ordinals.com/content/ed686dd5f79495b0dbca1251d7a9d86f2dab31e6a6b5a6b81a47bcbc93e44010i0",
@@ -362,5 +351,6 @@
     }
   ],
   "marketplaces": {},
-  "uniquePieces": 32
+  "uniquePieces": 32,
+  "membersFile": "members/btceditionsbysolemn.json"
 }

@@ -163,5 +163,6 @@
     }
   ],
   "marketplaces": {},
-  "uniquePieces": 19
+  "uniquePieces": 19,
+  "membersFile": "members/deliverance.json"
 }

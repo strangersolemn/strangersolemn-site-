@@ -36,5 +36,6 @@
   ],
   "supply": 4,
   "uniquePieces": 4,
-  "heroImage": "https://ordinals.com/content/7a4ba52f2d673c08308cad23e3c30af02d2f533d650c73c7ab4cc999675a22c7i0"
+  "heroImage": "https://ordinals.com/content/7a4ba52f2d673c08308cad23e3c30af02d2f533d650c73c7ab4cc999675a22c7i0",
+  "membersFile": "members/ordinalparty.json"
 }
