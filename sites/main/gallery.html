@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Walk in — Solemn</title>
+<meta name="theme-color" content="#F4F2EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=2">
+<link rel="stylesheet" href="gallery.css">
+<script type="importmap">{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }</script>
+</head>
+<body class="room">
+<canvas id="scene" aria-label="3D gallery"></canvas>
+
+<header class="room-top">
+  <a class="btn" id="leave" href="./">← Leave</a>
+  <span class="label" id="roomName"></span>
+</header>
+
+<div class="room-hint label" id="hint">Tap a piece to walk up · drag to look</div>
+<div class="room-load label" id="loading">Hanging the work…</div>
+
+<footer class="room-bar">
+  <div class="room-piece">
+    <span class="label" id="pCount"></span>
+    <b id="pTitle"></b>
+  </div>
+  <div class="room-ctrl">
+    <button class="btn" id="prev" type="button" aria-label="Previous piece">←</button>
+    <button class="btn" id="next" type="button" aria-label="Next piece">→</button>
+    <a class="btn buy" id="collect" target="_blank" rel="noopener">Collect</a>
+  </div>
+</footer>
+
+<script src="common.js?v=2"></script>
+<script type="module" src="gallery.js?v=2"></script>
+</body>
+</html>

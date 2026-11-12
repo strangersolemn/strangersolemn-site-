@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solemn</title>
+<meta name="theme-color" content="#F4F2EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=2">
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="./">Solemn</a>
+    <nav>
+      <a href="./" aria-current="page">Work</a>
+      <a href="about.html">About</a>
+      <a href="https://discord.gg/3cAwmXFF7u" target="_blank" rel="noopener">Discord</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="page">
+  <a class="back label" href="./">← All work</a>
+
+  <div class="top">
+    <section class="head">
+      <span class="label" id="kicker"></span>
+      <h1 id="title"></h1>
+      <p class="note" id="note"></p>
+      <p class="about" id="about"></p>
+      <div class="actions" id="actions"></div>
+    </section>
+    <figure class="cover">
+      <div class="hero" id="hero"></div>
+      <figcaption class="hero-cap label"><span id="heroCap"></span><span id="heroOpen"></span></figcaption>
+    </figure>
+  </div>
+
+  <div class="facts six" id="facts"></div>
+
+  <section class="sec" id="mintSec" hidden>
+    <h2>Mint record <span>on-chain</span></h2>
+    <dl class="record" id="record"></dl>
+  </section>
+
+  <section class="sec" id="buy">
+    <h2>For sale <span id="buyNote"></span></h2>
+    <div id="listings"></div>
+  </section>
+
+  <section class="sec" id="workSec">
+    <h2>The work <span id="workNote"></span></h2>
+    <div class="grid" id="grid"></div>
+    <button class="btn more" id="more" type="button" hidden>Show more</button>
+  </section>
+
+  <section class="sec family" id="familySec" hidden>
+    <h2>Side collections</h2>
+    <div id="family"></div>
+  </section>
+
+  <section class="sec" id="holdSec">
+    <h2>Holders <span id="holdNote"></span></h2>
+    <ol class="holders" id="holders"></ol>
+  </section>
+
+  <nav class="pager" id="pager"></nav>
+</main>
+
+<footer class="foot">
+  <div class="wrap label">
+    <span>© Solemn · strangersolemn.art</span>
+    <span><a href="https://x.com/strangersolemn" target="_blank" rel="noopener">X</a> · <a href="https://discord.gg/3cAwmXFF7u" target="_blank" rel="noopener">Discord</a> · <a href="about.html">About</a></span>
+  </div>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-label="Artwork">
+  <button class="x" id="vClose" type="button" aria-label="Close">✕</button>
+  <div class="art" id="vArt"></div>
+  <div class="meta">
+    <span class="label" id="vKicker"></span>
+    <h3 id="vTitle"></h3>
+    <p class="mint" id="vMint"></p>
+    <div class="nav">
+      <a class="btn buy" id="vBuy" target="_blank" rel="noopener">Collect</a>
+      <button class="btn" id="vPrev" type="button" aria-label="Previous">←</button>
+      <button class="btn" id="vNext" type="button" aria-label="Next">→</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="data/index.js"></script>
+<script src="common.js?v=2"></script>
+<script src="work.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+/* the walk-in gallery: the room fills the screen, controls sit on paper strips top and bottom */
+body.room { overflow: hidden; height: 100vh; height: 100dvh; touch-action: none; }
+#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: block; cursor: grab; }
+#scene:active { cursor: grabbing; }
+
+.room-top { position: fixed; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: calc(10px + env(safe-area-inset-top)) var(--gutter) 10px; pointer-events: none; }
+.room-top > * { pointer-events: auto; background: var(--paper); }
+.room-top .label { padding: 6px 8px; color: var(--ink); }
+
+.room-hint { position: fixed; left: 50%; top: calc(70px + env(safe-area-inset-top)); transform: translateX(-50%); background: var(--paper);
+  border: 1px solid var(--line); padding: 7px 10px; white-space: nowrap; transition: opacity .6s; }
+.room-hint.gone { opacity: 0; }
+.room-load { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--paper); padding: 8px 12px; border: 1px solid var(--ink); }
+
+.room-bar { position: fixed; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: var(--paper); border-top: 1px solid var(--ink); padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom)); }
+.room-piece { min-width: 0; }
+.room-piece b { display: block; font-size: 17px; letter-spacing: -.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.room-ctrl { display: flex; gap: 6px; flex: none; }
+.room-ctrl .btn { padding: 11px 13px; }

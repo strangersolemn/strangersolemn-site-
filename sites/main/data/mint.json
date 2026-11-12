@@ -1,0 +1,453 @@
+{
+ "frontrun": [
+  {
+   "contract": "0xf8c20abd9c233a9de999c2ac6f1628df3f64efb0",
+   "pieces": 2,
+   "deploy": {
+    "by": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "tx": "0xfa9f71da7aab4616c6e2abe39b7fc4eb6e846c7174e1196d6c8e56fb57cd9051",
+    "at": "2026-06-29T21:28:59.000000Z",
+    "name": "FRONTRUN",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2026-07-02T12:08:47.000000Z",
+    "tx": "0xb08fa10774abd40e46b37bcbf23b7a2ccfc9ef21adb417fd0d4dc92b1215a216",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   },
+   "last": {
+    "id": "666",
+    "at": "2026-07-02T14:00:11.000000Z",
+    "tx": "0x1ce99c39cda4185f75139370abbb0aa8f8c997552a192583410c2d61ae58e369",
+    "to": "0xC499CaD689E4744BB52Eb685Bc68378aa19F4472",
+    "fromZero": true
+   }
+  }
+ ],
+ "renascent": [
+  {
+   "contract": "0x3a2c989bfdd3b315b78717e4a6f43932a8b5023d",
+   "pieces": 18,
+   "deploy": {
+    "by": "0xf3CD1E9326d1965935B287b1Ee75c7183359a88A",
+    "tx": "0x5c15bbe038b87d93b1b78355319f5a58fdc1b76dfa2aa2a123e79fd1d9a6ae30",
+    "at": "2026-01-01T22:54:11.000000Z",
+    "name": "Renascent",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2026-01-01T23:42:59.000000Z",
+    "tx": "0x0f7351d26936488dfc3f61b436d2f4c7afffcbccc9cc1d75c2810f174eb70c04",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   },
+   "last": {
+    "id": "18",
+    "at": "2026-01-28T21:34:11.000000Z",
+    "tx": "0x00f65d44d48313c8dc9bf3f51a5bbd2186f7d50c09ba61725190bb06202b14d8",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   }
+  }
+ ],
+ "pepe-parrots": [],
+ "glitch-bomb": [],
+ "reflections": [],
+ "safari": [
+  {
+   "contract": "0x31c55a2253deda1224b471d590a36f4b03094bcd",
+   "pieces": 4,
+   "deploy": {
+    "by": "0x61b98ACbfc23326Cfe296f380B5aa3e5Adcc5238",
+    "tx": "0x4341ac60a6bf99d7246215b0f74c71210de0667c01b117f1280b05cdccc0a699",
+    "at": "2023-04-14T12:56:23.000000Z",
+    "name": "safari",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "0",
+    "at": "2023-04-14T13:41:59.000000Z",
+    "tx": "0x9f196e953ae730b795e61196fe991ebd2187e19d0884da849ea28321cb5b26e7",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   },
+   "last": {
+    "id": "3",
+    "at": "2023-07-26T09:11:35.000000Z",
+    "tx": "0x36bf0b8db5511cf06deff9058418b78221a7e9699d782e0e0e08fcc4db97f4e8",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   }
+  }
+ ],
+ "one-of-one-originals": [
+  {
+   "contract": "0x841e16499a31f265b128a94decc625801702024d",
+   "pieces": 17,
+   "deploy": {
+    "by": "0x3B612a5B49e025a6e4bA4eE4FB1EF46D13588059",
+    "tx": "0x30d79c891358c9729dcae14d6718832bf5ab4589d98b14c931a16a622d114b00",
+    "at": "2021-12-05T11:22:35.000000Z",
+    "name": "When your Strange",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2021-12-27T19:11:14.000000Z",
+    "tx": "0xd9a89733b98940330744c9058c1a78046d799722ad15a5df69ebbe2244624554",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   },
+   "last": {
+    "id": "17",
+    "at": "2023-03-07T07:20:35.000000Z",
+    "tx": "0xd30e0874862ca4789e016e362bf7aac6cb0207272498788b3d5577ed8742ddd8",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   }
+  },
+  {
+   "contract": "0xb782644735a84cf338b2c2ca0e6d9f5dcce27559",
+   "pieces": 10,
+   "deploy": {
+    "by": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "tx": "0xf9bee8d6e8e82de15470f450b4da01c261b0306730e42a971915be1b137c9b48",
+    "at": "2022-12-31T15:39:23.000000Z",
+    "name": "Solemn",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2023-01-01T13:48:23.000000Z",
+    "tx": "0x9bd2e05eb0296f0ee2a55d1fc45a88a61be55b577a468ef452f9fd7bc36a1040",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   },
+   "last": {
+    "id": "10",
+    "at": "2025-09-17T16:36:23.000000Z",
+    "tx": "0x45e8eda692293dda6c1f27503849ab68ca37318865034be3c86eb35f686b4104",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   }
+  },
+  {
+   "contract": "0x8351356b7caca80a71f536ec06c220f259a96ef2",
+   "pieces": 4,
+   "deploy": {
+    "by": "0x2c325156416cc7b701151daFb6D4c0BDF0d398f0",
+    "tx": "0x50bf0eb23bf33832b598890e9aab8bed02c98b75f083008ce2c789c361a13479",
+    "at": "2023-03-27T22:34:59.000000Z",
+    "name": "Forward Motions",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2023-03-27T22:38:59.000000Z",
+    "tx": "0x894f52f1fb748ed47be0b0e02b943d57db85483a4f9d9120eb642ce91ffe9894",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   },
+   "last": {
+    "id": "4",
+    "at": "2025-06-18T18:39:47.000000Z",
+    "tx": "0x7a0803bc29c55e20be27fca7b86dc807bb2cebf67520cd068bd99f2151819af8",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   }
+  },
+  {
+   "contract": "0xd0f6ef9c1f3a602c4a3abcd2f6e499dc17270242",
+   "pieces": 5,
+   "deploy": {
+    "by": "0x3B612a5B49e025a6e4bA4eE4FB1EF46D13588059",
+    "tx": "0xab654c14e68cbc6d4330b4df8872afafc11f60df9d1959d64ff650f43ef5fd35",
+    "at": "2022-03-07T01:50:19.000000Z",
+    "name": "Club Strange",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2022-03-07T14:59:21.000000Z",
+    "tx": "0x4cea850d10322efc0c8351ccdba0d86ff026977cec97ea862c7a65d2673af950",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   },
+   "last": {
+    "id": "5",
+    "at": "2022-11-24T00:58:59.000000Z",
+    "tx": "0xf74f3a0a9dfb832e15c29199a21c4ba8c6676f1432c3e9620320753493b1448f",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   }
+  },
+  {
+   "contract": "0x5b1d7a41ba51a2a9d6c755e0ee794b2559d6a047",
+   "pieces": 4,
+   "deploy": {
+    "by": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "tx": "0xaed9d89b78ec25aa3ab6082a00dbd9de9460b121746040f5f50e3a4c6ab488b4",
+    "at": "2022-10-10T08:41:47.000000Z",
+    "name": "Manifold Drops",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2022-10-10T09:19:59.000000Z",
+    "tx": "0x7cddb4c8b9977c528ca55985b16af0f8364ad7b4a96dd0e6c91d45db266e407a",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   },
+   "last": {
+    "id": "4",
+    "at": "2023-05-10T07:33:59.000000Z",
+    "tx": "0x013ae2b124df6a63d21b3853ffc0af479862d64efadb90740235e8b8f23d70f0",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   }
+  },
+  {
+   "contract": "0x51b804f7bb2ce7d742225003cac001721de76a2c",
+   "pieces": 6,
+   "deploy": {
+    "by": "0xf3CD1E9326d1965935B287b1Ee75c7183359a88A",
+    "tx": "0xffc8cba661b0b7a53dcea4375e6d8aa10e73fb835444e9c92f1596150933a5ae",
+    "at": "2024-09-17T09:40:47.000000Z",
+    "name": "addicted",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2024-09-17T10:02:59.000000Z",
+    "tx": "0x9a73cdc22f8709b1f9410879e303dde3d1b3a831a8114a7fef30c088003c557a",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   },
+   "last": {
+    "id": "6",
+    "at": "2026-01-07T22:13:23.000000Z",
+    "tx": "0x4a0e6643ca4cd336abcef83b999afad574a327f4f414ca0f4b3748f03c1f7462",
+    "to": "0xEf682B1D0835Df1F971d5D1F4565E9f6c121f706",
+    "fromZero": true
+   }
+  }
+ ],
+ "editions-by-solemn": [
+  {
+   "contract": "0xae7d9f6c206c095530654fa4881661ba62284076",
+   "pieces": 25,
+   "deploy": {
+    "by": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "tx": "0x3505ee528b776761e787859e659a0259106c620cb030288bc6b4f865d7d76f4c",
+    "at": "2022-05-10T20:47:39.000000Z",
+    "name": "STRANGEV2",
+    "type": "ERC-1155"
+   },
+   "first": {
+    "id": "1",
+    "at": "2022-05-10T21:09:05.000000Z",
+    "tx": "0x4a4153825aa434097cb148041286de0cb48c5c9f55fb8329a731d657c3048c21",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   },
+   "last": {
+    "id": "25",
+    "at": "2023-03-17T15:50:11.000000Z",
+    "tx": "0x0207f453afb2e5caab4e5a42fb2c6df6ef551274327be5bcf410173c074d2db8",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   }
+  }
+ ],
+ "cc0-party": [
+  {
+   "contract": "0xc01c7145a3c5949b38e4c6cb94c2e8eaac9e327a",
+   "pieces": 12,
+   "deploy": {
+    "by": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "tx": "0xa7e2159c0706265b7a3b511679bdb67982094f9fad5c3ca0f7f8f018140e737a",
+    "at": "2022-02-22T03:19:01.000000Z",
+    "name": "MFP",
+    "type": "ERC-1155"
+   },
+   "first": {
+    "id": "1",
+    "at": "2022-02-22T04:05:26.000000Z",
+    "tx": "0xf4f57b068ce67e86bcb1237735fa37ff607f4dc361f680bd68ffa8d867b779c9",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   },
+   "last": {
+    "id": "12",
+    "at": "2024-05-02T18:14:59.000000Z",
+    "tx": "0x1c44c13f5714dc2135f6f8513791160f86c7057c33b3ea6132a096bcc75ff685",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   }
+  }
+ ],
+ "strange-punks": [
+  {
+   "contract": "0xaa9603f452055a64a470aff9103cde9dd05519b2",
+   "pieces": 11,
+   "deploy": {
+    "by": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "tx": "0xb7b3c3724e33cc186e6b58b48d12e2f43969ff2ef5c26319336e1a43e743d973",
+    "at": "2021-12-22T17:53:46.000000Z",
+    "name": "Strange Punks",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2022-05-28T16:45:57.000000Z",
+    "tx": "0x58568f7c66a376eb8d05343833c34d09a864078bf55474ed3af577b0b2108f1c",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   },
+   "last": {
+    "id": "11",
+    "at": "2023-01-22T21:23:59.000000Z",
+    "tx": "0xdbec9227ad1980f8336cd88bd905b3b40c021ee56146c62b7bb3237bd1fb62b6",
+    "to": "0x1075Ba155E827732bDCBfe20dD5a17c13A7DA545",
+    "fromZero": true
+   }
+  }
+ ],
+ "everyday-strange": [
+  {
+   "contract": "0x73a02f6a4249dfa7bb1e14c8f6aa457dd0de28d7",
+   "pieces": 365,
+   "deploy": {
+    "by": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "tx": "0x521e14c12734f4414e250481103f1966b0d3a49e9763db0bd43fd56431e2da97",
+    "at": "2022-01-01T11:41:24.000000Z",
+    "name": "Everyday Strange",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2022-01-01T12:00:25.000000Z",
+    "tx": "0xe097b0eda69145745751b6f185fcca154b7cd3400bbe513a0dcc56b75d5c0581",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   },
+   "last": {
+    "id": "365",
+    "at": "2023-01-01T13:16:23.000000Z",
+    "tx": "0x73cd2bfd1a42a9674aee3db4c8512ffb1505ac09176a2b55a1bb291775f03612",
+    "to": "0x01de0e62C7B591bd8430098f10357D62f85491B1",
+    "fromZero": true
+   }
+  }
+ ],
+ "strange-occurances": [
+  {
+   "contract": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+   "pieces": 6,
+   "deploy": {
+    "shared": "OpenSea Shared Storefront"
+   },
+   "first": {
+    "id": "90144564011191553255551171483351008933440029025118662744023831509213716152321",
+    "at": "2021-08-18T09:04:49.000000Z",
+    "tx": "0x1482f0ef8eafc8c7491c242f2265ba54c4300cb0d8296b2b04957eeffc1c91a8",
+    "to": "0xEDBC7D68195A411D5c6a32d3bd93703880Ad7692",
+    "fromZero": false
+   },
+   "last": {
+    "id": "90144564011191553255551171483351008933440029025118662744023831924829111451649",
+    "at": "2022-03-17T07:42:21.000000Z",
+    "tx": "0xce0c3e1f5728525150393d040a94570a44fe13ef02920e2d6cccdd2bd2f6dcd8",
+    "to": "0x8328E993824843A5348E1C1a9194925f468d7dEe",
+    "fromZero": false
+   }
+  }
+ ],
+ "strangersnft": [
+  {
+   "contract": "0x20727eb4191bfe6e15b9a2a34934d48f24e3b420",
+   "pieces": 300,
+   "deploy": {
+    "by": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "tx": "0x9ebf86e9af35844322b591c9a21db7a071a727a99a169249c8cd04380f49fa1a",
+    "at": "2022-05-28T05:10:37.000000Z",
+    "name": "StrangersNFT",
+    "type": "ERC-721"
+   },
+   "first": {
+    "id": "1",
+    "at": "2022-05-28T05:17:31.000000Z",
+    "tx": "0x8c9a58dcd9ab252313ef2d64bb4de48747bab16374a5deef97e411a2cc8c134d",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   },
+   "last": {
+    "id": "300",
+    "at": "2022-07-07T09:39:48.000000Z",
+    "tx": "0xba2891fa007446ba8d8314c6aedfafa0899a36b1ca431cb851bebf0887d686ef",
+    "to": "0xC74c03E0d04003dcCcDBb1c7f2536E6000Fcd7C1",
+    "fromZero": true
+   }
+  }
+ ],
+ "ether-creeps": [
+  {
+   "contract": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+   "pieces": 2,
+   "deploy": {
+    "shared": "OpenSea Shared Storefront"
+   },
+   "first": {
+    "id": "90144564011191553255551171483351008933440029025118662744023831748907251007489",
+    "at": "2021-10-23T22:50:26.000000Z",
+    "tx": "0x06aca12006bd2e78d386c5c5364b81a22df4417fb223c96428430671d2d2552d",
+    "to": "0x7f27DE8CB92173446Ebc93B526D1f13af8e27050",
+    "fromZero": false
+   },
+   "last": {
+    "id": "90144564011191553255551171483351008933440029025118662744023831741210669613057",
+    "at": "2021-10-26T12:43:36.000000Z",
+    "tx": "0x029d017cba9d883d996c9c22ed77380941fd8a0b4ca17bbb9af0f80c8b65fb87",
+    "to": "0x3612b2e93b49F6c797066cA8c38b7f522b32c7cb",
+    "fromZero": false
+   }
+  }
+ ],
+ "strangers-pets": [
+  {
+   "contract": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+   "pieces": 150,
+   "deploy": {
+    "shared": "OpenSea Shared Storefront"
+   },
+   "first": null,
+   "last": null
+  }
+ ],
+ "stranger-days": [
+  {
+   "contract": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+   "pieces": 100,
+   "deploy": {
+    "shared": "OpenSea Shared Storefront"
+   },
+   "first": {
+    "id": "90144564011191553255551171483351008933440029025118662744023831430048878952449",
+    "at": "2021-03-24T09:53:32.000000Z",
+    "tx": "0xa87f15fec491467733cae966b901fba604776c153389ea5996e0cfa2bd33d5c2",
+    "to": "0x459Ab3E02DF62CdEecC8cDf5E22Cae74BAE601eF",
+    "fromZero": false
+   },
+   "last": {
+    "id": "90144564011191553255551171483351008933440029025118662744023831900639855640577",
+    "at": "2022-04-12T06:27:40.000000Z",
+    "tx": "0x7c394226d094f12936738f281061030b7b784836ed4c649d1fbe51650147c4fa",
+    "to": "0x2c16bdaCF891061402ca95f54cB8Ec5C816c5648",
+    "fromZero": false
+   }
+  }
+ ]
+}
