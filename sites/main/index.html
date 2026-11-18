@@ -3,50 +3,51 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Solemn — digital artist</title>
-<meta name="description" content="Every collection by Solemn (strangersolemn), digital artist from Manchester, on Ethereum, Bitcoin, Tezos and Solana since 2021.">
+<title>strangersolemn — Glitch, Code, Music</title>
+<meta name="description" content="Every collection by Solemn (strangersolemn), digital artist from Manchester, on Bitcoin, Ethereum, Tezos and Solana since 2021.">
 <meta name="theme-color" content="#F4F2EC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=2">
+<link rel="stylesheet" href="site.css?v=3">
 </head>
 <body>
-<header class="bar">
-  <div class="wrap">
-    <a class="mark" href="./">Solemn</a>
-    <nav>
-      <a href="./" aria-current="page">Work</a>
+<main class="tree">
+  <header class="me">
+    <img class="avatar" src="https://ugc.production.linktr.ee/dkKn4megS1CyZFONCnkW_3zdsj7EE8LiPR6q1?io=true&size=avatar-v3_0" alt="Solemn" width="96" height="96">
+    <h1>@strangersolemn</h1>
+    <p class="tag">Glitch | Code | Music</p>
+    <p class="label" id="stats">Manchester · on-chain since 2021</p>
+    <nav class="socials label">
+      <a href="lab.html">The Lab</a>
       <a href="about.html">About</a>
+      <a href="https://instagram.com/strangersolemn" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://x.com/strangersolemn" target="_blank" rel="noopener">X</a>
       <a href="https://discord.gg/3cAwmXFF7u" target="_blank" rel="noopener">Discord</a>
     </nav>
+  </header>
+
+  <div class="view" role="group" aria-label="Order the work">
+    <button class="chip" type="button" data-view="chain" aria-pressed="true">By chain</button>
+    <button class="chip" type="button" data-view="year" aria-pressed="false">By year</button>
   </div>
-</header>
 
-<main class="wrap">
-  <section class="intro">
-    <h1>Digital artist from Manchester, making art on the blockchain since 2021.</h1>
-    <div class="facts strip" id="facts">
-      <div><span class="label">Collections</span><b id="fCols">—</b></div>
-      <div><span class="label">Pieces</span><b id="fPieces">—</b></div>
-      <div><span class="label">Collectors</span><b id="fCollectors">—</b></div>
-      <div><span class="label">Since</span><b>2021</b></div>
-    </div>
+  <div id="links"></div>
+
+  <section class="tree-sec">
+    <h2 class="label">Articles &amp; interviews</h2>
+    <a class="link" href="https://www.youtube.com/watch?v=dUvvKybClIE&amp;t=2237s" target="_blank" rel="noopener">
+      <span class="thumb empty-thumb" aria-hidden="true">▶</span>
+      <span><b>Interview with E3 Digital</b><span class="label">Video</span></span>
+      <span class="go" aria-hidden="true">↗</span>
+    </a>
   </section>
-
-  <div class="chains" id="chains" role="group" aria-label="Show chain"></div>
-  <div id="timeline"></div>
 </main>
 
-<footer class="foot">
-  <div class="wrap label">
-    <span>© Solemn · strangersolemn.art</span>
-    <span><a href="https://x.com/strangersolemn" target="_blank" rel="noopener">X</a> · <a href="https://discord.gg/3cAwmXFF7u" target="_blank" rel="noopener">Discord</a> · <a href="about.html">About</a></span>
-  </div>
-</footer>
+<footer class="foot tree-foot label">© Solemn · strangersolemn.art</footer>
 
 <script src="data/index.js"></script>
-<script src="common.js?v=2"></script>
-<script src="home.js?v=2"></script>
+<script src="common.js?v=3"></script>
+<script src="home.js?v=3"></script>
 </body>
 </html>

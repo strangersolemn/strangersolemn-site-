@@ -59,7 +59,7 @@ for (const c of manifest.filter((c) => c.chain === 'ethereum' && (!only.length |
   out[c.id] = [];
   for (const [contract, ids] of Object.entries(byContract)) {
     ids.sort((a, b) => (BigInt(a) < BigInt(b) ? -1 : BigInt(a) > BigInt(b) ? 1 : 0));
-    const deploy = await deployOf(contract);
+    const deploy = await deployOf(contract).catch(() => ({}));
     const safe = (tid) => mintOf(contract, tid).catch(() => null);
     let first = await safe(ids[0]);
     let last = ids.length > 1 ? await safe(ids[ids.length - 1]) : first;

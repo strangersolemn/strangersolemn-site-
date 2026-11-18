@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Lab — strangersolemn</title>
+<meta name="description" content="Strange Labs: the tools Solemn builds on Bitcoin. The Gl1tch CC0mposer and GL1TCH C0DE5, 21 CC0 p5.js pieces anyone can use.">
+<meta name="theme-color" content="#F4F2EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=3">
+<link rel="stylesheet" href="lab.css?v=1">
+</head>
+<body>
+<main class="lab">
+  <header class="lab-head">
+    <a class="back label" href="./">← @strangersolemn</a>
+    <span class="label">Strange Labs</span>
+    <h1>The Lab</h1>
+    <p>Tools I build on Bitcoin. Each one is a child of the Strange Labs inscription, so you can trace it back on chain.</p>
+    <a class="label prov" href="https://ordinals.com/inscription/b124a02748dd3ee7bde22d9ecd39ed89e113e522cf4c657424d2196a53045fb5i0" target="_blank" rel="noopener">Strange Labs · #42,674,906 ↗</a>
+  </header>
+
+  <section class="tool" aria-labelledby="composerTitle">
+    <div class="tool-art" id="mix" aria-hidden="true"></div>
+    <div class="tool-body">
+      <span class="label">Tool 01 · on Bitcoin</span>
+      <h2 id="composerTitle">Gl1tch CC0mposer</h2>
+      <p>Stack the CC0 gl1tches with your own inscribed images and HTML pieces. Set hue, saturation, contrast, opacity and blend for each layer, then pick how it plays: all at once, on click, on every new block, or one gl1tch per inscription by chance. It exports a single HTML file that's ready to inscribe.</p>
+      <div class="actions">
+        <a class="btn solid" href="https://ordinals.com/content/8e93bc148d9f8172ecb25e3831eaaf606ef932af7b146cf1c738084507302303i0" target="_blank" rel="noopener">Open the CC0mposer ↗</a>
+        <a class="btn" href="#cc0">See the CC0 gl1tches</a>
+      </div>
+      <dl class="meta">
+        <div><dt class="label">Built by</dt><dd>Grimble, with Solemn's GL1TCH C0DE5</dd></div>
+        <div><dt class="label">Lives at</dt><dd><a href="https://ordinals.com/inscription/8e93bc148d9f8172ecb25e3831eaaf606ef932af7b146cf1c738084507302303i0" target="_blank" rel="noopener">#76,452,613 ↗</a> <small>updates in place</small></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="cc0" id="cc0" aria-labelledby="cc0Title">
+    <div class="cc0-head">
+      <span class="label">CC0 · free for anyone</span>
+      <h2 id="cc0Title">GL1TCH C0DE5</h2>
+      <p>21 p5.js pieces on Bitcoin, released CC0. Use them in the CC0mposer, or call any of them from your own inscription.</p>
+      <code class="call">&lt;iframe src="/content/<span id="exId">60ee1a7e…5f4di0</span>"&gt;&lt;/iframe&gt;</code>
+    </div>
+    <div class="cc0-grid" id="grid"></div>
+    <p class="label cc0-foot"><a href="https://ordinals.com/inscription/33a549364da3dbcf3fe5b35ae006481081beee2d5ad0d7d09d164117b278a7eei0" target="_blank" rel="noopener">Collection parent ↗</a> · <a href="work.html?c=gl1tch-c0des">Collection page →</a></p>
+  </section>
+</main>
+
+<footer class="foot tree-foot label">© Solemn · strangersolemn.art</footer>
+<div class="lab-toast label" id="toast" role="status" aria-live="polite"></div>
+
+<script src="common.js?v=3"></script>
+<script src="lab.js?v=1"></script>
+</body>
+</html>

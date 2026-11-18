@@ -60,11 +60,12 @@
     ['Started', fmtDate(start)],
     ['Finished', end ? fmtDate(end) : (C.year >= new Date().getFullYear() ? 'Ongoing' : fmtDate(String(C.year)))],
     ['Chain', chain],
-    ['Supply', num(C.supply)],
+    ['Supply', `<span id="supply">${num(C.supply)}</span>`],
     ['Holders', C.holders ? num(C.holders) : '—'],
     ['For sale', '<span id="saleCount">…</span>'],
   ];
   $('facts').innerHTML = facts.map(([k, v]) => `<div><span class="label">${k}</span><b>${v}</b></div>`).join('');
+  liveSupply(C.id).then((n) => { if (n) $('supply').textContent = `${num(n)} of ${num(C.supply)}`; });
 
   // ---------- mint record (Ethereum only) ----------
   if (C.chain === 'ethereum' && m.length) {

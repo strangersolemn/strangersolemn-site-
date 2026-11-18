@@ -172,3 +172,27 @@ button { font: inherit; color: inherit; }
 .prose p { margin: 0 0 1em; }
 .cover { margin: 0; }
 .top + .facts { margin-top: 28px; }
+
+/* ---------- home: the link tree ---------- */
+.tree { max-width: 600px; margin: 0 auto; padding: 0 var(--gutter); }
+.me { text-align: center; padding: 44px 0 6px; }
+.avatar { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; background: var(--tile); }
+.me h1 { font-size: 22px; letter-spacing: -.01em; margin: 0; font-weight: 700; }
+.me .tag { margin: 4px 0 10px; font-size: 16px; }
+.socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; margin-top: 14px; }
+.socials a { text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--faint); padding-bottom: 2px; }
+.view { display: flex; justify-content: center; gap: 6px; margin: 26px 0 0; }
+.tree-sec { margin-top: 28px; }
+.tree-sec > h2 { text-align: center; margin: 0 0 10px; color: var(--ink); }
+.link { display: grid; grid-template-columns: 56px minmax(0, 1fr) 24px; gap: 14px; align-items: center; min-height: 72px;
+  padding: 8px 12px 8px 8px; margin-bottom: 8px; border: 1px solid var(--ink); background: var(--paper); text-decoration: none;
+  transition: background .15s, transform .15s; }
+.link:hover { background: #fff; }
+.link:active { transform: translateY(1px); }
+.link .thumb { width: 56px; aspect-ratio: 1; position: relative; overflow: hidden; background: var(--tile); }
+.link .thumb img, .link .thumb video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.link b { display: block; font-size: 17px; line-height: 1.2; letter-spacing: -.01em; }
+.link .label { display: block; margin-top: 3px; }
+.link .go { text-align: right; color: var(--dim); font-size: 17px; }
+.empty-thumb { display: grid; place-items: center; font-size: 15px; color: var(--dim); }
+.tree-foot { text-align: center; border: 0; margin-top: 48px; }

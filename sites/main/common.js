@@ -50,6 +50,21 @@ function pieceUrl(chain, contract, tokenId) {
   return '#';
 }
 
+// supply that changes on-chain. FRONTRUN: 666 minted minus every piece burned in The Race (burnCount()).
+const LIVE = { frontrun: { minted: 666, call: { to: '0xb1045442e1aafea9280480e82b61c2ee5a71c741', data: '0x524773ce' } } };
+async function liveSupply(id) {
+  const L = LIVE[id];
+  if (!L) return null;
+  for (const rpc of ['https://ethereum-rpc.publicnode.com', 'https://eth.drpc.org', 'https://1rpc.io/eth']) {
+    try {
+      const j = await (await fetch(rpc, { method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ jsonrpc: '2.0', id: 1, method: 'eth_call', params: [L.call, 'latest'] }) })).json();
+      if (j.result) return L.minted - parseInt(j.result, 16);
+    } catch {}
+  }
+  return null;
+}
+
 const fmtDate = (iso, withTime) => {
   if (!iso) return '';
   if (/^\d{4}$/.test(iso)) return iso;
