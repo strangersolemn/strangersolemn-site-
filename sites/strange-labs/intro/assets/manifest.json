@@ -1,0 +1,165 @@
+{
+ "crowd": [
+  "c0.webp",
+  "c1.webp",
+  "c2.webp",
+  "c3.webp",
+  "c4.webp",
+  "c5.webp",
+  "c6.webp",
+  "c7.webp",
+  "c8.webp",
+  "c9.webp",
+  "c10.webp",
+  "c11.webp",
+  "c12.webp",
+  "c13.webp",
+  "c14.webp",
+  "c15.webp",
+  "c16.webp",
+  "c17.webp",
+  "c18.webp",
+  "c19.webp",
+  "c20.webp",
+  "c21.webp",
+  "c22.webp",
+  "c23.webp",
+  "c24.webp"
+ ],
+ "trolls": [
+  "t0.webp",
+  "t1.webp",
+  "t2.webp",
+  "t3.webp",
+  "t4.webp",
+  "t5.webp",
+  "t6.webp",
+  "t7.webp",
+  "t8.webp",
+  "t9.webp",
+  "t10.webp",
+  "t11.webp"
+ ],
+ "clocks": [
+  "k0.webp",
+  "k1.webp",
+  "k2.webp",
+  "k3.webp",
+  "k4.webp",
+  "k5.webp",
+  "k6.webp",
+  "k7.webp"
+ ],
+ "skulls": [
+  "s0.webp",
+  "s1.webp",
+  "s2.webp",
+  "s3.webp",
+  "s4.webp",
+  "s5.webp",
+  "s6.webp",
+  "s7.webp",
+  "s8.webp",
+  "s9.webp",
+  "s10.webp",
+  "s11.webp",
+  "s12.webp",
+  "s13.webp"
+ ],
+ "walls": [
+  "g0.webp",
+  "g1.webp",
+  "g2.webp",
+  "g3.webp",
+  "g4.webp",
+  "g5.webp"
+ ],
+ "editions": [
+  "e0.webp",
+  "e1.webp",
+  "e2.webp",
+  "e3.webp",
+  "e4.webp",
+  "e5.webp",
+  "e6.webp",
+  "e7.webp",
+  "e8.webp",
+  "e9.webp"
+ ],
+ "party": [
+  "p0.webp",
+  "p1.webp",
+  "p2.webp",
+  "p3.webp",
+  "p4.webp",
+  "p5.webp",
+  "p6.webp",
+  "p7.webp",
+  "p8.webp",
+  "p9.webp",
+  "p10.webp",
+  "p11.webp",
+  "p12.webp",
+  "p13.webp"
+ ],
+ "cards": [
+  {
+   "src": "d0.webp",
+   "from": "deliverance"
+  },
+  {
+   "src": "d1.webp",
+   "from": "deliverance"
+  },
+  {
+   "src": "d2.webp",
+   "from": "deliverance"
+  },
+  {
+   "src": "d3.webp",
+   "from": "deliverance"
+  },
+  {
+   "src": "d4.webp",
+   "from": "deliverance"
+  },
+  {
+   "src": "d5.webp",
+   "from": "deliverance"
+  },
+  {
+   "src": "d6.webp",
+   "from": "dronebtc"
+  },
+  {
+   "src": "d7.webp",
+   "from": "dronebtc"
+  },
+  {
+   "src": "d8.webp",
+   "from": "dronebtc"
+  },
+  {
+   "src": "d9.webp",
+   "from": "a-solemn-rose"
+  },
+  {
+   "src": "d10.webp",
+   "from": "a-solemn-rose"
+  },
+  {
+   "src": "d11.webp",
+   "from": "a-solemn-rose"
+  },
+  {
+   "src": "d12.webp",
+   "from": "a-solemn-rose"
+  },
+  {
+   "src": "d13.webp",
+   "from": "a-solemn-rose"
+  }
+ ],
+ "wall": "wall.webp",
+ "track": "track.mp3"
+}
