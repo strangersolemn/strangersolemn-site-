@@ -6,7 +6,8 @@
 Sources:
 - The Ord Lot characters: ~/Projects/art/solemn/the ord lot/ord lot raw /  (4000px PNGs with see-through backgrounds)
 - Every other collection: art/previews/<collection>/N.mp4 (the 360px loops the site already has)
-- Sound: ~/Projects/art/strangersolemn/onchain-tracks/out/04-acid-techno-138.mp3 (Solemn's own track)
+- Logo: ~/Projects/art/strangersolemn/strange-labs-graphics/strange-labs-logo-cutout.png
+- Sound: none here. The intro plays the music of Blockrunner with the artwork's own code (see intro.js).
 Needs ffmpeg and cwebp. Recordings that came out with a grey margin, or blank, are skipped.
 """
 import json, os, subprocess, sys, tempfile
@@ -15,7 +16,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'sites/strange-labs/intro/assets')
 PREV = os.path.join(ROOT, 'art/previews')
 ORDLOT = os.path.expanduser('~/Projects/art/solemn/the ord lot/ord lot raw ')
-TRACK = os.path.expanduser('~/Projects/art/strangersolemn/onchain-tracks/out/04-acid-techno-138.mp3')
+LOGO = os.path.expanduser('~/Projects/art/strangersolemn/strange-labs-graphics/strange-labs-logo-cutout.png')
 TMP = tempfile.mkdtemp(prefix='labs-intro-')
 os.makedirs(OUT, exist_ok=True)
 
@@ -143,10 +144,8 @@ wall = os.path.join(TMP, 'wall.png')
 run('ffmpeg', '-loglevel', 'error', '-y', '-framerate', '1', '-i', os.path.join(TMP, 'w%03d.png'), '-vf', 'tile=16x8', '-frames:v', '1', '-update', '1', wall)
 webp(wall, 'wall.webp', 78); manifest['wall'] = 'wall.webp'
 
-# 4. Sound: the first 17 seconds of the acid techno track, faded out at the end
-if os.path.exists(TRACK):
-    run('ffmpeg', '-loglevel', 'error', '-y', '-i', TRACK, '-t', '17', '-af', 'afade=t=out:st=14.5:d=2.5', '-b:a', '128k', os.path.join(OUT, 'track.mp3'))
-    manifest['track'] = 'track.mp3'
+# 4. The Strange Labs logo, as Solemn made it
+run('cwebp', '-quiet', '-q', '92', '-alpha_q', '95', LOGO, '-o', os.path.join(OUT, 'logo.webp')); manifest['logo'] = 'logo.webp'
 
 json.dump(manifest, open(os.path.join(OUT, 'manifest.json'), 'w'), indent=1)
 total = sum(os.path.getsize(os.path.join(OUT, f)) for f in os.listdir(OUT))

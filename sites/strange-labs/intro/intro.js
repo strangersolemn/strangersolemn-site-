@@ -4,16 +4,19 @@
 (function () {
 'use strict';
 var canvas = document.getElementById('c'), gl = canvas.getContext('webgl2', { antialias: true, alpha: false, premultipliedAlpha: true });
-var ui = document.getElementById('ui'), playBtn = document.getElementById('play'), msg = document.getElementById('msg'), audio = document.getElementById('track');
+var ui = document.getElementById('ui'), playBtn = document.getElementById('play'), msg = document.getElementById('msg');
 if (!gl) { msg.textContent = 'This browser cannot play the intro.'; return; }
 
-// ---------- timing: cut to the track, 138 beats a minute ----------
-var BEAT = 60 / 138, BAR = BEAT * 4;
-var T_IN = BAR,          // through the coin
-    T_HOLD = BAR * 6,    // arrive at the wall
-    T_BACK = BAR * 7,    // rewind starts
-    T_LOGO = BAR * 7.5,  // back outside
-    T_END = 17;
+// ---------- timing: cut to the music of Blockrunner, 174 beats a minute ----------
+// The music starts two bars before its long falling bass note. That note lands as we go through the coin,
+// and the next one lands as the logo comes up.
+var BEAT = 60 / 174, BAR = BEAT * 4;
+var T_IN = BAR * 2,       // through the coin, on the bass note
+    T_HOLD = BAR * 8,     // arrive at the wall
+    T_BACK = BAR * 9.5,   // rewind starts
+    T_LOGO = BAR * 10,    // back outside, on the next bass note
+    T_END = 18.6,
+    Q = T_IN / 1.739;     // the opening was first timed for a 1.739 s lead-in; Q stretches it to fit
 // ---------- depth: one section is 60 units long ----------
 var D_COIN = 12, D0 = 12.5, SEC = 60, D_STOP = D0 + SEC * 5, D_WALL = D_STOP + 26, FOCAL = 1.8;
 
@@ -24,16 +27,17 @@ function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 
 function hex(h) { return [parseInt(h.slice(1, 3), 16) / 255, parseInt(h.slice(3, 5), 16) / 255, parseInt(h.slice(5, 7), 16) / 255]; }
 
 function camDepth(t) {
-  if (t < 0.95) return t * 0.3;
-  if (t < T_IN) { var e = (t - 0.95) / (T_IN - 0.95); return mix(0.285, D0, e * e * e); }
+  var ti = t / Q;
+  if (ti < 0.95) return ti * 0.3;
+  if (t < T_IN) { var e = (ti - 0.95) / (1.739 - 0.95); return mix(0.285, D0, e * e * e); }
   if (t < T_HOLD) { var s = (t - T_IN) / (T_HOLD - T_IN); return mix(D0, D_STOP, 1 - Math.pow(1 - s, 1.35)); }
   if (t < T_BACK) return D_STOP + (t - T_HOLD) * 1.3;
   if (t < T_LOGO) { var b = (t - T_BACK) / (T_LOGO - T_BACK), top = D_STOP + (T_BACK - T_HOLD) * 1.3; b = b < .5 ? 4 * b * b * b : 1 - Math.pow(-2 * b + 2, 3) / 2; return mix(top, 0, b); }
   return 0;
 }
 // the colour of the world the camera is in
-var INK = hex('#0f1012'), WHITE = hex('#f3f1ea'), DARK = hex('#0a0a10'), BLUE = hex('#1a22e8'), NIGHT = hex('#06060c');
-var BG = [[0, INK], [10.5, INK], [13.5, WHITE], [D0 + 53, WHITE], [D0 + 60, DARK], [D0 + 116, DARK], [D0 + 122, BLUE], [D0 + 175, BLUE], [D0 + 182, NIGHT], [9999, NIGHT]];
+var INK = hex('#0f1012'), WHITE = hex('#f3f1ea'), DARK = hex('#0a0a10'), NIGHT = hex('#06060c');
+var BG = [[0, INK], [10.5, INK], [13.5, WHITE], [D0 + 53, WHITE], [D0 + 60, DARK], [D0 + 116, DARK], [D0 + 182, NIGHT], [9999, NIGHT]];
 function bgAt(z) { for (var i = 1; i < BG.length; i++) if (z < BG[i][0]) { var a = BG[i - 1], b = BG[i], k = (z - a[0]) / (b[0] - a[0]); return [mix(a[1][0], b[1][0], k), mix(a[1][1], b[1][1], k), mix(a[1][2], b[1][2], k)]; } return NIGHT; }
 
 // ---------- shaders ----------
@@ -83,14 +87,9 @@ var coinTex = draw2d(512, 512, function (x) {   // the Bitcoin mark: an orange c
   x.translate(256, 256); x.rotate(0.24); x.fillStyle = '#fff'; x.font = '700 330px ' + FONT; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('B', 6, 14);
   [-52, 6].forEach(function (dx) { x.fillRect(dx, -168, 34, 60); x.fillRect(dx, 122, 34, 60); });
 });
-var logoTex = draw2d(1280, 256, function (x, w, h) {
-  x.font = '700 150px ' + FONT; x.textBaseline = 'middle'; var tw = x.measureText('Strange Labs').width, x0 = (w - tw - 70) / 2;
-  x.fillStyle = '#f5a623'; x.beginPath(); x.arc(x0 + 22, h / 2 + 4, 22, 0, 7); x.fill();
-  x.fillStyle = '#fff'; x.fillText('Strange Labs', x0 + 70, h / 2 + 6);
-});
 
 // ---------- the scene ----------
-var layers = [], tex = {}, M = null, AMBER = hex('#f5a623'), ONE = [1, 1, 1];
+var layers = [], tex = {}, M = null, AMBER = hex('#f5a623'), HOT = hex('#ff4a12'), ONE = [1, 1, 1];
 function add(o) { o.w = o.w || 1; o.h = o.h || o.w; o.x = o.x || 0; o.y = o.y || 0; layers.push(o); return o; }
 function build() {
   var r = rng(7), i, side, s0;
@@ -100,17 +99,15 @@ function build() {
   add({ t: tex.c24, d: s0 + 57.5, x: 0, y: 1.9, w: 12 });
   // 2. TROLLS: each one at a coloured booth
   s0 = D0 + SEC; add({ t: title('Trolls', '#fff'), d: s0 + 8, y: 3.3, w: 9, h: 1.7 });
-  var cols = ['#e3161f', '#f4d03f', '#8e44ad', '#27ae60', '#ff5fa2', '#2980ff'];
+  var cols = ['#e3161f', '#f4d03f', '#8e44ad', '#27ae60', '#ff5fa2', '#ff3600'];
   for (i = 0; i < 12; i++) {
     side = i % 2 ? 1 : -1; var x = side * (2.9 + r() * 2.2), d = s0 + 7 + i * 4.1;
     add({ mode: 2, col: hex(cols[i % 6]), d: d + 0.7, x: x, y: 0.2, w: 4.4, h: 6.6 });
     add({ t: tex['t' + i], d: d, x: x + side * -0.3, y: -0.7, w: 5.2, flip: side > 0 });
   }
-  add({ mode: 2, col: BLUE, d: s0 + 59, w: 60, h: 40, gate: 1 });   // a blue wall: the way into the party
   // 3. BLOCK PARTY: cards with white cut-out edges, bobbing to the beat
   s0 = D0 + SEC * 2; add({ t: title('Block Party', '#fff'), d: s0 + 7, y: 3.2, w: 9, h: 1.7 });
   for (i = 0; i < 34; i++) { side = i % 2 ? 1 : -1; add({ t: tex['p' + (i % 14)], d: s0 + 1 + i * 1.65, x: side * (1.7 + r() * 4.4), y: (r() - .5) * 4.2, w: 3.3 + r() * 1.6, rot: (r() - .5) * 0.5, edge: 0.035, ec: ONE, bob: i }); }
-  add({ mode: 2, col: NIGHT, d: s0 + 59, w: 60, h: 40, gate: 1 });  // lights out
   // 4. EDITIONS: a dark gallery, the Block Clocks glowing behind it
   s0 = D0 + SEC * 3; add({ t: title('Editions', '#fff'), d: s0 + 7, y: 3.2, w: 9, h: 1.7 });
   for (i = 0; i < 10; i++) { side = i % 2 ? 1 : -1; add({ t: tex['e' + i], d: s0 + 3 + i * 5.1, x: side * (2.4 + r() * 1.5), y: (r() - .5) * 1.2, w: 3.7, edge: 0.02, ec: AMBER }); }
@@ -166,53 +163,83 @@ function render(t) {
   var out = t >= T_LOGO, coinA = t < T_IN + 0.12 ? 1 : (t > T_BACK ? 1 : 0), k;
   if (coinA) {
     var dC = D_COIN - cz; if (dC > 0.3) {
-      sc = f / dC; var merge = sm(0.78, 1.14, t), heat = out ? 1 - sm(T_LOGO, T_LOGO + 0.45, t) : sm(1.05, T_IN, t), size = 0.8 * (out ? 1 - sm(T_LOGO + 0.05, T_LOGO + 0.5, t) : 1);
-      quad({ mode: 1, cx: -cx * sc / AS, cy: -cy * sc, hw: 5 * sc, hh: 5 * sc, col: AMBER, i: heat * 1.5, seed: t * 0.6, addv: 1 });
+      sc = f / dC; var ti = t / Q, merge = sm(0.78, 1.14, ti), heat = out ? 1 - sm(T_LOGO, T_LOGO + 0.45, t) : sm(1.05, 1.739, ti), size = 0.8 * (out ? 1 - sm(T_LOGO + 0.05, T_LOGO + 0.5, t) : 1);
+      quad({ mode: 1, cx: -cx * sc / AS, cy: -cy * sc, hw: 5 * sc, hh: 5 * sc, col: out ? HOT : AMBER, i: heat * 1.5, seed: t * 0.6, addv: 1 });
       for (k = 0; k < 6; k++) {
-        var a = t < 1.2 ? sm(0.12 + k * 0.07, 0.4 + k * 0.07, t) * (k ? 1 - sm(1.0, 1.14, t) : 1) : (k ? 0 : 1); if (a <= 0 || size <= 0) continue;
+        var a = ti < 1.2 ? sm(0.12 + k * 0.07, 0.4 + k * 0.07, ti) * (k ? 1 - sm(1.0, 1.14, ti) : 1) : (k ? 0 : 1); if (a <= 0 || size <= 0) continue;
         quad({ t: coinTex, cx: ((k - 2.5) * 1.15 * (1 - merge) - cx) * sc / AS, cy: -cy * sc, hw: size / 2 * sc, hh: size / 2 * sc, a: a, blur: clamp(1 - dC / 3, 0, 1) * 0.6 });
       }
     }
   }
   // speed lines and the flash as we go through, and again on the way back
-  var punch = sm(1.2, T_IN, t) * (1 - sm(T_IN, T_IN + 0.5, t)), rush = rewind ? Math.sin((t - T_BACK) / (T_LOGO - T_BACK) * Math.PI) : 0;
+  var punch = sm(1.2 * Q, T_IN, t) * (1 - sm(T_IN, T_IN + 0.5, t)), rush = rewind ? Math.sin((t - T_BACK) / (T_LOGO - T_BACK) * Math.PI) : 0;
   if (punch + rush > 0.01) quad({ mode: 3, cx: 0, cy: 0, hw: AS, hh: 1, col: rush > punch ? ONE : [1, .8, .5], i: (punch + rush) * 0.55, seed: Math.floor(t * 30), addv: 1 });
   var flash = sm(T_IN - 0.1, T_IN, t) * (1 - sm(T_IN, T_IN + 0.35, t));
   if (flash > 0.01) quad({ mode: 2, cx: 0, cy: 0, hw: AS, hh: 1, col: WHITE, a: flash, fogc: WHITE });
-  // the logo: it grows out of the dot with a hot glow, then the glow settles
-  if (t > T_LOGO + 0.35) {
-    var g = t - T_LOGO - 0.35, show = sm(0, 0.4, g), hot = 1 - sm(0.25, 1.6, g), lw = Math.min(0.74 * AS, 1.2) * mix(0.82, 1, sm(0, 0.6, g)), lh = lw / 5;
-    quad({ mode: 1, cx: 0, cy: 0, hw: lw * 1.5, hh: lw * 1.5, col: AMBER, i: show * (0.35 + hot * 1.3), seed: 2 + t * 0.15, addv: 1 });
-    quad({ t: logoTex, cx: 0, cy: 0, hw: lw * 1.03, hh: lh * 1.03, col: AMBER, blur: 0.62, a: show * (0.75 + hot * 0.9), addv: 1 });   // halo in the shape of the letters
-    quad({ t: logoTex, cx: 0, cy: 0, hw: lw * 1.01, hh: lh * 1.01, col: [1, .78, .45], blur: 0.32, a: show * (0.5 + hot * 0.8), addv: 1 });
-    quad({ t: logoTex, cx: 0, cy: 0, hw: lw, hh: lh, a: show });
+  // the logo: Solemn's own Strange Labs mark. It grows out of the dot with a hot glow, then the glow settles.
+  if (t > T_LOGO + 0.3) {
+    var g = t - T_LOGO - 0.3, show = sm(0, 0.35, g), hot = 1 - sm(0.2, 1.8, g), grow = mix(0.6, 1, 1 - Math.pow(1 - sm(0, 0.7, g), 2));
+    var lh = Math.min(0.4, 0.5 * AS) * grow, lw = lh * 658 / 712, breathe = 0.5 + 0.5 * Math.sin(t * 2.2);
+    quad({ mode: 1, cx: 0, cy: 0, hw: lh * 3.6, hh: lh * 3.6, col: HOT, i: show * (0.5 + hot * 1.5 + breathe * 0.12), seed: 2 + t * 0.15, addv: 1 });
+    quad({ t: tex.logo, cx: 0, cy: 0, hw: lw * 1.16, hh: lh * 1.16, col: [1, .5, .25], blur: 0.85, a: show * (0.55 + hot * 0.9 + breathe * 0.1), addv: 1 });   // a halo in the logo's own shape
+    quad({ t: tex.logo, cx: 0, cy: 0, hw: lw * 1.05, hh: lh * 1.05, col: [1, .7, .45], blur: 0.5, a: show * (0.3 + hot * 0.7), addv: 1 });
+    quad({ t: tex.logo, cx: 0, cy: 0, hw: lw, hh: lh, a: show });
+    if (hot > 0.01) quad({ t: tex.logo, cx: 0, cy: 0, hw: lw, hh: lh, col: [1, .85, .7], a: hot * 0.55 * show, addv: 1 });   // white-hot for a moment
   }
+}
+
+// ---------- sound: the music of Blockrunner ----------
+// These four sounds and the pattern are taken as they are from the artwork's code (kick, snare, hat, the falling bass;
+// 174 bpm; kick on steps 1, 8 and 11, snare on 5 and 13, a hat on every 16th, bass on bars 1 and 5 of 8, two low hits in bar 8).
+var actx = null, aT0 = 0, sound = false;
+function music() {
+  var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return false;
+  if (actx) { try { actx.close(); } catch (e) {} }
+  actx = new AC(); var out = actx.createGain(); out.connect(actx.destination); aT0 = actx.currentTime + 0.12;
+  out.gain.setValueAtTime(0.72, aT0); out.gain.setValueAtTime(0.72, aT0 + T_END - 2); out.gain.linearRampToValueAtTime(0.0001, aT0 + T_END);
+  function noise(len) { var b = actx.createBuffer(1, Math.floor(actx.sampleRate * len), actx.sampleRate), d = b.getChannelData(0); for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; return b; }
+  var snareBuf = noise(0.1), hatBuf = noise(0.05);
+  function kick(t) { var o = actx.createOscillator(), g = actx.createGain(); o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(0.01, t + 0.3); g.gain.setValueAtTime(1, t); g.gain.exponentialRampToValueAtTime(0.01, t + 0.3); o.connect(g); g.connect(out); o.start(t); o.stop(t + 0.3); }
+  function snare(t) { var s = actx.createBufferSource(), f = actx.createBiquadFilter(), g = actx.createGain(); s.buffer = snareBuf; f.type = 'bandpass'; f.frequency.value = 1200; g.gain.setValueAtTime(0.6, t); g.gain.exponentialRampToValueAtTime(0.01, t + 0.15); s.connect(f); f.connect(g); g.connect(out); s.start(t); }
+  function hat(t, vol) { var s = actx.createBufferSource(), f = actx.createBiquadFilter(), g = actx.createGain(); s.buffer = hatBuf; f.type = 'highpass'; f.frequency.value = 8000; g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.01, t + 0.03); s.connect(f); f.connect(g); g.connect(out); s.start(t); }
+  function bass(t, fr) { var o = actx.createOscillator(), g = actx.createGain(), f = actx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.setValueAtTime(fr, t); o.frequency.exponentialRampToValueAtTime(fr * 0.8, t + 2.0); f.type = 'lowpass'; f.frequency.setValueAtTime(400, t); f.frequency.exponentialRampToValueAtTime(40, t + 2.5); f.Q.value = 8; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.6, t + 0.05); g.gain.exponentialRampToValueAtTime(0.001, t + 2.5); o.connect(f); f.connect(g); g.connect(out); o.start(t); o.stop(t + 2.5); }
+  var stepT = 60 / 174 / 4, n = Math.ceil(T_END / stepT), i, s, t, b16, b128;
+  for (i = 0; i < n; i++) {   // the pattern starts at step 32 of its 128, so the bass note of bar 5 lands at T_IN
+    s = 32 + i; t = aT0 + i * stepT; b128 = s % 128; b16 = s % 16;
+    if (b128 === 0 || b128 === 64) bass(t, 55);
+    if (b128 === 112 || b128 === 120) bass(t, 32.7);
+    if (b16 === 0 || b16 === 7 || b16 === 10) kick(t);
+    if (b16 === 4 || b16 === 12) snare(t);
+    hat(t, b16 % 2 === 0 ? 0.1 : 0.05);
+  }
+  return true;
 }
 
 // ---------- loading and playing ----------
 var playing = false, t0 = 0, frozen = null, q = new URLSearchParams(location.search);
 function frame() {
   if (!playing) return;
-  var t = !audio.paused && audio.currentTime > 0 ? audio.currentTime : (performance.now() - t0) / 1000;
+  if (sound && actx.state !== 'running' && performance.now() - t0 > 600) sound = false;   // the browser would not start the sound: carry on without it
+  var t = sound ? Math.max(0, actx.currentTime - aT0) : (performance.now() - t0) / 1000;
   if (t >= T_END) { playing = false; render(T_END); playBtn.textContent = 'Play again'; msg.innerHTML = '<a class="tiny" href="../">Enter Strange Labs</a>'; ui.classList.remove('off'); return; }
   render(t); requestAnimationFrame(frame);
 }
 function play(silent) {
-  ui.classList.add('off'); playing = true; t0 = performance.now(); audio.pause(); audio.currentTime = 0;
-  if (!silent) { var p = audio.play(); if (p && p.catch) p.catch(function () {}); }
+  ui.classList.add('off'); playing = true; t0 = performance.now(); sound = false;
+  if (!silent) { try { sound = music(); if (sound && actx.resume) actx.resume(); } catch (e) { sound = false; } }
   requestAnimationFrame(frame);
 }
 playBtn.onclick = function () { play(false); };
-window.addEventListener('resize', function () { if (!playing && M) render(frozen === null ? (playBtn.textContent === 'Play again' ? T_END : 0.75) : frozen); });
+window.addEventListener('resize', function () { if (!playing && M) render(frozen === null ? (playBtn.textContent === 'Play again' ? T_END : 0.75 * Q) : frozen); });
 fetch('assets/manifest.json').then(function (r) { return r.json(); }).then(function (m) {
-  M = m; var names = [].concat(m.crowd, m.trolls, m.clocks, m.skulls, m.walls, m.editions, m.party, m.cards.map(function (c) { return c.src; }), [m.wall]), done = 0;
+  M = m; var names = [].concat(m.crowd, m.trolls, m.clocks, m.skulls, m.walls, m.editions, m.party, m.cards.map(function (c) { return c.src; }), [m.wall, m.logo]), done = 0;
   return Promise.all(names.map(function (n) { return load(n).then(function (t) { tex[n.replace('.webp', '')] = t; msg.textContent = 'Loading ' + Math.round(++done / names.length * 100) + '%'; }); }));
 }).then(function () {
   build();
   window.render = render; window.introLength = T_END;   // for frame-by-frame capture
   if (q.has('t')) { frozen = parseFloat(q.get('t')); ui.hidden = true; document.getElementById('skip').hidden = true; render(frozen); return; }
-  [2.2, 3.4, 4.8, 6.3, 8.2, 10.5, 14].forEach(render);   // draw each part once now, so nothing stutters the first time through
-  render(0.75); msg.textContent = 'Sound on'; playBtn.hidden = false;
+  [3.2, 4.4, 5.8, 7.3, 9.2, 11.5, 15].forEach(render);   // draw each part once now, so nothing stutters the first time through
+  render(0.75 * Q); msg.textContent = 'Sound on'; playBtn.hidden = false;
   if (q.has('auto')) play(true);
 }).catch(function (e) { msg.textContent = 'Could not load the intro: ' + e.message; });
 })();
