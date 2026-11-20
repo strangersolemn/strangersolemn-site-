@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sandbox · Strange Labs</title>
+<!-- Strange Labs Sandbox. Paste or type the code of a piece and see it run exactly as it would as an inscription.
+     Inscribed, it runs on the chain's own server, so /content/<id> and /r/... in your code just work.
+     Opened from an ordinary website it points those paths at ordinals.com for you. One file, nothing loaded from outside. -->
+<style>
+:root{--bg:#0f1012;--well:#08090a;--line:#26272b;--ink:#e9e9e4;--dim:#7f8187;--edge:#f5a623;--teal:#58d5ec;--sans:"Helvetica Neue",Helvetica,Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--key:inset 0 1px 0 #ffffff24,0 0 0 2px #050506,0 0 0 3px #34353a}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 var(--sans);display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+header{flex:none;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;padding:6px 10px;border-bottom:1px solid var(--line)}
+h1{font:700 16px/1 var(--sans);margin:0 6px 0 2px;white-space:nowrap}
+h1 i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--edge);box-shadow:0 0 8px #f5a623aa;margin-right:8px}
+.keys{display:flex;flex-wrap:wrap;align-items:center}
+button{font:700 13px/1 var(--sans);color:var(--ink);min-height:38px;padding:0 12px;margin:3px;border:1px solid #5c5e64;background:linear-gradient(#25262a,#17181a);border-radius:3px;box-shadow:var(--key);cursor:pointer;white-space:nowrap}
+button:active{transform:translateY(1px)}
+button.lit{background:linear-gradient(#ffc64f,#e8920a);border-color:#ffe0a0;color:#1c1304}
+input{font:13px/1 var(--mono);color:var(--ink);background:var(--well);border:1px solid #000;border-radius:3px;box-shadow:inset 0 1px 3px #000d,0 1px 0 #ffffff12;min-height:38px;padding:0 10px;margin:3px;width:150px;flex:1 1 150px;outline:none}
+input:focus,textarea:focus{border-color:var(--teal)}
+#n{font:12px/1 var(--mono);color:var(--dim);margin-left:auto;white-space:nowrap;padding:0 4px}
+main{flex:1;min-height:0;display:grid;grid-template-columns:1fr;grid-template-rows:42% 58%}
+@media(min-width:820px){main{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-rows:1fr}}
+textarea{width:100%;height:100%;resize:none;background:var(--well);color:var(--ink);border:1px solid #000;border-radius:0;font:13px/1.5 var(--mono);padding:12px;outline:none;tab-size:2}
+#v{position:relative;min-height:0;border-top:1px solid var(--line);background:#fff}
+@media(min-width:820px){#v{border-top:0;border-left:1px solid var(--line)}}
+iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+body.full header .hide,body.full textarea{display:none}
+body.full main{grid-template-columns:1fr;grid-template-rows:1fr}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+</style>
+</head>
+<body>
+<header>
+  <h1><i></i>Sandbox</h1>
+  <div class="keys">
+    <button id="run" class="lit hide">Run</button>
+    <button id="full">Full screen</button>
+    <button id="copy" class="hide">Copy</button>
+    <button id="save" class="hide">Save file</button>
+  </div>
+  <div class="keys hide" style="flex:1 1 260px">
+    <input id="id" placeholder="Inscription ID to open" spellcheck="false" autocomplete="off" aria-label="Inscription ID to open">
+    <button id="load">Open</button>
+  </div>
+  <span id="n" class="hide"></span>
+</header>
+<main>
+  <textarea id="t" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="Code"></textarea>
+  <div id="v"><iframe id="f" title="Preview"></iframe></div>
+</main>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},t=$('t'),f=$('f'),n=$('n'),timer,KEY='strange-sandbox';
+// On chain this page lives at /content/<id>, and the paths in your code already point at the right place.
+// Anywhere else, the preview is told to look for them on ordinals.com.
+var onChain=/^\/(content|preview)\//.test(location.pathname),HOST=onChain?'':'https://ordinals.com';
+var START='<!doctype html>\n<html>\n<body style="margin:0;background:#000">\n<canvas id="c" style="width:100vw;height:100vh;display:block"></canvas>\n<script>\nconst c=document.getElementById("c"),x=c.getContext("2d");\nc.width=c.height=400;let f=0;\n(function d(){f++;x.fillStyle="#000";x.fillRect(0,0,400,400);x.fillStyle="#f5a623";\nx.beginPath();x.arc(200+Math.sin(f*.05)*120,200,50,0,7);x.fill();requestAnimationFrame(d)})();\n<\/script>\n</body>\n</html>';
+function say(s){n.textContent=s}
+function size(){say(new Blob([t.value]).size.toLocaleString()+' bytes')}
+function run(){
+  var code=t.value;try{localStorage.setItem(KEY,code)}catch(e){}
+  if(HOST){var b='<base href="'+HOST+'/">',m=code.match(/^\s*<!doctype[^>]*>/i);code=m?m[0]+b+code.slice(m[0].length):b+code}
+  f.srcdoc=code;size();   // a fresh page each run, and nothing added to your code on chain
+}
+t.addEventListener('input',function(){size();clearTimeout(timer);timer=setTimeout(run,500)});
+t.addEventListener('keydown',function(e){if(e.key==='Tab'){e.preventDefault();var s=t.selectionStart;t.setRangeText('  ',s,t.selectionEnd,'end');size()}});
+$('run').onclick=run;
+$('full').onclick=function(){var on=document.body.classList.toggle('full');this.textContent=on?'Back to code':'Full screen'};
+$('copy').onclick=function(){var ok=function(){say('Copied')};if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t.value).then(ok,function(){t.select();document.execCommand('copy');ok()});else{t.select();document.execCommand('copy');ok()}};
+$('save').onclick=function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t.value],{type:'text/html'}));a.download='piece.html';a.click()};
+function load(){
+  var m=$('id').value.trim().toLowerCase().match(/[0-9a-f]{64}i\d+/);
+  if(!m){say('That is not an inscription ID');return}
+  say('Opening…');
+  fetch(HOST+'/content/'+m[0]).then(function(r){if(!r.ok)throw new Error('not found');var k=r.headers.get('content-type')||'';if(!/text|javascript|json|svg|xml/.test(k))throw new Error('that one is '+k+', not code');return r.text()})
+    .then(function(x){t.value=x;run()}).catch(function(e){say('Could not open it: '+e.message)});
+}
+$('load').onclick=load;
+$('id').addEventListener('keydown',function(e){if(e.key==='Enter')load()});
+var saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}
+t.value=saved||START;run();
+})();
+</script>
+</body>
+</html>

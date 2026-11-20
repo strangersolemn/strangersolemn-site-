@@ -57,6 +57,7 @@ a.tiny:hover { color: var(--ink); }
 /* text side */
 .unit-body { padding: 18px 16px 20px; }
 .lead { font-size: 18px; line-height: 1.45; max-width: 34em; }
+.lead code { font: .85em/1 var(--mono); color: var(--ink); background: var(--well-bg); padding: 2px 5px; border-radius: 3px; }
 .keys { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px -3px 0; }
 .key { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; font: 700 14px/1 var(--sans); letter-spacing: .01em; text-decoration: none; color: var(--ink); border: 1px solid #5c5e64; background: linear-gradient(#25262a, #17181a); border-radius: 3px; box-shadow: var(--key); margin: 3px; }
 .key:active { transform: translateY(1px); }
