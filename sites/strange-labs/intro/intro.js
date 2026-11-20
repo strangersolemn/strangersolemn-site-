@@ -13,14 +13,13 @@ if (!gl) { msg.textContent = 'This browser cannot play the intro.'; return; }
 //   one bar of drums while the coins gather
 //   bass 1  -> through the coin
 //   bass 2  -> the lights go out (bar 5)
-//   hit "1" -> we land on the wall     hit "2" -> still on the wall, with a jolt
-//   third hit (the long note again) -> the drums stop and we zoom all the way back out as the note falls;
-//   the logo is there when we come out, and it powers down as the note dies
+//   hit "1" -> we land on the wall
+//   hit "2", the last note of bar 8 -> the drums stop and we zoom all the way back out as the note falls;
+//   the logo is there when we come out, and it powers down as the note dies. The loop never starts again.
 var BEAT = 60 / 174, BAR = BEAT * 4;
 var T_IN = BAR,                 // bass 1
     T_HOLD = T_IN + BAR * 7,    // hit "1"
-    T_TWO = T_IN + BAR * 7.5,   // hit "2"
-    T_BACK = T_IN + BAR * 8,    // the third hit: the zoom out starts
+    T_BACK = T_IN + BAR * 7.5,  // hit "2", the last note of bar 8: the zoom out starts
     T_LOGO = T_BACK + 0.85,     // back outside: the logo
     T_OFF = T_LOGO + 1.5,       // the logo switches off
     T_END = T_OFF + 0.9,
@@ -39,8 +38,8 @@ function camDepth(t) {
   if (ti < 0.95) return ti * 0.3;
   if (t < T_IN) { var e = (ti - 0.95) / (1.739 - 0.95); return mix(0.285, D0, e * e * e); }
   if (t < T_HOLD) { var s = (t - T_IN) / (T_HOLD - T_IN); return mix(D0, D_STOP, 1 - Math.pow(1 - s, 1.07)); }   // near-steady, so bass 2 lands as the dark gallery begins
-  if (t < T_BACK) return D_STOP + (t - T_HOLD) * 1.3 + sm(T_TWO, T_TWO + 0.14, t) * 2.2;   // a slow drift on the wall, and a jolt on the second hit
-  if (t < T_LOGO) { var b = (t - T_BACK) / (T_LOGO - T_BACK), top = D_STOP + (T_BACK - T_HOLD) * 1.3 + 2.2; b = b < .5 ? 4 * b * b * b : 1 - Math.pow(-2 * b + 2, 3) / 2; return mix(top, 0, b); }
+  if (t < T_BACK) return D_STOP + (t - T_HOLD) * 1.3;   // a slow drift on the wall
+  if (t < T_LOGO) { var b = (t - T_BACK) / (T_LOGO - T_BACK), top = D_STOP + (T_BACK - T_HOLD) * 1.3; b = b < .5 ? 4 * b * b * b : 1 - Math.pow(-2 * b + 2, 3) / 2; return mix(top, 0, b); }
   return 0;
 }
 // the colour of the world the camera is in
@@ -182,9 +181,9 @@ function render(t) {
   // speed lines and the flash as we go through, and again on the way back
   var punch = sm(1.2 * Q, T_IN, t) * (1 - sm(T_IN, T_IN + 0.5, t)), rush = rewind ? Math.sin((t - T_BACK) / (T_LOGO - T_BACK) * Math.PI) : 0;
   if (punch + rush > 0.01) quad({ mode: 3, cx: 0, cy: 0, hw: AS, hh: 1, col: rush > punch ? ONE : [1, .8, .5], i: (punch + rush) * 0.55, seed: Math.floor(t * 30), addv: 1 });
-  var flash = sm(T_IN - 0.1, T_IN, t) * (1 - sm(T_IN, T_IN + 0.35, t)) + (t >= T_HOLD ? 0.3 * (1 - sm(T_HOLD, T_HOLD + 0.16, t)) : 0) + (t >= T_TWO ? 0.24 * (1 - sm(T_TWO, T_TWO + 0.14, t)) : 0);
+  var flash = sm(T_IN - 0.1, T_IN, t) * (1 - sm(T_IN, T_IN + 0.35, t)) + (t >= T_HOLD ? 0.3 * (1 - sm(T_HOLD, T_HOLD + 0.16, t)) : 0) + (t >= T_BACK ? 0.24 * (1 - sm(T_BACK, T_BACK + 0.14, t)) : 0);
   if (flash > 0.01) quad({ mode: 2, cx: 0, cy: 0, hw: AS, hh: 1, col: WHITE, a: flash, fogc: WHITE });
-  // the logo: Solemn's own Strange Labs mark. It slams in on the third hit, its glow dies as the bass note falls,
+  // the logo: Solemn's own Strange Labs mark. It slams in as we come out from the last hit, its glow dies as the bass note falls,
   // then it switches off like an old screen: down to a line, down to a dot, gone.
   if (t >= T_LOGO) {
     var g = t - T_LOGO, slam = 1 + 0.16 * (1 - sm(0, 0.2, g)), hot = 1 - sm(0.04, 1.35, g);
@@ -216,15 +215,15 @@ function music() {
   function hat(t, vol) { var s = actx.createBufferSource(), f = actx.createBiquadFilter(), g = actx.createGain(); s.buffer = hatBuf; f.type = 'highpass'; f.frequency.value = 8000; g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.01, t + 0.03); s.connect(f); f.connect(g); g.connect(out); s.start(t); }
   function bass(t, fr) { var o = actx.createOscillator(), g = actx.createGain(), f = actx.createBiquadFilter(); o.type = 'sawtooth'; o.frequency.setValueAtTime(fr, t); o.frequency.exponentialRampToValueAtTime(fr * 0.8, t + 2.0); f.type = 'lowpass'; f.frequency.setValueAtTime(400, t); f.frequency.exponentialRampToValueAtTime(40, t + 2.5); f.Q.value = 8; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.6, t + 0.05); g.gain.exponentialRampToValueAtTime(0.001, t + 2.5); o.connect(f); f.connect(g); g.connect(out); o.start(t); o.stop(t + 2.5); }
   var stepT = 60 / 174 / 4, i, s, t, b16;
-  for (i = 0; i < 16 + 128; i++) {   // s < 0 is the bar of drums before the tune starts; s runs 0..127 through its eight bars
+  for (i = 0; i < 16 + 120; i++) {   // s < 0 is the bar of drums before the tune starts; s runs through its eight bars
     s = i - 16; t = aT0 + i * stepT; b16 = ((s % 16) + 16) % 16;
     if (s === 0 || s === 64) bass(t, 55);
-    if (s === 112 || s === 120) bass(t, 32.7);
+    if (s === 112) bass(t, 32.7);
     if (b16 === 0 || b16 === 7 || b16 === 10) kick(t);
     if (b16 === 4 || b16 === 12) snare(t);
     hat(t, b16 % 2 === 0 ? 0.1 : 0.05);
   }
-  t = aT0 + (16 + 128) * stepT; bass(t, 55); kick(t);   // the third hit: the long note again, and nothing after it
+  t = aT0 + (16 + 120) * stepT; bass(t, 32.7); kick(t);   // the last note of bar 8, and nothing after it
   return true;
 }
 
