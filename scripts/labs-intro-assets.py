@@ -136,6 +136,22 @@ for key, pre, coll, k in [('gamma', 'gp', 'gamma-prints', 12), ('masters', 'ms',
     for i, f in enumerate(spread(pools[coll], k)):
         still(f, min(2.0, duration(f) * 0.5), 512, f'{pre}{i}.webp', 78, neighbor=False); manifest[key].append(f'{pre}{i}.webp')
 
+# 2c. Trollbox: the flipbook video cuts to another troll in its box every 7 frames (0.233 s). Each piece in the intro
+#     is four of those trolls in a 2x2 grid, flicked through like the video. And the real Trollbox logo for the title.
+TBVID = os.path.expanduser('~/Projects/art/solemn/trollz/kit/files/trollbox-flipbook.mp4')
+TBLOGO = os.path.expanduser('~/Projects/art/solemn/trollz/kit/files/trollbox-logo.png')
+manifest['trollbox'] = []
+for i in range(12):
+    pngs = []
+    for k in range(4):
+        n_ = (i * 4 + k) * 3 + 1          # every third troll, so the 48 are spread through the first 34 s (the logo card comes after)
+        pth = os.path.join(TMP, f'tb{k}.png'); pngs.append(pth)
+        run('ffmpeg', '-loglevel', 'error', '-y', '-ss', f'{0.15 + n_ * 7 / 30:.3f}', '-i', TBVID, '-frames:v', '1', '-vf', 'scale=384:384', '-update', '1', pth)
+    out = os.path.join(TMP, 'tb.png')
+    run('ffmpeg', '-loglevel', 'error', '-y', '-i', pngs[0], '-i', pngs[1], '-i', pngs[2], '-i', pngs[3], '-filter_complex', 'xstack=inputs=4:layout=0_0|w0_0|0_h0|w0_h0', '-update', '1', out)
+    webp(out, f'tb{i}.webp', 76); manifest['trollbox'].append(f'tb{i}.webp')
+run('cwebp', '-quiet', '-q', '88', '-alpha_q', '95', '-resize', '1024', '0', TBLOGO, '-o', os.path.join(OUT, 'tblogo.webp')); manifest['tblogo'] = 'tblogo.webp'
+
 # 3. The wall: 128 pieces in one picture, 16 across and 8 down
 allp = []
 order = ['block-party', 'doom', 'btc-editions', 'block-clocks', 'gl1tch-c0des', 'a-solemn-rose', 'deliverance', 'the-ord-lot', 'dronebtc']

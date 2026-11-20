@@ -226,6 +226,21 @@
   "dv10.webp",
   "dv11.webp"
  ],
+ "trollbox": [
+  "tb0.webp",
+  "tb1.webp",
+  "tb2.webp",
+  "tb3.webp",
+  "tb4.webp",
+  "tb5.webp",
+  "tb6.webp",
+  "tb7.webp",
+  "tb8.webp",
+  "tb9.webp",
+  "tb10.webp",
+  "tb11.webp"
+ ],
+ "tblogo": "tblogo.webp",
  "wall": "wall.webp",
  "logo": "logo.webp"
 }

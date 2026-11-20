@@ -110,13 +110,11 @@ function build() {
   s0 = D0; add({ t: title('The Ord Lot', '#111'), d: s0 + 9, y: 3.1, w: 9, h: 1.7 });
   for (i = 0; i < 24; i++) { side = i % 2 ? 1 : -1; add({ t: tex['c' + i], d: s0 + 7 + i * 2, x: side * (2.5 + r() * 3.4), y: -1.1 + r() * 0.5, w: 5.4 }); }
   add({ t: tex.c24, d: s0 + 57.5, x: 0, y: 1.9, w: 12 });
-  // 2. TROLLS: each one at a coloured booth
-  s0 = D0 + SEC; add({ t: title('Trolls', '#fff'), d: s0 + 8, y: 3.3, w: 9, h: 1.7 });
-  var cols = ['#e3161f', '#f4d03f', '#8e44ad', '#27ae60', '#ff5fa2', '#ff3600'];
+  // 2. TROLLBOX: the trolls in their boxes, flicking from troll to troll like the Trollbox video; the real Trollbox logo on top
+  s0 = D0 + SEC; add({ t: tex.tblogo, d: s0 + 8, y: 3.1, w: 7.6, h: 7.6 * 522 / 1988 });
   for (i = 0; i < 12; i++) {
     side = i % 2 ? 1 : -1; var x = side * (2.9 + r() * 2.2), d = s0 + 7 + i * 4.1;
-    add({ mode: 2, col: hex(cols[i % 6]), d: d + 0.7, x: x, y: 0.2, w: 4.4, h: 6.6 });
-    add({ t: tex['t' + i], d: d, x: x + side * -0.3, y: -0.7, w: 5.2, flip: side > 0 });
+    add({ t: tex['tb' + i], d: d, x: x, y: -0.1, w: 4.8, fb: 30 / 7, ph: i * 1.7, edge: 0.018, ec: INK });
   }
   // 3. BLOCK PARTY: cards with white cut-out edges, bobbing to the beat
   s0 = D0 + SEC * 2; add({ t: title('Block Party', '#fff'), d: s0 + 7, y: 3.2, w: 9, h: 1.7 });
