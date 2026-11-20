@@ -13,15 +13,17 @@ if (!gl) { msg.textContent = 'This browser cannot play the intro.'; return; }
 //   one bar of drums while the coins gather
 //   bass 1  -> through the coin
 //   bass 2  -> the lights go out (bar 5)
-//   hit "1" -> we land on the wall     hit "2" -> we are pulled back out
-//   third hit (the long note again) -> the logo, the drums stop, and it powers down as the note falls
+//   hit "1" -> we land on the wall     hit "2" -> still on the wall, with a jolt
+//   third hit (the long note again) -> the drums stop and we zoom all the way back out as the note falls;
+//   the logo is there when we come out, and it powers down as the note dies
 var BEAT = 60 / 174, BAR = BEAT * 4;
 var T_IN = BAR,                 // bass 1
     T_HOLD = T_IN + BAR * 7,    // hit "1"
-    T_BACK = T_IN + BAR * 7.5,  // hit "2"
-    T_LOGO = T_IN + BAR * 8,    // the third hit
-    T_OFF = T_LOGO + 2.0,       // the logo switches off
-    T_END = T_LOGO + 3.0,
+    T_TWO = T_IN + BAR * 7.5,   // hit "2"
+    T_BACK = T_IN + BAR * 8,    // the third hit: the zoom out starts
+    T_LOGO = T_BACK + 0.85,     // back outside: the logo
+    T_OFF = T_LOGO + 1.5,       // the logo switches off
+    T_END = T_OFF + 0.9,
     Q = T_IN / 1.739;           // the opening was first timed for a 1.739 s lead-in; Q squeezes it to one bar
 // ---------- depth: one section is 60 units long ----------
 var D_COIN = 12, D0 = 12.5, SEC = 60, D_STOP = D0 + SEC * 5, D_WALL = D_STOP + 26, FOCAL = 1.8;
@@ -37,8 +39,8 @@ function camDepth(t) {
   if (ti < 0.95) return ti * 0.3;
   if (t < T_IN) { var e = (ti - 0.95) / (1.739 - 0.95); return mix(0.285, D0, e * e * e); }
   if (t < T_HOLD) { var s = (t - T_IN) / (T_HOLD - T_IN); return mix(D0, D_STOP, 1 - Math.pow(1 - s, 1.07)); }   // near-steady, so bass 2 lands as the dark gallery begins
-  if (t < T_BACK) return D_STOP + (t - T_HOLD) * 1.3;
-  if (t < T_LOGO) { var b = (t - T_BACK) / (T_LOGO - T_BACK), top = D_STOP + (T_BACK - T_HOLD) * 1.3; b = b < .5 ? 4 * b * b * b : 1 - Math.pow(-2 * b + 2, 3) / 2; return mix(top, 0, b); }
+  if (t < T_BACK) return D_STOP + (t - T_HOLD) * 1.3 + sm(T_TWO, T_TWO + 0.14, t) * 2.2;   // a slow drift on the wall, and a jolt on the second hit
+  if (t < T_LOGO) { var b = (t - T_BACK) / (T_LOGO - T_BACK), top = D_STOP + (T_BACK - T_HOLD) * 1.3 + 2.2; b = b < .5 ? 4 * b * b * b : 1 - Math.pow(-2 * b + 2, 3) / 2; return mix(top, 0, b); }
   return 0;
 }
 // the colour of the world the camera is in
@@ -180,14 +182,14 @@ function render(t) {
   // speed lines and the flash as we go through, and again on the way back
   var punch = sm(1.2 * Q, T_IN, t) * (1 - sm(T_IN, T_IN + 0.5, t)), rush = rewind ? Math.sin((t - T_BACK) / (T_LOGO - T_BACK) * Math.PI) : 0;
   if (punch + rush > 0.01) quad({ mode: 3, cx: 0, cy: 0, hw: AS, hh: 1, col: rush > punch ? ONE : [1, .8, .5], i: (punch + rush) * 0.55, seed: Math.floor(t * 30), addv: 1 });
-  var flash = sm(T_IN - 0.1, T_IN, t) * (1 - sm(T_IN, T_IN + 0.35, t)) + (t >= T_HOLD ? 0.3 * (1 - sm(T_HOLD, T_HOLD + 0.16, t)) : 0) + (t >= T_BACK ? 0.22 * (1 - sm(T_BACK, T_BACK + 0.14, t)) : 0);
+  var flash = sm(T_IN - 0.1, T_IN, t) * (1 - sm(T_IN, T_IN + 0.35, t)) + (t >= T_HOLD ? 0.3 * (1 - sm(T_HOLD, T_HOLD + 0.16, t)) : 0) + (t >= T_TWO ? 0.24 * (1 - sm(T_TWO, T_TWO + 0.14, t)) : 0);
   if (flash > 0.01) quad({ mode: 2, cx: 0, cy: 0, hw: AS, hh: 1, col: WHITE, a: flash, fogc: WHITE });
   // the logo: Solemn's own Strange Labs mark. It slams in on the third hit, its glow dies as the bass note falls,
   // then it switches off like an old screen: down to a line, down to a dot, gone.
   if (t >= T_LOGO) {
-    var g = t - T_LOGO, slam = 1 + 0.16 * (1 - sm(0, 0.2, g)), hot = 1 - sm(0.04, 1.9, g);
+    var g = t - T_LOGO, slam = 1 + 0.16 * (1 - sm(0, 0.2, g)), hot = 1 - sm(0.04, 1.35, g);
     var offV = sm(T_OFF, T_OFF + 0.16, t), offH = sm(T_OFF + 0.14, T_OFF + 0.3, t), gone = sm(T_OFF + 0.3, T_OFF + 0.5, t);
-    var flick = g > 1.35 && t < T_OFF ? 0.72 + 0.28 * Math.round(0.5 + 0.5 * Math.sin(g * 61) * Math.sin(g * 17)) : 1;
+    var flick = g > 1.0 && t < T_OFF ? 0.72 + 0.28 * Math.round(0.5 + 0.5 * Math.sin(g * 61) * Math.sin(g * 17)) : 1;
     var lh = Math.min(0.42, 0.52 * AS) * slam, lw = lh * 658 / 712, sy = 1 - offV * 0.988, sx = 1 - offH * 0.97, vis = (1 - gone) * flick;
     quad({ mode: 1, cx: 0, cy: 0, hw: lh * 3.8, hh: lh * 3.8 * mix(1, 0.2, offV), col: HOT, i: vis * (0.22 + hot * 1.9) * (1 - offH), seed: 2 + t * 0.15, addv: 1 });
     quad({ t: tex.logo, cx: 0, cy: 0, hw: lw * 1.16 * sx, hh: lh * 1.16 * sy, col: [1, .5, .25], blur: 0.85, a: vis * (0.3 + hot * 1.1), addv: 1 });   // a halo in the logo's own shape
@@ -249,7 +251,7 @@ fetch('assets/manifest.json').then(function (r) { return r.json(); }).then(funct
   build();
   window.render = render; window.introLength = T_END;   // for frame-by-frame capture
   if (q.has('t')) { frozen = parseFloat(q.get('t')); ui.hidden = true; document.getElementById('skip').hidden = true; render(frozen); return; }
-  [1.8, 3.4, 5.2, 7.2, 9.2, 11.3, 12.6].forEach(render);   // draw each part once now, so nothing stutters the first time through
+  [1.8, 3.4, 5.2, 7.2, 9.2, 11.3, 12.9, 13.6].forEach(render);   // draw each part once now, so nothing stutters the first time through
   render(0.75 * Q); msg.textContent = 'Sound on'; playBtn.hidden = false;
   if (q.has('auto')) play(true);
 }).catch(function (e) { msg.textContent = 'Could not load the intro: ' + e.message; });
