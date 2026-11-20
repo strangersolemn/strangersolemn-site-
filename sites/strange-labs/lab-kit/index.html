@@ -1,499 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GL1TCH TOOLS · Strange Labs</title>
-    <meta name="description" content="GL1TCH TOOLS: GIF to AVIF sprite sheets, a code sandbox with HD capture, SVG code, PNG to AVIF, a minifier and Base64. Everything runs in your browser.">
-    <link rel="icon" href="../icon.svg" type="image/svg+xml">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lamejs/1.2.1/lame.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gifshot@0.4.5/dist/gifshot.min.js"></script>
-    <style>
-        /* on phones the wide-spaced headings ran off the side of the screen */
-        @media (max-width: 640px) { h2 { letter-spacing: 0.12em !important; font-size: 1.05rem !important; overflow-wrap: anywhere; } }
-        body {
-            background-color: #050505;
-            color: #a1a1aa;
-            font-family: 'Courier New', monospace;
-            -webkit-font-smoothing: antialiased;
-            touch-action: manipulation;
-            margin: 0;
-            padding: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GL1TCH TOOLS · Strange Labs</title>
+<meta name="description" content="GL1TCH TOOLS: GIF to AVIF sprite sheets, a code sandbox with HD capture, SVG code, an SVG animator, PNG to AVIF, a minifier and Base64. Everything runs in your browser.">
+<meta name="theme-color" content="#0f1012">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<!-- GL1TCH TOOLS v4.2. First built with Gemini (v4.1.0); this version has the Strange Labs look, no Tailwind,
+     an SVG animator, and the three fixes noted in the wiki (PNG to AVIF, sandbox preview, GIF library address). -->
+<script src="https://cdn.jsdelivr.net/npm/gifshot@0.4.5/dist/gifshot.min.js"></script>
+<style>
+:root {
+  --bg: #0f1012; --well-bg: #08090a; --line: #26272b; --line2: #3b3c42;
+  --ink: #e9e9e4; --soft: #b4b6ba; --dim: #7f8187; --edge: #f5a623; --teal: #58d5ec; --bad: #ed1e79; --ok: #6fd08c;
+  --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --key: inset 0 1px 0 #ffffff24, 0 0 0 2px #050506, 0 0 0 3px #34353a;
+  --well: inset 0 1px 3px #000d, 0 1px 0 #ffffff12;
+  --gutter: 16px;
+}
+@media (min-width: 760px) { :root { --gutter: 28px; } }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 var(--sans); -webkit-font-smoothing: antialiased; touch-action: manipulation; }
+h1, h2, h3, p { margin: 0; }
+a { color: inherit; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 9999 !important;
-            background: #000;
-            border-bottom: 1px solid #27272a;
-        }
+/* top */
+.top { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+.strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 var(--gutter); height: 46px; }
+.mark { font: 700 17px/1 var(--sans); letter-spacing: -.01em; text-decoration: none; white-space: nowrap; }
+.led { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px #58d5ecaa; margin-right: 8px; vertical-align: 1px; }
+.small { font: 500 12px/1.4 var(--sans); color: var(--dim); }
+.tabs { display: flex; gap: 2px; overflow-x: auto; padding: 4px calc(var(--gutter) - 3px) 10px; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
 
-        .tab-btn {
-            cursor: pointer !important;
-            -webkit-tap-highlight-color: transparent;
-            color: #52525b;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 1rem 0.8rem;
-            display: flex;
-            align-items: center;
-            font-size: 10px;
-            border-bottom: 2px solid transparent;
-            transition: 0.2s;
-            background: transparent;
-        }
+/* keys */
+.key, .tab { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px; font: 700 14px/1 var(--sans); color: var(--ink); text-decoration: none; white-space: nowrap; border: 1px solid #5c5e64; background: linear-gradient(#25262a, #17181a); border-radius: 3px; box-shadow: var(--key); margin: 3px; cursor: pointer; }
+.key:active, .tab:active { transform: translateY(1px); }
+.key.lit { background: linear-gradient(#ffc64f, #e8920a); border-color: #ffe0a0; color: #1c1304; }
+.key.mini { min-height: 34px; padding: 0 11px; font-size: 12px; }
+.tab { flex: none; min-height: 40px; padding: 0 13px; font-size: 13px; }
+.tab.active { background: linear-gradient(#1b5a68, #0f3943); border-color: var(--teal); color: #b9f3ff; }
 
-        .tab-btn.active {
-            color: #ffffff !important;
-            border-bottom: 2px solid #fd008e !important;
-            background-color: #111113;
-        }
+/* panels */
+main { max-width: 1240px; margin: 0 auto; padding: 16px var(--gutter) 70px; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.unit { border: 1px solid var(--line); border-radius: 6px; }
+.unit-head { display: flex; align-items: center; gap: 12px; padding: 13px 14px; border-bottom: 1px solid var(--line); }
+.unit-head h2 { font: 700 20px/1.15 var(--sans); letter-spacing: -.015em; flex: 1; min-width: 0; }
+.tag { font: 700 12px/1 var(--mono); color: #1c1304; background: linear-gradient(#ffc64f, #e8920a); border-radius: 3px; padding: 5px 6px; }
+.unit-body { padding: 16px 14px 18px; }
+.lead { color: var(--soft); max-width: 44em; margin-bottom: 14px; }
+.cols { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 900px) { .cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } .cols.side { grid-template-columns: 300px minmax(0, 1fr); } }
+.stack > * + * { margin-top: 14px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 0 -3px; }
 
-        .tool-card {
-            background: #0f0f11;
-            border: 1px solid #1c1c1f;
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            transition: 0.2s;
-        }
+/* fields */
+label { display: block; font: 600 13px/1.4 var(--sans); color: var(--soft); margin-bottom: 6px; }
+label b { color: var(--ink); }
+input[type=number], textarea { width: 100%; background: var(--well-bg); color: var(--ink); border: 1px solid #000; border-radius: 4px; box-shadow: var(--well); font: 14px/1.5 var(--mono); padding: 11px 12px; outline: none; }
+input[type=number]:focus, textarea:focus { border-color: var(--teal); }
+textarea { resize: vertical; min-height: 220px; font-size: 12px; }
+textarea[readonly] { color: var(--soft); }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 28px; background: transparent; margin: 0; }
+input[type=range]::-webkit-slider-runnable-track { height: 6px; background: var(--well-bg); border-radius: 3px; box-shadow: var(--well); }
+input[type=range]::-moz-range-track { height: 6px; background: var(--well-bg); border-radius: 3px; box-shadow: var(--well); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 28px; margin-top: -11px; border-radius: 3px; border: 1px solid #5c5e64; background: linear-gradient(90deg, #25262a 0 7px, var(--edge) 7px 10px, #25262a 10px); box-shadow: 0 0 0 2px #050506; }
+input[type=range]::-moz-range-thumb { width: 18px; height: 28px; border-radius: 3px; border: 1px solid #5c5e64; background: linear-gradient(90deg, #25262a 0 7px, var(--edge) 7px 10px, #25262a 10px); }
 
-        .input-dark {
-            background: #000;
-            border: 1px solid #27272a;
-            color: #fff;
-            padding: 0.75rem;
-            border-radius: 0.75rem;
-            font-size: 12px;
-            outline: none;
-            width: 100%;
-        }
-        .input-dark:focus { border-color: #fd008e; }
+/* drop zones */
+.drop { position: relative; display: grid; place-items: center; text-align: center; min-height: 140px; padding: 18px; border: 2px dashed var(--line2); border-radius: 6px; background: var(--well-bg); }
+.drop:hover { border-color: var(--dim); }
+.drop input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.drop strong { display: block; font-size: 17px; }
+.drop span { color: var(--dim); font-size: 13px; }
 
-        input[type="range"] { -webkit-appearance: none; background: #27272a; height: 4px; border-radius: 2px; width: 100%; }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: #fd008e; border-radius: 50%; cursor: pointer; border: 2px solid #050505; }
+/* results */
+.cards > * + * { margin-top: 8px; }
+.card { display: flex; align-items: center; gap: 12px; background: var(--well-bg); border-radius: 4px; box-shadow: var(--well); padding: 10px 12px; }
+.card .info { flex: 1; min-width: 0; }
+.card h3 { font: 700 14px/1.3 var(--sans); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.stat { font: 500 12px/1.4 var(--mono); color: var(--dim); }
+.stat.ok { color: var(--ok); } .stat.bad { color: var(--bad); }
+.thumb { width: 56px; height: 56px; flex: none; border-radius: 3px; overflow: hidden; display: grid; place-items: center; }
+.thumb img { max-width: 100%; max-height: 100%; }
+.checker { background-color: #1a1b1e; background-image: linear-gradient(45deg, #26272b 25%, transparent 25%), linear-gradient(-45deg, #26272b 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #26272b 75%), linear-gradient(-45deg, transparent 75%, #26272b 75%); background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0; }
+.view { border-radius: 4px; overflow: hidden; box-shadow: 0 0 0 1px #000, 0 0 0 4px var(--well-bg), 0 0 0 5px var(--line2); margin: 5px; min-height: 280px; display: grid; place-items: center; padding: 14px; }
+.view > svg, .view > img { max-width: 100%; max-height: 60vh; width: 100%; height: auto; }
+.view.frame { padding: 0; height: 56vh; min-height: 320px; background: #000; }
+.view.frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.shots { display: flex; gap: 6px; overflow-x: auto; flex: 1; min-width: 0; }
+.capture-thumb { height: 52px; border-radius: 3px; border: 1px solid var(--line2); flex: none; }
+.frames .card { padding: 6px 8px; }
+.frames .thumb { width: 40px; height: 40px; }
 
-        .checkerboard {
-            background-image: linear-gradient(45deg, #0d0d0e 25%, transparent 25%), linear-gradient(-45deg, #0d0d0e 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #0d0d0e 75%), linear-gradient(-45deg, transparent 75%, #0d0d0e 75%);
-            background-size: 20px 20px;
-        }
-
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-
-        .mobile-input-fix {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .capture-thumb {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #27272a;
-        }
-    </style>
+.foot { position: fixed; left: 0; right: 0; bottom: 0; background: var(--bg); border-top: 1px solid var(--line); padding: 7px var(--gutter); display: flex; justify-content: space-between; gap: 12px; }
+.toast { position: fixed; left: 50%; bottom: 52px; transform: translate(-50%, 20px); background: var(--edge); color: #1c1304; font: 700 13px/1 var(--sans); padding: 10px 14px; border-radius: 3px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; z-index: 30; }
+.toast.on { opacity: 1; transform: translate(-50%, 0); }
+</style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body>
 
-    <header>
-        <div class="max-w-[1800px] mx-auto px-4 flex items-center justify-between h-14">
-            <a href="../" title="Back to Strange Labs" class="text-sm font-black italic tracking-tighter text-white pl-2 pr-6 whitespace-nowrap no-underline">← GL1TCH TOOLS</a>
-            <nav class="flex h-full overflow-x-auto no-scrollbar" id="mainNav">
-                <button onclick="switchTab('gifavif')" class="tab-btn active" data-tab="gifavif">GIF_Sprite</button>
-                <button onclick="switchTab('sandbox')" class="tab-btn" data-tab="sandbox">Sandbox</button>
-                <button onclick="switchTab('svg')" class="tab-btn" data-tab="svg">SVG_Code</button>
-                <button onclick="switchTab('avif')" class="tab-btn" data-tab="avif">PNG_AVIF</button>
-                <button onclick="switchTab('minify')" class="tab-btn" data-tab="minify">Minify</button>
-                <button onclick="switchTab('base64')" class="tab-btn" data-tab="base64">Base64</button>
-            </nav>
+<header class="top">
+  <div class="strip">
+    <a class="mark" href="../" title="Back to Strange Labs">← Strange Labs</a>
+    <span class="mark"><i class="led" aria-hidden="true"></i>GL1TCH TOOLS</span>
+  </div>
+  <nav class="tabs" id="mainNav" aria-label="Tools">
+    <button class="tab active" data-tab="gifavif" onclick="switchTab('gifavif')">GIF sprite</button>
+    <button class="tab" data-tab="sandbox" onclick="switchTab('sandbox')">Sandbox</button>
+    <button class="tab" data-tab="svg" onclick="switchTab('svg')">SVG code</button>
+    <button class="tab" data-tab="svganim" onclick="switchTab('svganim')">SVG animate</button>
+    <button class="tab" data-tab="avif" onclick="switchTab('avif')">PNG to AVIF</button>
+    <button class="tab" data-tab="minify" onclick="switchTab('minify')">Minify</button>
+    <button class="tab" data-tab="base64" onclick="switchTab('base64')">Base64</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- GIF TO AVIF SPRITE -->
+  <section id="content-gifavif" class="tab-content active">
+    <div class="unit">
+      <div class="unit-head"><span class="tag">01</span><h2>GIF to AVIF sprite sheet</h2></div>
+      <div class="unit-body">
+        <p class="lead">Turns a GIF into one AVIF image with every frame laid out in a grid, at the exact pixel size you set.</p>
+        <div class="cols side">
+          <div class="stack">
+            <div><label for="gifTargetWidthInput">Frame width (px)</label><input type="number" id="gifTargetWidthInput" value="400"><p class="small">Height follows the GIF's shape.</p></div>
+            <div><label for="gifQualityInput">Quality: <b id="gifQualityVal">50</b></label><input type="range" id="gifQualityInput" min="1" max="100" value="50"></div>
+            <div><label for="gifColumnsInput">Columns</label><input type="number" id="gifColumnsInput" min="1" value="5"></div>
+          </div>
+          <div class="stack">
+            <div class="drop"><input type="file" id="gifFileInput" multiple accept="image/gif" aria-label="Choose GIF files"><div><strong>Drop GIFs here</strong><span>or tap to choose</span></div></div>
+            <div id="gifResultsArea" class="cards"></div>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <main class="flex-1 max-w-[1800px] mx-auto w-full p-4 sm:p-6 mb-16 text-center">
-
-        <!-- TAB: GIF TO AVIF SPRITE SHEET -->
-        <div id="content-gifavif" class="tab-content active">
-            <div class="max-w-6xl mx-auto space-y-8">
-                <div class="text-center">
-                    <h2 class="text-2xl font-black text-white uppercase tracking-[0.4em] italic mb-2">GIF_➔_AVIF_Sprite</h2>
-                    <p class="text-[10px] text-zinc-500 font-black uppercase tracking-widest italic">Exact Pixel Output Engine</p>
-                </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-left">
-                    <div class="tool-card space-y-6 h-fit bg-zinc-900 border-zinc-800">
-                        <h3 class="text-[10px] font-black uppercase text-zinc-500 border-b border-zinc-800 pb-2">Exact Dimensions</h3>
-                        <div>
-                            <label class="block text-[9px] font-black text-zinc-500 uppercase mb-2">Target Frame Width (px)</label>
-                            <input type="number" id="gifTargetWidthInput" value="400" class="input-dark">
-                            <p class="text-[8px] text-zinc-600 mt-2 italic font-black uppercase tracking-tighter">Height scales proportionally</p>
-                        </div>
-                        <div>
-                            <label class="block text-[9px] font-black text-zinc-500 uppercase mb-2">Encoding Quality: <span id="gifQualityVal" class="text-white">50</span></label>
-                            <input type="range" id="gifQualityInput" min="1" max="100" value="50">
-                        </div>
-                        <div>
-                            <label class="block text-[9px] font-black text-zinc-500 uppercase mb-2">Sprite Columns</label>
-                            <input type="number" id="gifColumnsInput" min="1" value="5" class="input-dark">
-                        </div>
-                    </div>
-                    <div class="lg:col-span-2 space-y-4">
-                        <div class="h-48 flex flex-col items-center justify-center border-2 border-zinc-800 border-dashed rounded-[2.5rem] bg-zinc-950/50 hover:border-zinc-500 relative transition-all overflow-hidden group">
-                            <input type="file" id="gifFileInput" multiple accept="image/gif" class="mobile-input-fix">
-                            <div class="pointer-events-none text-center">
-                                <p class="text-lg font-black text-zinc-400 uppercase italic">Drop GIFs</p>
-                                <p class="text-[9px] text-zinc-700 uppercase font-black tracking-widest mt-1 italic">Process to Exact Pixels</p>
-                            </div>
-                        </div>
-                        <div id="gifResultsArea" class="space-y-4"></div>
-                    </div>
-                </div>
+  <!-- SANDBOX WITH HD CAPTURE -->
+  <section id="content-sandbox" class="tab-content">
+    <div class="unit">
+      <div class="unit-head"><span class="tag">02</span><h2>Sandbox</h2></div>
+      <div class="unit-body">
+        <p class="lead">Type or paste HTML and it runs on the right as you type. Capture grabs frames from the piece's canvas at any size and can turn them into a GIF.</p>
+        <div class="cols">
+          <div class="stack">
+            <div>
+              <div class="row" style="justify-content:space-between"><label for="sandboxInput" style="margin:0 3px">Code</label><button class="key mini" onclick="copyToClip('sandboxInput')">Copy</button></div>
+              <textarea id="sandboxInput" spellcheck="false" style="min-height:300px;margin-top:6px"></textarea>
             </div>
-        </div>
-
-        <!-- TAB: SANDBOX (WITH INTEGRATED HD CAPTURE) -->
-        <div id="content-sandbox" class="tab-content">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100vh-180px)] text-left">
-                <div class="lg:col-span-4 flex flex-col h-full space-y-4">
-                    <div class="tool-card flex-1 flex flex-col overflow-hidden bg-zinc-900 border-zinc-800">
-                        <div class="flex justify-between items-center mb-4">
-                            <span class="text-[8px] font-black uppercase text-zinc-500 italic">Code_Editor</span>
-                            <button onclick="copyToClip('sandboxInput')" class="text-[8px] font-black uppercase text-zinc-600 hover:text-white">Copy Source</button>
-                        </div>
-                        <textarea id="sandboxInput" class="flex-1 bg-black text-zinc-400 font-mono text-[10px] p-6 rounded-2xl border border-zinc-800 outline-none resize-none shadow-inner leading-relaxed" spellcheck="false"></textarea>
-                    </div>
-
-                    <div class="tool-card bg-zinc-900 border-zinc-800 space-y-4">
-                        <h3 class="text-[9px] font-black uppercase text-zinc-500 border-b border-zinc-800 pb-2 italic">HD_Capture_Engine</h3>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div><label class="block text-[8px] font-black text-zinc-600 uppercase mb-1">Width (px)</label><input type="number" id="seqWidth" value="2000" class="input-dark"></div>
-                            <div><label class="block text-[8px] font-black text-zinc-600 uppercase mb-1">Frames</label><input type="number" id="seqFrames" value="12" class="input-dark"></div>
-                        </div>
-                        <button onclick="generateSequence()" class="w-full bg-white text-black font-black uppercase py-3 rounded-xl text-[10px] tracking-widest hover:bg-zinc-200 shadow-xl">Capture HD Sequence</button>
-                        <div id="seqStatus" class="text-[8px] font-black uppercase text-zinc-700 text-center italic">Engine_Standby</div>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-8 flex flex-col space-y-4">
-                    <div class="bg-zinc-950 border border-zinc-800 rounded-[2.5rem] overflow-hidden relative shadow-2xl flex-1">
-                        <iframe id="sandboxIframe" class="w-full h-full border-none"></iframe>
-                    </div>
-                    <div id="seqActionArea" class="hidden tool-card bg-zinc-900 border-zinc-800 flex flex-wrap gap-4 items-center justify-between">
-                         <div id="seqResultsGrid" class="flex gap-2 overflow-x-auto max-w-[60%] no-scrollbar"></div>
-                         <div class="flex gap-2">
-                             <button onclick="downloadAllFrames()" class="bg-zinc-100 text-black px-6 py-2 rounded-xl text-[9px] font-black uppercase">Save all PNGs</button>
-                             <button onclick="compileToGif()" class="bg-pink-600 text-white px-6 py-2 rounded-xl text-[9px] font-black uppercase shadow-pink-500/20 shadow-lg">Compile GIF</button>
-                         </div>
-                    </div>
-                </div>
+            <div>
+              <div class="fields">
+                <div><label for="seqWidth">Capture width (px)</label><input type="number" id="seqWidth" value="2000"></div>
+                <div><label for="seqFrames">Frames</label><input type="number" id="seqFrames" value="12"></div>
+              </div>
+              <div class="row" style="margin-top:10px"><button class="key lit" onclick="generateSequence()">Capture HD frames</button><span id="seqStatus" class="stat" style="margin-left:8px">Ready</span></div>
             </div>
-        </div>
-
-        <!-- TAB: SVG EXTRACTOR -->
-        <div id="content-svg" class="tab-content">
-            <div class="max-w-6xl mx-auto space-y-6 text-center">
-                <h2 class="text-xl font-black text-white uppercase tracking-[0.4em] italic mb-4">SVG_Code_Extractor</h2>
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="space-y-4">
-                        <div class="h-32 border-2 border-zinc-800 border-dashed rounded-3xl bg-zinc-950/50 flex flex-col items-center justify-center relative">
-                            <input type="file" id="svgFileInput" accept=".svg" class="mobile-input-fix">
-                            <p class="text-[10px] font-black uppercase text-zinc-500 italic">Drop .svg file</p>
-                        </div>
-                        <div id="svgPreviewContainer" class="bg-zinc-900 border border-zinc-800 rounded-3xl h-[450px] flex items-center justify-center checkerboard p-8 overflow-hidden relative"></div>
-                    </div>
-                    <textarea id="svgResultText" readonly class="bg-black text-zinc-500 font-mono text-[10px] p-8 rounded-3xl border border-zinc-800 outline-none leading-relaxed h-[600px] shadow-inner"></textarea>
-                </div>
+          </div>
+          <div class="stack">
+            <div class="view frame"><iframe id="sandboxIframe" title="Sandbox preview"></iframe></div>
+            <div id="seqActionArea" hidden>
+              <div class="row"><div id="seqResultsGrid" class="shots"></div></div>
+              <div class="row" style="margin-top:8px"><button class="key" onclick="downloadAllFrames()">Save all PNGs</button><button class="key lit" onclick="compileToGif()">Make GIF</button></div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- TAB: BASE64 -->
-        <div id="content-base64" class="tab-content text-center">
-            <div class="max-w-4xl mx-auto bg-zinc-900 p-10 rounded-[3rem] border border-zinc-800 shadow-2xl">
-                <div id="base64DropZone" class="bg-zinc-950 p-12 rounded-[2.5rem] border border-zinc-800 relative group cursor-pointer hover:bg-zinc-900 transition-colors">
-                    <input type="file" id="base64Input" class="mobile-input-fix">
-                    <p class="text-zinc-500 font-black uppercase text-[10px] tracking-widest italic group-hover:text-zinc-300">Drop file to generate Base64</p>
-                </div>
-                <div id="base64OutputArea" class="hidden mt-10 relative text-left">
-                    <textarea id="base64Result" readonly class="w-full h-64 bg-black text-zinc-400 font-mono text-[9px] p-10 rounded-[2.5rem] border border-zinc-800 resize-none outline-none shadow-inner" placeholder="Encoding..."></textarea>
-                    <button onclick="copyToClip('base64Result')" class="absolute top-6 right-6 bg-zinc-100 text-black px-4 py-1 rounded text-[10px] font-black uppercase shadow-xl font-mono">Copy String</button>
-                </div>
+  <!-- SVG CODE -->
+  <section id="content-svg" class="tab-content">
+    <div class="unit">
+      <div class="unit-head"><span class="tag">03</span><h2>SVG code</h2></div>
+      <div class="unit-body">
+        <p class="lead">Drop in an SVG to see it and get its code.</p>
+        <div class="cols">
+          <div class="stack">
+            <div class="drop"><input type="file" id="svgFileInput" accept=".svg,image/svg+xml" aria-label="Choose an SVG file"><div><strong>Drop an SVG here</strong><span>or tap to choose</span></div></div>
+            <div id="svgPreviewContainer" class="view checker"></div>
+          </div>
+          <div>
+            <div class="row" style="justify-content:space-between"><label for="svgResultText" style="margin:0 3px">Code</label><button class="key mini" onclick="copyToClip('svgResultText')">Copy</button></div>
+            <textarea id="svgResultText" readonly style="min-height:460px;margin-top:6px"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SVG ANIMATOR -->
+  <section id="content-svganim" class="tab-content">
+    <div class="unit">
+      <div class="unit-head"><span class="tag">04</span><h2>SVG animate</h2></div>
+      <div class="unit-body">
+        <p class="lead">Drop in your SVG frames and get one animated SVG that swaps from frame to frame. One SVG with its frames as separate top-level groups works too.</p>
+        <div class="cols">
+          <div class="stack">
+            <div class="drop"><input type="file" id="animInput" multiple accept=".svg,image/svg+xml" aria-label="Choose SVG frames"><div><strong>Drop SVG frames here</strong><span>or tap to choose. They go in name order.</span></div></div>
+            <div class="fields">
+              <div><label for="animFps">Frames per second</label><input type="number" id="animFps" min="0.1" max="60" step="0.5" value="8"></div>
+              <div style="display:flex;align-items:flex-end"><button class="key" id="animClear" style="width:100%">Clear frames</button></div>
             </div>
-        </div>
-
-        <!-- TAB: PNG_AVIF -->
-        <div id="content-avif" class="tab-content">
-            <div class="max-w-4xl mx-auto bg-zinc-900 p-10 rounded-[3rem] border border-zinc-800 shadow-2xl">
-                <h2 class="text-xl font-black text-white uppercase tracking-[0.4em] italic mb-8">PNG ➔ AVIF Converter</h2>
-                <div class="h-48 border-2 border-zinc-800 border-dashed rounded-[2.5rem] bg-zinc-950/50 hover:border-zinc-500 relative transition-all overflow-hidden flex flex-col items-center justify-center">
-                    <input type="file" id="pngToAvifInput" multiple accept="image/png" class="mobile-input-fix">
-                    <p class="text-zinc-400 font-black uppercase italic">Select PNG files</p>
-                </div>
-                <div class="mt-6 text-left max-w-sm mx-auto">
-                    <label class="block text-[9px] font-black text-zinc-500 uppercase mb-2">Encoding Quality: <span id="pngQualityVal" class="text-white">60</span></label>
-                    <input type="range" id="pngQualityInput" min="1" max="100" value="60" class="w-full">
-                </div>
-                <div id="pngAvifResults" class="mt-8 space-y-4 text-left"></div>
+            <div id="animFrames" class="cards frames"></div>
+          </div>
+          <div class="stack">
+            <div id="animPreview" class="view checker"><span class="small">The animation shows here.</span></div>
+            <div id="animStatus" class="stat"></div>
+            <div id="animOut" hidden>
+              <div class="row" style="justify-content:space-between"><label for="animResult" style="margin:0 3px">Animated SVG</label><span><button class="key mini" onclick="copyToClip('animResult')">Copy</button><a class="key mini lit" id="animDownload" download="animated.svg">Download</a></span></div>
+              <textarea id="animResult" readonly style="margin-top:6px"></textarea>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- TAB: MINIFY -->
-        <div id="content-minify" class="tab-content text-center">
-            <div class="max-w-4xl mx-auto bg-zinc-900 p-10 rounded-[3rem] border border-zinc-800 shadow-2xl">
-                <textarea id="minifyInput" placeholder="Paste JS Code..." class="w-full h-64 bg-black text-zinc-500 font-mono text-[10px] p-8 rounded-3xl border border-zinc-800 outline-none mb-6 shadow-inner" spellcheck="false"></textarea>
-                <button onclick="processMinify()" class="bg-zinc-100 text-black px-12 py-3 rounded-xl text-[10px] font-black uppercase hover:bg-white shadow-xl">Compress Script</button>
-                <textarea id="minifyOutput" readonly class="w-full h-64 bg-black text-emerald-600 font-mono text-[10px] p-8 mt-6 rounded-2xl border border-zinc-900 outline-none shadow-inner" spellcheck="false"></textarea>
-            </div>
+  <!-- PNG TO AVIF -->
+  <section id="content-avif" class="tab-content">
+    <div class="unit">
+      <div class="unit-head"><span class="tag">05</span><h2>PNG to AVIF</h2></div>
+      <div class="unit-body">
+        <p class="lead">Shrinks PNGs to AVIF, as many as you like at once.</p>
+        <div class="cols side">
+          <div><label for="pngQualityInput">Quality: <b id="pngQualityVal">60</b></label><input type="range" id="pngQualityInput" min="1" max="100" value="60"></div>
+          <div class="stack">
+            <div class="drop"><input type="file" id="pngToAvifInput" multiple accept="image/png" aria-label="Choose PNG files"><div><strong>Drop PNGs here</strong><span>or tap to choose</span></div></div>
+            <div id="pngAvifResults" class="cards"></div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-    </main>
-
-    <footer class="fixed bottom-0 w-full bg-black/95 border-t border-zinc-900 p-2 z-[999]">
-        <div class="max-w-[1800px] mx-auto flex justify-between px-4 text-[7px] font-black text-zinc-700 uppercase italic">
-            <span>GL1TCH_TOOLS_V4.1.0_STABLE</span>
-            <span class="text-green-900 tracking-widest">EXACT_PIXEL_ENGINE_READY</span>
+  <!-- MINIFY -->
+  <section id="content-minify" class="tab-content">
+    <div class="unit">
+      <div class="unit-head"><span class="tag">06</span><h2>Minify</h2></div>
+      <div class="unit-body">
+        <p class="lead">Strips comments and spare spaces out of JavaScript. Simple and quick; check the result still runs.</p>
+        <div class="cols">
+          <div><label for="minifyInput">Your code</label><textarea id="minifyInput" placeholder="Paste JavaScript here" spellcheck="false"></textarea><div class="row" style="margin-top:8px"><button class="key lit" onclick="processMinify()">Minify</button></div></div>
+          <div><div class="row" style="justify-content:space-between"><label for="minifyOutput" style="margin:0 3px">Result</label><button class="key mini" onclick="copyToClip('minifyOutput')">Copy</button></div><textarea id="minifyOutput" readonly spellcheck="false" style="margin-top:6px"></textarea></div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <script type="module">
-        import encode from 'https://esm.sh/@jsquash/avif@1.3.0/encode';
-        import { parseGIF, decompressFrames } from 'https://esm.sh/gifuct-js@2.1.2';
+  <!-- BASE64 -->
+  <section id="content-base64" class="tab-content">
+    <div class="unit">
+      <div class="unit-head"><span class="tag">07</span><h2>Base64</h2></div>
+      <div class="unit-body">
+        <p class="lead">Turns any file into a data link you can paste straight into code.</p>
+        <div class="stack">
+          <div class="drop" id="base64DropZone"><input type="file" id="base64Input" aria-label="Choose a file"><div><strong>Drop a file here</strong><span>or tap to choose</span></div></div>
+          <div id="base64OutputArea" hidden>
+            <div class="row" style="justify-content:space-between"><label for="base64Result" style="margin:0 3px">Data link</label><button class="key mini" onclick="copyToClip('base64Result')">Copy</button></div>
+            <textarea id="base64Result" readonly style="margin-top:6px"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        const safeGet = (id) => document.getElementById(id);
-        let capturedFrames = [];
+</main>
 
-        // --- NAVIGATION ---
-        window.switchTab = (tabName) => {
-            const tabs = ['gifavif', 'sandbox', 'svg', 'avif', 'minify', 'base64'];
-            tabs.forEach(t => {
-                const c = safeGet(`content-${t}`); if(c) c.classList.toggle('active', t === tabName);
-                const b = document.querySelector(`[data-tab="${t}"]`); if(b) b.classList.toggle('active', t === tabName);
-            });
-            if(tabName === 'sandbox') setTimeout(updateSandboxPreview, 50);
-        };
+<footer class="foot small"><span>GL1TCH TOOLS v4.2</span><span>Your files stay on your device</span></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-        // --- GIF TO AVIF SPRITE ENGINE ---
-        const gQualIn = safeGet('gifQualityInput');
-        if(gQualIn) gQualIn.oninput = e => safeGet('gifQualityVal').innerText = e.target.value;
+<script type="module">
+import encode from 'https://esm.sh/@jsquash/avif@1.3.0/encode';
+import { parseGIF, decompressFrames } from 'https://esm.sh/gifuct-js@2.1.2';
 
-        safeGet('gifFileInput').onchange = e => {
-            const files = Array.from(e.target.files).filter(f => f.type === 'image/gif');
-            files.forEach(file => {
-                const id = Math.random().toString(36).substring(7);
-                const div = document.createElement('div');
-                div.className = "tool-card flex flex-col md:flex-row gap-6 items-center shadow-lg bg-zinc-900";
-                div.id = `card-${id}`;
-                div.innerHTML = `
-                    <div class="flex-1 text-left"><h3 class="text-xs font-black text-white truncate uppercase">${file.name}</h3><div id="gs-${id}" class="text-[9px] text-zinc-500 font-black uppercase animate-pulse italic">Processing...</div></div>
-                    <div class="w-20 h-20 checkerboard rounded-xl border border-zinc-800 overflow-hidden flex items-center justify-center"><img id="gp-${id}" class="max-w-full max-h-full hidden"></div>
-                    <div class="flex gap-2">
-                        <a id="gd-${id}" class="hidden bg-white text-black px-4 py-1.5 rounded-lg text-[9px] font-black uppercase">Download</a>
-                        <button onclick="document.getElementById('card-${id}').remove()" class="text-[9px] text-zinc-700 font-black uppercase">X</button>
-                    </div>
-                `;
-                safeGet('gifResultsArea').prepend(div);
-                processGifToSprite(file, id);
-            });
-            e.target.value = '';
-        };
+const safeGet = (id) => document.getElementById(id);
+let capturedFrames = [];
+const TABS = ['gifavif', 'sandbox', 'svg', 'svganim', 'avif', 'minify', 'base64'];
+let toastTimer = 0;
+const say = (t) => { const el = safeGet('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toastTimer); toastTimer = setTimeout(() => el.classList.remove('on'), 1600); };
 
-        async function processGifToSprite(file, id) {
-            const targetWidth = parseInt(safeGet('gifTargetWidthInput').value) || 400;
-            const quality = parseInt(gQualIn.value);
-            const cols = parseInt(safeGet('gifColumnsInput').value) || 5;
-            const stat = document.getElementById(`gs-${id}`);
-            try {
-                const buf = await file.arrayBuffer();
-                const gif = parseGIF(buf);
-                const frames = decompressFrames(gif, true);
-                const w = gif.lsd.width, h = gif.lsd.height;
-                const tempC = document.createElement('canvas'); tempC.width = w; tempC.height = h;
-                const tempCtx = tempC.getContext('2d');
-                const rendered = [];
-                let previousData = null;
+// --- NAVIGATION ---
+window.switchTab = (tabName) => {
+  TABS.forEach(t => {
+    const c = safeGet(`content-${t}`); if (c) c.classList.toggle('active', t === tabName);
+    const b = document.querySelector(`[data-tab="${t}"]`); if (b) b.classList.toggle('active', t === tabName);
+  });
+  if (tabName === 'sandbox') setTimeout(updateSandboxPreview, 50);
+};
 
-                frames.forEach(f => {
-                    if (f.disposalType === 3) previousData = tempCtx.getImageData(0,0,w,h);
-                    const imgD = new ImageData(new Uint8ClampedArray(f.patch), f.dims.width, f.dims.height);
-                    tempCtx.putImageData(imgD, f.dims.left, f.dims.top);
-                    const snap = document.createElement('canvas'); snap.width = w; snap.height = h;
-                    snap.getContext('2d').drawImage(tempC, 0, 0);
-                    rendered.push(snap);
-                    if (f.disposalType === 2) tempCtx.clearRect(0,0,w,h);
-                    else if (f.disposalType === 3 && previousData) tempCtx.putImageData(previousData, 0, 0);
-                });
+// one result card, shared by the GIF and PNG tools
+function resultCard(area, name) {
+  const div = document.createElement('div'); div.className = 'card';
+  div.innerHTML = `<div class="thumb checker"><img hidden alt=""></div><div class="info"><h3></h3><div class="stat">Working…</div></div><a class="key mini lit" hidden>Download</a><button class="key mini" aria-label="Remove">✕</button>`;
+  div.querySelector('h3').textContent = name;
+  div.querySelector('button').onclick = () => div.remove();
+  area.prepend(div);
+  return { stat: div.querySelector('.stat'), img: div.querySelector('img'), link: div.querySelector('a') };
+}
+function finish(card, blob, text, filename) {
+  const url = URL.createObjectURL(blob);
+  card.stat.className = 'stat ok'; card.stat.textContent = text;
+  card.img.src = url; card.img.hidden = false;
+  card.link.href = url; card.link.download = filename; card.link.hidden = false;
+}
+const fail = (card, e) => { card.stat.className = 'stat bad'; card.stat.textContent = 'Error: ' + e.message; };
 
-                const sCols = Math.min(cols, rendered.length), sRows = Math.ceil(rendered.length / sCols);
-                const scale = targetWidth / w;
-                const fW = targetWidth;
-                const fH = Math.floor(h * scale);
+// --- GIF TO AVIF SPRITE ENGINE ---
+const gQualIn = safeGet('gifQualityInput');
+gQualIn.oninput = e => safeGet('gifQualityVal').innerText = e.target.value;
+safeGet('gifFileInput').onchange = e => {
+  Array.from(e.target.files).filter(f => f.type === 'image/gif' || /\.gif$/i.test(f.name)).forEach(file => processGifToSprite(file, resultCard(safeGet('gifResultsArea'), file.name)));
+  e.target.value = '';
+};
+async function processGifToSprite(file, card) {
+  const targetWidth = parseInt(safeGet('gifTargetWidthInput').value) || 400;
+  const quality = parseInt(gQualIn.value);
+  const cols = parseInt(safeGet('gifColumnsInput').value) || 5;
+  try {
+    const buf = await file.arrayBuffer();
+    const gif = parseGIF(buf);
+    const frames = decompressFrames(gif, true);
+    const w = gif.lsd.width, h = gif.lsd.height;
+    const tempC = document.createElement('canvas'); tempC.width = w; tempC.height = h;
+    const tempCtx = tempC.getContext('2d', { willReadFrequently: true });
+    const rendered = [];
+    let previousData = null;
+    frames.forEach(f => {
+      if (f.disposalType === 3) previousData = tempCtx.getImageData(0, 0, w, h);
+      // draw the patch through its own canvas so see-through pixels keep what is underneath
+      const patch = document.createElement('canvas'); patch.width = f.dims.width; patch.height = f.dims.height;
+      patch.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(f.patch), f.dims.width, f.dims.height), 0, 0);
+      tempCtx.drawImage(patch, f.dims.left, f.dims.top);
+      const snap = document.createElement('canvas'); snap.width = w; snap.height = h;
+      snap.getContext('2d').drawImage(tempC, 0, 0);
+      rendered.push(snap);
+      if (f.disposalType === 2) tempCtx.clearRect(f.dims.left, f.dims.top, f.dims.width, f.dims.height);
+      else if (f.disposalType === 3 && previousData) tempCtx.putImageData(previousData, 0, 0);
+    });
+    const sCols = Math.min(cols, rendered.length), sRows = Math.ceil(rendered.length / sCols);
+    const fW = targetWidth, fH = Math.floor(h * (targetWidth / w));
+    const sC = document.createElement('canvas'); sC.width = sCols * fW; sC.height = sRows * fH;
+    const sCtx = sC.getContext('2d');
+    rendered.forEach((f, i) => sCtx.drawImage(f, (i % sCols) * fW, Math.floor(i / sCols) * fH, fW, fH));
+    const avif = await encode(sCtx.getImageData(0, 0, sC.width, sC.height), { quality });
+    const blob = new Blob([avif], { type: 'image/avif' });
+    finish(card, blob, `${rendered.length} frames · ${sC.width}×${sC.height} · ${(blob.size / 1024).toFixed(1)} KB`, `${file.name.replace(/\.gif$/i, '')}_sprite.avif`);
+  } catch (e) { fail(card, e); }
+}
 
-                const sC = document.createElement('canvas'); sC.width = sCols * fW; sC.height = sRows * fH;
-                const sCtx = sC.getContext('2d');
-                rendered.forEach((f, i) => {
-                    sCtx.drawImage(f, (i%sCols)*fW, Math.floor(i/sCols)*fH, fW, fH);
-                });
+// --- PNG TO AVIF ---
+const pQualIn = safeGet('pngQualityInput');
+pQualIn.oninput = e => safeGet('pngQualityVal').innerText = e.target.value;
+safeGet('pngToAvifInput').onchange = e => {
+  Array.from(e.target.files).filter(f => f.type === 'image/png' || /\.png$/i.test(f.name)).forEach(file => processPngToAvif(file, resultCard(safeGet('pngAvifResults'), file.name)));
+  e.target.value = '';
+};
+async function processPngToAvif(file, card) {
+  try {
+    const bmp = await createImageBitmap(file);
+    const c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height;
+    const ctx = c.getContext('2d'); ctx.drawImage(bmp, 0, 0);
+    const avif = await encode(ctx.getImageData(0, 0, c.width, c.height), { quality: parseInt(pQualIn.value) || 60 });
+    const blob = new Blob([avif], { type: 'image/avif' });
+    finish(card, blob, `${c.width}×${c.height} · ${(file.size / 1024).toFixed(1)} KB PNG → ${(blob.size / 1024).toFixed(1)} KB AVIF`, `${file.name.replace(/\.png$/i, '')}.avif`);
+  } catch (e) { fail(card, e); }
+}
 
-                const avif = await encode(sCtx.getImageData(0,0,sC.width,sC.height), { quality });
-                const blob = new Blob([avif], { type: 'image/avif' });
-                const url = URL.createObjectURL(blob);
-                stat.className = "text-[9px] text-green-500 font-black uppercase italic";
-                stat.innerText = `${sC.width}x${sC.height} | ${(blob.size/1024).toFixed(1)}KB READY`;
-                const p = document.getElementById(`gp-${id}`); p.src = url; p.classList.remove('hidden');
-                const d = document.getElementById(`gd-${id}`); d.href = url; d.download = `${file.name.split('.')[0]}_sprite.avif`; d.classList.remove('hidden');
-            } catch(e) { stat.innerText = "Error: " + e.message; }
+// --- HD SEQUENCE CAPTURE ---
+window.generateSequence = async () => {
+  const width = parseInt(safeGet('seqWidth').value), count = parseInt(safeGet('seqFrames').value);
+  const grid = safeGet('seqResultsGrid'), status = safeGet('seqStatus'), actionArea = safeGet('seqActionArea');
+  grid.innerHTML = ''; capturedFrames = []; actionArea.hidden = true;
+  const sDoc = safeGet('sandboxIframe').contentDocument || safeGet('sandboxIframe').contentWindow.document;
+  const sCanvas = sDoc.querySelector('canvas');
+  if (!sCanvas) { status.className = 'stat bad'; status.textContent = 'No canvas found in the piece'; return; }
+  const capCanvas = document.createElement('canvas');
+  capCanvas.width = width; capCanvas.height = Math.floor(width * (sCanvas.height / sCanvas.width));
+  const capCtx = capCanvas.getContext('2d');
+  status.className = 'stat';
+  for (let i = 0; i < count; i++) {
+    status.textContent = `${i + 1} / ${count}`;
+    capCtx.clearRect(0, 0, capCanvas.width, capCanvas.height);
+    capCtx.drawImage(sCanvas, 0, 0, capCanvas.width, capCanvas.height);
+    const data = capCanvas.toDataURL('image/png');
+    capturedFrames.push(data);
+    const img = document.createElement('img'); img.className = 'capture-thumb'; img.src = data; img.alt = 'Frame ' + (i + 1);
+    grid.appendChild(img);
+    await new Promise(r => setTimeout(r, 150));
+  }
+  status.className = 'stat ok'; status.textContent = 'Capture complete';
+  actionArea.hidden = false;
+};
+window.downloadAllFrames = () => {
+  capturedFrames.forEach((data, i) => setTimeout(() => {
+    const a = document.createElement('a'); a.href = data; a.download = `frame_${(i + 1).toString().padStart(3, '0')}.png`; a.click();
+  }, i * 500));   // spaced out, or the browser blocks the downloads
+};
+window.compileToGif = () => {
+  const status = safeGet('seqStatus');
+  if (!capturedFrames.length) return;
+  const g = window.gifshot;
+  if (!g) { status.className = 'stat bad'; status.textContent = 'The GIF maker did not load'; return; }
+  status.className = 'stat'; status.textContent = 'Making the GIF…';
+  const sCanvas = (safeGet('sandboxIframe').contentDocument || safeGet('sandboxIframe').contentWindow.document).querySelector('canvas');
+  const ratio = sCanvas ? sCanvas.width / sCanvas.height : 1, w = parseInt(safeGet('seqWidth').value);
+  g.createGIF({ images: capturedFrames, gifWidth: w, gifHeight: Math.floor(w / ratio), interval: 0.1 }, (obj) => {
+    if (obj.error) { status.className = 'stat bad'; status.textContent = 'Could not make the GIF'; return; }
+    const a = document.createElement('a'); a.href = obj.image; a.download = `capture_${Date.now()}.gif`; a.className = 'key mini lit'; a.textContent = 'Download GIF';
+    status.textContent = ''; status.appendChild(a);
+  });
+};
+
+// --- SANDBOX ---
+const sInput = safeGet('sandboxInput');
+function updateSandboxPreview() {
+  const code = sInput.value; localStorage.setItem('gs_code_v12', code);
+  // srcdoc gives the preview a fresh page each run, so code with const or let can run again
+  safeGet('sandboxIframe').srcdoc = `<html><body style="margin:0; background:#000; color:#fff; overflow:hidden;">${code}</body></html>`;
+}
+sInput.oninput = () => { clearTimeout(window.sTimer); window.sTimer = setTimeout(updateSandboxPreview, 400); };
+
+// --- SVG CODE ---
+safeGet('svgFileInput').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  const r = new FileReader(); r.onload = ev => {
+    let code = ev.target.result;
+    if (code.includes('<svg')) {
+      const d = new DOMParser().parseFromString(code, 'image/svg+xml'), s = d.querySelector('svg');
+      if (s) { s.setAttribute('width', '100%'); s.setAttribute('height', '100%'); s.setAttribute('preserveAspectRatio', 'xMidYMid meet'); code = new XMLSerializer().serializeToString(d); }
+    }
+    safeGet('svgResultText').value = ev.target.result;
+    safeGet('svgPreviewContainer').innerHTML = `<img alt="Your SVG" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(code)}">`;   // shown as an image, so nothing inside it can run
+  }; r.readAsText(f);
+  e.target.value = '';
+};
+
+// --- SVG ANIMATOR ---
+// Frames in, one animated SVG out. Each frame is shown in turn for 1/fps seconds, then swapped for the next (no fading).
+const SVGNS = 'http://www.w3.org/2000/svg';
+let animFrames = [];   // { name, text }
+const num = n => String(+n.toFixed(4));
+function scopeCss(text, scope) {   // keep one frame's styles from leaking into the others
+  try {
+    const sh = new CSSStyleSheet(); sh.replaceSync(text);
+    return [...sh.cssRules].map(r => r.type === 1 ? r.selectorText.split(',').map(s => scope + ' ' + s.trim()).join(',') + '{' + r.style.cssText + '}' : r.cssText).join('');
+  } catch (e) { return text; }
+}
+function buildAnimatedSvg(frames, fps) {
+  const P = new DOMParser();
+  const docs = frames.map(f => P.parseFromString(f.text, 'image/svg+xml'));
+  docs.forEach((d, i) => { if (d.querySelector('parsererror') || d.documentElement.localName !== 'svg') throw new Error(frames[i].name + ' is not a valid SVG'); });
+  const timing = (n, sel) => `.gtf{visibility:hidden;animation:gtf ${num(n / fps)}s steps(1,end) infinite}@keyframes gtf{0%{visibility:visible}${num(100 / n)}%,100%{visibility:hidden}}` + Array.from({ length: n }, (_, k) => k ? `${sel(k)}{animation-delay:${num(k / fps)}s}` : '').join('');
+  let root, count;
+  if (docs.length === 1) {
+    // one SVG: its top-level groups are the frames
+    root = docs[0].documentElement;
+    const groups = [...root.children].filter(c => c.localName === 'g');
+    if (groups.length < 2) throw new Error('Add at least two frames, or one SVG with two or more top-level groups');
+    groups.forEach((g, k) => {
+      g.classList.add('gtf', 'gtf' + k);
+      if (g.getAttribute('display') === 'none') g.removeAttribute('display');   // hidden layers are frames too
+      if (g.style && g.style.display === 'none') g.style.removeProperty('display');
+      if (g.getAttribute('style') === '') g.removeAttribute('style');
+    });
+    const st = docs[0].createElementNS(SVGNS, 'style'); st.textContent = timing(groups.length, k => '.gtf' + k);
+    root.insertBefore(st, root.firstChild);
+    count = groups.length;
+  } else {
+    const out = document.implementation.createDocument(SVGNS, 'svg', null); root = out.documentElement;
+    const box = s => s.getAttribute('viewBox') || `0 0 ${parseFloat(s.getAttribute('width')) || 100} ${parseFloat(s.getAttribute('height')) || 100}`;
+    root.setAttribute('viewBox', box(docs[0].documentElement));
+    let css = '';
+    docs.forEach((d, k) => {
+      const src = d.documentElement, pre = `f${k}-`, ids = new Map();
+      src.querySelectorAll('[id]').forEach(el => ids.set(el.id, pre + el.id));
+      const fixRefs = s => s.replace(/url\(\s*(['"]?)#([^'")\s]+)\1\s*\)/g, (m, q, id) => ids.has(id) ? `url(#${ids.get(id)})` : m);
+      src.querySelectorAll('*').forEach(el => {
+        for (const a of [...el.attributes]) {
+          let v = a.value;
+          if (a.localName === 'href' && v[0] === '#' && ids.has(v.slice(1))) v = '#' + ids.get(v.slice(1));
+          else if (v.includes('url(')) v = fixRefs(v);
+          if (v !== a.value) a.value = v;
         }
+        if (el.id) el.id = ids.get(el.id);
+      });
+      src.querySelectorAll('style').forEach(st => { css += scopeCss(fixRefs(st.textContent), '#f' + k); st.remove(); });
+      const fr = out.createElementNS(SVGNS, 'svg');
+      fr.setAttribute('id', 'f' + k); fr.setAttribute('class', 'gtf'); fr.setAttribute('viewBox', box(src));
+      for (const a of [...src.attributes]) if (!/^(xmlns.*|width|height|id|class|version|x|y|viewBox)$/.test(a.name)) fr.setAttribute(a.name, a.value);
+      [...src.childNodes].forEach(n => fr.appendChild(out.importNode(n, true)));
+      root.appendChild(fr);
+    });
+    const st = out.createElementNS(SVGNS, 'style'); st.textContent = timing(docs.length, k => '#f' + k) + css;
+    root.insertBefore(st, root.firstChild);
+    count = docs.length;
+  }
+  return { code: new XMLSerializer().serializeToString(root), count };
+}
+function renderAnim() {
+  const list = safeGet('animFrames'), status = safeGet('animStatus'), outBox = safeGet('animOut'), view = safeGet('animPreview');
+  list.textContent = '';
+  animFrames.forEach((f, i) => {
+    const div = document.createElement('div'); div.className = 'card';
+    div.innerHTML = `<div class="thumb checker"><img alt=""></div><div class="info"><h3></h3></div><button class="key mini" aria-label="Move up">↑</button><button class="key mini" aria-label="Move down">↓</button><button class="key mini" aria-label="Remove">✕</button>`;
+    div.querySelector('h3').textContent = `${i + 1}. ${f.name}`;
+    div.querySelector('img').src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(f.text);
+    const [up, down, del] = div.querySelectorAll('button');
+    up.onclick = () => { if (i) { [animFrames[i - 1], animFrames[i]] = [animFrames[i], animFrames[i - 1]]; renderAnim(); } };
+    down.onclick = () => { if (i < animFrames.length - 1) { [animFrames[i + 1], animFrames[i]] = [animFrames[i], animFrames[i + 1]]; renderAnim(); } };
+    del.onclick = () => { animFrames.splice(i, 1); renderAnim(); };
+    list.appendChild(div);
+  });
+  outBox.hidden = true;
+  if (!animFrames.length) { status.className = 'stat'; status.textContent = ''; view.innerHTML = '<span class="small">The animation shows here.</span>'; return; }
+  try {
+    const fps = Math.min(60, Math.max(0.1, parseFloat(safeGet('animFps').value) || 8));
+    const { code, count } = buildAnimatedSvg(animFrames, fps);
+    safeGet('animResult').value = code;
+    const blob = new Blob([code], { type: 'image/svg+xml' });
+    safeGet('animDownload').href = URL.createObjectURL(blob);
+    view.innerHTML = `<img alt="Animated SVG preview" src="data:image/svg+xml;charset=utf-8,${encodeURIComponent(code)}">`;   // shown as an image, the way an inscription shows it
+    status.className = 'stat ok'; status.textContent = `${count} frames · ${fps} per second · ${num(count / fps)} s loop · ${(blob.size / 1024).toFixed(1)} KB`;
+    outBox.hidden = false;
+  } catch (e) { status.className = 'stat bad'; status.textContent = e.message; view.innerHTML = ''; }
+}
+safeGet('animInput').onchange = async e => {
+  const files = Array.from(e.target.files).filter(f => /svg/i.test(f.type) || /\.svg$/i.test(f.name)).sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
+  for (const f of files) animFrames.push({ name: f.name, text: await f.text() });
+  e.target.value = ''; renderAnim();
+};
+safeGet('animFps').oninput = () => { clearTimeout(window.aTimer); window.aTimer = setTimeout(renderAnim, 250); };
+safeGet('animClear').onclick = () => { animFrames = []; renderAnim(); };
 
-        // --- SANDBOX HD CAPTURE ---
-        window.generateSequence = async () => {
-            const width = parseInt(safeGet('seqWidth').value);
-            const count = parseInt(safeGet('seqFrames').value);
-            const grid = safeGet('seqResultsGrid');
-            const status = safeGet('seqStatus');
-            const actionArea = safeGet('seqActionArea');
+// --- BASE64, COPY, MINIFY ---
+safeGet('base64Input').onchange = e => {
+  const f = e.target.files[0]; if (!f) return;
+  safeGet('base64OutputArea').hidden = false;
+  const r = new FileReader(); r.onload = ev => safeGet('base64Result').value = ev.target.result; r.readAsDataURL(f);
+  e.target.value = '';
+};
+window.copyToClip = (id) => {
+  const el = safeGet(id); if (!el || !el.value) return;
+  const old = () => { el.select(); document.execCommand('copy'); say('Copied'); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.value).then(() => say('Copied'), old); else old();
+};
+window.processMinify = () => { const mi = safeGet('minifyInput'), mo = safeGet('minifyOutput'); mo.value = mi.value.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '$1').replace(/\s+/g, ' ').replace(/\s?([\{\}\(\);,=\+\-\*\/])\s?/g, '$1').trim(); };
 
-            grid.innerHTML = ''; capturedFrames = []; actionArea.classList.add('hidden');
-
-            const sDoc = safeGet('sandboxIframe').contentDocument || safeGet('sandboxIframe').contentWindow.document;
-            const sCanvas = sDoc.querySelector('canvas');
-            if (!sCanvas) { status.innerHTML = `<span class="text-pink-500">No Canvas Found</span>`; return; }
-
-            const capCanvas = document.createElement('canvas');
-            capCanvas.width = width;
-            capCanvas.height = Math.floor(width * (sCanvas.height / sCanvas.width));
-            const capCtx = capCanvas.getContext('2d');
-
-            for (let i = 0; i < count; i++) {
-                status.innerHTML = `<span class="text-white">${i+1} / ${count}</span>`;
-                capCtx.clearRect(0,0,capCanvas.width, capCanvas.height);
-                capCtx.drawImage(sCanvas, 0, 0, capCanvas.width, capCanvas.height);
-                const data = capCanvas.toDataURL('image/png');
-                capturedFrames.push(data);
-                const img = document.createElement('img');
-                img.className = "capture-thumb"; img.src = data;
-                grid.appendChild(img);
-                await new Promise(r => setTimeout(r, 150));
-            }
-            status.innerText = "Capture Complete";
-            actionArea.classList.remove('hidden');
-        };
-
-        window.downloadAllFrames = () => {
-            capturedFrames.forEach((data, i) => {
-                setTimeout(() => {
-                    const a = document.createElement('a'); a.href = data; a.download = `frame_${(i+1).toString().padStart(3, '0')}.png`; a.click();
-                }, i * 500); // 500ms delay for browser security
-            });
-        };
-
-        window.compileToGif = () => {
-            const status = safeGet('seqStatus');
-            status.innerText = "Encoding GIF...";
-            const g = window.gifshot;
-            if(!g) { status.innerText = "Engine Error"; return; }
-
-            const sCanvas = (safeGet('sandboxIframe').contentDocument || safeGet('sandboxIframe').contentWindow.document).querySelector('canvas');
-            const ratio = sCanvas ? sCanvas.width / sCanvas.height : 1;
-
-            g.createGIF({
-                images: capturedFrames,
-                gifWidth: parseInt(safeGet('seqWidth').value),
-                gifHeight: Math.floor(parseInt(safeGet('seqWidth').value) / ratio),
-                interval: 0.1
-            }, (obj) => {
-                if(!obj.error) {
-                    const a = document.createElement('a'); a.href = obj.image; a.download = `capture_${Date.now()}.gif`;
-                    a.className = "mt-2 block bg-pink-600 text-white py-1 px-3 rounded-lg text-[8px] font-black uppercase";
-                    a.innerText = "Download GIF";
-                    status.innerHTML = ''; status.appendChild(a);
-                }
-            });
-        };
-
-        // --- PNG TO AVIF ---
-        const pQualIn = safeGet('pngQualityInput');
-        if(pQualIn) pQualIn.oninput = e => safeGet('pngQualityVal').innerText = e.target.value;
-        safeGet('pngToAvifInput').onchange = e => {
-            const files = Array.from(e.target.files).filter(f => f.type === 'image/png' || /\.png$/i.test(f.name));
-            files.forEach(file => {
-                const id = Math.random().toString(36).substring(7);
-                const div = document.createElement('div');
-                div.className = "tool-card flex flex-col md:flex-row gap-6 items-center shadow-lg bg-zinc-900";
-                div.id = `pcard-${id}`;
-                div.innerHTML = `
-                    <div class="flex-1 text-left min-w-0"><h3 class="text-xs font-black text-white truncate uppercase"></h3><div id="ps-${id}" class="text-[9px] text-zinc-500 font-black uppercase animate-pulse italic">Processing...</div></div>
-                    <div class="w-20 h-20 checkerboard rounded-xl border border-zinc-800 overflow-hidden flex items-center justify-center"><img id="pp-${id}" class="max-w-full max-h-full hidden"></div>
-                    <div class="flex gap-2">
-                        <a id="pd-${id}" class="hidden bg-white text-black px-4 py-1.5 rounded-lg text-[9px] font-black uppercase">Download</a>
-                        <button onclick="document.getElementById('pcard-${id}').remove()" class="text-[9px] text-zinc-700 font-black uppercase">X</button>
-                    </div>
-                `;
-                div.querySelector('h3').textContent = file.name;
-                safeGet('pngAvifResults').prepend(div);
-                processPngToAvif(file, id);
-            });
-            e.target.value = '';
-        };
-        async function processPngToAvif(file, id) {
-            const stat = document.getElementById(`ps-${id}`);
-            try {
-                const bmp = await createImageBitmap(file);
-                const c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height;
-                const ctx = c.getContext('2d'); ctx.drawImage(bmp, 0, 0);
-                const avif = await encode(ctx.getImageData(0, 0, c.width, c.height), { quality: parseInt(pQualIn.value) || 60 });
-                const blob = new Blob([avif], { type: 'image/avif' });
-                const url = URL.createObjectURL(blob);
-                stat.className = "text-[9px] text-green-500 font-black uppercase italic";
-                stat.innerText = `${c.width}x${c.height} | ${(file.size/1024).toFixed(1)}KB PNG -> ${(blob.size/1024).toFixed(1)}KB AVIF`;
-                const p = document.getElementById(`pp-${id}`); p.src = url; p.classList.remove('hidden');
-                const d = document.getElementById(`pd-${id}`); d.href = url; d.download = `${file.name.replace(/\.png$/i, '')}.avif`; d.classList.remove('hidden');
-            } catch(e) { stat.className = "text-[9px] text-red-500 font-black uppercase italic"; stat.innerText = "Error: " + e.message; }
-        }
-
-        // --- UTILS ---
-        safeGet('base64Input').onchange = e => {
-            const f = e.target.files[0]; if(!f) return;
-            safeGet('base64OutputArea').classList.remove('hidden');
-            const r = new FileReader(); r.onload = ev => safeGet('base64Result').value = ev.target.result; r.readAsDataURL(f);
-            e.target.value = '';
-        };
-
-        const sInput = safeGet('sandboxInput');
-        function updateSandboxPreview() {
-            if(!sInput) return;
-            const code = sInput.value; localStorage.setItem('gs_code_v12', code);
-            // srcdoc gives the preview a fresh page each run. Writing into the old page kept its const/let names,
-            // so code like "const c = ..." failed on the second run and the preview stopped updating.
-            safeGet('sandboxIframe').srcdoc = `<html><body style="margin:0; background:#000; color:#fff; overflow:hidden;">${code}</body></html>`;
-        }
-        if(sInput) sInput.oninput = () => { clearTimeout(window.sTimer); window.sTimer = setTimeout(updateSandboxPreview, 400); };
-
-        safeGet('svgFileInput').onchange = e => {
-            const f = e.target.files[0]; if(!f) return;
-            const r = new FileReader(); r.onload = ev => {
-                let code = ev.target.result;
-                if(code.includes('<svg')){
-                    const d = new DOMParser().parseFromString(code,'image/svg+xml');
-                    const s = d.querySelector('svg');
-                    if(s){ s.setAttribute('width','100%'); s.setAttribute('height','100%'); s.setAttribute('preserveAspectRatio','xMidYMid meet'); code = new XMLSerializer().serializeToString(d); }
-                }
-                safeGet('svgResultText').value = ev.target.result; safeGet('svgPreviewContainer').innerHTML = code;
-            }; r.readAsText(f);
-        };
-
-        window.copyToClip = (id) => { const el = safeGet(id); if(el) { el.select(); document.execCommand('copy'); alert("Copied"); } };
-        window.processMinify = () => { const mi = safeGet('minifyInput'); const mo = safeGet('minifyOutput'); if(mi && mo) mo.value = mi.value.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '$1').replace(/\s+/g, ' ').replace(/\s?([\{\}\(\);,=\+\-\*\/])\s?/g, '$1').trim(); };
-
-        window.onload = () => {
-            if(sInput) sInput.value = localStorage.getItem('gs_code_v12') || '<canvas id="c"></canvas><script>const c=document.getElementById("c"),x=c.getContext("2d");c.width=c.height=400;let f=0;function d(){f++;x.fillStyle="#000";x.fillRect(0,0,400,400);x.fillStyle="#fd008e";x.beginPath();x.arc(200+Math.sin(f*0.1)*100,200,50,0,7);x.fill();requestAnimationFrame(d)}d()<\/script>';
-            updateSandboxPreview();
-        };
-    </script>
+sInput.value = localStorage.getItem('gs_code_v12') || '<canvas id="c"></canvas><script>const c=document.getElementById("c"),x=c.getContext("2d");c.width=c.height=400;let f=0;function d(){f++;x.fillStyle="#000";x.fillRect(0,0,400,400);x.fillStyle="#f5a623";x.beginPath();x.arc(200+Math.sin(f*0.1)*100,200,50,0,7);x.fill();requestAnimationFrame(d)}d()<\/script>';
+updateSandboxPreview();
+</script>
 </body>
 </html>
