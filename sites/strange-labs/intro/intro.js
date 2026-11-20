@@ -13,13 +13,15 @@ if (!gl) { msg.textContent = 'This browser cannot play the intro.'; return; }
 //   one bar of drums while the coins gather
 //   lap 1: bass 1 -> through the coin; bass 2 (bar 5) -> the lights go out; Ord Lot, Trolls, Block Party, Editions, Doom;
 //          the low hits in bar 8 flash
-//   lap 2: bass 1 -> punch into Gamma Prints; we fly at the big piece in the middle, and on bass 2 (bar 5), as it fills
-//          the screen, the drums stop and we zoom all the way back out as the note falls;
+//   lap 2: bass 1 -> punch into Gamma Prints; bass 2 (bar 5) -> through its big piece into The Masters;
+//          hit "1" in bar 8 flashes; on hit "2", as the big piece in the middle fills the screen, the drums stop and we zoom
+//          all the way back out as the note falls;
+//   every bass note and low hit pumps the pieces towards you
 //   the logo is there when we come out, and it powers down as the note dies
-var BEAT = 60 / 174, BAR = BEAT * 4, END = 12, RUN = 31;   // END: bars of the tune before we pull back (Solemn's pick)
+var BEAT = 60 / 174, BAR = BEAT * 4, END = 15.5, RUN = 31;   // END: bars of the tune before we pull back (Solemn's pick: the last note of bar 8, lap 2)
 var T_IN = BAR,                        // bass 1
     T_RUN = T_IN + BAR * RUN,          // the flight's speed is set as if it ran 31 bars; that put the pull-back where he wants it
-    T_BACK = T_IN + BAR * END,         // lap 2, bar 5: the zoom out starts
+    T_BACK = T_IN + BAR * END,         // the zoom out starts
     T_LOGO = T_BACK + 0.85,     // back outside: the logo
     T_OFF = T_LOGO + 1.5,       // the logo switches off
     T_END = T_OFF + 0.9,
@@ -98,7 +100,10 @@ var coinTex = draw2d(512, 512, function (x) {   // the Bitcoin mark: an orange c
 // ---------- the scene ----------
 var layers = [], tex = {}, M = null, AMBER = hex('#f5a623'), HOT = hex('#ff4a12'), ONE = [1, 1, 1];
 function add(o) { o.w = o.w || 1; o.h = o.h || o.w; o.x = o.x || 0; o.y = o.y || 0; layers.push(o); return o; }
-function at(bars) { return camDepth(T_IN + bars * BAR); }   // how deep the camera is on a given bar
+// every bass note and low hit of the tune, as times; the pieces pump towards you on each one
+var BASS = []; (function () { for (var s = 0; s < 16 * END; s++) { var s8 = s % 128; if (s8 === 0 || s8 === 64 || s8 === 112 || s8 === 120) BASS.push(T_IN + s * BEAT / 4); } })();
+function pump(t) { var p = 0; for (var i = 0; i < BASS.length; i++) { var g = t - BASS[i]; if (g >= 0 && g < 0.8) p += sm(0, 0.035, g) * Math.exp(-g * 6); } return Math.min(p, 1.2); }
+function at(bars) { return flight(T_IN + bars * BAR); }   // how deep the camera is on a given bar
 function build() {
   var r = rng(7), i, side, s0;
   // 1. THE ORD LOT: a white room and a crowd of cut-outs. The one with the sign stands in the way; we go through him.
@@ -173,11 +178,11 @@ function render(t) {
   var cz = camDepth(t), inside = t > T_IN && t < T_LOGO;
   var cx = Math.sin(t * 0.9) * 0.22 * (inside ? 1 : 0.2), cy = Math.sin(t * 0.7 + 1) * 0.14 * (inside ? 1 : 0.2);
   var bg = bgAt(cz); gl.clearColor(bg[0], bg[1], bg[2], 1); gl.clear(gl.COLOR_BUFFER_BIT);
-  var rewind = t > T_BACK && t < T_LOGO, i, L, dist, sc, o, world = sm(D_COIN - 2.2, D_COIN + 0.3, cz);
+  var boom = 1 + 0.11 * pump(t), rewind = t > T_BACK && t < T_LOGO, i, L, dist, sc, o, world = sm(D_COIN - 2.2, D_COIN + 0.3, cz);
   for (i = 0; i < layers.length; i++) {
     if (world <= 0) break;
     L = layers[i]; dist = L.d - cz; if (dist < 0.3 || dist > 118) continue;
-    sc = f / dist;
+    sc = f / dist * boom;
     var y = L.y, rot = L.rot || 0, w = L.w, h = L.h;
     if (L.bob !== undefined) y += Math.sin(t / BEAT * Math.PI + L.bob * 1.7) * 0.22;
     if (L.wob !== undefined) { rot += Math.sin(t * 1.3 + L.wob) * 0.12; y += Math.sin(t * 0.9 + L.wob * 2) * 0.15; }
@@ -256,7 +261,7 @@ function music() {
     if (b16 === 4 || b16 === 12) snare(t);
     hat(t, b16 % 2 === 0 ? 0.1 : 0.05);
   }
-  t = aT0 + (16 + 16 * END) * stepT; bass(t, 55); kick(t);   // bass 2 of lap 2: the long note, and nothing after it
+  s = 16 * END; t = aT0 + (16 + s) * stepT; bass(t, s % 128 >= 112 ? 32.7 : 55); kick(t);   // the last note, and nothing after it
   return true;
 }
 
