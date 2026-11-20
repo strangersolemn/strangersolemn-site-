@@ -160,6 +160,72 @@
    "from": "a-solemn-rose"
   }
  ],
+ "gamma": [
+  "gp0.webp",
+  "gp1.webp",
+  "gp2.webp",
+  "gp3.webp",
+  "gp4.webp",
+  "gp5.webp",
+  "gp6.webp",
+  "gp7.webp"
+ ],
+ "masters": [
+  "ms0.webp",
+  "ms1.webp",
+  "ms2.webp",
+  "ms3.webp",
+  "ms4.webp",
+  "ms5.webp",
+  "ms6.webp",
+  "ms7.webp",
+  "ms8.webp",
+  "ms9.webp",
+  "ms10.webp",
+  "ms11.webp"
+ ],
+ "originals": [
+  "bo0.webp",
+  "bo1.webp",
+  "bo2.webp",
+  "bo3.webp",
+  "bo4.webp",
+  "bo5.webp",
+  "bo6.webp",
+  "bo7.webp",
+  "bo8.webp",
+  "bo9.webp",
+  "bo10.webp",
+  "bo11.webp"
+ ],
+ "rose": [
+  "ro0.webp",
+  "ro1.webp",
+  "ro2.webp",
+  "ro3.webp",
+  "ro4.webp",
+  "ro5.webp",
+  "ro6.webp",
+  "ro7.webp",
+  "ro8.webp",
+  "ro9.webp",
+  "ro10.webp",
+  "ro11.webp"
+ ],
+ "deliverance": [
+  "dv0.webp",
+  "dv1.webp",
+  "dv2.webp",
+  "dv3.webp",
+  "dv4.webp",
+  "dv5.webp",
+  "dv6.webp",
+  "dv7.webp",
+  "dv8.webp",
+  "dv9.webp",
+  "dv10.webp",
+  "dv11.webp"
+ ],
  "wall": "wall.webp",
  "logo": "logo.webp"
 }

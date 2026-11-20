@@ -100,7 +100,8 @@ def goods(coll):
     files = sorted((f for f in os.listdir(d) if f.endswith('.mp4') and f[:-4].isdigit()), key=lambda f: int(f[:-4]))
     return [os.path.join(d, f) for f in files if good(os.path.join(d, f))]
 
-pools = {c: goods(c) for c in ['block-clocks', 'doom', 'deliverance', 'dronebtc', 'gl1tch-c0des', 'a-solemn-rose', 'block-party', 'the-ord-lot', 'btc-editions']}
+pools = {c: goods(c) for c in ['block-clocks', 'doom', 'deliverance', 'dronebtc', 'gl1tch-c0des', 'a-solemn-rose', 'block-party', 'the-ord-lot', 'btc-editions',
+                                'gamma-prints', 'the-masters', 'blockclock-originals']}
 print({c: len(v) for c, v in pools.items()})
 
 def spread(lst, n):   # n items spread evenly through a list
@@ -127,6 +128,13 @@ n = 0
 for coll, k in [('deliverance', 6), ('dronebtc', 3), ('a-solemn-rose', 5)]:
     for f in spread(pools[coll], k):
         still(f, min(2.0, duration(f) * 0.5), 384, f'd{n}.webp', 78); manifest['cards'].append({'src': f'd{n}.webp', 'from': coll}); n += 1
+
+# 2b. The later laps of the tune: one more collection on every bass note
+for key, pre, coll, k in [('gamma', 'gp', 'gamma-prints', 12), ('masters', 'ms', 'the-masters', 12), ('originals', 'bo', 'blockclock-originals', 12),
+                          ('rose', 'ro', 'a-solemn-rose', 12), ('deliverance', 'dv', 'deliverance', 12)]:
+    manifest[key] = []
+    for i, f in enumerate(spread(pools[coll], k)):
+        still(f, min(2.0, duration(f) * 0.5), 512, f'{pre}{i}.webp', 78, neighbor=False); manifest[key].append(f'{pre}{i}.webp')
 
 # 3. The wall: 128 pieces in one picture, 16 across and 8 down
 allp = []
