@@ -24,4 +24,4 @@ Grimble built the first CC0mposer. Version 2 and the GL1TCH ENG1NE that draws th
 
 ## Watch it first
 
-The [walkthrough video](../assets/walkthrough.mp4) shows the whole thing in 45 seconds.
+The [walkthrough video](../assets/walkthrough.mp4) shows the whole thing in 30 seconds.
