@@ -23,12 +23,9 @@ a.tiny:hover { color: var(--ink); }
 
 /* top strip */
 .strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 var(--gutter); height: 48px; border-bottom: 1px solid var(--line); }
-.mark { font: 700 16px/1 var(--sans); letter-spacing: -.01em; }
+.mark { font: 700 17px/1 var(--sans); letter-spacing: -.01em; }
 
-.rack { max-width: 1040px; margin: 0 auto; padding: 0 var(--gutter) 40px; }
-.intro { padding: 36px 0 28px; }
-.intro h1 { font: 700 clamp(42px, 11vw, 84px)/.98 var(--sans); letter-spacing: -.04em; }
-.intro p { margin-top: 14px; max-width: 30em; color: var(--soft); font-size: 17px; }
+.rack { max-width: 1040px; margin: 0 auto; padding: 16px var(--gutter) 40px; }
 
 /* a rack unit */
 .unit { border: 1px solid var(--line); border-radius: 6px; margin-bottom: 16px; }
