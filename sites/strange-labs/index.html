@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Strange Labs</title>
+<meta name="description" content="Strange Labs: tools Solemn builds on Bitcoin. First up, the Gl1tch CC0mposer. Stack glitches with your own inscriptions and export one file that is ready to inscribe.">
+<meta name="theme-color" content="#131416">
+<meta property="og:title" content="Strange Labs">
+<meta property="og:description" content="Tools on Bitcoin by Solemn. First up: the Gl1tch CC0mposer.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="labs.css?v=1">
+</head>
+<body>
+<header class="strip">
+  <span class="mark"><i class="led" aria-hidden="true"></i>Strange Labs</span>
+  <a class="tiny" href="https://strangersolemn.art">strangersolemn.art ↗</a>
+</header>
+
+<main class="rack">
+  <section class="intro">
+    <h1>Strange Labs</h1>
+    <p>Tools I build on Bitcoin. They live on chain, so they stay up and anyone can use them.</p>
+  </section>
+
+  <section class="unit" aria-labelledby="t1">
+    <div class="unit-head">
+      <span class="tag">01</span>
+      <h2 id="t1">Gl1tch CC0mposer</h2>
+      <span class="state"><i class="led" aria-hidden="true"></i>On Bitcoin</span>
+    </div>
+
+    <div class="deck">
+      <div class="screen-wrap">
+        <div class="screen" id="screen" aria-label="The gl1tch engine, running live from Bitcoin"></div>
+        <div class="modes" id="modes" role="group" aria-label="Pick a gl1tch"></div>
+        <p class="tiny note">Live from Bitcoin. Tap a number to switch gl1tch.</p>
+      </div>
+
+      <div class="unit-body">
+        <p class="lead">Stack gl1tches with your own inscribed images and HTML pieces, tune each layer, and export one HTML file that is ready to inscribe.</p>
+        <div class="keys">
+          <a class="key lit" href="gl1tch/">Open the CC0mposer</a>
+          <a class="key" href="https://ordinals.com/content/8e93bc148d9f8172ecb25e3831eaaf606ef932af7b146cf1c738084507302303i0" target="_blank" rel="noopener">Open on ordinals.com ↗</a>
+        </div>
+
+        <ol class="steps">
+          <li><b>Add layers.</b> 15 gl1tches from the new engine, the cursed originals, or any inscription ID of yours.</li>
+          <li><b>Tune them.</b> Colour, speed, hue, contrast, opacity and blend, layer by layer.</li>
+          <li><b>Pick how it plays.</b> All at once, on click, on every new block, or one by chance.</li>
+          <li><b>Export.</b> One small HTML file. Inscribe it and it runs from Bitcoin for good.</li>
+        </ol>
+
+        <dl class="plate">
+          <div><dt>CC0mposer</dt><dd><code>8e93bc14…2303i0</code><button class="copy" data-copy="8e93bc148d9f8172ecb25e3831eaaf606ef932af7b146cf1c738084507302303i0">Copy</button><small>This link always opens the newest version.</small></dd></div>
+          <div><dt>Engine</dt><dd><code>691e2448…fbd1i0</code><button class="copy" data-copy="691e244829aceaf438ed9304cf13f5874462c90865524b3f7c8662ad5414fbd1i0">Copy</button><small>One 9.6 KB inscription draws all 15 gl1tches. CC0.</small></dd></div>
+          <div><dt>Made by</dt><dd>Grimble built the first CC0mposer. Version 2 and the engine are by Solemn.</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="unit blank" aria-label="Next tool">
+    <div class="unit-head">
+      <span class="tag">02</span>
+      <h2>Next tool</h2>
+      <span class="state off"><i class="led" aria-hidden="true"></i>Soon</span>
+    </div>
+  </section>
+</main>
+
+<footer class="foot tiny">
+  <a href="https://ordinals.com/inscription/b124a02748dd3ee7bde22d9ecd39ed89e113e522cf4c657424d2196a53045fb5i0" target="_blank" rel="noopener">Strange Labs on Bitcoin ↗</a>
+  <span>© Solemn</span>
+</footer>
+<div class="toast tiny" id="toast" role="status" aria-live="polite"></div>
+<script src="labs.js?v=1"></script>
+</body>
+</html>
